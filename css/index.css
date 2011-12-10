@@ -1,0 +1,71 @@
+body {
+    font-family: 'Permanent Marker', serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    text-shadow: 4px 4px 4px #bbb;
+    text-decoration: none;
+    text-transform: none;
+    letter-spacing: 0em;
+    word-spacing: 0em;
+    line-height: 1.2;
+    margin:0; 
+    padding:0; 
+}
+a, a:link, a:visited, a:active {
+    color:#000;
+    text-decoration:none;
+}
+a:hover {
+  text-shadow: 8px 8px 8px #bbb;
+}
+ul,li {
+    list-style-type:none;
+    list-style-image:none;
+    padding:0;
+    margin:0;
+}
+.header {
+    height:150px;
+    text-align:center;
+}
+.header h1 {
+        font-size:3em; 
+}
+.content {
+    padding:10px;
+    position:relative; 
+}
+.content .textWrapper {
+
+}
+.content .textWrapper .text { 
+            min-height:1000px; 
+            text-align:center; 
+            font-size:1em; 
+}
+.content .textWrapper .text h3 { 
+            font-size:1.4em; 
+}
+.content #menu { 
+        position:absolute; 
+        left:10px;
+        height:450px; 
+        text-align:center; 
+        font-size:2em; 
+}
+.footer {  1
+    height:100px; 
+    text-align:center;
+    font-size:1.5em;  
+}
+.tech {
+    margin:10px;
+}
+.isotope-item {
+  z-index: 2;
+}
+.isotope-hidden.isotope-item {
+  pointer-events: none;
+  z-index: 1;
+}
