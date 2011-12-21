@@ -1,5 +1,5 @@
 body {
-    font-family: 'Permanent Marker', serif;
+    font-family: Helvetica, Arial, FreeSans, san-serif;
     font-size: 14px;
     font-style: normal;
     font-weight: 400;
@@ -54,7 +54,8 @@ ul,li {
         text-align:center; 
         font-size:2em; 
 }
-.footer {  1
+.footer {  
+    font-family: 'Permanent Marker', serif;
     height:100px; 
     text-align:center;
     font-size:1.5em;  
