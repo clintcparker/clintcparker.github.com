@@ -20,13 +20,13 @@ $(function() {
         }
       });
     $container.isotope({layout:"fitRows",layoutMode:"fitRows" });
-    $("#skills li a").click(function (){
-        var levl = $(this).attr("href").slice(1);
-        $("#skills li a").removeClass("active");
-        $(this).addClass("active");
-        if (levl != "allLevels") {
-            $container.isotope({ filter: '.' + levl });
-        } else {
+    $("#skills").find(":radio").change(function(){
+        $("#skills").find("label").removeClass("active");
+        var $this = $(this);
+        var levl = $this.val();
+        $this.prev().addClass("active");
+        $container.isotope({ filter: '.' + levl });
+        if (levl == "allLevels") {
             $container.isotope({ filter: '*' });
         }
     });

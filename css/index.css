@@ -70,3 +70,12 @@ ul,li {
   pointer-events: none;
   z-index: 1;
 }
+#skills input {
+        display:none;
+}
+#skills label {
+        cursor:pointer;
+}
+#skills label.active{
+    color:#871CB7;    
+}
