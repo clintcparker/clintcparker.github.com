@@ -5,8 +5,6 @@ date: 2014-03-21T11:16:00-07:00
 ---
 
 
-##VBScript Conditional Includes
-
 This is a nasty one to track down in production, so I'm going to show you here.
 
 VBScript has a fun way of interpreting include references that are nested inside an if statement. It will load all include references. If you have different functions, with the same name, it will use the second one.
