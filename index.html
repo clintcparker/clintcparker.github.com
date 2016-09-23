@@ -1,142 +1,31 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Clint Parker</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="css/bootstrap.min.css" />
-	<link rel="stylesheet" href="css/bootstrap-responsive.min.css" />
-</head>
-<body>
-	<header>
-	</header>
-	<div class="container">
-		<div class="page-header">
-				<div class="pull-left">
-				<h1>Clint Parker</h1>
-				<h3>Software Developer</h3>
-				</div>
-				<img src="img/me.jpg" height="125px" width="125px" class="img-polaroid pull-right">
-				<div style="clear:both;">&nbsp;</div>
-		</div>
-		<div class="row">
-			<div class="span9">
-				<section>
-					<p>I'm a software developer living and working on California's central coast. I'm passionate about building software. Seriously, if you've got time to kill, we can talk about it for hours. I love building and planning applications large and small. I also get pretty excited about scrum, and am happy to talk for hours about whats worked for me and what hasn't. My favorite language is javascript, but C# is gaining ground.</p>
-					<p>I work at MINDBODY, maintaining and improving the core application. I lead a scrum team of comprised of equal parts developers and testers.</p>
-				</section>
-				<section>
-					<h4>PROFESSIONAL EXPERIENCE</h4>
-					<ul>
-						<li>
-							<strong>MINDBODY</strong> San Luis Obispo, CA
-							<h6>May 2009 - present</h6>
-							<p>MINDBODY is an awesome software company in San Luis Obispo. They make software for people who make the world a healthier place. And MINDBODY is a healthy place to, with onsite yoga and massage :)</p>
-							<p>I oversee a team of developers creating full stack solutions. We take real world observations, and plan and implement the solutions in two week sprint cycles.</p>
-							<p>All new work is done in C#, JavaScript, HTML, & CSS. It's a .NET shop, so you know everything's stored in a MSSQL DB.</p>
-						</li>						
-						<li>
-							<strong>Inline Warehouse</strong> San Luis Obispo, CA
-							<h6>June 2006 - May 2009</h6>
-							<p>Iniline Warehouse is one of the leading roller and ice hockey, and freestyle and fitness inline skating retailers.</p>
-							<p>I served as the customer service manager for Inline Warehouse. I helped resolve customer disputes and dissatisfactions. I also supervised the warehouse and CSR staff.</p>
-							<p>
-								<!--Resolve customer dissatisfactions-->
-								<!--Supervise warehouse and CSR staff-->
-								<!--Create a proactive service model-->
-								<!--Order Fulfillment									         2007-2008-->
+---
+layout: default
+---
 
-								<!--Process online orders for shipment-->
-								<!--Detect and prevent possible credit card fraud-->
-								<!--Warehouse Picker/Packer		     						 June 2006-2007-->
+<div class="home">
+  {% for post in paginator.posts %}
+    <article class="post">
+      <h2 class="post-title"><a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h2>
 
-								<!--Pick and pack online orders-->
-								<!--Retail sales-->
-								<!--Check and stock inventory-->
-							</p>
-						</li>						
-						<li>
-							<strong>Rancho Suspension</strong> Long Beach, CA
-							<h6>May 2004-September 2004, May 2005-December 2005</h6>
-							<p>
-							
-								<!--        Rancho Suspension, Long Beach, CA 		          		         May 2004-September 2004, May 2005-December 2005-->
-								<!--Mechanical Engineer Intern/Draftsmen 	-->
+      <time datetime="{{ post.date | date_to_xmlschema }}" class="post-date">{{ post.date | date: '%B %d, %Y' }}</time>
 
-								<!--Created and revised technical drawings in SolidWorks and Cadkey-->
-								<!--Product testing in Research and Development-->
-								<!--Minor part fabrication -->							
-							</p>
-						</li>						
-						<li>
-							<strong>Mainland Machine</strong> San Luis Obispo, CA
-							<h6>June 2003-December 2003</h6>
-							<p>
-							
-								<!--Mainland Machine, San Luis Obispo, CA 				 			June 2003-December 2003-->
-								<!--CNC Operator	-->
+      {{ post.content }}
 
-								<!--Basic part machining-->
-								<!--Product assembly-->						
-							</p>
-						</li>
-					</ul>
-				</secion>
-	<!--LANGUAGES/ENVIRONMENTS -->
-	<!--Knowledgeable in: HTML, JavaScript, CSS, JQuery, ASP/ASP.NET, PHP, MS SQL, MySQL, LESS-->
-	<!--Experience with: XML, LINQ, ADO.NET, NodeJS, CouchDB-->
-	<!--Proficient with: Windows Server 2003/2008, II S 6/7/7.5, SQL Server 2005/2008 platforms-->
-	<!--Comfortable with: Windows, UNIX, Mac-->
+      <hr>
+    </article>
+  {% endfor %}
 
-	<!--EDUCATION	  	BS Computer Science, Magna Cum Laude						           July 2009-->
-	<!--		Grantham University-->
-
-	<!--SPECIALIZATIONS	Payment Processing  Integrations			-->
-	<!--Diverse integrations with merchant account providers implemented to provide a consistent and uniform user experience.		           -->
-	<!--PROFESSIONAL  INTERESTS	-->
-	<!--Javascript-->
-	<!--Relational DB Design-->
-	<!--MVC Frameworks-->
-
-
-
-
-
-
-
-
-
-
-
-				
-
-			</div>
-			<div class="span3">				
-				<div class="well">
-					<h2>About me</h2>
-					<p>I live and work in San Luis Obispo. I have two small dogs (no, smaller than that) whom I love to play with.</p>
-					<h4>Links</h4>
-					<p>Kill your productivity and checkout these sites!</p>
-					<ul>
-						<li><a href="http://news.ycombinator.com">Hacker News</a></li>
-						<li><a href="http://github.com">Github</a></li>
-						<li><a href="http://c9.io">Cloud9IDE</a></li>
-						<li><a href="http://parse.com">Parse</a></li>
-						<li><a href="http://twitter.github.com/bootstrap">Bootstrap</a></li>
-					</ul>	
-                    <address>
-                        <strong>Clint Parker</strong><br>
-                        San Luis Obispo, CA<br>
-                        m:<a href="tel:+18057433349">805-743-3349</a><br>
-                        <a href="mailto:clintcparker@gmail.com">clintcparker@gmail.com</a>
-                    </address>
-				</div>			
-			</div>
-		</div>
-	</div>
-	<footer>
-		<script type="text/javascript" src="js/jquery-1.8.0.min.js"></script>
-		<script type="text/javascript" src="js/bootstrap.min.js"></script>
-		<script type="text/javascript" src="js/index.js"></script>
-	</footer>
-</body>
-</html>
+    <!-- Pagination links -->
+    <div class="pagination">
+        {% if paginator.previous_page %}
+            <a href="{{ paginator.previous_page_path }}" class="previous">Previous</a>
+        {% else %}
+            <span class="inactive previous">Previous</span>
+        {% endif %}
+        {% if paginator.next_page %}
+            <a href="{{ paginator.next_page_path }}" class="next">Next</a>
+        {% else %}
+            <span class="inactive next">Next</span>
+        {% endif %}
+    </div>
+</div>
