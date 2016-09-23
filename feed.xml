@@ -6,9 +6,82 @@
 </description>
     <link>http://clintcparker.com/</link>
     <atom:link href="http://clintcparker.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 22 Sep 2016 21:20:13 -0700</pubDate>
-    <lastBuildDate>Thu, 22 Sep 2016 21:20:13 -0700</lastBuildDate>
+    <pubDate>Thu, 22 Sep 2016 21:38:29 -0700</pubDate>
+    <lastBuildDate>Thu, 22 Sep 2016 21:38:29 -0700</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
+    
+      <item>
+        <title>VBScript Conditional Includes</title>
+        <description>&lt;p&gt;##VBScript Conditional Includes&lt;/p&gt;
+
+&lt;p&gt;This is a nasty one to track down in production, so I’m going to show you here.&lt;/p&gt;
+
+&lt;p&gt;VBScript has a fun way of interpreting include references that are nested inside an if statement. It will load all include references. If you have different functions, with the same name, it will use the second one.&lt;/p&gt;
+
+&lt;p&gt;Example&lt;/p&gt;
+
+&lt;p&gt;myTest_inc1.asp:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-vbscript&quot; data-lang=&quot;vbscript&quot;&gt;&amp;lt;%
+Response.Write &quot;&amp;lt;br/&amp;gt;Function 1 loaded...&amp;lt;br/&amp;gt;&quot;
+
+function myFunc(int1, int2)
+    Response.Write &quot;&amp;lt;br/&amp;gt;Function 1 executing...&amp;lt;br/&amp;gt;&quot;
+    myFunc = int1 * int2
+end function 
+%&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;myTest_inc2.asp:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-vbscript&quot; data-lang=&quot;vbscript&quot;&gt;&amp;lt;%
+Response.Write &quot;&amp;lt;br/&amp;gt;Function 2 loaded...&amp;lt;br/&amp;gt;&quot;
+
+function myFunc(int1, int2)
+    Response.Write &quot;&amp;lt;br/&amp;gt;Function 2 executing...&amp;lt;br/&amp;gt;&quot;
+    myFunc = int1 + int2
+end function
+%&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;myTest.asp:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-vbscript&quot; data-lang=&quot;vbscript&quot;&gt;&amp;lt;%
+    if (true) then
+        Response.Write &quot;&amp;lt;br/&amp;gt;Case 1 executing...&amp;lt;br/&amp;gt;&quot;
+%&amp;gt;
+
+&amp;lt;!-- #include file=&quot;myTest_inc1.asp&quot; --&amp;gt;
+
+&amp;lt;% 
+    else
+        Response.Write &quot;&amp;lt;br/&amp;gt;Case 2 executing...&amp;lt;br/&amp;gt;&quot;
+%&amp;gt;
+
+&amp;lt;!-- #include file=&quot;myTest_inc2.asp&quot; --&amp;gt;
+
+&amp;lt;%
+    end if
+    
+    Response.Write myFunc(3,3)
+%&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;The output of myTest.asp is:&lt;/p&gt;
+
+&lt;p&gt;Case 1 executing…&lt;/p&gt;
+
+&lt;p&gt;Function 1 loaded…&lt;/p&gt;
+
+&lt;p&gt;Function 2 executing…&lt;/p&gt;
+
+&lt;p&gt;6&lt;/p&gt;
+
+&lt;p&gt;Thanks for reading.&lt;/p&gt;
+</description>
+        <pubDate>Fri, 21 Mar 2014 11:16:00 -0700</pubDate>
+        <link>http://clintcparker.com/2014/03/21/vbscript-conditional-includes.html</link>
+        <guid isPermaLink="true">http://clintcparker.com/2014/03/21/vbscript-conditional-includes.html</guid>
+        
+        
+      </item>
     
   </channel>
 </rss>

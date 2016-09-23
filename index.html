@@ -72,6 +72,79 @@
       <div class="wrapper">
         <div class="home">
   
+    <article class="post">
+      <h2 class="post-title"><a class="post-link" href="/2014/03/21/vbscript-conditional-includes.html">VBScript Conditional Includes</a></h2>
+
+      <time datetime="2014-03-21T11:16:00-07:00" class="post-date">March 21, 2014</time>
+
+      <p>##VBScript Conditional Includes</p>
+
+<p>This is a nasty one to track down in production, so I’m going to show you here.</p>
+
+<p>VBScript has a fun way of interpreting include references that are nested inside an if statement. It will load all include references. If you have different functions, with the same name, it will use the second one.</p>
+
+<p>Example</p>
+
+<p>myTest_inc1.asp:</p>
+
+<figure class="highlight"><pre><code class="language-vbscript" data-lang="vbscript">&lt;%
+Response.Write "&lt;br/&gt;Function 1 loaded...&lt;br/&gt;"
+
+function myFunc(int1, int2)
+    Response.Write "&lt;br/&gt;Function 1 executing...&lt;br/&gt;"
+    myFunc = int1 * int2
+end function 
+%&gt;</code></pre></figure>
+
+<p>myTest_inc2.asp:</p>
+
+<figure class="highlight"><pre><code class="language-vbscript" data-lang="vbscript">&lt;%
+Response.Write "&lt;br/&gt;Function 2 loaded...&lt;br/&gt;"
+
+function myFunc(int1, int2)
+    Response.Write "&lt;br/&gt;Function 2 executing...&lt;br/&gt;"
+    myFunc = int1 + int2
+end function
+%&gt;</code></pre></figure>
+
+<p>myTest.asp:</p>
+
+<figure class="highlight"><pre><code class="language-vbscript" data-lang="vbscript">&lt;%
+    if (true) then
+        Response.Write "&lt;br/&gt;Case 1 executing...&lt;br/&gt;"
+%&gt;
+
+&lt;!-- #include file="myTest_inc1.asp" --&gt;
+
+&lt;% 
+    else
+        Response.Write "&lt;br/&gt;Case 2 executing...&lt;br/&gt;"
+%&gt;
+
+&lt;!-- #include file="myTest_inc2.asp" --&gt;
+
+&lt;%
+    end if
+    
+    Response.Write myFunc(3,3)
+%&gt;</code></pre></figure>
+
+<p>The output of myTest.asp is:</p>
+
+<p>Case 1 executing…</p>
+
+<p>Function 1 loaded…</p>
+
+<p>Function 2 executing…</p>
+
+<p>6</p>
+
+<p>Thanks for reading.</p>
+
+
+      <hr>
+    </article>
+  
 
     <!-- Pagination links -->
     <div class="pagination">
