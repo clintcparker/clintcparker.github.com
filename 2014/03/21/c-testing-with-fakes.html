@@ -6,14 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>VBScript Conditional Includes</title>
-    <meta name="description" content="This is a nasty one to track down in production, so I’m going to show you here.">
+    <title>C# Testing With Fakes</title>
+    <meta name="description" content="I wrote a nice little tutorial about using fakes in C#. It cover Shims and Stubs. It also covers testing private methods using the InternalsVisibleTo attribute.">
 
     <link rel="stylesheet" href="/assets/css/style.css">
 
     <link rel="icon" type="image/x-icon" href="http://clintcparker.com/favicon.ico">
 
-    <link rel="canonical" href="http://clintcparker.com/2014/03/21/vbscript-conditional-includes.html">
+    <link rel="canonical" href="http://clintcparker.com/2014/03/21/c-testing-with-fakes.html">
     <link rel="alternate" type="application/rss+xml" title="@clintcparker" href="http://clintcparker.com/feed.xml" />
 </head>
 
@@ -72,72 +72,14 @@
         <div class="post">
 
   <header class="post-header">
-    <h2 class="post-title">VBScript Conditional Includes</h2>
+    <h2 class="post-title">C# Testing With Fakes</h2>
     <time class="post-date">March 21, 2014</time>
   </header>
 
   <article class="post-content">
-    <p>This is a nasty one to track down in production, so I’m going to show you here.</p>
+    <p>I wrote a nice little tutorial about using fakes in C#. It cover Shims and Stubs. It also covers testing private methods using the InternalsVisibleTo attribute.</p>
 
-<p>VBScript has a fun way of interpreting include references that are nested inside an if statement. It will load all include references. If you have different functions, with the same name, it will use the second one.</p>
-
-<p>Example</p>
-
-<p>myTest_inc1.asp:</p>
-
-<figure class="highlight"><pre><code class="language-vbscript" data-lang="vbscript">&lt;%
-Response.Write "&lt;br/&gt;Function 1 loaded...&lt;br/&gt;"
-
-function myFunc(int1, int2)
-    Response.Write "&lt;br/&gt;Function 1 executing...&lt;br/&gt;"
-    myFunc = int1 * int2
-end function 
-%&gt;</code></pre></figure>
-
-<p>myTest_inc2.asp:</p>
-
-<figure class="highlight"><pre><code class="language-vbscript" data-lang="vbscript">&lt;%
-Response.Write "&lt;br/&gt;Function 2 loaded...&lt;br/&gt;"
-
-function myFunc(int1, int2)
-    Response.Write "&lt;br/&gt;Function 2 executing...&lt;br/&gt;"
-    myFunc = int1 + int2
-end function
-%&gt;</code></pre></figure>
-
-<p>myTest.asp:</p>
-
-<figure class="highlight"><pre><code class="language-vbscript" data-lang="vbscript">&lt;%
-    if (true) then
-        Response.Write "&lt;br/&gt;Case 1 executing...&lt;br/&gt;"
-%&gt;
-
-&lt;!-- #include file="myTest_inc1.asp" --&gt;
-
-&lt;% 
-    else
-        Response.Write "&lt;br/&gt;Case 2 executing...&lt;br/&gt;"
-%&gt;
-
-&lt;!-- #include file="myTest_inc2.asp" --&gt;
-
-&lt;%
-    end if
-    
-    Response.Write myFunc(3,3)
-%&gt;</code></pre></figure>
-
-<p>The output of myTest.asp is:</p>
-
-<p>Case 1 executing…</p>
-
-<p>Function 1 loaded…</p>
-
-<p>Function 2 executing…</p>
-
-<p>6</p>
-
-<p>Thanks for reading.</p>
+<p><a href="https://github.com/clintcparker/c_sharp_testing/wiki/Coverage-Tutorial">https://github.com/clintcparker/c_sharp_testing/wiki/Coverage-Tutorial</a></p>
 
   </article>
 
