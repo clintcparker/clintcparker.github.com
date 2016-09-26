@@ -6,9 +6,88 @@
 </description>
     <link>http://clintcparker.com/</link>
     <atom:link href="http://clintcparker.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 26 Sep 2016 08:09:12 -0700</pubDate>
-    <lastBuildDate>Mon, 26 Sep 2016 08:09:12 -0700</lastBuildDate>
+    <pubDate>Mon, 26 Sep 2016 08:44:23 -0700</pubDate>
+    <lastBuildDate>Mon, 26 Sep 2016 08:44:23 -0700</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
+    
+      <item>
+        <title>How Yield Works</title>
+        <description>&lt;p&gt;This code should work:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-csharp&quot; data-lang=&quot;csharp&quot;&gt;&lt;span class=&quot;n&quot;&gt;IEnumerable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ShouldWork&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;    
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(!&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;obj&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;is&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;IEnumerable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;)&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;yield&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;IEnumerable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; 
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;But it doesn’t.&lt;/p&gt;
+
+&lt;p&gt;I thought it would work. I like using &lt;code class=&quot;highlighter-rouge&quot;&gt;yield&lt;/code&gt; to take full advantage of delayed enumeration, rather than creating new lists or arrays all the time.&lt;/p&gt;
+
+&lt;p&gt;Everything looks right; the return types are good. Except it won’t compile. You get a nice message about having to use &lt;code class=&quot;highlighter-rouge&quot;&gt;yield&lt;/code&gt; inside an iterator when trying to return &lt;code class=&quot;highlighter-rouge&quot;&gt;(IEnumerabl&amp;lt;T&amp;gt;)obj&lt;/code&gt; directly.&lt;/p&gt;
+
+&lt;p&gt;Don’t try &lt;code class=&quot;highlighter-rouge&quot;&gt;yield return (IEnumerable&amp;lt;T&amp;gt;)obj&lt;/code&gt;. That will do exactly what you’d think. It won’t compile either, because now the return types don’t match, because &lt;code class=&quot;highlighter-rouge&quot;&gt;yield return (IENumerable&amp;lt;T&amp;gt;)obj&lt;/code&gt; needs a method return type of &lt;code class=&quot;highlighter-rouge&quot;&gt;IEnumerable&amp;lt;IEnumerable&amp;lt;T&amp;gt;&amp;gt;&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;So what to do?&lt;/p&gt;
+
+&lt;p&gt;Obviously, try &lt;code class=&quot;highlighter-rouge&quot;&gt;yield break&lt;/code&gt;. Because nothing else is making sense at this point. But of course, that’s not what &lt;code class=&quot;highlighter-rouge&quot;&gt;yield break&lt;/code&gt; is for in the least, so it doesn’t work. Yay, not completely crazy.&lt;/p&gt;
+
+&lt;p&gt;This issue didn’t come up for me until I was trying to combine recursion &amp;amp; LINQ-expressions. And was stumped. Googling the motivator (LINQ and recursion) yielded (pun intended) no valuable results.&lt;/p&gt;
+
+&lt;p&gt;I grabbed the nearest .NET nerd of my colleagues, and went straight to the whiteboard. In doing so, I realized that recursion has nothing to do with this not compiling (still not crazy!). On the other hand I still had to convince my colleague that the code wouldn’t compile. (He went thru literally the same steps I did. Again, not crazy).&lt;/p&gt;
+
+&lt;p&gt;So we seem to have found a cool nugget in the compiler, that seems to say, “if you want to &lt;code class=&quot;highlighter-rouge&quot;&gt;yield return&lt;/code&gt; once in a method, you must &lt;code class=&quot;highlighter-rouge&quot;&gt;yield&lt;/code&gt; all other returns in that method.” OK. That actually kind of makes sense. Delayed enumeration would mean that the compiler is wanting to deal w/ things granularly.&lt;/p&gt;
+
+&lt;p&gt;My (sad hack of a) solution: Fake the &lt;code class=&quot;highlighter-rouge&quot;&gt;yield&lt;/code&gt;.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-csharp&quot; data-lang=&quot;csharp&quot;&gt;&lt;span class=&quot;n&quot;&gt;IEnumerable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DoesActuallyWork&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; 
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(!&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;obj&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;is&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;IEnumerable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;)&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;FakeYield&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;IEnumerable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; 
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;IEnumerable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;FakeYield&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;yield&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;All that to avoid explicitly instantiating lists.&lt;/p&gt;
+</description>
+        <pubDate>Sun, 11 Sep 2016 13:55:00 -0700</pubDate>
+        <link>http://clintcparker.com/2016/09/11/how-yield-works.html</link>
+        <guid isPermaLink="true">http://clintcparker.com/2016/09/11/how-yield-works.html</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Creating a vs Extension</title>
+        <description>&lt;p&gt;I’m a moderate user of extensions. As in, I have some favorites, but I’m not trolling the gallery everyday.&lt;/p&gt;
+
+&lt;p&gt;I’ve never made one before. No idea has either been both big enough and small enough to warrant me building an extension.&lt;/p&gt;
+
+&lt;p&gt;In April 2016, at Build, I saw &lt;a href=&quot;https://visualstudiogallery.msdn.microsoft.com/site/search?f%5B0%5D.Type=User&amp;amp;f%5B0%5D.Value=Mads%20Kristensen&quot;&gt;Mads Kristensen&lt;/a&gt; create &amp;amp; publish (with integrated CI, and pretty images) a brand new extension during a 1 hour session. It was a great talk, and I had promised myself that I would watch it again on Channel9. I also signed up to be a VS Partner while at build.&lt;/p&gt;
+
+&lt;p&gt;I received an email about a week ago saying my VS Partner status would be canceled, unless I published a product in the next week.&lt;/p&gt;
+
+&lt;p&gt;Two days later, I came across a fitting challenge for an extension. So I set out to build it.&lt;/p&gt;
+
+&lt;p&gt;I followed Mads’ video, and it was surprisingly easy. The docs are still very confusing for the VS interfaces, but it was still doable.In the end, what took Mads less than an hour on stage, took me about 5 hours of total work at my desk.&lt;/p&gt;
+
+&lt;p&gt;All in all, it was still surprisingly easy, and I regret not doing it sooner.&lt;/p&gt;
+</description>
+        <pubDate>Sun, 11 Sep 2016 13:55:00 -0700</pubDate>
+        <link>http://clintcparker.com/2016/09/11/creating-a-vs-extension.html</link>
+        <guid isPermaLink="true">http://clintcparker.com/2016/09/11/creating-a-vs-extension.html</guid>
+        
+        
+      </item>
     
       <item>
         <title>C# Testing With Fakes</title>

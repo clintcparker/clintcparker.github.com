@@ -6,15 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>@clintcparker</title>
-    <meta name="description" content="Writings on software development, testing, and architecture. .NET C# Tools Testing whiteboarding design
-">
+    <title>How Yield Works</title>
+    <meta name="description" content="This code should work:">
 
     <link rel="stylesheet" href="/assets/css/style.css">
 
     <link rel="icon" type="image/x-icon" href="http://clintcparker.com/favicon.ico">
 
-    <link rel="canonical" href="http://clintcparker.com/">
+    <link rel="canonical" href="http://clintcparker.com/2016/09/11/how-yield-works.html">
     <link rel="alternate" type="application/rss+xml" title="@clintcparker" href="http://clintcparker.com/feed.xml" />
 </head>
 
@@ -70,14 +69,15 @@
 
     <div class="page-content">
       <div class="wrapper">
-        <div class="home">
-  
-    <article class="post">
-      <h2 class="post-title"><a class="post-link" href="/2016/09/11/how-yield-works.html">How Yield Works</a></h2>
+        <div class="post">
 
-      <time datetime="2016-09-11T13:55:00-07:00" class="post-date">September 11, 2016</time>
+  <header class="post-header">
+    <h2 class="post-title">How Yield Works</h2>
+    <time class="post-date">September 11, 2016</time>
+  </header>
 
-      <p>This code should work:</p>
+  <article class="post-content">
+    <p>This code should work:</p>
 
 <figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span> <span class="n">ShouldWork</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;(</span><span class="n">T</span>  <span class="n">obj</span><span class="p">)</span>
 <span class="p">{</span>    
@@ -124,127 +124,8 @@
 
 <p>All that to avoid explicitly instantiating lists.</p>
 
+  </article>
 
-      <hr>
-    </article>
-  
-    <article class="post">
-      <h2 class="post-title"><a class="post-link" href="/2016/09/11/creating-a-vs-extension.html">Creating a vs Extension</a></h2>
-
-      <time datetime="2016-09-11T13:55:00-07:00" class="post-date">September 11, 2016</time>
-
-      <p>I’m a moderate user of extensions. As in, I have some favorites, but I’m not trolling the gallery everyday.</p>
-
-<p>I’ve never made one before. No idea has either been both big enough and small enough to warrant me building an extension.</p>
-
-<p>In April 2016, at Build, I saw <a href="https://visualstudiogallery.msdn.microsoft.com/site/search?f%5B0%5D.Type=User&amp;f%5B0%5D.Value=Mads%20Kristensen">Mads Kristensen</a> create &amp; publish (with integrated CI, and pretty images) a brand new extension during a 1 hour session. It was a great talk, and I had promised myself that I would watch it again on Channel9. I also signed up to be a VS Partner while at build.</p>
-
-<p>I received an email about a week ago saying my VS Partner status would be canceled, unless I published a product in the next week.</p>
-
-<p>Two days later, I came across a fitting challenge for an extension. So I set out to build it.</p>
-
-<p>I followed Mads’ video, and it was surprisingly easy. The docs are still very confusing for the VS interfaces, but it was still doable.In the end, what took Mads less than an hour on stage, took me about 5 hours of total work at my desk.</p>
-
-<p>All in all, it was still surprisingly easy, and I regret not doing it sooner.</p>
-
-
-      <hr>
-    </article>
-  
-    <article class="post">
-      <h2 class="post-title"><a class="post-link" href="/2014/03/21/c-testing-with-fakes.html">C# Testing With Fakes</a></h2>
-
-      <time datetime="2014-03-21T17:00:00-07:00" class="post-date">March 21, 2014</time>
-
-      <p>I wrote a nice little tutorial about using fakes in C#. It cover Shims and Stubs. It also covers testing private methods using the InternalsVisibleTo attribute.</p>
-
-<p><a href="https://github.com/clintcparker/c_sharp_testing/wiki/Coverage-Tutorial">https://github.com/clintcparker/c_sharp_testing/wiki/Coverage-Tutorial</a></p>
-
-
-      <hr>
-    </article>
-  
-    <article class="post">
-      <h2 class="post-title"><a class="post-link" href="/2014/03/21/vbscript-conditional-includes.html">VBScript Conditional Includes</a></h2>
-
-      <time datetime="2014-03-21T11:16:00-07:00" class="post-date">March 21, 2014</time>
-
-      <p>This is a nasty one to track down in production, so I’m going to show you here.</p>
-
-<p>VBScript has a fun way of interpreting include references that are nested inside an if statement. It will load all include references. If you have different functions, with the same name, it will use the second one.</p>
-
-<p>Example</p>
-
-<p>myTest_inc1.asp:</p>
-
-<figure class="highlight"><pre><code class="language-vbscript" data-lang="vbscript">&lt;%
-Response.Write "&lt;br/&gt;Function 1 loaded...&lt;br/&gt;"
-
-function myFunc(int1, int2)
-    Response.Write "&lt;br/&gt;Function 1 executing...&lt;br/&gt;"
-    myFunc = int1 * int2
-end function 
-%&gt;</code></pre></figure>
-
-<p>myTest_inc2.asp:</p>
-
-<figure class="highlight"><pre><code class="language-vbscript" data-lang="vbscript">&lt;%
-Response.Write "&lt;br/&gt;Function 2 loaded...&lt;br/&gt;"
-
-function myFunc(int1, int2)
-    Response.Write "&lt;br/&gt;Function 2 executing...&lt;br/&gt;"
-    myFunc = int1 + int2
-end function
-%&gt;</code></pre></figure>
-
-<p>myTest.asp:</p>
-
-<figure class="highlight"><pre><code class="language-vbscript" data-lang="vbscript">&lt;%
-    if (true) then
-        Response.Write "&lt;br/&gt;Case 1 executing...&lt;br/&gt;"
-%&gt;
-
-&lt;!-- #include file="myTest_inc1.asp" --&gt;
-
-&lt;% 
-    else
-        Response.Write "&lt;br/&gt;Case 2 executing...&lt;br/&gt;"
-%&gt;
-
-&lt;!-- #include file="myTest_inc2.asp" --&gt;
-
-&lt;%
-    end if
-    
-    Response.Write myFunc(3,3)
-%&gt;</code></pre></figure>
-
-<p>The output of myTest.asp is:</p>
-
-<p>Case 1 executing…</p>
-
-<p>Function 1 loaded…</p>
-
-<p>Function 2 executing…</p>
-
-<p>6</p>
-
-<p>Thanks for reading.</p>
-
-
-      <hr>
-    </article>
-  
-
-    <!-- Pagination links -->
-    <div class="pagination">
-        
-            <span class="inactive previous">Previous</span>
-        
-        
-            <span class="inactive next">Next</span>
-        
-    </div>
 </div>
 
       </div> <!-- .wrapper -->

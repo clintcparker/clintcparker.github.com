@@ -6,14 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>VBScript Conditional Includes</title>
-    <meta name="description" content="This is a nasty one to track down in production, so I’m going to show you here.">
+    <title>Creating a vs Extension</title>
+    <meta name="description" content="I’m a moderate user of extensions. As in, I have some favorites, but I’m not trolling the gallery everyday.">
 
     <link rel="stylesheet" href="/assets/css/style.css">
 
     <link rel="icon" type="image/x-icon" href="http://clintcparker.com/favicon.ico">
 
-    <link rel="canonical" href="http://clintcparker.com/2014/03/21/vbscript-conditional-includes.html">
+    <link rel="canonical" href="http://clintcparker.com/2016/09/11/creating-a-vs-extension.html">
     <link rel="alternate" type="application/rss+xml" title="@clintcparker" href="http://clintcparker.com/feed.xml" />
 </head>
 
@@ -72,72 +72,24 @@
         <div class="post">
 
   <header class="post-header">
-    <h2 class="post-title">VBScript Conditional Includes</h2>
-    <time class="post-date">March 21, 2014</time>
+    <h2 class="post-title">Creating a vs Extension</h2>
+    <time class="post-date">September 11, 2016</time>
   </header>
 
   <article class="post-content">
-    <p>This is a nasty one to track down in production, so I’m going to show you here.</p>
+    <p>I’m a moderate user of extensions. As in, I have some favorites, but I’m not trolling the gallery everyday.</p>
 
-<p>VBScript has a fun way of interpreting include references that are nested inside an if statement. It will load all include references. If you have different functions, with the same name, it will use the second one.</p>
+<p>I’ve never made one before. No idea has either been both big enough and small enough to warrant me building an extension.</p>
 
-<p>Example</p>
+<p>In April 2016, at Build, I saw <a href="https://visualstudiogallery.msdn.microsoft.com/site/search?f%5B0%5D.Type=User&amp;f%5B0%5D.Value=Mads%20Kristensen">Mads Kristensen</a> create &amp; publish (with integrated CI, and pretty images) a brand new extension during a 1 hour session. It was a great talk, and I had promised myself that I would watch it again on Channel9. I also signed up to be a VS Partner while at build.</p>
 
-<p>myTest_inc1.asp:</p>
+<p>I received an email about a week ago saying my VS Partner status would be canceled, unless I published a product in the next week.</p>
 
-<figure class="highlight"><pre><code class="language-vbscript" data-lang="vbscript">&lt;%
-Response.Write "&lt;br/&gt;Function 1 loaded...&lt;br/&gt;"
+<p>Two days later, I came across a fitting challenge for an extension. So I set out to build it.</p>
 
-function myFunc(int1, int2)
-    Response.Write "&lt;br/&gt;Function 1 executing...&lt;br/&gt;"
-    myFunc = int1 * int2
-end function 
-%&gt;</code></pre></figure>
+<p>I followed Mads’ video, and it was surprisingly easy. The docs are still very confusing for the VS interfaces, but it was still doable.In the end, what took Mads less than an hour on stage, took me about 5 hours of total work at my desk.</p>
 
-<p>myTest_inc2.asp:</p>
-
-<figure class="highlight"><pre><code class="language-vbscript" data-lang="vbscript">&lt;%
-Response.Write "&lt;br/&gt;Function 2 loaded...&lt;br/&gt;"
-
-function myFunc(int1, int2)
-    Response.Write "&lt;br/&gt;Function 2 executing...&lt;br/&gt;"
-    myFunc = int1 + int2
-end function
-%&gt;</code></pre></figure>
-
-<p>myTest.asp:</p>
-
-<figure class="highlight"><pre><code class="language-vbscript" data-lang="vbscript">&lt;%
-    if (true) then
-        Response.Write "&lt;br/&gt;Case 1 executing...&lt;br/&gt;"
-%&gt;
-
-&lt;!-- #include file="myTest_inc1.asp" --&gt;
-
-&lt;% 
-    else
-        Response.Write "&lt;br/&gt;Case 2 executing...&lt;br/&gt;"
-%&gt;
-
-&lt;!-- #include file="myTest_inc2.asp" --&gt;
-
-&lt;%
-    end if
-    
-    Response.Write myFunc(3,3)
-%&gt;</code></pre></figure>
-
-<p>The output of myTest.asp is:</p>
-
-<p>Case 1 executing…</p>
-
-<p>Function 1 loaded…</p>
-
-<p>Function 2 executing…</p>
-
-<p>6</p>
-
-<p>Thanks for reading.</p>
+<p>All in all, it was still surprisingly easy, and I regret not doing it sooner.</p>
 
   </article>
 
