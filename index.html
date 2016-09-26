@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>@clintcparker</title>
-    <meta name="description" content="Writings on software development, testing, and architecture. .NET C# Tools Testing
+    <meta name="description" content="Writings on software development, testing, and architecture. .NET C# Tools Testing whiteboarding design
 ">
 
     <link rel="stylesheet" href="/assets/css/style.css">
@@ -26,7 +26,7 @@
     <div class="wrapper">
 
         <h1><a class="site-title" href="/">@clintcparker</a></h1>
-        <h2 class="site-tagline">Code and such</h2>
+        <h2 class="site-tagline">Code and such from a whiteboard enthusiast</h2>
 
 
         <nav class="site-nav">
@@ -58,8 +58,16 @@
                 
                 
             
+                
+                
+                
+            
+                
+                
+                
+            
             <a href="https://github.com/clintcparker">GitHub</a>
-            <a href="https://www.linkedin.com/in/clint-parker-01a21b79">Resumé</a>
+            <a href="https://linkedin.com/clintcparker">Resumé</a>
 	    <a href="https://twitter.com/clintcparker">Tweets</a>
         </nav>
 
@@ -73,163 +81,140 @@
         <div class="home">
   
     <article class="post">
-      <h2 class="post-title"><a class="post-link" href="/2016/09/11/how-yield-works.html">How Yield Works</a></h2>
+      <h2 class="post-title"><a class="post-link" href="/2015/10/08/testing-rss.html">Testing RSS</a></h2>
 
-      <time datetime="2016-09-11T13:55:00-07:00" class="post-date">September 11, 2016</time>
+      <time datetime="2015-10-08T06:13:39-07:00" class="post-date">October 08, 2015</time>
 
-      <p>This code should work:</p>
-
-<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span> <span class="n">ShouldWork</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;(</span><span class="n">T</span>  <span class="n">obj</span><span class="p">)</span>
-<span class="p">{</span>    
-    <span class="k">if</span> <span class="p">(!</span><span class="n">obj</span> <span class="k">is</span> <span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;)</span>
-    <span class="p">{</span>
-        <span class="k">yield</span> <span class="k">return</span> <span class="n">obj</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="k">return</span> <span class="p">(</span><span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;)</span> <span class="n">obj</span><span class="p">;</span> 
-<span class="p">}</span></code></pre></figure>
-
-<p>But it doesn’t.</p>
-
-<p>I thought it would work. I like using <code class="highlighter-rouge">yield</code> to take full advantage of delayed enumeration, rather than creating new lists or arrays all the time.</p>
-
-<p>Everything looks right; the return types are good. Except it won’t compile. You get a nice message about having to use <code class="highlighter-rouge">yield</code> inside an iterator when trying to return <code class="highlighter-rouge">(IEnumerabl&lt;T&gt;)obj</code> directly.</p>
-
-<p>Don’t try <code class="highlighter-rouge">yield return (IEnumerable&lt;T&gt;)obj</code>. That will do exactly what you’d think. It won’t compile either, because now the return types don’t match, because <code class="highlighter-rouge">yield return (IENumerable&lt;T&gt;)obj</code> needs a method return type of <code class="highlighter-rouge">IEnumerable&lt;IEnumerable&lt;T&gt;&gt;</code>.</p>
-
-<p>So what to do?</p>
-
-<p>Obviously, try <code class="highlighter-rouge">yield break</code>. Because nothing else is making sense at this point. But of course, that’s not what <code class="highlighter-rouge">yield break</code> is for in the least, so it doesn’t work. Yay, not completely crazy.</p>
-
-<p>This issue didn’t come up for me until I was trying to combine recursion &amp; LINQ-expressions. And was stumped. Googling the motivator (LINQ and recursion) yielded (pun intended) no valuable results.</p>
-
-<p>I grabbed the nearest .NET nerd of my colleagues, and went straight to the whiteboard. In doing so, I realized that recursion has nothing to do with this not compiling (still not crazy!). On the other hand I still had to convince my colleague that the code wouldn’t compile. (He went thru literally the same steps I did. Again, not crazy).</p>
-
-<p>So we seem to have found a cool nugget in the compiler, that seems to say, “if you want to <code class="highlighter-rouge">yield return</code> once in a method, you must <code class="highlighter-rouge">yield</code> all other returns in that method.” OK. That actually kind of makes sense. Delayed enumeration would mean that the compiler is wanting to deal w/ things granularly.</p>
-
-<p>My (sad hack of a) solution: Fake the <code class="highlighter-rouge">yield</code>.</p>
-
-<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span> <span class="n">DoesActuallyWork</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;(</span><span class="n">T</span>  <span class="n">obj</span><span class="p">)</span>
-<span class="p">{</span> 
-    <span class="k">if</span> <span class="p">(!</span><span class="n">obj</span> <span class="k">is</span> <span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;)</span>
-    <span class="p">{</span>
-        <span class="k">return</span> <span class="nf">FakeYield</span><span class="p">(</span><span class="n">obj</span><span class="p">);</span>
-    <span class="p">}</span>
-    <span class="k">return</span> <span class="p">(</span><span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;)</span> <span class="n">obj</span><span class="p">;</span> 
-<span class="p">}</span>
-
-<span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span> <span class="n">FakeYield</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;(</span><span class="n">T</span> <span class="n">obj</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="k">yield</span> <span class="k">return</span> <span class="n">obj</span><span class="p">.</span>
-<span class="p">}</span></code></pre></figure>
-
-<p>All that to avoid explicitly instantiating lists.</p>
+      <p>This is a test of the RSS feed.</p>
 
 
       <hr>
     </article>
   
     <article class="post">
-      <h2 class="post-title"><a class="post-link" href="/2016/09/11/creating-a-vs-extension.html">Creating a vs Extension</a></h2>
+      <h2 class="post-title"><a class="post-link" href="/2015/10/08/hello-world.html">Hello World</a></h2>
 
-      <time datetime="2016-09-11T13:55:00-07:00" class="post-date">September 11, 2016</time>
+      <time datetime="2015-10-08T06:13:39-07:00" class="post-date">October 08, 2015</time>
 
-      <p>I’m a moderate user of extensions. As in, I have some favorites, but I’m not trolling the gallery everyday.</p>
+      <p>Hi there, thanks for checking out Daryl, a performant and simple theme for <a href="http://jekyllrb.com">Jekyll</a>. I designed this theme to be as readable as possible, to be simple to use, and to keep the code used as vanilla as possible.</p>
 
-<p>I’ve never made one before. No idea has either been both big enough and small enough to warrant me building an extension.</p>
+<p>It’s open source for a reason: I’ve learned a lot from open source software and I’m trying to give a little something back. Hope you enjoy.</p>
 
-<p>In April 2016, at Build, I saw <a href="https://visualstudiogallery.msdn.microsoft.com/site/search?f%5B0%5D.Type=User&amp;f%5B0%5D.Value=Mads%20Kristensen">Mads Kristensen</a> create &amp; publish (with integrated CI, and pretty images) a brand new extension during a 1 hour session. It was a great talk, and I had promised myself that I would watch it again on Channel9. I also signed up to be a VS Partner while at build.</p>
-
-<p>I received an email about a week ago saying my VS Partner status would be canceled, unless I published a product in the next week.</p>
-
-<p>Two days later, I came across a fitting challenge for an extension. So I set out to build it.</p>
-
-<p>I followed Mads’ video, and it was surprisingly easy. The docs are still very confusing for the VS interfaces, but it was still doable.In the end, what took Mads less than an hour on stage, took me about 5 hours of total work at my desk.</p>
-
-<p>All in all, it was still surprisingly easy, and I regret not doing it sooner.</p>
-
-
-      <hr>
-    </article>
-  
-    <article class="post">
-      <h2 class="post-title"><a class="post-link" href="/2014/03/21/c-testing-with-fakes.html">C# Testing With Fakes</a></h2>
-
-      <time datetime="2014-03-21T17:00:00-07:00" class="post-date">March 21, 2014</time>
-
-      <p>I wrote a nice little tutorial about using fakes in C#. It cover Shims and Stubs. It also covers testing private methods using the InternalsVisibleTo attribute.</p>
-
-<p><a href="https://github.com/clintcparker/c_sharp_testing/wiki/Coverage-Tutorial">https://github.com/clintcparker/c_sharp_testing/wiki/Coverage-Tutorial</a></p>
+<h4 id="daryl-features">Daryl Features</h4>
+<ul>
+  <li>Mobile-first and thereby…</li>
+  <li>Performant-first</li>
+  <li>404 page included</li>
+  <li>feed.xml used for RSS</li>
+  <li>Includes an Archive/Post-list page template</li>
+</ul>
 
 
       <hr>
     </article>
   
     <article class="post">
-      <h2 class="post-title"><a class="post-link" href="/2014/03/21/vbscript-conditional-includes.html">VBScript Conditional Includes</a></h2>
+      <h2 class="post-title"><a class="post-link" href="/2015/10/07/html-elements-test.html">HTML Elements Test</a></h2>
 
-      <time datetime="2014-03-21T11:16:00-07:00" class="post-date">March 21, 2014</time>
+      <time datetime="2015-10-07T06:13:39-07:00" class="post-date">October 07, 2015</time>
 
-      <p>This is a nasty one to track down in production, so I’m going to show you here.</p>
+      <p>This post <em>demonstrates</em> all the <strong>typical</strong> blog post Markdown elements used. To start off with, here’s a full-width image. Full-width images are centered by default and do not need an extra class:</p>
 
-<p>VBScript has a fun way of interpreting include references that are nested inside an if statement. It will load all include references. If you have different functions, with the same name, it will use the second one.</p>
+<p><img src="/assets/images/example-image.jpg" alt="Example Image" title="Example Image" /></p>
 
-<p>Example</p>
+<p><img src="/assets/images/left-example-image.jpg" alt="Left-aligned image" class="l-img" />
+To my left (or above if you’re viewing from a small viewport) is a left-aligned image. You can use the “l-img” class to accomplish this. If the viewport is small, the image shifts to be full-width.</p>
 
-<p>myTest_inc1.asp:</p>
+<p><img src="/assets/images/right-example-image.jpg" alt="Left-aligned image" class="r-img" />
+To my right (or above if you’re viewing from a small viewport) is a right-aligned image. You can use the “r-img” class to accomplish this. Like the left-aligned image, if the viewport is small, the image shifts to be full-width.</p>
 
-<figure class="highlight"><pre><code class="language-vbscript" data-lang="vbscript">&lt;%
-Response.Write "&lt;br/&gt;Function 1 loaded...&lt;br/&gt;"
+<p>Various header sizes:</p>
 
-function myFunc(int1, int2)
-    Response.Write "&lt;br/&gt;Function 1 executing...&lt;br/&gt;"
-    myFunc = int1 * int2
-end function 
-%&gt;</code></pre></figure>
+<h1 id="header-1">Header 1</h1>
 
-<p>myTest_inc2.asp:</p>
+<h2 id="header-2">Header 2</h2>
 
-<figure class="highlight"><pre><code class="language-vbscript" data-lang="vbscript">&lt;%
-Response.Write "&lt;br/&gt;Function 2 loaded...&lt;br/&gt;"
+<h3 id="header-3">Header 3</h3>
 
-function myFunc(int1, int2)
-    Response.Write "&lt;br/&gt;Function 2 executing...&lt;br/&gt;"
-    myFunc = int1 + int2
-end function
-%&gt;</code></pre></figure>
+<h4 id="header-4">Header 4</h4>
 
-<p>myTest.asp:</p>
+<h5 id="header-5">Header 5</h5>
 
-<figure class="highlight"><pre><code class="language-vbscript" data-lang="vbscript">&lt;%
-    if (true) then
-        Response.Write "&lt;br/&gt;Case 1 executing...&lt;br/&gt;"
-%&gt;
+<h6 id="header-6">Header 6</h6>
 
-&lt;!-- #include file="myTest_inc1.asp" --&gt;
+<p>Bacon ipsum dolor amet veniam shoulder drumstick salami. Ut in bacon voluptate magna ham hock. Elit shoulder ribeye sirloin eu pariatur, strip steak ut dolore. Dolore excepteur prosciutto, adipisicing ball tip tempor incididunt pariatur occaecat cupim sed flank nulla.</p>
 
-&lt;% 
-    else
-        Response.Write "&lt;br/&gt;Case 2 executing...&lt;br/&gt;"
-%&gt;
+<p>Est frankfurter ullamco mollit, flank chuck adipisicing prosciutto fatback ham hock in. Ad swine elit aliqua commodo. Alcatra pork excepteur incididunt strip steak. Ipsum picanha pariatur exercitation, enim doner tempor meatloaf est drumstick culpa hamburger capicola.</p>
 
-&lt;!-- #include file="myTest_inc2.asp" --&gt;
+<p>An unordered list:</p>
 
-&lt;%
-    end if
-    
-    Response.Write myFunc(3,3)
-%&gt;</code></pre></figure>
+<ul>
+  <li>item 1</li>
+  <li>item 2</li>
+  <li>item 3</li>
+</ul>
 
-<p>The output of myTest.asp is:</p>
+<p>An ordered list:</p>
 
-<p>Case 1 executing…</p>
+<ol>
+  <li>Item 1</li>
+  <li>Item 2</li>
+  <li>Item 3</li>
+</ol>
 
-<p>Function 1 loaded…</p>
+<blockquote>
+  <p>Hey, here’s a blockquote.</p>
 
-<p>Function 2 executing…</p>
+  <p>Using the standard <a href="https://daringfireball.net/projects/markdown/basics">Gruber syntax</a>. Because I’m a purist.</p>
 
-<p>6</p>
+  <p>— Andrew Lee</p>
+</blockquote>
 
-<p>Thanks for reading.</p>
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- Here's some sample HTML code: --&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"a-class"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;p&gt;</span>Here's some HTML. Huzzah!<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;p&gt;</span>HTML is:<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;ul&gt;</span>
+        <span class="nt">&lt;li&gt;</span>The structural layer of your site.<span class="nt">&lt;/li&gt;</span>
+        <span class="nt">&lt;li&gt;</span>HTML was invented by <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"https://en.wikipedia.org/wiki/Tim_Berners-Lee"</span><span class="nt">&gt;</span>Tim Berners-Lee<span class="nt">&lt;/a&gt;</span>.<span class="nt">&lt;/li&gt;</span>
+    <span class="nt">&lt;/ul&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre></figure>
+
+
+
+      <hr>
+    </article>
+  
+    <article class="post">
+      <h2 class="post-title"><a class="post-link" href="/jekyll/update/2015/10/06/welcome-to-jekyll.html">Welcome to Jekyll!</a></h2>
+
+      <time datetime="2015-10-06T06:13:39-07:00" class="post-date">October 06, 2015</time>
+
+      <p>You’ll find this post in your <code class="highlighter-rouge">_posts</code> directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run <code class="highlighter-rouge">jekyll serve</code>, which launches a web server and auto-regenerates your site when a file is updated.</p>
+
+<p>To add new posts, simply add a file in the <code class="highlighter-rouge">_posts</code> directory that follows the convention <code class="highlighter-rouge">YYYY-MM-DD-name-of-post.ext</code> and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.</p>
+
+<p>Jekyll also offers powerful support for code snippets:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">def</span> <span class="nf">print_hi</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span>
+  <span class="nb">puts</span> <span class="s2">"Hi, </span><span class="si">#{</span><span class="nb">name</span><span class="si">}</span><span class="s2">"</span>
+<span class="k">end</span>
+<span class="n">print_hi</span><span class="p">(</span><span class="s1">'Tom'</span><span class="p">)</span>
+<span class="c1">#=&gt; prints 'Hi, Tom' to STDOUT.</span></code></pre></figure>
+
+<p>Check out the <a href="http://jekyllrb.com">Jekyll docs</a> for more info on how to get the most out of Jekyll. File all bugs/feature requests at <a href="https://github.com/jekyll/jekyll">Jekyll’s GitHub repo</a>. If you have questions, you can ask them on <a href="https://github.com/jekyll/jekyll-help">Jekyll’s dedicated Help repository</a>.</p>
+
+
+
+      <hr>
+    </article>
+  
+    <article class="post">
+      <h2 class="post-title"><a class="post-link" href="/2015/10/06/test-post-6-with-an-extraordinarily-long-title.html">Test Post 6 With An Extraordinarily Long Title</a></h2>
+
+      <time datetime="2015-10-06T06:13:39-07:00" class="post-date">October 06, 2015</time>
+
+      <p>Artisan XOXO disrupt tilde mustache photo booth readymade meggings, fashion axe slow-carb. Cold-pressed pork belly taxidermy wolf cliche tofu. Master cleanse jean shorts normcore brunch chia heirloom semiotics. McSweeney’s cliche pour-over sartorial four loko. Bitters master cleanse scenester, 8-bit single-origin coffee photo booth fanny pack tofu aesthetic meggings flexitarian next level. Disrupt Etsy master cleanse Neutra sustainable cardigan, flexitarian fanny pack photo booth. Bespoke food truck meh, quinoa jean shorts bicycle rights scenester direct trade cray taxidermy.</p>
 
 
       <hr>
@@ -242,7 +227,7 @@ end function
             <span class="inactive previous">Previous</span>
         
         
-            <span class="inactive next">Next</span>
+            <a href="/page2" class="next">Next</a>
         
     </div>
 </div>
