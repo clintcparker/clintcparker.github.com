@@ -6,209 +6,90 @@
 </description>
     <link>http://clintcparker.com/</link>
     <atom:link href="http://clintcparker.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 26 Sep 2016 07:48:55 -0700</pubDate>
-    <lastBuildDate>Mon, 26 Sep 2016 07:48:55 -0700</lastBuildDate>
+    <pubDate>Mon, 26 Sep 2016 08:06:13 -0700</pubDate>
+    <lastBuildDate>Mon, 26 Sep 2016 08:06:13 -0700</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
     
       <item>
-        <title>Testing RSS</title>
-        <description>&lt;p&gt;This is a test of the RSS feed.&lt;/p&gt;
+        <title>C# Testing With Fakes</title>
+        <description>&lt;p&gt;I wrote a nice little tutorial about using fakes in C#. It cover Shims and Stubs. It also covers testing private methods using the InternalsVisibleTo attribute.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/clintcparker/c_sharp_testing/wiki/Coverage-Tutorial&quot;&gt;https://github.com/clintcparker/c_sharp_testing/wiki/Coverage-Tutorial&lt;/a&gt;&lt;/p&gt;
 </description>
-        <pubDate>Thu, 08 Oct 2015 06:13:39 -0700</pubDate>
-        <link>http://clintcparker.com/2015/10/08/testing-rss.html</link>
-        <guid isPermaLink="true">http://clintcparker.com/2015/10/08/testing-rss.html</guid>
+        <pubDate>Fri, 21 Mar 2014 17:00:00 -0700</pubDate>
+        <link>http://clintcparker.com/2014/03/21/c-testing-with-fakes.html</link>
+        <guid isPermaLink="true">http://clintcparker.com/2014/03/21/c-testing-with-fakes.html</guid>
         
         
       </item>
     
       <item>
-        <title>Hello World</title>
-        <description>&lt;p&gt;Hi there, thanks for checking out Daryl, a performant and simple theme for &lt;a href=&quot;http://jekyllrb.com&quot;&gt;Jekyll&lt;/a&gt;. I designed this theme to be as readable as possible, to be simple to use, and to keep the code used as vanilla as possible.&lt;/p&gt;
+        <title>VBScript Conditional Includes</title>
+        <description>&lt;p&gt;This is a nasty one to track down in production, so I’m going to show you here.&lt;/p&gt;
 
-&lt;p&gt;It’s open source for a reason: I’ve learned a lot from open source software and I’m trying to give a little something back. Hope you enjoy.&lt;/p&gt;
+&lt;p&gt;VBScript has a fun way of interpreting include references that are nested inside an if statement. It will load all include references. If you have different functions, with the same name, it will use the second one.&lt;/p&gt;
 
-&lt;h4 id=&quot;daryl-features&quot;&gt;Daryl Features&lt;/h4&gt;
-&lt;ul&gt;
-  &lt;li&gt;Mobile-first and thereby…&lt;/li&gt;
-  &lt;li&gt;Performant-first&lt;/li&gt;
-  &lt;li&gt;404 page included&lt;/li&gt;
-  &lt;li&gt;feed.xml used for RSS&lt;/li&gt;
-  &lt;li&gt;Includes an Archive/Post-list page template&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-        <pubDate>Thu, 08 Oct 2015 06:13:39 -0700</pubDate>
-        <link>http://clintcparker.com/2015/10/08/hello-world.html</link>
-        <guid isPermaLink="true">http://clintcparker.com/2015/10/08/hello-world.html</guid>
-        
-        
-      </item>
+&lt;p&gt;Example&lt;/p&gt;
+
+&lt;p&gt;myTest_inc1.asp:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-vbscript&quot; data-lang=&quot;vbscript&quot;&gt;&amp;lt;%
+Response.Write &quot;&amp;lt;br/&amp;gt;Function 1 loaded...&amp;lt;br/&amp;gt;&quot;
+
+function myFunc(int1, int2)
+    Response.Write &quot;&amp;lt;br/&amp;gt;Function 1 executing...&amp;lt;br/&amp;gt;&quot;
+    myFunc = int1 * int2
+end function 
+%&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;myTest_inc2.asp:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-vbscript&quot; data-lang=&quot;vbscript&quot;&gt;&amp;lt;%
+Response.Write &quot;&amp;lt;br/&amp;gt;Function 2 loaded...&amp;lt;br/&amp;gt;&quot;
+
+function myFunc(int1, int2)
+    Response.Write &quot;&amp;lt;br/&amp;gt;Function 2 executing...&amp;lt;br/&amp;gt;&quot;
+    myFunc = int1 + int2
+end function
+%&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;myTest.asp:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-vbscript&quot; data-lang=&quot;vbscript&quot;&gt;&amp;lt;%
+    if (true) then
+        Response.Write &quot;&amp;lt;br/&amp;gt;Case 1 executing...&amp;lt;br/&amp;gt;&quot;
+%&amp;gt;
+
+&amp;lt;!-- #include file=&quot;myTest_inc1.asp&quot; --&amp;gt;
+
+&amp;lt;% 
+    else
+        Response.Write &quot;&amp;lt;br/&amp;gt;Case 2 executing...&amp;lt;br/&amp;gt;&quot;
+%&amp;gt;
+
+&amp;lt;!-- #include file=&quot;myTest_inc2.asp&quot; --&amp;gt;
+
+&amp;lt;%
+    end if
     
-      <item>
-        <title>HTML Elements Test</title>
-        <description>&lt;p&gt;This post &lt;em&gt;demonstrates&lt;/em&gt; all the &lt;strong&gt;typical&lt;/strong&gt; blog post Markdown elements used. To start off with, here’s a full-width image. Full-width images are centered by default and do not need an extra class:&lt;/p&gt;
+    Response.Write myFunc(3,3)
+%&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/example-image.jpg&quot; alt=&quot;Example Image&quot; title=&quot;Example Image&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;The output of myTest.asp is:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/left-example-image.jpg&quot; alt=&quot;Left-aligned image&quot; class=&quot;l-img&quot; /&gt;
-To my left (or above if you’re viewing from a small viewport) is a left-aligned image. You can use the “l-img” class to accomplish this. If the viewport is small, the image shifts to be full-width.&lt;/p&gt;
+&lt;p&gt;Case 1 executing…&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/right-example-image.jpg&quot; alt=&quot;Left-aligned image&quot; class=&quot;r-img&quot; /&gt;
-To my right (or above if you’re viewing from a small viewport) is a right-aligned image. You can use the “r-img” class to accomplish this. Like the left-aligned image, if the viewport is small, the image shifts to be full-width.&lt;/p&gt;
+&lt;p&gt;Function 1 loaded…&lt;/p&gt;
 
-&lt;p&gt;Various header sizes:&lt;/p&gt;
+&lt;p&gt;Function 2 executing…&lt;/p&gt;
 
-&lt;h1 id=&quot;header-1&quot;&gt;Header 1&lt;/h1&gt;
+&lt;p&gt;6&lt;/p&gt;
 
-&lt;h2 id=&quot;header-2&quot;&gt;Header 2&lt;/h2&gt;
-
-&lt;h3 id=&quot;header-3&quot;&gt;Header 3&lt;/h3&gt;
-
-&lt;h4 id=&quot;header-4&quot;&gt;Header 4&lt;/h4&gt;
-
-&lt;h5 id=&quot;header-5&quot;&gt;Header 5&lt;/h5&gt;
-
-&lt;h6 id=&quot;header-6&quot;&gt;Header 6&lt;/h6&gt;
-
-&lt;p&gt;Bacon ipsum dolor amet veniam shoulder drumstick salami. Ut in bacon voluptate magna ham hock. Elit shoulder ribeye sirloin eu pariatur, strip steak ut dolore. Dolore excepteur prosciutto, adipisicing ball tip tempor incididunt pariatur occaecat cupim sed flank nulla.&lt;/p&gt;
-
-&lt;p&gt;Est frankfurter ullamco mollit, flank chuck adipisicing prosciutto fatback ham hock in. Ad swine elit aliqua commodo. Alcatra pork excepteur incididunt strip steak. Ipsum picanha pariatur exercitation, enim doner tempor meatloaf est drumstick culpa hamburger capicola.&lt;/p&gt;
-
-&lt;p&gt;An unordered list:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;item 1&lt;/li&gt;
-  &lt;li&gt;item 2&lt;/li&gt;
-  &lt;li&gt;item 3&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;An ordered list:&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Item 1&lt;/li&gt;
-  &lt;li&gt;Item 2&lt;/li&gt;
-  &lt;li&gt;Item 3&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Hey, here’s a blockquote.&lt;/p&gt;
-
-  &lt;p&gt;Using the standard &lt;a href=&quot;https://daringfireball.net/projects/markdown/basics&quot;&gt;Gruber syntax&lt;/a&gt;. Because I’m a purist.&lt;/p&gt;
-
-  &lt;p&gt;— Andrew Lee&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- Here's some sample HTML code: --&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;a-class&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;Here's some HTML. Huzzah!&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;HTML is:&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;ul&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;nt&quot;&gt;&amp;lt;li&amp;gt;&lt;/span&gt;The structural layer of your site.&lt;span class=&quot;nt&quot;&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;nt&quot;&gt;&amp;lt;li&amp;gt;&lt;/span&gt;HTML was invented by &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;https://en.wikipedia.org/wiki/Tim_Berners-Lee&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Tim Berners-Lee&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;.&lt;span class=&quot;nt&quot;&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/ul&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
+&lt;p&gt;Thanks for reading.&lt;/p&gt;
 </description>
-        <pubDate>Wed, 07 Oct 2015 06:13:39 -0700</pubDate>
-        <link>http://clintcparker.com/2015/10/07/html-elements-test.html</link>
-        <guid isPermaLink="true">http://clintcparker.com/2015/10/07/html-elements-test.html</guid>
-        
-        
-      </item>
-    
-      <item>
-        <title>Welcome to Jekyll!</title>
-        <description>&lt;p&gt;You’ll find this post in your &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
-
-&lt;p&gt;To add new posts, simply add a file in the &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory that follows the convention &lt;code class=&quot;highlighter-rouge&quot;&gt;YYYY-MM-DD-name-of-post.ext&lt;/code&gt; and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.&lt;/p&gt;
-
-&lt;p&gt;Jekyll also offers powerful support for code snippets:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Hi, &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Tom'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;#=&amp;gt; prints 'Hi, Tom' to STDOUT.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Check out the &lt;a href=&quot;http://jekyllrb.com&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;. If you have questions, you can ask them on &lt;a href=&quot;https://github.com/jekyll/jekyll-help&quot;&gt;Jekyll’s dedicated Help repository&lt;/a&gt;.&lt;/p&gt;
-
-</description>
-        <pubDate>Tue, 06 Oct 2015 06:13:39 -0700</pubDate>
-        <link>http://clintcparker.com/jekyll/update/2015/10/06/welcome-to-jekyll.html</link>
-        <guid isPermaLink="true">http://clintcparker.com/jekyll/update/2015/10/06/welcome-to-jekyll.html</guid>
-        
-        
-        <category>jekyll</category>
-        
-        <category>update</category>
-        
-      </item>
-    
-      <item>
-        <title>Test Post 6 With An Extraordinarily Long Title</title>
-        <description>&lt;p&gt;Artisan XOXO disrupt tilde mustache photo booth readymade meggings, fashion axe slow-carb. Cold-pressed pork belly taxidermy wolf cliche tofu. Master cleanse jean shorts normcore brunch chia heirloom semiotics. McSweeney’s cliche pour-over sartorial four loko. Bitters master cleanse scenester, 8-bit single-origin coffee photo booth fanny pack tofu aesthetic meggings flexitarian next level. Disrupt Etsy master cleanse Neutra sustainable cardigan, flexitarian fanny pack photo booth. Bespoke food truck meh, quinoa jean shorts bicycle rights scenester direct trade cray taxidermy.&lt;/p&gt;
-</description>
-        <pubDate>Tue, 06 Oct 2015 06:13:39 -0700</pubDate>
-        <link>http://clintcparker.com/2015/10/06/test-post-6-with-an-extraordinarily-long-title.html</link>
-        <guid isPermaLink="true">http://clintcparker.com/2015/10/06/test-post-6-with-an-extraordinarily-long-title.html</guid>
-        
-        
-      </item>
-    
-      <item>
-        <title>Test Post 5</title>
-        <description>&lt;p&gt;Taxidermy meditation craft beer wayfarers cliche letterpress four dollar toast. Taxidermy cardigan hoodie Godard keffiyeh, twee polaroid Shoreditch trust fund typewriter. Odd Future Carles direct trade twee slow-carb drinking vinegar, small batch sustainable. Odd Future wolf American Apparel kogi Godard fashion axe. Odd Future biodiesel authentic, squid fixie messenger bag Etsy beard listicle shabby chic vinyl swag forage actually. Mustache American Apparel squid butcher drinking vinegar. Lo-fi dreamcatcher chillwave church-key, wolf roof party art party cronut.&lt;/p&gt;
-</description>
-        <pubDate>Sun, 04 Oct 2015 06:13:39 -0700</pubDate>
-        <link>http://clintcparker.com/2015/10/04/test-post-5.html</link>
-        <guid isPermaLink="true">http://clintcparker.com/2015/10/04/test-post-5.html</guid>
-        
-        
-      </item>
-    
-      <item>
-        <title>Test Post 4</title>
-        <description>&lt;p&gt;Bespoke bitters meh, retro pop-up XOXO deep v four dollar toast. Beard Neutra ethical synth cold-pressed, typewriter tousled mustache before they sold out Godard American Apparel. 8-bit dreamcatcher sartorial, chillwave Bushwick Blue Bottle VHS letterpress try-hard synth PBR. Selfies Bushwick mustache, try-hard blog wolf pour-over quinoa. Plaid flexitarian shabby chic you probably haven’t heard of them, taxidermy hella post-ironic bespoke keffiyeh jean shorts bicycle rights chambray XOXO organic church-key. Bushwick typewriter locavore lo-fi, cliche squid vinyl PBR&amp;amp;B. Brooklyn Banksy ethical, put a bird on it Portland PBR aesthetic Intelligentsia actually listicle mixtape selfies pug.&lt;/p&gt;
-</description>
-        <pubDate>Sat, 03 Oct 2015 06:13:39 -0700</pubDate>
-        <link>http://clintcparker.com/2015/10/03/test-post-4.html</link>
-        <guid isPermaLink="true">http://clintcparker.com/2015/10/03/test-post-4.html</guid>
-        
-        
-      </item>
-    
-      <item>
-        <title>Test Post 3</title>
-        <description>&lt;p&gt;Sartorial synth cold-pressed four dollar toast, small batch Banksy cronut tattooed lo-fi try-hard blog. DIY tilde next level, wolf skateboard scenester authentic. Pitchfork Etsy jean shorts, chillwave biodiesel mumblecore Godard selfies lo-fi. Vinyl banjo DIY lo-fi, paleo bicycle rights church-key Shoreditch yr drinking vinegar Pinterest cred 3 wolf moon. Freegan post-ironic YOLO pour-over Kickstarter, taxidermy McSweeney’s scenester biodiesel wolf skateboard crucifix PBR. Cornhole roof party hashtag, yr narwhal four dollar toast cray bespoke. Wayfarers retro Schlitz, gentrify twee vinyl cornhole.&lt;/p&gt;
-</description>
-        <pubDate>Fri, 02 Oct 2015 06:13:39 -0700</pubDate>
-        <link>http://clintcparker.com/jekyll/update/2015/10/02/test-post-3.html</link>
-        <guid isPermaLink="true">http://clintcparker.com/jekyll/update/2015/10/02/test-post-3.html</guid>
-        
-        
-        <category>jekyll</category>
-        
-        <category>update</category>
-        
-      </item>
-    
-      <item>
-        <title>Test Post 2</title>
-        <description>&lt;p&gt;Literally irony viral, XOXO American Apparel normcore pour-over keytar stumptown tousled taxidermy street art. Flannel High Life deep v Carles, occupy irony taxidermy bicycle rights hashtag. 90’s next level twee, DIY plaid gentrify try-hard quinoa bicycle rights narwhal meditation Marfa biodiesel. XOXO viral drinking vinegar cred, selfies freegan pickled Pitchfork Vice pop-up chillwave. Street art Helvetica slow-carb disrupt, brunch ethical deep v heirloom listicle. XOXO Blue Bottle scenester taxidermy health goth deep v. Direct trade freegan narwhal, cray tousled chambray sriracha paleo American Apparel try-hard VHS chillwave cred pour-over Kickstarter.&lt;/p&gt;
-</description>
-        <pubDate>Thu, 01 Oct 2015 06:13:39 -0700</pubDate>
-        <link>http://clintcparker.com/2015/10/01/test-post-2.html</link>
-        <guid isPermaLink="true">http://clintcparker.com/2015/10/01/test-post-2.html</guid>
-        
-        
-      </item>
-    
-      <item>
-        <title>Test Post 1</title>
-        <description>&lt;p&gt;Artisan Odd Future American Apparel Neutra, freegan swag chillwave retro actually kogi. Chia Godard cornhole, organic chillwave scenester dreamcatcher crucifix forage freegan synth. Authentic cronut mixtape synth XOXO kale chips banjo. Small batch vinyl Marfa, semiotics readymade sustainable mumblecore meh shabby chic quinoa. Twee ethical mustache, dreamcatcher try-hard church-key Odd Future fanny pack sriracha swag hashtag tilde. Meggings heirloom hella, hashtag stumptown locavore squid synth fingerstache quinoa irony Echo Park. Vice ennui pickled, health goth beard DIY gentrify.&lt;/p&gt;
-</description>
-        <pubDate>Wed, 30 Sep 2015 06:13:39 -0700</pubDate>
-        <link>http://clintcparker.com/2015/09/30/test-post-1.html</link>
-        <guid isPermaLink="true">http://clintcparker.com/2015/09/30/test-post-1.html</guid>
+        <pubDate>Fri, 21 Mar 2014 11:16:00 -0700</pubDate>
+        <link>http://clintcparker.com/2014/03/21/vbscript-conditional-includes.html</link>
+        <guid isPermaLink="true">http://clintcparker.com/2014/03/21/vbscript-conditional-includes.html</guid>
         
         
       </item>
