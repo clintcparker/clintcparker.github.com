@@ -11,6 +11,9 @@ twitter_username: clintcparker
 github_username:  clintcparker
 paginate: 5
 
+#Analytics
+google_analytics: UA-84920844-1
+
 
 # Octo settings
 #extensions
