@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "C# Obfuscation"
+date: 2016-10-01T12:02:45-07:00
 ---
 
 You can use the underscore to write ridiculous code.
