@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>C# Obfuscation</title>
+    <meta name="description" content="You can use the underscore to write ridiculous code.">
+
+    <link rel="stylesheet" href="/assets/css/style.css">
+
+    <link rel="icon" type="image/x-icon" href="http://clintcparker.com/favicon.ico">
+
+    <link rel="canonical" href="http://clintcparker.com/2016/10/01/c-obfuscation.html">
+    <link rel="alternate" type="application/rss+xml" title="@clintcparker" href="http://clintcparker.com/feed.xml" />
+    
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+    <div class="wrapper">
+
+        <h1><a class="site-title" href="/">@clintcparker</a></h1>
+        <h2 class="site-tagline">Code and such from a whiteboard enthusiast</h2>
+
+
+        <nav class="site-nav">
+            <a href="/">Home</a>
+            
+                
+            
+                
+                
+                <a class="page-link" href="/about/">About</a>
+                
+                
+            
+                
+                
+                <a class="page-link" href="/archive/">Archive</a>
+                
+                
+            
+                
+                
+                
+            
+                
+                
+                
+            
+                
+                
+                
+            
+                
+                
+                
+            
+            <a href="https://github.com/clintcparker" target="_blank" >GitHub</a>
+            <a href="https://www.linkedin.com/in/clint-parker-01a21b79" target="_blank"  >Resumé</a>
+	    <a href="https://twitter.com/clintcparker" target="_blank" >Tweets</a>
+        </nav>
+
+    </div> <!-- .wrapper -->
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="post">
+
+  <header class="post-header">
+    <h2 class="post-title">C# Obfuscation</h2>
+    <time class="post-date">October 01, 2016</time>
+  </header>
+
+  <article class="post-content">
+    <p>You can use the underscore to write ridiculous code.</p>
+
+<p><code class="highlighter-rouge">__</code> is a valid class name. <code class="highlighter-rouge">__</code> is a valid namespace. <code class="highlighter-rouge">__()</code> is a valid method. And, <code class="highlighter-rouge">__</code> is a valid property.</p>
+
+<p>I stumbled upon this a few years ago , but hadn’t gotten around to writing it down. It’s really fun to play with. I thinkt the next step is to create an obfuscator extension.</p>
+
+<p>Here’s a simple class from when I was teaching intro to C# and demonstrating async and await.</p>
+
+<div class="language-csharp highlighter-rouge"><pre class="highlight"><code><span class="k">using</span> <span class="nn">System.IO</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Threading.Tasks</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">A_A.Library</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">class</span> <span class="nc">FileAccess</span>
+    <span class="p">{</span>
+        <span class="k">public</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="nf">GetLength</span><span class="p">(</span><span class="kt">string</span> <span class="n">filePath</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="kt">var</span> <span class="n">sr</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">StreamReader</span><span class="p">(</span><span class="n">filePath</span><span class="p">);</span>
+            <span class="kt">var</span> <span class="n">chars</span> <span class="p">=</span> <span class="n">sr</span><span class="p">.</span><span class="nf">ReadToEnd</span><span class="p">();</span>
+            <span class="k">return</span> <span class="n">chars</span><span class="p">.</span><span class="n">Length</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="k">public</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="nf">GetLines</span><span class="p">(</span><span class="kt">string</span> <span class="n">bigTxt</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="kt">int</span> <span class="n">lines</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
+            <span class="kt">var</span> <span class="n">sr</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">StreamReader</span><span class="p">(</span><span class="n">bigTxt</span><span class="p">);</span>
+            <span class="k">while</span> <span class="p">(!</span><span class="n">sr</span><span class="p">.</span><span class="n">EndOfStream</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="k">await</span> <span class="n">sr</span><span class="p">.</span><span class="nf">ReadLineAsync</span><span class="p">();</span>
+                <span class="n">lines</span><span class="p">++;</span>
+            <span class="p">}</span>
+            <span class="k">return</span> <span class="n">lines</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>Here’s it is again, obfuscated. Still compiles, still valid C#.</p>
+
+<div class="language-csharp highlighter-rouge"><pre class="highlight"><code>
+<span class="k">using</span> <span class="nn">System.IO</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Threading.Tasks</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">__</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">class</span> <span class="nc">___</span>
+    <span class="p">{</span>
+        <span class="k">public</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="nf">____</span><span class="p">(</span><span class="kt">string</span> <span class="n">___</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="kt">var</span> <span class="n">_</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">StreamReader</span><span class="p">(</span><span class="n">___</span><span class="p">);</span>
+            <span class="kt">var</span> <span class="n">__</span> <span class="p">=</span> <span class="n">_</span><span class="p">.</span><span class="nf">ReadToEnd</span><span class="p">();</span>
+            <span class="k">return</span> <span class="n">__</span><span class="p">.</span><span class="n">Length</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="k">public</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="nf">_____</span><span class="p">(</span><span class="kt">string</span> <span class="n">___</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="kt">int</span> <span class="n">_</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
+            <span class="kt">var</span> <span class="n">__</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">StreamReader</span><span class="p">(</span><span class="n">___</span><span class="p">);</span>
+            <span class="k">while</span> <span class="p">(!</span><span class="n">__</span><span class="p">.</span><span class="n">EndOfStream</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="k">await</span> <span class="n">__</span><span class="p">.</span><span class="nf">ReadLineAsync</span><span class="p">();</span>
+                <span class="n">_</span><span class="p">++;</span>
+            <span class="p">}</span>
+            <span class="k">return</span> <span class="n">_</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>Thanks for reading.</p>
+
+<p>P.S. Who want’s to help me write the obfuscator?</p>
+
+  </article>
+
+</div>
+
+      </div> <!-- .wrapper -->
+    </div> <!-- .page-content -->
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+    <p class="rss-subscribe">Subscribe <a href="/feed.xml">via RSS</a></p>
+    <p>This site uses the <a href="http://daryl.andrewlee.name">Daryl</a> theme for <a href="http://jekyllrb.com">Jekyll</a>.</p>
+    <p>&copy; 2016 by Clint Parker. All rights reserved.</p>
+
+  </div> <!-- .wrapper -->
+
+</footer>
+
+
+  </body>
+
+</html>
