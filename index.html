@@ -12,10 +12,10 @@
 
     <link rel="stylesheet" href="/assets/css/style.css">
 
-    <link rel="icon" type="image/x-icon" href="http://localhost:4000/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="http://clintcparker.com/favicon.ico">
 
-    <link rel="canonical" href="http://localhost:4000/">
-    <link rel="alternate" type="application/rss+xml" title="@clintcparker" href="http://localhost:4000/feed.xml" />
+    <link rel="canonical" href="http://clintcparker.com/">
+    <link rel="alternate" type="application/rss+xml" title="@clintcparker" href="http://clintcparker.com/feed.xml" />
     
 </head>
 
@@ -63,10 +63,6 @@
                 
                 
             
-                
-                
-                
-            
             <a href="https://github.com/clintcparker" target="_blank" >GitHub</a>
             <a href="https://www.linkedin.com/in/clint-parker-01a21b79" target="_blank"  >Resumé</a>
 	    <a href="https://twitter.com/clintcparker" target="_blank" >Tweets</a>
@@ -82,127 +78,210 @@
         <div class="home">
   
     <article class="post">
-      <h2 class="post-title"><a class="post-link" href="/2017/03/19/kelly-sux-cl.html">Kelly Sux @ Cl</a></h2>
+      <h2 class="post-title"><a class="post-link" href="/2016/10/01/c-obfuscation.html">C# Obfuscation</a></h2>
 
-      <time datetime="2017-03-19T16:36:14-07:00" class="post-date">March 19, 2017</time>
+      <time datetime="2016-10-01T12:02:45-07:00" class="post-date">October 01, 2016</time>
 
-      <p>my friend, Kelly, sucks at the command line. End of story.</p>
+      <p>You can use the underscore to write ridiculous code.</p>
+
+<p><code class="highlighter-rouge">__</code> is a valid class name. <code class="highlighter-rouge">__</code> is a valid namespace. <code class="highlighter-rouge">__()</code> is a valid method. And, <code class="highlighter-rouge">__</code> is a valid property.</p>
+
+<p>I stumbled upon this a few years ago , but hadn’t gotten around to writing it down. It’s really fun to play with. I thinkt the next step is to create an obfuscator extension.</p>
+
+<p>Here’s a simple class from when I was teaching intro to C# and demonstrating async and await.</p>
+
+<div class="language-csharp highlighter-rouge"><pre class="highlight"><code><span class="k">using</span> <span class="nn">System.IO</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Threading.Tasks</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">A_A.Library</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">class</span> <span class="nc">FileAccess</span>
+    <span class="p">{</span>
+        <span class="k">public</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="nf">GetLength</span><span class="p">(</span><span class="kt">string</span> <span class="n">filePath</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="kt">var</span> <span class="n">sr</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">StreamReader</span><span class="p">(</span><span class="n">filePath</span><span class="p">);</span>
+            <span class="kt">var</span> <span class="n">chars</span> <span class="p">=</span> <span class="n">sr</span><span class="p">.</span><span class="nf">ReadToEnd</span><span class="p">();</span>
+            <span class="k">return</span> <span class="n">chars</span><span class="p">.</span><span class="n">Length</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="k">public</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="nf">GetLines</span><span class="p">(</span><span class="kt">string</span> <span class="n">bigTxt</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="kt">int</span> <span class="n">lines</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
+            <span class="kt">var</span> <span class="n">sr</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">StreamReader</span><span class="p">(</span><span class="n">bigTxt</span><span class="p">);</span>
+            <span class="k">while</span> <span class="p">(!</span><span class="n">sr</span><span class="p">.</span><span class="n">EndOfStream</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="k">await</span> <span class="n">sr</span><span class="p">.</span><span class="nf">ReadLineAsync</span><span class="p">();</span>
+                <span class="n">lines</span><span class="p">++;</span>
+            <span class="p">}</span>
+            <span class="k">return</span> <span class="n">lines</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>Here’s it is again, obfuscated. Still compiles, still valid C#.</p>
+
+<div class="language-csharp highlighter-rouge"><pre class="highlight"><code>
+<span class="k">using</span> <span class="nn">System.IO</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Threading.Tasks</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">__</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">class</span> <span class="nc">___</span>
+    <span class="p">{</span>
+        <span class="k">public</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="nf">____</span><span class="p">(</span><span class="kt">string</span> <span class="n">___</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="kt">var</span> <span class="n">_</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">StreamReader</span><span class="p">(</span><span class="n">___</span><span class="p">);</span>
+            <span class="kt">var</span> <span class="n">__</span> <span class="p">=</span> <span class="n">_</span><span class="p">.</span><span class="nf">ReadToEnd</span><span class="p">();</span>
+            <span class="k">return</span> <span class="n">__</span><span class="p">.</span><span class="n">Length</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="k">public</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="nf">_____</span><span class="p">(</span><span class="kt">string</span> <span class="n">___</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="kt">int</span> <span class="n">_</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
+            <span class="kt">var</span> <span class="n">__</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">StreamReader</span><span class="p">(</span><span class="n">___</span><span class="p">);</span>
+            <span class="k">while</span> <span class="p">(!</span><span class="n">__</span><span class="p">.</span><span class="n">EndOfStream</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="k">await</span> <span class="n">__</span><span class="p">.</span><span class="nf">ReadLineAsync</span><span class="p">();</span>
+                <span class="n">_</span><span class="p">++;</span>
+            <span class="p">}</span>
+            <span class="k">return</span> <span class="n">_</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>Thanks for reading.</p>
+
+<p>P.S. Who want’s to help me write the obfuscator?</p>
 
 
       <hr>
     </article>
   
     <article class="post">
-      <h2 class="post-title"><a class="post-link" href="/2017/03/19/palo-duro-pannier.html">Palo Duro Pannier</a></h2>
+      <h2 class="post-title"><a class="post-link" href="/2016/09/28/why-git-works-where-tfvc-doesnt.html">Why Git Works Where TFVC Doesn't</a></h2>
 
-      <time datetime="2017-03-19T15:16:44-07:00" class="post-date">March 19, 2017</time>
+      <time datetime="2016-09-28T15:29:00-07:00" class="post-date">September 28, 2016</time>
 
-      <p>I had an interesting experience getting and setting up may new Palo Duro pannier.</p>
+      <p>We’re in the process of moving to git right now, and one of the main questions I get is how will this ACTUALLY be any better than TFVC. (The other question is how much longer before we’re fully moved to git? Which warrants its own piece.)</p>
+
+<p>See, we’ve tried “branching” in TFVC, and it only caused us more pain. So there is some legitimacy to this question.</p>
+
+<p>We were doing some hard core bastardized scrum, and had successfully split our department into scrum teams. Who would work on all kinds of stuff each sprint. Maybe half the team was working on a global refactoring of a pattern, maybe the other was working on migrating some  key workflows from our old static classes to new workflows leveraging dependency injection. Either way, different work with different timeframes.</p>
+
+<p>Because we’re agile, we need to be able to work on lots of different things at any given time. But branching in TFVC is different than it is in git. A branch in TFVC is immediately available to everybody to see. And it never really goes away, but you can hide it (cool!). But you can’t use that name again (bummer).</p>
+
+<p>Since it never goes away, and we didn’t want to be constantly reminded of our bad branch naming, we picked a very generic naming scheme. Git branching would say be specific with you’re development branch names. But ours were Work-1, Work-2, .etc. We had about 10 teams at that point, and we ended up with 32 “work” branches.</p>
+
+<p>Ok, 32, not too bad. But it was. 32 is not enough for the number of features &amp; bug fixes being developed by 10 (and growing) teams. We probably needed 100-500 to have actually been successful. But with generic names like work-2, it’s hard to keep track of ownership. So we stopped at 32.</p>
+
+<p>And this is where it got messy.</p>
+
+<p>Scenario: The team is working on three different things in Work-14. One is done, while two are in progress. That whole branch has to be brought in now. Because that one completed feature is made up of 100 different changesets over six weeks. So we can’t just cherry pick that one feature. And now we’ve brought in two half-done features into mainline. We’re constantly testing mainline, so we feel OK about this, but the reality is that it’s not mainline that causes the problem. 
+Another team just got two half done projects dumped into their branch, because they rebased from mainline. And not just one other team, but nine. And then they’re all propagating that back out to everybody else.</p>
+
+<p>In the end, the chaos comes from the unfinished work being forced into everybody’s “clean” branches. But we’re actually paying extra for that chaos, because we now have to constantly rebase and merge branches, which takes time and understanding of a myriad of incongruent changes.</p>
+
+<p>Earlier I said we’ve “tried” branching. We did. And then we abandoned it. We still have the chaos, but not the extra cost. Everybody commits to mainline, it is constantly under test, and we ship often. Builds break, and it affects everybody, but it gets resolved quickly.</p>
+
+<p>I’m of the belief that is has made our developers better, knowing the impact of a bad commit. But it isn’t easy.</p>
+
+<p>So we’re switching to git. And we can have as many branches as we want. And they can be local. And they can have good names. And they can be deleted. And we can still commit to mainline if we want to.</p>
 
 
       <hr>
     </article>
   
     <article class="post">
-      <h2 class="post-title"><a class="post-link" href="/2017/03/19/untitled-stack-overflow-tf-view-post.html">Untitled Stack Overflow Tf View Post</a></h2>
+      <h2 class="post-title"><a class="post-link" href="/2016/09/11/how-yield-works.html">How Yield Works</a></h2>
 
-      <time datetime="2017-03-19T14:49:37-07:00" class="post-date">March 19, 2017</time>
+      <time datetime="2016-09-11T13:55:00-07:00" class="post-date">September 11, 2016</time>
 
-      <p>In</p>
+      <p>This code should work:</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span> <span class="n">ShouldWork</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;(</span><span class="n">T</span>  <span class="n">obj</span><span class="p">)</span>
+<span class="p">{</span>    
+    <span class="k">if</span> <span class="p">(!</span><span class="n">obj</span> <span class="k">is</span> <span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;)</span>
+    <span class="p">{</span>
+        <span class="k">yield</span> <span class="k">return</span> <span class="n">obj</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;)</span> <span class="n">obj</span><span class="p">;</span> 
+<span class="p">}</span></code></pre></figure>
+
+<p>But it doesn’t.</p>
+
+<p>I thought it would work. I like using <code class="highlighter-rouge">yield</code> to take full advantage of delayed enumeration, rather than creating new lists or arrays all the time.</p>
+
+<p>Everything looks right; the return types are good. Except it won’t compile. You get a nice message about having to use <code class="highlighter-rouge">yield</code> inside an iterator when trying to return <code class="highlighter-rouge">(IEnumerabl&lt;T&gt;)obj</code> directly.</p>
+
+<p>Don’t try <code class="highlighter-rouge">yield return (IEnumerable&lt;T&gt;)obj</code>. That will do exactly what you’d think. It won’t compile either, because now the return types don’t match, because <code class="highlighter-rouge">yield return (IENumerable&lt;T&gt;)obj</code> needs a method return type of <code class="highlighter-rouge">IEnumerable&lt;IEnumerable&lt;T&gt;&gt;</code>.</p>
+
+<p>So what to do?</p>
+
+<p>Obviously, try <code class="highlighter-rouge">yield break</code>. Because nothing else is making sense at this point. But of course, that’s not what <code class="highlighter-rouge">yield break</code> is for in the least, so it doesn’t work. Yay, not completely crazy.</p>
+
+<p>This issue didn’t come up for me until I was trying to combine recursion &amp; LINQ-expressions. And was stumped. Googling the motivator (LINQ and recursion) yielded (pun intended) no valuable results.</p>
+
+<p>I grabbed the nearest .NET nerd of my colleagues, and went straight to the whiteboard. In doing so, I realized that recursion has nothing to do with this not compiling (still not crazy!). On the other hand I still had to convince my colleague that the code wouldn’t compile. (He went thru literally the same steps I did. Again, not crazy).</p>
+
+<p>So we seem to have found a cool nugget in the compiler, that seems to say, “if you want to <code class="highlighter-rouge">yield return</code> once in a method, you must <code class="highlighter-rouge">yield</code> all other returns in that method.” OK. That actually kind of makes sense. Delayed enumeration would mean that the compiler is wanting to deal w/ things granularly.</p>
+
+<p>My (sad hack of a) solution: Fake the <code class="highlighter-rouge">yield</code>.</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span> <span class="n">DoesActuallyWork</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;(</span><span class="n">T</span>  <span class="n">obj</span><span class="p">)</span>
+<span class="p">{</span> 
+    <span class="k">if</span> <span class="p">(!</span><span class="n">obj</span> <span class="k">is</span> <span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;)</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nf">FakeYield</span><span class="p">(</span><span class="n">obj</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;)</span> <span class="n">obj</span><span class="p">;</span> 
+<span class="p">}</span>
+
+<span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span> <span class="n">FakeYield</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;(</span><span class="n">T</span> <span class="n">obj</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">yield</span> <span class="k">return</span> <span class="n">obj</span><span class="p">.</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>All that to avoid explicitly instantiating lists.</p>
 
 
       <hr>
     </article>
   
     <article class="post">
-      <h2 class="post-title"><a class="post-link" href="/2017/03/19/recommendation-for-chris.html">Recommendation for Chris</a></h2>
+      <h2 class="post-title"><a class="post-link" href="/2016/09/11/creating-a-vs-extension.html">Creating a vs Extension</a></h2>
 
-      <time datetime="2017-03-19T14:49:37-07:00" class="post-date">March 19, 2017</time>
+      <time datetime="2016-09-11T13:55:00-07:00" class="post-date">September 11, 2016</time>
 
-      
+      <p>I’m a moderate user of extensions. As in, I have some favorites, but I’m not trolling the gallery everyday.</p>
+
+<p>I’ve never made one before. No idea has either been both big enough and small enough to warrant me building an extension.</p>
+
+<p>In April 2016, at Build, I saw <a href="https://visualstudiogallery.msdn.microsoft.com/site/search?f%5B0%5D.Type=User&amp;f%5B0%5D.Value=Mads%20Kristensen">Mads Kristensen</a> create &amp; publish (with integrated CI, and pretty images) a brand new extension during a 1 hour session. It was a great talk, and I had promised myself that I would watch it again on Channel9. I also signed up to be a VS Partner while at build.</p>
+
+<p>I received an email about a week ago saying my VS Partner status would be canceled, unless I published a product in the next week.</p>
+
+<p>Two days later, I came across a fitting challenge for an extension. So I set out to build it.</p>
+
+<p>I followed Mads’ video, and it was surprisingly easy. The docs are still very confusing for the VS interfaces, but it was still doable.In the end, what took Mads less than an hour on stage, took me about 5 hours of total work at my desk.</p>
+
+<p>All in all, it was still surprisingly easy, and I regret not doing it sooner.</p>
 
 
       <hr>
     </article>
   
     <article class="post">
-      <h2 class="post-title"><a class="post-link" href="/2017/03/19/migrating-to-git.html">Migrating to Git</a></h2>
+      <h2 class="post-title"><a class="post-link" href="/2014/03/21/c-testing-with-fakes.html">C# Testing With Fakes</a></h2>
 
-      <time datetime="2017-03-19T14:49:37-07:00" class="post-date">March 19, 2017</time>
+      <time datetime="2014-03-21T17:00:00-07:00" class="post-date">March 21, 2014</time>
 
-      <h3 id="summary">Summary</h3>
+      <p>I wrote a nice little tutorial about using fakes in C#. It cover Shims and Stubs. It also covers testing private methods using the InternalsVisibleTo attribute.</p>
 
-<p>Moving to git has never been considered a simple task at MB. However, I believe
-we have good strategy to accomplish this with minimal impact or downtime.</p>
-
-<h3 id="outline">Outline</h3>
-
-<h4 id="test-assumptions">Test assumptions</h4>
-<ul>
-  <li>I would consider this aspect done.</li>
-  <li>We tested many assumptions for this: history migration, build migration,
-  tooling installations, training, deployment.</li>
-</ul>
-
-<h4 id="learn-git">Learn git</h4>
-<ol>
-  <li>Become experts(?)
-    <ul>
-      <li>I would say we’ve come far enough.</li>
-      <li>We already have several git experts at this company, and it is one of the
- most documented products I have ever used. I feel that going into this, I,
- and Bernie, had a strong understanding of git’s capabilities. I would also
- like to note that over the years we have also become an expert in TFVC.</li>
-      <li>We still spent numerous hours going through git trainings and researching
- and documenting how git works with TFS and VisualStudio.</li>
-    </ul>
-  </li>
-  <li>Train the trainers
-    <ul>
-      <li>(mostly done)</li>
-      <li>We have given enough focused training to make our users as good or better
-  with git in VisualStudio as they presently are with TFVC. We have specif</li>
-    </ul>
-  </li>
-</ol>
-
-<h4 id="transfer-all-history">Transfer all history</h4>
-<ul>
-  <li>This has been started for some repositories.</li>
-  <li>The time costs are understood for this migration.</li>
-  <li>This will need to be completed prior to migration.</li>
-  <li>We will need to refresh the histories at the last minute prior to migration.</li>
-</ul>
-
-<h4 id="switch-over-builds">Switch over builds</h4>
-<ul>
-  <li>Last step of actual migration.</li>
-  <li>Could be done in place, or builds could be cloned and marked as <code class="highlighter-rouge">*_git</code></li>
-  <li>Convert build tools to use git hashes instead of changeset numbers.
-    <ul>
-      <li>This has been built but not implemented.</li>
-    </ul>
-  </li>
-</ul>
-
-<h4 id="allow-non-dev-testers-to-access-features-in-branches">Allow non-dev testers to access features in branches</h4>
-<ul>
-  <li>Currently in development</li>
-</ul>
-
-<h4 id="start-using-pull-requests">Start using Pull Requests</h4>
-<ul>
-  <li>depending on your view this is
-    <ul>
-      <li>:(</li>
-    </ul>
-  </li>
-  <li>OR
-    <ul>
-      <li>:)</li>
-    </ul>
-  </li>
-</ul>
+<p><a href="https://github.com/clintcparker/c_sharp_testing/wiki/Coverage-Tutorial">https://github.com/clintcparker/c_sharp_testing/wiki/Coverage-Tutorial</a></p>
 
 
       <hr>

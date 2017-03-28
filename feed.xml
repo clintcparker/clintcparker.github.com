@@ -4,138 +4,11 @@
     <title>@clintcparker</title>
     <description>Writings on software development, testing, and architecture. .NET C# Tools Testing whiteboarding design
 </description>
-    <link>http://localhost:4000/</link>
-    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 19 Mar 2017 16:36:50 -0700</pubDate>
-    <lastBuildDate>Sun, 19 Mar 2017 16:36:50 -0700</lastBuildDate>
+    <link>http://clintcparker.com/</link>
+    <atom:link href="http://clintcparker.com/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Tue, 28 Mar 2017 05:58:18 -0700</pubDate>
+    <lastBuildDate>Tue, 28 Mar 2017 05:58:18 -0700</lastBuildDate>
     <generator>Jekyll v3.4.2</generator>
-    
-      <item>
-        <title>Kelly Sux @ Cl</title>
-        <description>&lt;p&gt;my friend, Kelly, sucks at the command line. End of story.&lt;/p&gt;
-</description>
-        <pubDate>Sun, 19 Mar 2017 16:36:14 -0700</pubDate>
-        <link>http://localhost:4000/2017/03/19/kelly-sux-cl.html</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/03/19/kelly-sux-cl.html</guid>
-        
-        
-      </item>
-    
-      <item>
-        <title>Palo Duro Pannier</title>
-        <description>&lt;p&gt;I had an interesting experience getting and setting up may new Palo Duro pannier.&lt;/p&gt;
-</description>
-        <pubDate>Sun, 19 Mar 2017 15:16:44 -0700</pubDate>
-        <link>http://localhost:4000/2017/03/19/palo-duro-pannier.html</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/03/19/palo-duro-pannier.html</guid>
-        
-        
-      </item>
-    
-      <item>
-        <title>Untitled Stack Overflow Tf View Post</title>
-        <description>&lt;p&gt;In&lt;/p&gt;
-</description>
-        <pubDate>Sun, 19 Mar 2017 14:49:37 -0700</pubDate>
-        <link>http://localhost:4000/2017/03/19/untitled-stack-overflow-tf-view-post.html</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/03/19/untitled-stack-overflow-tf-view-post.html</guid>
-        
-        
-      </item>
-    
-      <item>
-        <title>Recommendation for Chris</title>
-        <description>
-</description>
-        <pubDate>Sun, 19 Mar 2017 14:49:37 -0700</pubDate>
-        <link>http://localhost:4000/2017/03/19/recommendation-for-chris.html</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/03/19/recommendation-for-chris.html</guid>
-        
-        
-      </item>
-    
-      <item>
-        <title>Migrating to Git</title>
-        <description>&lt;h3 id=&quot;summary&quot;&gt;Summary&lt;/h3&gt;
-
-&lt;p&gt;Moving to git has never been considered a simple task at MB. However, I believe
-we have good strategy to accomplish this with minimal impact or downtime.&lt;/p&gt;
-
-&lt;h3 id=&quot;outline&quot;&gt;Outline&lt;/h3&gt;
-
-&lt;h4 id=&quot;test-assumptions&quot;&gt;Test assumptions&lt;/h4&gt;
-&lt;ul&gt;
-  &lt;li&gt;I would consider this aspect done.&lt;/li&gt;
-  &lt;li&gt;We tested many assumptions for this: history migration, build migration,
-  tooling installations, training, deployment.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;learn-git&quot;&gt;Learn git&lt;/h4&gt;
-&lt;ol&gt;
-  &lt;li&gt;Become experts(?)
-    &lt;ul&gt;
-      &lt;li&gt;I would say we’ve come far enough.&lt;/li&gt;
-      &lt;li&gt;We already have several git experts at this company, and it is one of the
- most documented products I have ever used. I feel that going into this, I,
- and Bernie, had a strong understanding of git’s capabilities. I would also
- like to note that over the years we have also become an expert in TFVC.&lt;/li&gt;
-      &lt;li&gt;We still spent numerous hours going through git trainings and researching
- and documenting how git works with TFS and VisualStudio.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Train the trainers
-    &lt;ul&gt;
-      &lt;li&gt;(mostly done)&lt;/li&gt;
-      &lt;li&gt;We have given enough focused training to make our users as good or better
-  with git in VisualStudio as they presently are with TFVC. We have specif&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h4 id=&quot;transfer-all-history&quot;&gt;Transfer all history&lt;/h4&gt;
-&lt;ul&gt;
-  &lt;li&gt;This has been started for some repositories.&lt;/li&gt;
-  &lt;li&gt;The time costs are understood for this migration.&lt;/li&gt;
-  &lt;li&gt;This will need to be completed prior to migration.&lt;/li&gt;
-  &lt;li&gt;We will need to refresh the histories at the last minute prior to migration.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;switch-over-builds&quot;&gt;Switch over builds&lt;/h4&gt;
-&lt;ul&gt;
-  &lt;li&gt;Last step of actual migration.&lt;/li&gt;
-  &lt;li&gt;Could be done in place, or builds could be cloned and marked as &lt;code class=&quot;highlighter-rouge&quot;&gt;*_git&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;Convert build tools to use git hashes instead of changeset numbers.
-    &lt;ul&gt;
-      &lt;li&gt;This has been built but not implemented.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;allow-non-dev-testers-to-access-features-in-branches&quot;&gt;Allow non-dev testers to access features in branches&lt;/h4&gt;
-&lt;ul&gt;
-  &lt;li&gt;Currently in development&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;start-using-pull-requests&quot;&gt;Start using Pull Requests&lt;/h4&gt;
-&lt;ul&gt;
-  &lt;li&gt;depending on your view this is
-    &lt;ul&gt;
-      &lt;li&gt;:(&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;OR
-    &lt;ul&gt;
-      &lt;li&gt;:)&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-</description>
-        <pubDate>Sun, 19 Mar 2017 14:49:37 -0700</pubDate>
-        <link>http://localhost:4000/2017/03/19/migrating-to-git.html</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/03/19/migrating-to-git.html</guid>
-        
-        
-      </item>
     
       <item>
         <title>C# Obfuscation</title>
@@ -215,8 +88,8 @@ we have good strategy to accomplish this with minimal impact or downtime.&lt;/p&
 &lt;p&gt;P.S. Who want’s to help me write the obfuscator?&lt;/p&gt;
 </description>
         <pubDate>Sat, 01 Oct 2016 12:02:45 -0700</pubDate>
-        <link>http://localhost:4000/2016/10/01/c-obfuscation.html</link>
-        <guid isPermaLink="true">http://localhost:4000/2016/10/01/c-obfuscation.html</guid>
+        <link>http://clintcparker.com/2016/10/01/c-obfuscation.html</link>
+        <guid isPermaLink="true">http://clintcparker.com/2016/10/01/c-obfuscation.html</guid>
         
         
       </item>
@@ -249,8 +122,8 @@ Another team just got two half done projects dumped into their branch, because t
 &lt;p&gt;So we’re switching to git. And we can have as many branches as we want. And they can be local. And they can have good names. And they can be deleted. And we can still commit to mainline if we want to.&lt;/p&gt;
 </description>
         <pubDate>Wed, 28 Sep 2016 15:29:00 -0700</pubDate>
-        <link>http://localhost:4000/2016/09/28/why-git-works-where-tfvc-doesnt.html</link>
-        <guid isPermaLink="true">http://localhost:4000/2016/09/28/why-git-works-where-tfvc-doesnt.html</guid>
+        <link>http://clintcparker.com/2016/09/28/why-git-works-where-tfvc-doesnt.html</link>
+        <guid isPermaLink="true">http://clintcparker.com/2016/09/28/why-git-works-where-tfvc-doesnt.html</guid>
         
         
       </item>
@@ -305,8 +178,8 @@ Another team just got two half done projects dumped into their branch, because t
 &lt;p&gt;All that to avoid explicitly instantiating lists.&lt;/p&gt;
 </description>
         <pubDate>Sun, 11 Sep 2016 13:55:00 -0700</pubDate>
-        <link>http://localhost:4000/2016/09/11/how-yield-works.html</link>
-        <guid isPermaLink="true">http://localhost:4000/2016/09/11/how-yield-works.html</guid>
+        <link>http://clintcparker.com/2016/09/11/how-yield-works.html</link>
+        <guid isPermaLink="true">http://clintcparker.com/2016/09/11/how-yield-works.html</guid>
         
         
       </item>
@@ -328,80 +201,92 @@ Another team just got two half done projects dumped into their branch, because t
 &lt;p&gt;All in all, it was still surprisingly easy, and I regret not doing it sooner.&lt;/p&gt;
 </description>
         <pubDate>Sun, 11 Sep 2016 13:55:00 -0700</pubDate>
-        <link>http://localhost:4000/2016/09/11/creating-a-vs-extension.html</link>
-        <guid isPermaLink="true">http://localhost:4000/2016/09/11/creating-a-vs-extension.html</guid>
+        <link>http://clintcparker.com/2016/09/11/creating-a-vs-extension.html</link>
+        <guid isPermaLink="true">http://clintcparker.com/2016/09/11/creating-a-vs-extension.html</guid>
         
         
       </item>
     
       <item>
-        <title>HTML Elements Test</title>
-        <description>&lt;p&gt;This post &lt;em&gt;demonstrates&lt;/em&gt; all the &lt;strong&gt;typical&lt;/strong&gt; blog post Markdown elements used. To start off with, here’s a full-width image. Full-width images are centered by default and do not need an extra class:&lt;/p&gt;
+        <title>C# Testing With Fakes</title>
+        <description>&lt;p&gt;I wrote a nice little tutorial about using fakes in C#. It cover Shims and Stubs. It also covers testing private methods using the InternalsVisibleTo attribute.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/example-image.jpg&quot; alt=&quot;Example Image&quot; title=&quot;Example Image&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/left-example-image.jpg&quot; alt=&quot;Left-aligned image&quot; class=&quot;l-img&quot; /&gt;
-To my left (or above if you’re viewing from a small viewport) is a left-aligned image. You can use the “l-img” class to accomplish this. If the viewport is small, the image shifts to be full-width.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/right-example-image.jpg&quot; alt=&quot;Left-aligned image&quot; class=&quot;r-img&quot; /&gt;
-To my right (or above if you’re viewing from a small viewport) is a right-aligned image. You can use the “r-img” class to accomplish this. Like the left-aligned image, if the viewport is small, the image shifts to be full-width.&lt;/p&gt;
-
-&lt;p&gt;Various header sizes:&lt;/p&gt;
-
-&lt;h1 id=&quot;header-1&quot;&gt;Header 1&lt;/h1&gt;
-
-&lt;h2 id=&quot;header-2&quot;&gt;Header 2&lt;/h2&gt;
-
-&lt;h3 id=&quot;header-3&quot;&gt;Header 3&lt;/h3&gt;
-
-&lt;h4 id=&quot;header-4&quot;&gt;Header 4&lt;/h4&gt;
-
-&lt;h5 id=&quot;header-5&quot;&gt;Header 5&lt;/h5&gt;
-
-&lt;h6 id=&quot;header-6&quot;&gt;Header 6&lt;/h6&gt;
-
-&lt;p&gt;Bacon ipsum dolor amet veniam shoulder drumstick salami. Ut in bacon voluptate magna ham hock. Elit shoulder ribeye sirloin eu pariatur, strip steak ut dolore. Dolore excepteur prosciutto, adipisicing ball tip tempor incididunt pariatur occaecat cupim sed flank nulla.&lt;/p&gt;
-
-&lt;p&gt;Est frankfurter ullamco mollit, flank chuck adipisicing prosciutto fatback ham hock in. Ad swine elit aliqua commodo. Alcatra pork excepteur incididunt strip steak. Ipsum picanha pariatur exercitation, enim doner tempor meatloaf est drumstick culpa hamburger capicola.&lt;/p&gt;
-
-&lt;p&gt;An unordered list:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;item 1&lt;/li&gt;
-  &lt;li&gt;item 2&lt;/li&gt;
-  &lt;li&gt;item 3&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;An ordered list:&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Item 1&lt;/li&gt;
-  &lt;li&gt;Item 2&lt;/li&gt;
-  &lt;li&gt;Item 3&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Hey, here’s a blockquote.&lt;/p&gt;
-
-  &lt;p&gt;Using the standard &lt;a href=&quot;https://daringfireball.net/projects/markdown/basics&quot;&gt;Gruber syntax&lt;/a&gt;. Because I’m a purist.&lt;/p&gt;
-
-  &lt;p&gt;— Andrew Lee&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- Here's some sample HTML code: --&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;a-class&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;Here's some HTML. Huzzah!&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;HTML is:&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;ul&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;nt&quot;&gt;&amp;lt;li&amp;gt;&lt;/span&gt;The structural layer of your site.&lt;span class=&quot;nt&quot;&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;nt&quot;&gt;&amp;lt;li&amp;gt;&lt;/span&gt;HTML was invented by &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;https://en.wikipedia.org/wiki/Tim_Berners-Lee&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Tim Berners-Lee&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;.&lt;span class=&quot;nt&quot;&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/ul&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
+&lt;p&gt;&lt;a href=&quot;https://github.com/clintcparker/c_sharp_testing/wiki/Coverage-Tutorial&quot;&gt;https://github.com/clintcparker/c_sharp_testing/wiki/Coverage-Tutorial&lt;/a&gt;&lt;/p&gt;
 </description>
-        <pubDate>Wed, 07 Oct 2015 06:13:39 -0700</pubDate>
-        <link>http://localhost:4000/2015/10/07/html-elements-test.html</link>
-        <guid isPermaLink="true">http://localhost:4000/2015/10/07/html-elements-test.html</guid>
+        <pubDate>Fri, 21 Mar 2014 17:00:00 -0700</pubDate>
+        <link>http://clintcparker.com/2014/03/21/c-testing-with-fakes.html</link>
+        <guid isPermaLink="true">http://clintcparker.com/2014/03/21/c-testing-with-fakes.html</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>VBScript Conditional Includes</title>
+        <description>&lt;p&gt;This is a nasty one to track down in production, so I’m going to show you here.&lt;/p&gt;
+
+&lt;p&gt;VBScript has a fun way of interpreting include references that are nested inside an if statement. It will load all include references. If you have different functions, with the same name, it will use the second one.&lt;/p&gt;
+
+&lt;p&gt;Example&lt;/p&gt;
+
+&lt;p&gt;myTest_inc1.asp:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-vbscript&quot; data-lang=&quot;vbscript&quot;&gt;&amp;lt;%
+Response.Write &quot;&amp;lt;br/&amp;gt;Function 1 loaded...&amp;lt;br/&amp;gt;&quot;
+
+function myFunc(int1, int2)
+    Response.Write &quot;&amp;lt;br/&amp;gt;Function 1 executing...&amp;lt;br/&amp;gt;&quot;
+    myFunc = int1 * int2
+end function 
+%&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;myTest_inc2.asp:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-vbscript&quot; data-lang=&quot;vbscript&quot;&gt;&amp;lt;%
+Response.Write &quot;&amp;lt;br/&amp;gt;Function 2 loaded...&amp;lt;br/&amp;gt;&quot;
+
+function myFunc(int1, int2)
+    Response.Write &quot;&amp;lt;br/&amp;gt;Function 2 executing...&amp;lt;br/&amp;gt;&quot;
+    myFunc = int1 + int2
+end function
+%&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;myTest.asp:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-vbscript&quot; data-lang=&quot;vbscript&quot;&gt;&amp;lt;%
+    if (true) then
+        Response.Write &quot;&amp;lt;br/&amp;gt;Case 1 executing...&amp;lt;br/&amp;gt;&quot;
+%&amp;gt;
+
+&amp;lt;!-- #include file=&quot;myTest_inc1.asp&quot; --&amp;gt;
+
+&amp;lt;% 
+    else
+        Response.Write &quot;&amp;lt;br/&amp;gt;Case 2 executing...&amp;lt;br/&amp;gt;&quot;
+%&amp;gt;
+
+&amp;lt;!-- #include file=&quot;myTest_inc2.asp&quot; --&amp;gt;
+
+&amp;lt;%
+    end if
+    
+    Response.Write myFunc(3,3)
+%&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;The output of myTest.asp is:&lt;/p&gt;
+
+&lt;p&gt;Case 1 executing…&lt;/p&gt;
+
+&lt;p&gt;Function 1 loaded…&lt;/p&gt;
+
+&lt;p&gt;Function 2 executing…&lt;/p&gt;
+
+&lt;p&gt;6&lt;/p&gt;
+
+&lt;p&gt;Thanks for reading.&lt;/p&gt;
+</description>
+        <pubDate>Fri, 21 Mar 2014 11:16:00 -0700</pubDate>
+        <link>http://clintcparker.com/2014/03/21/vbscript-conditional-includes.html</link>
+        <guid isPermaLink="true">http://clintcparker.com/2014/03/21/vbscript-conditional-includes.html</guid>
         
         
       </item>
