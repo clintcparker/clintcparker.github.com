@@ -6,14 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>VBScript Conditional Includes</title>
-    <meta name="description" content="This is a nasty one to track down in production, so I’m going to show you here.">
+    <title>Product Development Manifesto</title>
+    <meta name="description" content="Five years ago, I ambitiously applied internally for a job as Director of Product Development. I agree that my qualifications were not appropriate for such a...">
 
     <link rel="stylesheet" href="/assets/css/style.css">
 
     <link rel="icon" type="image/x-icon" href="http://localhost:4000/favicon.ico">
 
-    <link rel="canonical" href="http://localhost:4000/2014/03/21/vbscript-conditional-includes.html">
+    <link rel="canonical" href="http://localhost:4000/2017/08/11/prod-dev-manifesto.html">
     <link rel="alternate" type="application/rss+xml" title="@clintcparker" href="http://localhost:4000/feed.xml" />
     
 </head>
@@ -77,72 +77,17 @@
         <div class="post">
 
   <header class="post-header">
-    <h2 class="post-title">VBScript Conditional Includes</h2>
-    <time class="post-date">March 21, 2014</time>
+    <h2 class="post-title">Product Development Manifesto</h2>
+    <time class="post-date">August 11, 2017</time>
   </header>
 
   <article class="post-content">
-    <p>This is a nasty one to track down in production, so I’m going to show you here.</p>
+    <p>Five years ago, I ambitiously applied internally for a job as Director of Product Development. I agree that my qualifications were not appropriate for such a position. To overcome that, however, I wrote this <em><a href="https://docs.google.com/document/d/1NV_f1q6_WGI1YmTlbrf4b62Q4KmuvhaHqXGTgu0FJvs">manifesto</a></em>, to show how I would handle the problems faced by that team.</p>
 
-<p>VBScript has a fun way of interpreting include references that are nested inside an if statement. It will load all include references. If you have different functions, with the same name, it will use the second one.</p>
+<p>When I stumbled across this the other day, I was afforded a chance to see if any of my plans had been adopted. Some have, most haven’t. When I wrote that piece, I was a dev manager. Since then I’ve been a Sr Dev and a Software Architect. I’m now back in the position of manager, and I’m happy to see that my personal views haven’t substantially changed. Of course, my opinions about Scrum, testing, and APIs have evolved, but my management approaches are consistent. Trust, Respect, and Accountability. Those three pillars are the foundation of good leadership.</p>
 
-<p>Example</p>
+<p>If you have a chance, <a href="https://docs.google.com/document/d/1NV_f1q6_WGI1YmTlbrf4b62Q4KmuvhaHqXGTgu0FJvs">please read it</a>. Send any comments to me on Twitter at <em><a href="https://twitter.com/clintcparker">@clintcparker</a></em>.</p>
 
-<p>myTest_inc1.asp:</p>
-
-<figure class="highlight"><pre><code class="language-vbscript" data-lang="vbscript">&lt;%
-Response.Write "&lt;br/&gt;Function 1 loaded...&lt;br/&gt;"
-
-function myFunc(int1, int2)
-    Response.Write "&lt;br/&gt;Function 1 executing...&lt;br/&gt;"
-    myFunc = int1 * int2
-end function 
-%&gt;</code></pre></figure>
-
-<p>myTest_inc2.asp:</p>
-
-<figure class="highlight"><pre><code class="language-vbscript" data-lang="vbscript">&lt;%
-Response.Write "&lt;br/&gt;Function 2 loaded...&lt;br/&gt;"
-
-function myFunc(int1, int2)
-    Response.Write "&lt;br/&gt;Function 2 executing...&lt;br/&gt;"
-    myFunc = int1 + int2
-end function
-%&gt;</code></pre></figure>
-
-<p>myTest.asp:</p>
-
-<figure class="highlight"><pre><code class="language-vbscript" data-lang="vbscript">&lt;%
-    if (true) then
-        Response.Write "&lt;br/&gt;Case 1 executing...&lt;br/&gt;"
-%&gt;
-
-&lt;!-- #include file="myTest_inc1.asp" --&gt;
-
-&lt;% 
-    else
-        Response.Write "&lt;br/&gt;Case 2 executing...&lt;br/&gt;"
-%&gt;
-
-&lt;!-- #include file="myTest_inc2.asp" --&gt;
-
-&lt;%
-    end if
-    
-    Response.Write myFunc(3,3)
-%&gt;</code></pre></figure>
-
-<p>The output of myTest.asp is:</p>
-
-<p>Case 1 executing…</p>
-
-<p>Function 1 loaded…</p>
-
-<p>Function 2 executing…</p>
-
-<p>6</p>
-
-<p>Thanks for reading.</p>
 
   </article>
 
