@@ -6,8 +6,8 @@
 </description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 17 Aug 2017 13:41:16 -0700</pubDate>
-    <lastBuildDate>Thu, 17 Aug 2017 13:41:16 -0700</lastBuildDate>
+    <pubDate>Thu, 17 Aug 2017 15:30:40 -0700</pubDate>
+    <lastBuildDate>Thu, 17 Aug 2017 15:30:40 -0700</lastBuildDate>
     <generator>Jekyll v3.4.3</generator>
     
       <item>
@@ -21,6 +21,133 @@
         <pubDate>Thu, 17 Aug 2017 13:41:08 -0700</pubDate>
         <link>http://localhost:4000/2017/08/17/data-driven.html</link>
         <guid isPermaLink="true">http://localhost:4000/2017/08/17/data-driven.html</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Untitled Stack Overflow Tf View Post</title>
+        <description>&lt;p&gt;In&lt;/p&gt;
+</description>
+        <pubDate>Fri, 11 Aug 2017 08:36:35 -0700</pubDate>
+        <link>http://localhost:4000/2017/08/11/untitled-stack-overflow-tf-view-post.html</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/08/11/untitled-stack-overflow-tf-view-post.html</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Recommendation for Chris</title>
+        <description>
+</description>
+        <pubDate>Fri, 11 Aug 2017 08:36:35 -0700</pubDate>
+        <link>http://localhost:4000/2017/08/11/recommendation-for-chris.html</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/08/11/recommendation-for-chris.html</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Palo Duro Pannier</title>
+        <description>&lt;p&gt;I had an interesting experience getting and setting up may new Palo Duro pannier.&lt;/p&gt;
+</description>
+        <pubDate>Fri, 11 Aug 2017 08:36:35 -0700</pubDate>
+        <link>http://localhost:4000/2017/08/11/palo-duro-pannier.html</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/08/11/palo-duro-pannier.html</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Migrating to Git</title>
+        <description>&lt;h3 id=&quot;summary&quot;&gt;Summary&lt;/h3&gt;
+
+&lt;p&gt;Moving to git has never been considered a simple task at MB. However, I believe
+we have good strategy to accomplish this with minimal impact or downtime.&lt;/p&gt;
+
+&lt;h3 id=&quot;outline&quot;&gt;Outline&lt;/h3&gt;
+
+&lt;h4 id=&quot;test-assumptions&quot;&gt;Test assumptions&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;I would consider this aspect done.&lt;/li&gt;
+  &lt;li&gt;We tested many assumptions for this: history migration, build migration,
+  tooling installations, training, deployment.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;learn-git&quot;&gt;Learn git&lt;/h4&gt;
+&lt;ol&gt;
+  &lt;li&gt;Become experts(?)
+    &lt;ul&gt;
+      &lt;li&gt;I would say we’ve come far enough.&lt;/li&gt;
+      &lt;li&gt;We already have several git experts at this company, and it is one of the
+ most documented products I have ever used. I feel that going into this, I,
+ and Bernie, had a strong understanding of git’s capabilities. I would also
+ like to note that over the years we have also become an expert in TFVC.&lt;/li&gt;
+      &lt;li&gt;We still spent numerous hours going through git trainings and researching
+ and documenting how git works with TFS and VisualStudio.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Train the trainers
+    &lt;ul&gt;
+      &lt;li&gt;(mostly done)&lt;/li&gt;
+      &lt;li&gt;We have given enough focused training to make our users as good or better
+  with git in VisualStudio as they presently are with TFVC. We have specif&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&quot;transfer-all-history&quot;&gt;Transfer all history&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;This has been started for some repositories.&lt;/li&gt;
+  &lt;li&gt;The time costs are understood for this migration.&lt;/li&gt;
+  &lt;li&gt;This will need to be completed prior to migration.&lt;/li&gt;
+  &lt;li&gt;We will need to refresh the histories at the last minute prior to migration.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;switch-over-builds&quot;&gt;Switch over builds&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;Last step of actual migration.&lt;/li&gt;
+  &lt;li&gt;Could be done in place, or builds could be cloned and marked as &lt;code class=&quot;highlighter-rouge&quot;&gt;*_git&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Convert build tools to use git hashes instead of changeset numbers.
+    &lt;ul&gt;
+      &lt;li&gt;This has been built but not implemented.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;allow-non-dev-testers-to-access-features-in-branches&quot;&gt;Allow non-dev testers to access features in branches&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;Currently in development&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;start-using-pull-requests&quot;&gt;Start using Pull Requests&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;depending on your view this is
+    &lt;ul&gt;
+      &lt;li&gt;:(&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;OR
+    &lt;ul&gt;
+      &lt;li&gt;:)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Fri, 11 Aug 2017 08:36:35 -0700</pubDate>
+        <link>http://localhost:4000/2017/08/11/migrating-to-git.html</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/08/11/migrating-to-git.html</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>From TFVC to Git</title>
+        <description>
+</description>
+        <pubDate>Fri, 11 Aug 2017 08:36:35 -0700</pubDate>
+        <link>http://localhost:4000/2017/08/11/from-tfvc-to-git.html</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/08/11/from-tfvc-to-git.html</guid>
         
         
       </item>
@@ -211,113 +338,6 @@ Another team just got two half done projects dumped into their branch, because t
         <pubDate>Sun, 11 Sep 2016 13:55:00 -0700</pubDate>
         <link>http://localhost:4000/2016/09/11/how-yield-works.html</link>
         <guid isPermaLink="true">http://localhost:4000/2016/09/11/how-yield-works.html</guid>
-        
-        
-      </item>
-    
-      <item>
-        <title>Creating a vs Extension</title>
-        <description>&lt;p&gt;I’m a moderate user of extensions. As in, I have some favorites, but I’m not trolling the gallery everyday.&lt;/p&gt;
-
-&lt;p&gt;I’ve never made one before. No idea has either been both big enough and small enough to warrant me building an extension.&lt;/p&gt;
-
-&lt;p&gt;In April 2016, at Build, I saw &lt;a href=&quot;https://visualstudiogallery.msdn.microsoft.com/site/search?f%5B0%5D.Type=User&amp;amp;f%5B0%5D.Value=Mads%20Kristensen&quot;&gt;Mads Kristensen&lt;/a&gt; create &amp;amp; publish (with integrated CI, and pretty images) a brand new extension during a 1 hour session. It was a great talk, and I had promised myself that I would watch it again on Channel9. I also signed up to be a VS Partner while at build.&lt;/p&gt;
-
-&lt;p&gt;I received an email about a week ago saying my VS Partner status would be canceled, unless I published a product in the next week.&lt;/p&gt;
-
-&lt;p&gt;Two days later, I came across a fitting challenge for an extension. So I set out to build it.&lt;/p&gt;
-
-&lt;p&gt;I followed Mads’ video, and it was surprisingly easy. The docs are still very confusing for the VS interfaces, but it was still doable.In the end, what took Mads less than an hour on stage, took me about 5 hours of total work at my desk.&lt;/p&gt;
-
-&lt;p&gt;All in all, it was still surprisingly easy, and I regret not doing it sooner.&lt;/p&gt;
-</description>
-        <pubDate>Sun, 11 Sep 2016 13:55:00 -0700</pubDate>
-        <link>http://localhost:4000/2016/09/11/creating-a-vs-extension.html</link>
-        <guid isPermaLink="true">http://localhost:4000/2016/09/11/creating-a-vs-extension.html</guid>
-        
-        
-      </item>
-    
-      <item>
-        <title>C# Testing With Fakes</title>
-        <description>&lt;p&gt;I wrote a nice little tutorial about using fakes in C#. It cover Shims and Stubs. It also covers testing private methods using the InternalsVisibleTo attribute.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://github.com/clintcparker/c_sharp_testing/wiki/Coverage-Tutorial&quot;&gt;https://github.com/clintcparker/c_sharp_testing/wiki/Coverage-Tutorial&lt;/a&gt;&lt;/p&gt;
-</description>
-        <pubDate>Fri, 21 Mar 2014 17:00:00 -0700</pubDate>
-        <link>http://localhost:4000/2014/03/21/c-testing-with-fakes.html</link>
-        <guid isPermaLink="true">http://localhost:4000/2014/03/21/c-testing-with-fakes.html</guid>
-        
-        
-      </item>
-    
-      <item>
-        <title>VBScript Conditional Includes</title>
-        <description>&lt;p&gt;This is a nasty one to track down in production, so I’m going to show you here.&lt;/p&gt;
-
-&lt;p&gt;VBScript has a fun way of interpreting include references that are nested inside an if statement. It will load all include references. If you have different functions, with the same name, it will use the second one.&lt;/p&gt;
-
-&lt;p&gt;Example&lt;/p&gt;
-
-&lt;p&gt;myTest_inc1.asp:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-vbscript&quot; data-lang=&quot;vbscript&quot;&gt;&amp;lt;%
-Response.Write &quot;&amp;lt;br/&amp;gt;Function 1 loaded...&amp;lt;br/&amp;gt;&quot;
-
-function myFunc(int1, int2)
-    Response.Write &quot;&amp;lt;br/&amp;gt;Function 1 executing...&amp;lt;br/&amp;gt;&quot;
-    myFunc = int1 * int2
-end function 
-%&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;myTest_inc2.asp:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-vbscript&quot; data-lang=&quot;vbscript&quot;&gt;&amp;lt;%
-Response.Write &quot;&amp;lt;br/&amp;gt;Function 2 loaded...&amp;lt;br/&amp;gt;&quot;
-
-function myFunc(int1, int2)
-    Response.Write &quot;&amp;lt;br/&amp;gt;Function 2 executing...&amp;lt;br/&amp;gt;&quot;
-    myFunc = int1 + int2
-end function
-%&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;myTest.asp:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-vbscript&quot; data-lang=&quot;vbscript&quot;&gt;&amp;lt;%
-    if (true) then
-        Response.Write &quot;&amp;lt;br/&amp;gt;Case 1 executing...&amp;lt;br/&amp;gt;&quot;
-%&amp;gt;
-
-&amp;lt;!-- #include file=&quot;myTest_inc1.asp&quot; --&amp;gt;
-
-&amp;lt;% 
-    else
-        Response.Write &quot;&amp;lt;br/&amp;gt;Case 2 executing...&amp;lt;br/&amp;gt;&quot;
-%&amp;gt;
-
-&amp;lt;!-- #include file=&quot;myTest_inc2.asp&quot; --&amp;gt;
-
-&amp;lt;%
-    end if
-    
-    Response.Write myFunc(3,3)
-%&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;The output of myTest.asp is:&lt;/p&gt;
-
-&lt;p&gt;Case 1 executing…&lt;/p&gt;
-
-&lt;p&gt;Function 1 loaded…&lt;/p&gt;
-
-&lt;p&gt;Function 2 executing…&lt;/p&gt;
-
-&lt;p&gt;6&lt;/p&gt;
-
-&lt;p&gt;Thanks for reading.&lt;/p&gt;
-</description>
-        <pubDate>Fri, 21 Mar 2014 11:16:00 -0700</pubDate>
-        <link>http://localhost:4000/2014/03/21/vbscript-conditional-includes.html</link>
-        <guid isPermaLink="true">http://localhost:4000/2014/03/21/vbscript-conditional-includes.html</guid>
         
         
       </item>
