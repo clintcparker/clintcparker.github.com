@@ -6,7 +6,7 @@ description: > #this is parsed by search engines
    Writings on software development, testing, and architecture.
    .NET C# Tools Testing whiteboarding design
 baseurl: "" # the subpath of your site, e.g. /blog/
-url: "http://clintcparker.com" # the base hostname & protocol for your site
+url: "https://clintcparker.com" # the base hostname & protocol for your site
 twitter_username: clintcparker
 github_username:  clintcparker
 paginate: 5
