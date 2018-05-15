@@ -6,15 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Archive</title>
-    <meta name="description" content="Writings on software development, testing, and architecture. .NET C# Tools Testing whiteboarding design
-">
+    <title>Adventures in vs Extension Updates</title>
+    <meta name="description" content="While at //build I was inspired to update my extensions to support VS 2017. I meant to do it last year, but got distracted. The process was really simple, an...">
 
     <link rel="stylesheet" href="/assets/css/style.css">
 
     <!-- <link rel="icon" type="image/x-icon" href="https://clintcparker.com/favicon.ico"> -->
 
-    <link rel="canonical" href="https://clintcparker.com/archive/">
+    <link rel="canonical" href="https://clintcparker.com/2018/05/15/adventures-in-vs-extension-updates.html">
     <link rel="alternate" type="application/rss+xml" title="@clintcparker" href="https://clintcparker.com/feed.xml" />
     
     <script>
@@ -90,81 +89,16 @@
         <div class="post">
 
   <header class="post-header">
-    <h2 class="post-title">Archive</h2>
+    <h2 class="post-title">Adventures in vs Extension Updates</h2>
+    <time class="post-date">May 15, 2018</time>
   </header>
 
   <article class="post-content">
-    <p>This page lists all posts (not pages) organized by date.</p>
+    <p>While at <a href="https://developer.microsoft.com/en-us/events/build/content">//build</a> I was inspired to update my extensions to support VS 2017. I meant to do it last year, but got distracted. The process was really simple, and is <a href="https://docs.microsoft.com/en-us/visualstudio/extensibility/how-to-migrate-extensibility-projects-to-visual-studio-2017">outlined</a> on the new hotness that is <a href="https://docs.microsoft.com">MS Docs</a>. It took me about 10 minutes to get it all configured an tested. But then…I was sidelined by my CI config.</p>
 
-<div class="post-list">
-    <ul>
-        
-            <li>
-                <a href="/2018/05/15/adventures-in-vs-extension-updates.html">
-                    Adventures in vs Extension Updates
-                </a>
-                <time>May 15, 2018</time>
-            </li>
-        
-            <li>
-                <a href="/2017/08/17/data-driven.html">
-                    Data Driven
-                </a>
-                <time>August 17, 2017</time>
-            </li>
-        
-            <li>
-                <a href="/2017/08/11/prod-dev-manifesto.html">
-                    Product Development Manifesto
-                </a>
-                <time>August 11, 2017</time>
-            </li>
-        
-            <li>
-                <a href="/2016/10/01/c-obfuscation.html">
-                    C# Obfuscation
-                </a>
-                <time>October 01, 2016</time>
-            </li>
-        
-            <li>
-                <a href="/2016/09/28/why-git-works-where-tfvc-doesnt.html">
-                    Why Git Works Where TFVC Doesn't
-                </a>
-                <time>September 28, 2016</time>
-            </li>
-        
-            <li>
-                <a href="/2016/09/11/how-yield-works.html">
-                    How Yield Works
-                </a>
-                <time>September 11, 2016</time>
-            </li>
-        
-            <li>
-                <a href="/2016/09/11/creating-a-vs-extension.html">
-                    Creating a vs Extension
-                </a>
-                <time>September 11, 2016</time>
-            </li>
-        
-            <li>
-                <a href="/2014/03/21/c-testing-with-fakes.html">
-                    C# Testing With Fakes
-                </a>
-                <time>March 21, 2014</time>
-            </li>
-        
-            <li>
-                <a href="/2014/03/21/vbscript-conditional-includes.html">
-                    VBScript Conditional Includes
-                </a>
-                <time>March 21, 2014</time>
-            </li>
-        
-    </ul>
-</div>
-<p><!-- .post-list --></p>
+<p>For some reason, my <a href="https://www.appveyor.com/">AppVeyor</a> builds were failing. They were clearly pulling the latest from my repo, but for some reason, the nuget restore stopped working. I probably should’ve googled the issue, and I think I did, but I was asking the wrong questions. I finally gave up and manually configured the build via the GUI, and then exported that config to YAML. When I went to do the next extension, I finally realized what the problem was. I used the exact same exported YAML, and got the exact same initial errors with the nuget restore.</p>
+
+<p>Googling “appveyor not using yaml” led me to <a href="https://help.appveyor.com/discussions/questions/4148-why-does-appveyor-seem-not-to-pick-up-my-appveyoryml">this help article</a>. I still don’t understand why permissions were an issue to read the <code class="highlighter-rouge">appveyor.yml</code>, when it was clearly reading an updated <code class="highlighter-rouge">csproj</code> file. But I do now have extensions that support VS 2017.</p>
 
   </article>
 

@@ -6,9 +6,24 @@
 </description>
     <link>https://clintcparker.com/</link>
     <atom:link href="https://clintcparker.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 02 Nov 2017 11:40:17 -0700</pubDate>
-    <lastBuildDate>Thu, 02 Nov 2017 11:40:17 -0700</lastBuildDate>
-    <generator>Jekyll v3.4.3</generator>
+    <pubDate>Tue, 15 May 2018 16:23:34 -0700</pubDate>
+    <lastBuildDate>Tue, 15 May 2018 16:23:34 -0700</lastBuildDate>
+    <generator>Jekyll v3.8.1</generator>
+    
+      <item>
+        <title>Adventures in vs Extension Updates</title>
+        <description>&lt;p&gt;While at &lt;a href=&quot;https://developer.microsoft.com/en-us/events/build/content&quot;&gt;//build&lt;/a&gt; I was inspired to update my extensions to support VS 2017. I meant to do it last year, but got distracted. The process was really simple, and is &lt;a href=&quot;https://docs.microsoft.com/en-us/visualstudio/extensibility/how-to-migrate-extensibility-projects-to-visual-studio-2017&quot;&gt;outlined&lt;/a&gt; on the new hotness that is &lt;a href=&quot;https://docs.microsoft.com&quot;&gt;MS Docs&lt;/a&gt;. It took me about 10 minutes to get it all configured an tested. But then…I was sidelined by my CI config.&lt;/p&gt;
+
+&lt;p&gt;For some reason, my &lt;a href=&quot;https://www.appveyor.com/&quot;&gt;AppVeyor&lt;/a&gt; builds were failing. They were clearly pulling the latest from my repo, but for some reason, the nuget restore stopped working. I probably should’ve googled the issue, and I think I did, but I was asking the wrong questions. I finally gave up and manually configured the build via the GUI, and then exported that config to YAML. When I went to do the next extension, I finally realized what the problem was. I used the exact same exported YAML, and got the exact same initial errors with the nuget restore.&lt;/p&gt;
+
+&lt;p&gt;Googling “appveyor not using yaml” led me to &lt;a href=&quot;https://help.appveyor.com/discussions/questions/4148-why-does-appveyor-seem-not-to-pick-up-my-appveyoryml&quot;&gt;this help article&lt;/a&gt;. I still don’t understand why permissions were an issue to read the &lt;code class=&quot;highlighter-rouge&quot;&gt;appveyor.yml&lt;/code&gt;, when it was clearly reading an updated &lt;code class=&quot;highlighter-rouge&quot;&gt;csproj&lt;/code&gt; file. But I do now have extensions that support VS 2017.&lt;/p&gt;
+</description>
+        <pubDate>Tue, 15 May 2018 16:22:49 -0700</pubDate>
+        <link>https://clintcparker.com/2018/05/15/adventures-in-vs-extension-updates.html</link>
+        <guid isPermaLink="true">https://clintcparker.com/2018/05/15/adventures-in-vs-extension-updates.html</guid>
+        
+        
+      </item>
     
       <item>
         <title>Data Driven</title>
@@ -51,7 +66,7 @@
 
 &lt;p&gt;Here’s a simple class from when I was teaching intro to C# and demonstrating async and await.&lt;/p&gt;
 
-&lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;System.IO&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;System.IO&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;System.Threading.Tasks&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
 
 &lt;span class=&quot;k&quot;&gt;namespace&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;A_A.Library&lt;/span&gt;
@@ -78,12 +93,11 @@
         &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
     &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;Here’s it is again, obfuscated. Still compiles, still valid C#.&lt;/p&gt;
 
-&lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
 &lt;span class=&quot;k&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;System.IO&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;System.Threading.Tasks&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
 
@@ -111,8 +125,7 @@
         &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
     &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;Thanks for reading.&lt;/p&gt;
 
