@@ -38,5 +38,5 @@ highlighter: rouge
 sass:
     style: :compressed
 
-# Gems
-gems: [jekyll-paginate]
+#plugins
+plugins: [jekyll-paginate]
