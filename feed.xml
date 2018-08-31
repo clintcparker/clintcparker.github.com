@@ -6,9 +6,48 @@
 </description>
     <link>https://clintcparker.com/</link>
     <atom:link href="https://clintcparker.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 15 May 2018 16:23:34 -0700</pubDate>
-    <lastBuildDate>Tue, 15 May 2018 16:23:34 -0700</lastBuildDate>
+    <pubDate>Fri, 31 Aug 2018 12:53:14 -0700</pubDate>
+    <lastBuildDate>Fri, 31 Aug 2018 12:53:14 -0700</lastBuildDate>
     <generator>Jekyll v3.8.1</generator>
+    
+      <item>
+        <title>Name-on</title>
+        <description>&lt;h3 id=&quot;but-y-tho&quot;&gt;But Y tho?&lt;/h3&gt;
+
+&lt;p&gt;I needed a unique name generator, so I built &lt;a href=&quot;https://name-on.site&quot;&gt;one&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;I had used the Heroku unique-name generator before, when building &lt;a href=&quot;https://badideas.herokuapp.com/&quot;&gt;bad ideas&lt;/a&gt;. I loved how it removed a mental hurdle from getting something out the door; coming up with a name. Personally, I’m horrible at naming things, so this was a necessity. I don’t want to get hung up on picking a good name, and the defaults are equally as bad (ConsoleApplication23, anybody?).&lt;/p&gt;
+
+&lt;p&gt;I’d also been wanting to get back to dot net core. The last time I had played around with it, they were still using the &lt;code class=&quot;highlighter-rouge&quot;&gt;dnx&lt;/code&gt; command line tool and &lt;code class=&quot;highlighter-rouge&quot;&gt;project.json&lt;/code&gt; files. So this project seemed small enough, and valuable enough, to actually keep me on task for the duration of v1.&lt;/p&gt;
+
+&lt;h3 id=&quot;the-command-line&quot;&gt;The command line&lt;/h3&gt;
+
+&lt;p&gt;I was stoked to be able to layout the project structure from the command line. I’m just so much more optimistic about a tool when there’s a CLI behind it. Even if I’ll never script it, the idea that i &lt;em&gt;could&lt;/em&gt; is very appealing.&lt;/p&gt;
+
+&lt;p&gt;I scaffolded the whole project via the &lt;code class=&quot;highlighter-rouge&quot;&gt;dotnet new&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;dotnet add&lt;/code&gt; commands. I was also able to build and test in the same manner. It was a nice break from VS 2017.&lt;/p&gt;
+
+&lt;h3 id=&quot;structure&quot;&gt;Structure&lt;/h3&gt;
+
+&lt;p&gt;I found lists of adjectives and nouns online. And thank to some recent practice with regex crosswords, quickly stripped everything but the words themselves.&lt;/p&gt;
+
+&lt;p&gt;I added some tests for uniqueness, which is about 99.985%. I also added protection for never getting the same name twice in a row.&lt;/p&gt;
+
+&lt;p&gt;I was able to create a CLI for OS X, which was came in handy when publishing to Azure, and needing names for everything.&lt;/p&gt;
+
+&lt;p&gt;For the web app the &lt;code class=&quot;highlighter-rouge&quot;&gt;dotnet&lt;/code&gt; help lists a template called &lt;code class=&quot;highlighter-rouge&quot;&gt;razor&lt;/code&gt; with the description “mvc with razor pages.” I’ve used the Razor syntax since it debuted, and thought, “of course I want razor, not &lt;code class=&quot;highlighter-rouge&quot;&gt;aspx&lt;/code&gt;.” Apparently though, Razor Pages is a new thing. I actually really liked it for build the web app component. I still created a controller for the API, but was happy I stumbled onto this new paradigm.&lt;/p&gt;
+
+&lt;p&gt;I really went over the top with the completeness. Azure for hosting. Custom domain through NameCheap. SSL through CloudFlare.&lt;/p&gt;
+
+&lt;h3 id=&quot;next-steps&quot;&gt;Next Steps&lt;/h3&gt;
+
+&lt;p&gt;The &lt;a href=&quot;https://github.com/clintcparker/name-on#name-on&quot;&gt;README&lt;/a&gt; has a roadmap, which includes packaging the CLI and improving the site. PRs are welcomed.&lt;/p&gt;
+</description>
+        <pubDate>Fri, 31 Aug 2018 12:52:02 -0700</pubDate>
+        <link>https://clintcparker.com/2018/08/31/name-on.html</link>
+        <guid isPermaLink="true">https://clintcparker.com/2018/08/31/name-on.html</guid>
+        
+        
+      </item>
     
       <item>
         <title>Adventures in vs Extension Updates</title>
