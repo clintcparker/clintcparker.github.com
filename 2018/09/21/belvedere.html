@@ -6,14 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Creating a vs Extension</title>
-    <meta name="description" content="I’m a moderate user of extensions. As in, I have some favorites, but I’m not trolling the gallery everyday.">
+    <title>Belvedere</title>
+    <meta name="description" content="I recently created name-on using the DotNetCore command line tools and VS Code. It was surprisingly easy, and I love scaffolding from the command line.">
 
     <link rel="stylesheet" href="/assets/css/style.css">
 
     <!-- <link rel="icon" type="image/x-icon" href="https://clintcparker.com/favicon.ico"> -->
 
-    <link rel="canonical" href="https://clintcparker.com/2016/09/11/creating-a-vs-extension.html">
+    <link rel="canonical" href="https://clintcparker.com/2018/09/21/belvedere.html">
     <link rel="alternate" type="application/rss+xml" title="@clintcparker" href="https://clintcparker.com/feed.xml" />
     
     <script>
@@ -93,24 +93,31 @@
         <div class="post">
 
   <header class="post-header">
-    <h2 class="post-title">Creating a vs Extension</h2>
-    <time class="post-date">September 11, 2016</time>
+    <h2 class="post-title">Belvedere</h2>
+    <time class="post-date">September 21, 2018</time>
   </header>
 
   <article class="post-content">
-    <p>I’m a moderate user of extensions. As in, I have some favorites, but I’m not trolling the gallery everyday.</p>
+    <p><img src="https://docs.microsoft.com/en-us/dotnet/images/hub/netcore.svg" alt="dotnetcore" class="r-img" height="150px" />I recently created <a href="https://name-on.site">name-on</a> using the DotNetCore command line tools and VS Code. It was surprisingly easy, and I love scaffolding from the command line.</p>
 
-<p>I’ve never made one before. No idea has either been both big enough and small enough to warrant me building an extension.</p>
+<p><img src="https://fishshell.com/assets/img/Terminal_Logo_CRT_Small.png" alt="fish-shell" class="l-img" height="200px" />I also recently got my WSL setup working, which involved setting fish as my default shell, and revisiting some of the functions I have made ihe past.</p>
 
-<p>In April 2016, at Build, I saw <a href="https://visualstudiogallery.msdn.microsoft.com/site/search?f%5B0%5D.Type=User&amp;f%5B0%5D.Value=Mads%20Kristensen">Mads Kristensen</a> create &amp; publish (with integrated CI, and pretty images) a brand new extension during a 1 hour session. It was a great talk, and I had promised myself that I would watch it again on Channel9. I also signed up to be a VS Partner while at build.</p>
+<p>My quick experience with the DNC CLI seemed like the perfect thing to functionalize. I like having a standard structure to my apps:</p>
 
-<p>I received an email about a week ago saying my VS Partner status would be canceled, unless I published a product in the next week.</p>
+<ul>
+  <li>class library</li>
+  <li>command line</li>
+  <li>web app / API</li>
+  <li>test project</li>
+</ul>
 
-<p>Two days later, I came across a fitting challenge for an extension. So I set out to build it.</p>
+<p>DNC has the concept of templates and extensions, but what can I say, I wanted to write this with fish. So I did.</p>
 
-<p>I followed Mads’ video, and it was surprisingly easy. The docs are still very confusing for the VS interfaces, but it was still doable.In the end, what took Mads less than an hour on stage, took me about 5 hours of total work at my desk.</p>
+<p>I picked the name belvedere by looking up scaffolding in a thesaurus. Apparently its a “raised turret atop a house,” and comes from 1590’s italian.</p>
 
-<p>All in all, it was still surprisingly easy, and I regret not doing it sooner.</p>
+<p>Belvedere will create all the necessary projects, with the correct intra-project references, a solution, gitignore, and README. It also initializes a git repo and commits the created files.</p>
+
+<p>You can find the code here: <a href="https://github.com/clintcparker/fish_functions/blob/master/belvedere.fish">https://github.com/clintcparker/fish_functions/blob/master/belvedere.fish</a></p>
 
   </article>
 

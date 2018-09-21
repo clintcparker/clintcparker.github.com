@@ -6,9 +6,39 @@
 </description>
     <link>https://clintcparker.com/</link>
     <atom:link href="https://clintcparker.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 31 Aug 2018 12:53:14 -0700</pubDate>
-    <lastBuildDate>Fri, 31 Aug 2018 12:53:14 -0700</lastBuildDate>
+    <pubDate>Fri, 21 Sep 2018 11:09:06 -0700</pubDate>
+    <lastBuildDate>Fri, 21 Sep 2018 11:09:06 -0700</lastBuildDate>
     <generator>Jekyll v3.8.1</generator>
+    
+      <item>
+        <title>Belvedere</title>
+        <description>&lt;p&gt;&lt;img src=&quot;https://docs.microsoft.com/en-us/dotnet/images/hub/netcore.svg&quot; alt=&quot;dotnetcore&quot; class=&quot;r-img&quot; height=&quot;150px&quot; /&gt;I recently created &lt;a href=&quot;https://name-on.site&quot;&gt;name-on&lt;/a&gt; using the DotNetCore command line tools and VS Code. It was surprisingly easy, and I love scaffolding from the command line.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://fishshell.com/assets/img/Terminal_Logo_CRT_Small.png&quot; alt=&quot;fish-shell&quot; class=&quot;l-img&quot; height=&quot;200px&quot; /&gt;I also recently got my WSL setup working, which involved setting fish as my default shell, and revisiting some of the functions I have made ihe past.&lt;/p&gt;
+
+&lt;p&gt;My quick experience with the DNC CLI seemed like the perfect thing to functionalize. I like having a standard structure to my apps:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;class library&lt;/li&gt;
+  &lt;li&gt;command line&lt;/li&gt;
+  &lt;li&gt;web app / API&lt;/li&gt;
+  &lt;li&gt;test project&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;DNC has the concept of templates and extensions, but what can I say, I wanted to write this with fish. So I did.&lt;/p&gt;
+
+&lt;p&gt;I picked the name belvedere by looking up scaffolding in a thesaurus. Apparently its a “raised turret atop a house,” and comes from 1590’s italian.&lt;/p&gt;
+
+&lt;p&gt;Belvedere will create all the necessary projects, with the correct intra-project references, a solution, gitignore, and README. It also initializes a git repo and commits the created files.&lt;/p&gt;
+
+&lt;p&gt;You can find the code here: &lt;a href=&quot;https://github.com/clintcparker/fish_functions/blob/master/belvedere.fish&quot;&gt;https://github.com/clintcparker/fish_functions/blob/master/belvedere.fish&lt;/a&gt;&lt;/p&gt;
+</description>
+        <pubDate>Fri, 21 Sep 2018 11:08:06 -0700</pubDate>
+        <link>https://clintcparker.com/2018/09/21/belvedere.html</link>
+        <guid isPermaLink="true">https://clintcparker.com/2018/09/21/belvedere.html</guid>
+        
+        
+      </item>
     
       <item>
         <title>Name-on</title>
@@ -299,77 +329,6 @@ Another team just got two half done projects dumped into their branch, because t
         <pubDate>Fri, 21 Mar 2014 17:00:00 -0700</pubDate>
         <link>https://clintcparker.com/2014/03/21/c-testing-with-fakes.html</link>
         <guid isPermaLink="true">https://clintcparker.com/2014/03/21/c-testing-with-fakes.html</guid>
-        
-        
-      </item>
-    
-      <item>
-        <title>VBScript Conditional Includes</title>
-        <description>&lt;p&gt;This is a nasty one to track down in production, so I’m going to show you here.&lt;/p&gt;
-
-&lt;p&gt;VBScript has a fun way of interpreting include references that are nested inside an if statement. It will load all include references. If you have different functions, with the same name, it will use the second one.&lt;/p&gt;
-
-&lt;p&gt;Example&lt;/p&gt;
-
-&lt;p&gt;myTest_inc1.asp:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-vbscript&quot; data-lang=&quot;vbscript&quot;&gt;&amp;lt;%
-Response.Write &quot;&amp;lt;br/&amp;gt;Function 1 loaded...&amp;lt;br/&amp;gt;&quot;
-
-function myFunc(int1, int2)
-    Response.Write &quot;&amp;lt;br/&amp;gt;Function 1 executing...&amp;lt;br/&amp;gt;&quot;
-    myFunc = int1 * int2
-end function 
-%&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;myTest_inc2.asp:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-vbscript&quot; data-lang=&quot;vbscript&quot;&gt;&amp;lt;%
-Response.Write &quot;&amp;lt;br/&amp;gt;Function 2 loaded...&amp;lt;br/&amp;gt;&quot;
-
-function myFunc(int1, int2)
-    Response.Write &quot;&amp;lt;br/&amp;gt;Function 2 executing...&amp;lt;br/&amp;gt;&quot;
-    myFunc = int1 + int2
-end function
-%&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;myTest.asp:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-vbscript&quot; data-lang=&quot;vbscript&quot;&gt;&amp;lt;%
-    if (true) then
-        Response.Write &quot;&amp;lt;br/&amp;gt;Case 1 executing...&amp;lt;br/&amp;gt;&quot;
-%&amp;gt;
-
-&amp;lt;!-- #include file=&quot;myTest_inc1.asp&quot; --&amp;gt;
-
-&amp;lt;% 
-    else
-        Response.Write &quot;&amp;lt;br/&amp;gt;Case 2 executing...&amp;lt;br/&amp;gt;&quot;
-%&amp;gt;
-
-&amp;lt;!-- #include file=&quot;myTest_inc2.asp&quot; --&amp;gt;
-
-&amp;lt;%
-    end if
-    
-    Response.Write myFunc(3,3)
-%&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;The output of myTest.asp is:&lt;/p&gt;
-
-&lt;p&gt;Case 1 executing…&lt;/p&gt;
-
-&lt;p&gt;Function 1 loaded…&lt;/p&gt;
-
-&lt;p&gt;Function 2 executing…&lt;/p&gt;
-
-&lt;p&gt;6&lt;/p&gt;
-
-&lt;p&gt;Thanks for reading.&lt;/p&gt;
-</description>
-        <pubDate>Fri, 21 Mar 2014 11:16:00 -0700</pubDate>
-        <link>https://clintcparker.com/2014/03/21/vbscript-conditional-includes.html</link>
-        <guid isPermaLink="true">https://clintcparker.com/2014/03/21/vbscript-conditional-includes.html</guid>
         
         
       </item>

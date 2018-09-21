@@ -75,6 +75,10 @@
                 
                 
             
+                
+                
+                
+            
             <a href="https://github.com/clintcparker" target="_blank" >GitHub</a>
             <a href="https://www.linkedin.com/in/clintcparker" target="_blank"  >Resumé</a>
 	    <a href="https://twitter.com/clintcparker" target="_blank" >Tweets</a>
@@ -88,6 +92,36 @@
     <div class="page-content">
       <div class="wrapper">
         <div class="home">
+  
+    <article class="post">
+      <h2 class="post-title"><a class="post-link" href="/2018/09/21/belvedere.html">Belvedere</a></h2>
+
+      <time datetime="2018-09-21T11:08:06-07:00" class="post-date">September 21, 2018</time>
+
+      <p><img src="https://docs.microsoft.com/en-us/dotnet/images/hub/netcore.svg" alt="dotnetcore" class="r-img" height="150px" />I recently created <a href="https://name-on.site">name-on</a> using the DotNetCore command line tools and VS Code. It was surprisingly easy, and I love scaffolding from the command line.</p>
+
+<p><img src="https://fishshell.com/assets/img/Terminal_Logo_CRT_Small.png" alt="fish-shell" class="l-img" height="200px" />I also recently got my WSL setup working, which involved setting fish as my default shell, and revisiting some of the functions I have made ihe past.</p>
+
+<p>My quick experience with the DNC CLI seemed like the perfect thing to functionalize. I like having a standard structure to my apps:</p>
+
+<ul>
+  <li>class library</li>
+  <li>command line</li>
+  <li>web app / API</li>
+  <li>test project</li>
+</ul>
+
+<p>DNC has the concept of templates and extensions, but what can I say, I wanted to write this with fish. So I did.</p>
+
+<p>I picked the name belvedere by looking up scaffolding in a thesaurus. Apparently its a “raised turret atop a house,” and comes from 1590’s italian.</p>
+
+<p>Belvedere will create all the necessary projects, with the correct intra-project references, a solution, gitignore, and README. It also initializes a git repo and commits the created files.</p>
+
+<p>You can find the code here: <a href="https://github.com/clintcparker/fish_functions/blob/master/belvedere.fish">https://github.com/clintcparker/fish_functions/blob/master/belvedere.fish</a></p>
+
+
+      <hr>
+    </article>
   
     <article class="post">
       <h2 class="post-title"><a class="post-link" href="/2018/08/31/name-on.html">Name-on</a></h2>
@@ -169,88 +203,6 @@
 
 <p>If you have a chance, <a href="https://docs.google.com/document/d/1NV_f1q6_WGI1YmTlbrf4b62Q4KmuvhaHqXGTgu0FJvs">please read it</a>. Send any comments to me on Twitter at <em><a href="https://twitter.com/clintcparker">@clintcparker</a></em>.</p>
 
-
-
-      <hr>
-    </article>
-  
-    <article class="post">
-      <h2 class="post-title"><a class="post-link" href="/2016/10/01/c-obfuscation.html">C# Obfuscation</a></h2>
-
-      <time datetime="2016-10-01T12:02:45-07:00" class="post-date">October 01, 2016</time>
-
-      <p>You can use the underscore to write ridiculous code.</p>
-
-<p><code class="highlighter-rouge">__</code> is a valid class name. <code class="highlighter-rouge">__</code> is a valid namespace. <code class="highlighter-rouge">__()</code> is a valid method. And, <code class="highlighter-rouge">__</code> is a valid property.</p>
-
-<p>I stumbled upon this a few years ago , but hadn’t gotten around to writing it down. It’s really fun to play with. I thinkt the next step is to create an obfuscator extension.</p>
-
-<p>Here’s a simple class from when I was teaching intro to C# and demonstrating async and await.</p>
-
-<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">using</span> <span class="nn">System.IO</span><span class="p">;</span>
-<span class="k">using</span> <span class="nn">System.Threading.Tasks</span><span class="p">;</span>
-
-<span class="k">namespace</span> <span class="nn">A_A.Library</span>
-<span class="p">{</span>
-    <span class="k">public</span> <span class="k">class</span> <span class="nc">FileAccess</span>
-    <span class="p">{</span>
-        <span class="k">public</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="nf">GetLength</span><span class="p">(</span><span class="kt">string</span> <span class="n">filePath</span><span class="p">)</span>
-        <span class="p">{</span>
-            <span class="kt">var</span> <span class="n">sr</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">StreamReader</span><span class="p">(</span><span class="n">filePath</span><span class="p">);</span>
-            <span class="kt">var</span> <span class="n">chars</span> <span class="p">=</span> <span class="n">sr</span><span class="p">.</span><span class="nf">ReadToEnd</span><span class="p">();</span>
-            <span class="k">return</span> <span class="n">chars</span><span class="p">.</span><span class="n">Length</span><span class="p">;</span>
-        <span class="p">}</span>
-
-        <span class="k">public</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="nf">GetLines</span><span class="p">(</span><span class="kt">string</span> <span class="n">bigTxt</span><span class="p">)</span>
-        <span class="p">{</span>
-            <span class="kt">int</span> <span class="n">lines</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
-            <span class="kt">var</span> <span class="n">sr</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">StreamReader</span><span class="p">(</span><span class="n">bigTxt</span><span class="p">);</span>
-            <span class="k">while</span> <span class="p">(!</span><span class="n">sr</span><span class="p">.</span><span class="n">EndOfStream</span><span class="p">)</span>
-            <span class="p">{</span>
-                <span class="k">await</span> <span class="n">sr</span><span class="p">.</span><span class="nf">ReadLineAsync</span><span class="p">();</span>
-                <span class="n">lines</span><span class="p">++;</span>
-            <span class="p">}</span>
-            <span class="k">return</span> <span class="n">lines</span><span class="p">;</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<p>Here’s it is again, obfuscated. Still compiles, still valid C#.</p>
-
-<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-<span class="k">using</span> <span class="nn">System.IO</span><span class="p">;</span>
-<span class="k">using</span> <span class="nn">System.Threading.Tasks</span><span class="p">;</span>
-
-<span class="k">namespace</span> <span class="nn">__</span>
-<span class="p">{</span>
-    <span class="k">public</span> <span class="k">class</span> <span class="nc">___</span>
-    <span class="p">{</span>
-        <span class="k">public</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="nf">____</span><span class="p">(</span><span class="kt">string</span> <span class="n">___</span><span class="p">)</span>
-        <span class="p">{</span>
-            <span class="kt">var</span> <span class="n">_</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">StreamReader</span><span class="p">(</span><span class="n">___</span><span class="p">);</span>
-            <span class="kt">var</span> <span class="n">__</span> <span class="p">=</span> <span class="n">_</span><span class="p">.</span><span class="nf">ReadToEnd</span><span class="p">();</span>
-            <span class="k">return</span> <span class="n">__</span><span class="p">.</span><span class="n">Length</span><span class="p">;</span>
-        <span class="p">}</span>
-
-        <span class="k">public</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="nf">_____</span><span class="p">(</span><span class="kt">string</span> <span class="n">___</span><span class="p">)</span>
-        <span class="p">{</span>
-            <span class="kt">int</span> <span class="n">_</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
-            <span class="kt">var</span> <span class="n">__</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">StreamReader</span><span class="p">(</span><span class="n">___</span><span class="p">);</span>
-            <span class="k">while</span> <span class="p">(!</span><span class="n">__</span><span class="p">.</span><span class="n">EndOfStream</span><span class="p">)</span>
-            <span class="p">{</span>
-                <span class="k">await</span> <span class="n">__</span><span class="p">.</span><span class="nf">ReadLineAsync</span><span class="p">();</span>
-                <span class="n">_</span><span class="p">++;</span>
-            <span class="p">}</span>
-            <span class="k">return</span> <span class="n">_</span><span class="p">;</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<p>Thanks for reading.</p>
-
-<p>P.S. Who want’s to help me write the obfuscator?</p>
 
 
       <hr>
