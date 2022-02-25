@@ -102,7 +102,7 @@
 
 <p>For some reason, my <a href="https://www.appveyor.com/">AppVeyor</a> builds were failing. They were clearly pulling the latest from my repo, but for some reason, the nuget restore stopped working. I probably should’ve googled the issue, and I think I did, but I was asking the wrong questions. I finally gave up and manually configured the build via the GUI, and then exported that config to YAML. When I went to do the next extension, I finally realized what the problem was. I used the exact same exported YAML, and got the exact same initial errors with the nuget restore.</p>
 
-<p>Googling “appveyor not using yaml” led me to <a href="https://help.appveyor.com/discussions/questions/4148-why-does-appveyor-seem-not-to-pick-up-my-appveyoryml">this help article</a>. I still don’t understand why permissions were an issue to read the <code class="highlighter-rouge">appveyor.yml</code>, when it was clearly reading an updated <code class="highlighter-rouge">csproj</code> file. But I do now have extensions that support VS 2017.</p>
+<p>Googling “appveyor not using yaml” led me to <a href="https://help.appveyor.com/discussions/questions/4148-why-does-appveyor-seem-not-to-pick-up-my-appveyoryml">this help article</a>. I still don’t understand why permissions were an issue to read the <code class="language-plaintext highlighter-rouge">appveyor.yml</code>, when it was clearly reading an updated <code class="language-plaintext highlighter-rouge">csproj</code> file. But I do now have extensions that support VS 2017.</p>
 
   </article>
 

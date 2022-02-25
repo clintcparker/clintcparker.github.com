@@ -96,11 +96,11 @@
     <article class="post">
       <h2 class="post-title"><a class="post-link" href="/2018/09/21/belvedere.html">Belvedere</a></h2>
 
-      <time datetime="2018-09-21T11:08:06-07:00" class="post-date">September 21, 2018</time>
+      <time datetime="2018-09-21T16:22:49-07:00" class="post-date">September 21, 2018</time>
 
       <p><img src="https://docs.microsoft.com/en-us/dotnet/images/hub/netcore.svg" alt="dotnetcore" class="r-img" height="150px" />I recently created <a href="https://name-on.site">name-on</a> using the DotNetCore command line tools and VS Code. It was surprisingly easy, and I love scaffolding from the command line.</p>
 
-<p><img src="https://fishshell.com/assets/img/Terminal_Logo_CRT_Small.png" alt="fish-shell" class="l-img" height="200px" />I also recently got my WSL setup working, which involved setting fish as my default shell, and revisiting some of the functions I have made ihe past.</p>
+<p><img src="https://fishshell.com/assets/img/Terminal_Logo_CRT_Small.png" alt="fish-shell" class="l-img" height="200px" />I also recently got my WSL setup working, which involved setting fish as my default shell, and revisiting some of the functions I have made in the past.</p>
 
 <p>My quick experience with the DNC CLI seemed like the perfect thing to functionalize. I like having a standard structure to my apps:</p>
 
@@ -111,11 +111,11 @@
   <li>test project</li>
 </ul>
 
-<p>DNC has the concept of templates and extensions, but what can I say, I wanted to write this with fish. So I did.</p>
+<p>DNC has the concept of tmeplates and extensions, but what can I say, I wanted to write this with fish. So I did.</p>
 
 <p>I picked the name belvedere by looking up scaffolding in a thesaurus. Apparently its a “raised turret atop a house,” and comes from 1590’s italian.</p>
 
-<p>Belvedere will create all the necessary projects, with the correct intra-project references, a solution, gitignore, and README. It also initializes a git repo and commits the created files.</p>
+<p>Belvedere will create all the necessary projects, with the correct intra-project references, a solution, gitignore, and README. It also intializes a git repo and commits the created files.</p>
 
 <p>You can find the code here: <a href="https://github.com/clintcparker/fish_functions/blob/master/belvedere.fish">https://github.com/clintcparker/fish_functions/blob/master/belvedere.fish</a></p>
 
@@ -126,36 +126,32 @@
     <article class="post">
       <h2 class="post-title"><a class="post-link" href="/2018/08/31/name-on.html">Name-on</a></h2>
 
-      <time datetime="2018-08-31T12:52:02-07:00" class="post-date">August 31, 2018</time>
+      <time datetime="2018-08-31T16:22:49-07:00" class="post-date">August 31, 2018</time>
 
       <h3 id="but-y-tho">But Y tho?</h3>
-
-<p>I needed a unique name generator, so I built <a href="https://name-on.site">one</a>.</p>
+<p>I needed a unique name generator, so I built <a href="https://name-on.site/">one</a>.</p>
 
 <p>I had used the Heroku unique-name generator before, when building <a href="https://badideas.herokuapp.com/">bad ideas</a>. I loved how it removed a mental hurdle from getting something out the door; coming up with a name. Personally, I’m horrible at naming things, so this was a necessity. I don’t want to get hung up on picking a good name, and the defaults are equally as bad (ConsoleApplication23, anybody?).</p>
 
-<p>I’d also been wanting to get back to dot net core. The last time I had played around with it, they were still using the <code class="highlighter-rouge">dnx</code> command line tool and <code class="highlighter-rouge">project.json</code> files. So this project seemed small enough, and valuable enough, to actually keep me on task for the duration of v1.</p>
+<p>I’d also been wanting to get back to dot net core. The last time I had played around with it, they were still using the <code class="language-plaintext highlighter-rouge">dnx</code> command line tool and <code class="language-plaintext highlighter-rouge">project.json</code> files. So this project seemed small enough, and valuable enough, to actually keep me on task for the duration of v1.</p>
 
 <h3 id="the-command-line">The command line</h3>
-
 <p>I was stoked to be able to layout the project structure from the command line. I’m just so much more optimistic about a tool when there’s a CLI behind it. Even if I’ll never script it, the idea that i <em>could</em> is very appealing.</p>
 
-<p>I scaffolded the whole project via the <code class="highlighter-rouge">dotnet new</code> and <code class="highlighter-rouge">dotnet add</code> commands. I was also able to build and test in the same manner. It was a nice break from VS 2017.</p>
+<p>I scaffolded the whole project via the <code class="language-plaintext highlighter-rouge">dotnet new</code> and <code class="language-plaintext highlighter-rouge">dotnet add</code> commands. I was also able to build and test in the same manner. It was a nice break from VS 2017.</p>
 
 <h3 id="structure">Structure</h3>
-
 <p>I found lists of adjectives and nouns online. And thank to some recent practice with regex crosswords, quickly stripped everything but the words themselves.</p>
 
 <p>I added some tests for uniqueness, which is about 99.985%. I also added protection for never getting the same name twice in a row.</p>
 
 <p>I was able to create a CLI for OS X, which was came in handy when publishing to Azure, and needing names for everything.</p>
 
-<p>For the web app the <code class="highlighter-rouge">dotnet</code> help lists a template called <code class="highlighter-rouge">razor</code> with the description “mvc with razor pages.” I’ve used the Razor syntax since it debuted, and thought, “of course I want razor, not <code class="highlighter-rouge">aspx</code>.” Apparently though, Razor Pages is a new thing. I actually really liked it for build the web app component. I still created a controller for the API, but was happy I stumbled onto this new paradigm.</p>
+<p>For the web app the <code class="language-plaintext highlighter-rouge">dotnet help</code> lists a template called <code class="language-plaintext highlighter-rouge">razor</code> with the description “mvc with razor pages.” I’ve used the Razor syntax since it debuted, and thought, “of course I want razor, not <code class="language-plaintext highlighter-rouge">aspx</code>.” Apparently though, Razor Pages is a new thing. I actually really liked it for build the web app component. I still created a controller for the API, but was happy I stumbled onto this new paradigm.</p>
 
 <p>I really went over the top with the completeness. Azure for hosting. Custom domain through NameCheap. SSL through CloudFlare.</p>
 
 <h3 id="next-steps">Next Steps</h3>
-
 <p>The <a href="https://github.com/clintcparker/name-on#name-on">README</a> has a roadmap, which includes packaging the CLI and improving the site. PRs are welcomed.</p>
 
 
@@ -171,7 +167,7 @@
 
 <p>For some reason, my <a href="https://www.appveyor.com/">AppVeyor</a> builds were failing. They were clearly pulling the latest from my repo, but for some reason, the nuget restore stopped working. I probably should’ve googled the issue, and I think I did, but I was asking the wrong questions. I finally gave up and manually configured the build via the GUI, and then exported that config to YAML. When I went to do the next extension, I finally realized what the problem was. I used the exact same exported YAML, and got the exact same initial errors with the nuget restore.</p>
 
-<p>Googling “appveyor not using yaml” led me to <a href="https://help.appveyor.com/discussions/questions/4148-why-does-appveyor-seem-not-to-pick-up-my-appveyoryml">this help article</a>. I still don’t understand why permissions were an issue to read the <code class="highlighter-rouge">appveyor.yml</code>, when it was clearly reading an updated <code class="highlighter-rouge">csproj</code> file. But I do now have extensions that support VS 2017.</p>
+<p>Googling “appveyor not using yaml” led me to <a href="https://help.appveyor.com/discussions/questions/4148-why-does-appveyor-seem-not-to-pick-up-my-appveyoryml">this help article</a>. I still don’t understand why permissions were an issue to read the <code class="language-plaintext highlighter-rouge">appveyor.yml</code>, when it was clearly reading an updated <code class="language-plaintext highlighter-rouge">csproj</code> file. But I do now have extensions that support VS 2017.</p>
 
 
       <hr>

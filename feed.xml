@@ -6,15 +6,15 @@
 </description>
     <link>https://clintcparker.com/</link>
     <atom:link href="https://clintcparker.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 21 Sep 2018 11:09:06 -0700</pubDate>
-    <lastBuildDate>Fri, 21 Sep 2018 11:09:06 -0700</lastBuildDate>
-    <generator>Jekyll v3.8.1</generator>
+    <pubDate>Thu, 24 Feb 2022 16:05:44 -0800</pubDate>
+    <lastBuildDate>Thu, 24 Feb 2022 16:05:44 -0800</lastBuildDate>
+    <generator>Jekyll v4.2.1</generator>
     
       <item>
         <title>Belvedere</title>
         <description>&lt;p&gt;&lt;img src=&quot;https://docs.microsoft.com/en-us/dotnet/images/hub/netcore.svg&quot; alt=&quot;dotnetcore&quot; class=&quot;r-img&quot; height=&quot;150px&quot; /&gt;I recently created &lt;a href=&quot;https://name-on.site&quot;&gt;name-on&lt;/a&gt; using the DotNetCore command line tools and VS Code. It was surprisingly easy, and I love scaffolding from the command line.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://fishshell.com/assets/img/Terminal_Logo_CRT_Small.png&quot; alt=&quot;fish-shell&quot; class=&quot;l-img&quot; height=&quot;200px&quot; /&gt;I also recently got my WSL setup working, which involved setting fish as my default shell, and revisiting some of the functions I have made ihe past.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://fishshell.com/assets/img/Terminal_Logo_CRT_Small.png&quot; alt=&quot;fish-shell&quot; class=&quot;l-img&quot; height=&quot;200px&quot; /&gt;I also recently got my WSL setup working, which involved setting fish as my default shell, and revisiting some of the functions I have made in the past.&lt;/p&gt;
 
 &lt;p&gt;My quick experience with the DNC CLI seemed like the perfect thing to functionalize. I like having a standard structure to my apps:&lt;/p&gt;
 
@@ -25,15 +25,15 @@
   &lt;li&gt;test project&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;DNC has the concept of templates and extensions, but what can I say, I wanted to write this with fish. So I did.&lt;/p&gt;
+&lt;p&gt;DNC has the concept of tmeplates and extensions, but what can I say, I wanted to write this with fish. So I did.&lt;/p&gt;
 
 &lt;p&gt;I picked the name belvedere by looking up scaffolding in a thesaurus. Apparently its a “raised turret atop a house,” and comes from 1590’s italian.&lt;/p&gt;
 
-&lt;p&gt;Belvedere will create all the necessary projects, with the correct intra-project references, a solution, gitignore, and README. It also initializes a git repo and commits the created files.&lt;/p&gt;
+&lt;p&gt;Belvedere will create all the necessary projects, with the correct intra-project references, a solution, gitignore, and README. It also intializes a git repo and commits the created files.&lt;/p&gt;
 
 &lt;p&gt;You can find the code here: &lt;a href=&quot;https://github.com/clintcparker/fish_functions/blob/master/belvedere.fish&quot;&gt;https://github.com/clintcparker/fish_functions/blob/master/belvedere.fish&lt;/a&gt;&lt;/p&gt;
 </description>
-        <pubDate>Fri, 21 Sep 2018 11:08:06 -0700</pubDate>
+        <pubDate>Fri, 21 Sep 2018 16:22:49 -0700</pubDate>
         <link>https://clintcparker.com/2018/09/21/belvedere.html</link>
         <guid isPermaLink="true">https://clintcparker.com/2018/09/21/belvedere.html</guid>
         
@@ -43,36 +43,32 @@
       <item>
         <title>Name-on</title>
         <description>&lt;h3 id=&quot;but-y-tho&quot;&gt;But Y tho?&lt;/h3&gt;
-
-&lt;p&gt;I needed a unique name generator, so I built &lt;a href=&quot;https://name-on.site&quot;&gt;one&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I needed a unique name generator, so I built &lt;a href=&quot;https://name-on.site/&quot;&gt;one&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;I had used the Heroku unique-name generator before, when building &lt;a href=&quot;https://badideas.herokuapp.com/&quot;&gt;bad ideas&lt;/a&gt;. I loved how it removed a mental hurdle from getting something out the door; coming up with a name. Personally, I’m horrible at naming things, so this was a necessity. I don’t want to get hung up on picking a good name, and the defaults are equally as bad (ConsoleApplication23, anybody?).&lt;/p&gt;
 
-&lt;p&gt;I’d also been wanting to get back to dot net core. The last time I had played around with it, they were still using the &lt;code class=&quot;highlighter-rouge&quot;&gt;dnx&lt;/code&gt; command line tool and &lt;code class=&quot;highlighter-rouge&quot;&gt;project.json&lt;/code&gt; files. So this project seemed small enough, and valuable enough, to actually keep me on task for the duration of v1.&lt;/p&gt;
+&lt;p&gt;I’d also been wanting to get back to dot net core. The last time I had played around with it, they were still using the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dnx&lt;/code&gt; command line tool and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;project.json&lt;/code&gt; files. So this project seemed small enough, and valuable enough, to actually keep me on task for the duration of v1.&lt;/p&gt;
 
 &lt;h3 id=&quot;the-command-line&quot;&gt;The command line&lt;/h3&gt;
-
 &lt;p&gt;I was stoked to be able to layout the project structure from the command line. I’m just so much more optimistic about a tool when there’s a CLI behind it. Even if I’ll never script it, the idea that i &lt;em&gt;could&lt;/em&gt; is very appealing.&lt;/p&gt;
 
-&lt;p&gt;I scaffolded the whole project via the &lt;code class=&quot;highlighter-rouge&quot;&gt;dotnet new&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;dotnet add&lt;/code&gt; commands. I was also able to build and test in the same manner. It was a nice break from VS 2017.&lt;/p&gt;
+&lt;p&gt;I scaffolded the whole project via the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dotnet new&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dotnet add&lt;/code&gt; commands. I was also able to build and test in the same manner. It was a nice break from VS 2017.&lt;/p&gt;
 
 &lt;h3 id=&quot;structure&quot;&gt;Structure&lt;/h3&gt;
-
 &lt;p&gt;I found lists of adjectives and nouns online. And thank to some recent practice with regex crosswords, quickly stripped everything but the words themselves.&lt;/p&gt;
 
 &lt;p&gt;I added some tests for uniqueness, which is about 99.985%. I also added protection for never getting the same name twice in a row.&lt;/p&gt;
 
 &lt;p&gt;I was able to create a CLI for OS X, which was came in handy when publishing to Azure, and needing names for everything.&lt;/p&gt;
 
-&lt;p&gt;For the web app the &lt;code class=&quot;highlighter-rouge&quot;&gt;dotnet&lt;/code&gt; help lists a template called &lt;code class=&quot;highlighter-rouge&quot;&gt;razor&lt;/code&gt; with the description “mvc with razor pages.” I’ve used the Razor syntax since it debuted, and thought, “of course I want razor, not &lt;code class=&quot;highlighter-rouge&quot;&gt;aspx&lt;/code&gt;.” Apparently though, Razor Pages is a new thing. I actually really liked it for build the web app component. I still created a controller for the API, but was happy I stumbled onto this new paradigm.&lt;/p&gt;
+&lt;p&gt;For the web app the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dotnet help&lt;/code&gt; lists a template called &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;razor&lt;/code&gt; with the description “mvc with razor pages.” I’ve used the Razor syntax since it debuted, and thought, “of course I want razor, not &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;aspx&lt;/code&gt;.” Apparently though, Razor Pages is a new thing. I actually really liked it for build the web app component. I still created a controller for the API, but was happy I stumbled onto this new paradigm.&lt;/p&gt;
 
 &lt;p&gt;I really went over the top with the completeness. Azure for hosting. Custom domain through NameCheap. SSL through CloudFlare.&lt;/p&gt;
 
 &lt;h3 id=&quot;next-steps&quot;&gt;Next Steps&lt;/h3&gt;
-
 &lt;p&gt;The &lt;a href=&quot;https://github.com/clintcparker/name-on#name-on&quot;&gt;README&lt;/a&gt; has a roadmap, which includes packaging the CLI and improving the site. PRs are welcomed.&lt;/p&gt;
 </description>
-        <pubDate>Fri, 31 Aug 2018 12:52:02 -0700</pubDate>
+        <pubDate>Fri, 31 Aug 2018 16:22:49 -0700</pubDate>
         <link>https://clintcparker.com/2018/08/31/name-on.html</link>
         <guid isPermaLink="true">https://clintcparker.com/2018/08/31/name-on.html</guid>
         
@@ -85,7 +81,7 @@
 
 &lt;p&gt;For some reason, my &lt;a href=&quot;https://www.appveyor.com/&quot;&gt;AppVeyor&lt;/a&gt; builds were failing. They were clearly pulling the latest from my repo, but for some reason, the nuget restore stopped working. I probably should’ve googled the issue, and I think I did, but I was asking the wrong questions. I finally gave up and manually configured the build via the GUI, and then exported that config to YAML. When I went to do the next extension, I finally realized what the problem was. I used the exact same exported YAML, and got the exact same initial errors with the nuget restore.&lt;/p&gt;
 
-&lt;p&gt;Googling “appveyor not using yaml” led me to &lt;a href=&quot;https://help.appveyor.com/discussions/questions/4148-why-does-appveyor-seem-not-to-pick-up-my-appveyoryml&quot;&gt;this help article&lt;/a&gt;. I still don’t understand why permissions were an issue to read the &lt;code class=&quot;highlighter-rouge&quot;&gt;appveyor.yml&lt;/code&gt;, when it was clearly reading an updated &lt;code class=&quot;highlighter-rouge&quot;&gt;csproj&lt;/code&gt; file. But I do now have extensions that support VS 2017.&lt;/p&gt;
+&lt;p&gt;Googling “appveyor not using yaml” led me to &lt;a href=&quot;https://help.appveyor.com/discussions/questions/4148-why-does-appveyor-seem-not-to-pick-up-my-appveyoryml&quot;&gt;this help article&lt;/a&gt;. I still don’t understand why permissions were an issue to read the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;appveyor.yml&lt;/code&gt;, when it was clearly reading an updated &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;csproj&lt;/code&gt; file. But I do now have extensions that support VS 2017.&lt;/p&gt;
 </description>
         <pubDate>Tue, 15 May 2018 16:22:49 -0700</pubDate>
         <link>https://clintcparker.com/2018/05/15/adventures-in-vs-extension-updates.html</link>
@@ -129,7 +125,7 @@
         <title>C# Obfuscation</title>
         <description>&lt;p&gt;You can use the underscore to write ridiculous code.&lt;/p&gt;
 
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;__&lt;/code&gt; is a valid class name. &lt;code class=&quot;highlighter-rouge&quot;&gt;__&lt;/code&gt; is a valid namespace. &lt;code class=&quot;highlighter-rouge&quot;&gt;__()&lt;/code&gt; is a valid method. And, &lt;code class=&quot;highlighter-rouge&quot;&gt;__&lt;/code&gt; is a valid property.&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;__&lt;/code&gt; is a valid class name. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;__&lt;/code&gt; is a valid namespace. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;__()&lt;/code&gt; is a valid method. And, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;__&lt;/code&gt; is a valid property.&lt;/p&gt;
 
 &lt;p&gt;I stumbled upon this a few years ago , but hadn’t gotten around to writing it down. It’s really fun to play with. I thinkt the next step is to create an obfuscator extension.&lt;/p&gt;
 
@@ -208,7 +204,7 @@
       </item>
     
       <item>
-        <title>Why Git Works Where TFVC Doesn't</title>
+        <title>Why Git Works Where TFVC Doesn&apos;t</title>
         <description>&lt;p&gt;We’re in the process of moving to git right now, and one of the main questions I get is how will this ACTUALLY be any better than TFVC. (The other question is how much longer before we’re fully moved to git? Which warrants its own piece.)&lt;/p&gt;
 
 &lt;p&gt;See, we’ve tried “branching” in TFVC, and it only caused us more pain. So there is some legitimacy to this question.&lt;/p&gt;
@@ -256,23 +252,23 @@ Another team just got two half done projects dumped into their branch, because t
 
 &lt;p&gt;But it doesn’t.&lt;/p&gt;
 
-&lt;p&gt;I thought it would work. I like using &lt;code class=&quot;highlighter-rouge&quot;&gt;yield&lt;/code&gt; to take full advantage of delayed enumeration, rather than creating new lists or arrays all the time.&lt;/p&gt;
+&lt;p&gt;I thought it would work. I like using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;yield&lt;/code&gt; to take full advantage of delayed enumeration, rather than creating new lists or arrays all the time.&lt;/p&gt;
 
-&lt;p&gt;Everything looks right; the return types are good. Except it won’t compile. You get a nice message about having to use &lt;code class=&quot;highlighter-rouge&quot;&gt;yield&lt;/code&gt; inside an iterator when trying to return &lt;code class=&quot;highlighter-rouge&quot;&gt;(IEnumerabl&amp;lt;T&amp;gt;)obj&lt;/code&gt; directly.&lt;/p&gt;
+&lt;p&gt;Everything looks right; the return types are good. Except it won’t compile. You get a nice message about having to use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;yield&lt;/code&gt; inside an iterator when trying to return &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;(IEnumerabl&amp;lt;T&amp;gt;)obj&lt;/code&gt; directly.&lt;/p&gt;
 
-&lt;p&gt;Don’t try &lt;code class=&quot;highlighter-rouge&quot;&gt;yield return (IEnumerable&amp;lt;T&amp;gt;)obj&lt;/code&gt;. That will do exactly what you’d think. It won’t compile either, because now the return types don’t match, because &lt;code class=&quot;highlighter-rouge&quot;&gt;yield return (IENumerable&amp;lt;T&amp;gt;)obj&lt;/code&gt; needs a method return type of &lt;code class=&quot;highlighter-rouge&quot;&gt;IEnumerable&amp;lt;IEnumerable&amp;lt;T&amp;gt;&amp;gt;&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Don’t try &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;yield return (IEnumerable&amp;lt;T&amp;gt;)obj&lt;/code&gt;. That will do exactly what you’d think. It won’t compile either, because now the return types don’t match, because &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;yield return (IENumerable&amp;lt;T&amp;gt;)obj&lt;/code&gt; needs a method return type of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;IEnumerable&amp;lt;IEnumerable&amp;lt;T&amp;gt;&amp;gt;&lt;/code&gt;.&lt;/p&gt;
 
 &lt;p&gt;So what to do?&lt;/p&gt;
 
-&lt;p&gt;Obviously, try &lt;code class=&quot;highlighter-rouge&quot;&gt;yield break&lt;/code&gt;. Because nothing else is making sense at this point. But of course, that’s not what &lt;code class=&quot;highlighter-rouge&quot;&gt;yield break&lt;/code&gt; is for in the least, so it doesn’t work. Yay, not completely crazy.&lt;/p&gt;
+&lt;p&gt;Obviously, try &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;yield break&lt;/code&gt;. Because nothing else is making sense at this point. But of course, that’s not what &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;yield break&lt;/code&gt; is for in the least, so it doesn’t work. Yay, not completely crazy.&lt;/p&gt;
 
 &lt;p&gt;This issue didn’t come up for me until I was trying to combine recursion &amp;amp; LINQ-expressions. And was stumped. Googling the motivator (LINQ and recursion) yielded (pun intended) no valuable results.&lt;/p&gt;
 
 &lt;p&gt;I grabbed the nearest .NET nerd of my colleagues, and went straight to the whiteboard. In doing so, I realized that recursion has nothing to do with this not compiling (still not crazy!). On the other hand I still had to convince my colleague that the code wouldn’t compile. (He went thru literally the same steps I did. Again, not crazy).&lt;/p&gt;
 
-&lt;p&gt;So we seem to have found a cool nugget in the compiler, that seems to say, “if you want to &lt;code class=&quot;highlighter-rouge&quot;&gt;yield return&lt;/code&gt; once in a method, you must &lt;code class=&quot;highlighter-rouge&quot;&gt;yield&lt;/code&gt; all other returns in that method.” OK. That actually kind of makes sense. Delayed enumeration would mean that the compiler is wanting to deal w/ things granularly.&lt;/p&gt;
+&lt;p&gt;So we seem to have found a cool nugget in the compiler, that seems to say, “if you want to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;yield return&lt;/code&gt; once in a method, you must &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;yield&lt;/code&gt; all other returns in that method.” OK. That actually kind of makes sense. Delayed enumeration would mean that the compiler is wanting to deal w/ things granularly.&lt;/p&gt;
 
-&lt;p&gt;My (sad hack of a) solution: Fake the &lt;code class=&quot;highlighter-rouge&quot;&gt;yield&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;My (sad hack of a) solution: Fake the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;yield&lt;/code&gt;.&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-csharp&quot; data-lang=&quot;csharp&quot;&gt;&lt;span class=&quot;n&quot;&gt;IEnumerable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DoesActuallyWork&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; 
