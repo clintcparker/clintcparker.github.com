@@ -19,9 +19,9 @@ I wrote this for my situation. While setting it up, I found there was not a cent
 
 - You have administrator access to both machines
 - You are comfortable with the command line on both systems
-- You have VSCode installed on both machines
-- You're aware of the concept of SSH
-- You have a cloudflare account and a website there
+- You have [VSCode](https://code.visualstudio.com) installed on both machines
+- You're aware of the concept of [SSH](https://en.wikipedia.org/wiki/Secure_Shell)
+- You have a [Cloudflare](https://www.cloudflare.com) account and a website there
 - You're using [brew](https://brew.sh)
 
 #### Assumptions About This Guide
@@ -61,7 +61,9 @@ I wrote this for my situation. While setting it up, I found there was not a cent
     output and select the site you'd like to add the tunnel to
     
 5.  create a tunnel
-    `PS> cloudflared tunnel create wormhole`
+    ```
+    PS> cloudflared tunnel create wormhole
+    ```
     
 6.  setup cloudflared as a service
     ```
@@ -73,7 +75,7 @@ I wrote this for my situation. While setting it up, I found there was not a cent
     ```
     PS> code C:\Windows\System32\config\systemprofile\.cloudflared\config.yml
     ```
-    - eaxmple: 
+    - example: 
     
     ```yml
     tunnel: 123455677890asdf
@@ -178,26 +180,25 @@ I wrote this for my situation. While setting it up, I found there was not a cent
 
 4. now you can ssh into the box directly
     ```
-    $> ssh me-ext@wormhole.example.com
+    $> ssh me-ssh@wormhole.example.com
     ```
 
 5. But let's take this further for RDP and setup local forwarding
 
     ```
-    $> ssh -L 56789:127.0.0.1:3389 me-ext@wormhole.example.com
+    $> ssh -L 56789:127.0.0.1:3389 me-ssh@wormhole.example.com
     ```
 
 6. Setup pub key and add to host
     ```
-    cat ./.ssh/id_rsa.pub | ssh -l me-ext wormhole.example.com "echo | Out-File -FilePath ~/.ssh authorized_keys -Append"
+    cat ./.ssh/id_rsa.pub | ssh me-ssh@wormhole.example.com "echo | Out-File -FilePath ~/.ssh/authorized_keys -Append"
     ```
 
 ### Further thoughts
 
-Connect to the tunnel from the client machine on startup
+- Connect to the tunnel from the client machine on startup
 https://mpharrigan.com/2016/05/17/background-ssh.html
-
-Remove the password from the newly created user
-Change default ports (ssh, RDP)
-Restrict RDP access to 127.0.0.1 only
-Create a host and client scripts to just take care of all of this
+- Remove the password from the newly created user
+- Change default ports (ssh, RDP)
+- Restrict RDP access to 127.0.0.1 only
+- Create a host and client scripts to just take care of all of this
