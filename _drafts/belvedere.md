@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Belvedere"
+date: 2018-09-21T16:22:49-07:00
 ---
 
 <img src="https://docs.microsoft.com/en-us/dotnet/images/hub/netcore.svg" alt="dotnetcore" class="r-img" height="150px">I recently created [name-on](https://name-on.site) using the DotNetCore command line tools and VS Code. It was surprisingly easy, and I love scaffolding from the command line.
@@ -20,4 +21,4 @@ I picked the name belvedere by looking up scaffolding in a thesaurus. Apparently
 
 Belvedere will create all the necessary projects, with the correct intra-project references, a solution, gitignore, and README. It also intializes a git repo and commits the created files.
 
-You can find the code here: .....
+You can find the code here: [https://github.com/clintcparker/fish_functions/blob/master/belvedere.fish](https://github.com/clintcparker/fish_functions/blob/master/belvedere.fish)
