@@ -6,9 +6,232 @@
 </description>
     <link>https://clintcparker.com/</link>
     <atom:link href="https://clintcparker.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 24 Feb 2022 16:05:44 -0800</pubDate>
-    <lastBuildDate>Thu, 24 Feb 2022 16:05:44 -0800</lastBuildDate>
+    <pubDate>Fri, 25 Feb 2022 16:53:02 -0800</pubDate>
+    <lastBuildDate>Fri, 25 Feb 2022 16:53:02 -0800</lastBuildDate>
     <generator>Jekyll v4.2.1</generator>
+    
+      <item>
+        <title>RDP Tunnels</title>
+        <description>&lt;h3 id=&quot;rationale&quot;&gt;Rationale&lt;/h3&gt;
+
+&lt;p&gt;I love the persistence of a host machine! I’m too cheap to get a VPS. I really like the windows 11 OS but really love mac laptops. I left &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;3389&lt;/code&gt; open on my router (with DDNS) and found myself getting brute forced. I saw &lt;a href=&quot;https://orth.uk/ssh-over-cloudflare/&quot;&gt;this post&lt;/a&gt; around the same time, and realized tunnelling could be a great alternative.&lt;/p&gt;
+
+&lt;h3 id=&quot;assumptions&quot;&gt;Assumptions&lt;/h3&gt;
+
+&lt;h4 id=&quot;general-assumptions&quot;&gt;General Assumptions&lt;/h4&gt;
+
+&lt;p&gt;I wrote this for my situation. While setting it up, I found there was not a central guide, so I made one. If it doesn’t perfectly fit your situation, hopefully a part of it will help.&lt;/p&gt;
+
+&lt;h4 id=&quot;assumptions-about-you&quot;&gt;Assumptions About You&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;You have administrator access to both machines&lt;/li&gt;
+  &lt;li&gt;You are comfortable with the command line on both systems&lt;/li&gt;
+  &lt;li&gt;You have &lt;a href=&quot;https://code.visualstudio.com&quot;&gt;VSCode&lt;/a&gt; installed on both machines&lt;/li&gt;
+  &lt;li&gt;You’re aware of the concept of &lt;a href=&quot;https://en.wikipedia.org/wiki/Secure_Shell&quot;&gt;SSH&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;You have a &lt;a href=&quot;https://www.cloudflare.com&quot;&gt;Cloudflare&lt;/a&gt; account and a website there&lt;/li&gt;
+  &lt;li&gt;You’re using &lt;a href=&quot;https://brew.sh&quot;&gt;brew&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;assumptions-about-this-guide&quot;&gt;Assumptions About This Guide&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;I’ve got &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;example.com&lt;/code&gt; on my cloudflare account (I don’t, &lt;em&gt;obvs&lt;/em&gt;)&lt;/li&gt;
+  &lt;li&gt;My tunnel is named &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;wormhole&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;My tunnel id is 123455677890asdf&lt;/li&gt;
+  &lt;li&gt;My macOS username is &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;me&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;host-setup&quot;&gt;Host Setup&lt;/h3&gt;
+&lt;h4 id=&quot;windows-setup&quot;&gt;Windows Setup&lt;/h4&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;get pwsh (i used &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;winget&lt;/code&gt;)&lt;/p&gt;
+
+    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;PS&amp;gt; winget install Microsoft.PowerShell
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+    &lt;ul&gt;
+      &lt;li&gt;At the time of writing, should be v7.2&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;install chocolatey at &lt;a href=&quot;&quot;&gt;https://chocolatey.org/&lt;/a&gt;&lt;/p&gt;
+
+    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;PS&amp;gt; Set-ExecutionPolicy Bypass -Scope Process -Force [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString(&apos;https://community.chocolatey.org/install.ps1&apos;))
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;install cloudflared via chocolatey&lt;/p&gt;
+
+    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;PS&amp;gt; choco install cloudflared
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;login
+    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;PS&amp;gt; cloudflared login
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+    &lt;ul&gt;
+      &lt;li&gt;you may need to manually open the link in the
+output and select the site you’d like to add the tunnel to&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;create a tunnel
+    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;PS&amp;gt; cloudflared tunnel create wormhole
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;setup cloudflared as a service
+    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;PS&amp;gt; cloudflared service install
+PS&amp;gt; mkdir C:\Windows\System32\config\systemprofile\.cloudflared
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;create a config
+    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;PS&amp;gt; code C:\Windows\System32\config\systemprofile\.cloudflared\config.yml
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+    &lt;ul&gt;
+      &lt;li&gt;example:&lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;div class=&quot;language-yml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;tunnel&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;123455677890asdf&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;credentials-file&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;C:\Windows\System32\config\systemprofile\.cloudflared\123455677890asdf.json&lt;/span&gt;
+    
+&lt;span class=&quot;na&quot;&gt;ingress&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;hostname&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;wormhole.example.com&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;service&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;ssh://localhost:22&lt;/span&gt;
+    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;service&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;http_status:404&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;set service as automatic&lt;/p&gt;
+
+    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;PS&amp;gt; Set-Service -Name Cloudflared -StartupType &quot;Automatic&quot;
+PS&amp;gt; Set-ItemProperty HKLM:\SYSTEM\CurrentControlSet\Services\Cloudflared\ -Name ImagePath -Value &quot;C:\ProgramData\chocolatey\lib\cloudflared\tools\cloudflared.exe --config=C:\Windows\System32\config\systemprofile\.cloudflared\config.yml tunnel run&quot;
+PS&amp;gt; cloudflared tunnel route dns  wormhole.example
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;add a non-admin user (for ssh only). enter a paasword when prompted&lt;/p&gt;
+
+    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;PS&amp;gt; New-LocalUser -Name me-ssh
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;set pwsh as your default shell&lt;/p&gt;
+
+    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;PS&amp;gt; New-ItemProperty -Path &quot;HKLM:\SOFTWARE\OpenSSH&quot; -Name DefaultShell -Value &quot;C:\Program Files\PowerShell\7\pwsh.exe&quot; -PropertyType String -Force
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;create external user .ssh directory to house authorized_keys&lt;/p&gt;
+
+    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;PS&amp;gt; mkdir C:\Users\me-ssh\.ssh
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;modify sshd_config&lt;/p&gt;
+
+    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;PS&amp;gt; code C:\ProgramData\ssh\sshd_config
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;enable publickey authentication, uncomment this line&lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;div class=&quot;language-yml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s&quot;&gt;PubkeyAuthentication yes&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;setup sshd &amp;amp; ssh-agent as automatic services, and start them&lt;/p&gt;
+
+    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;PS&amp;gt; Set-Service -Name sshd -StartupType &quot;Automatic&quot;; Set-Service -Name ssh-agent -StartupType &quot;Automatic&quot;; Start-Service sshd; Start-Service ssh-agent
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;client-config&quot;&gt;Client Config&lt;/h3&gt;
+
+&lt;h4 id=&quot;macos&quot;&gt;MacOS&lt;/h4&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;make sure developer tools are up to date&lt;/p&gt;
+
+    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$&amp;gt; brew install cloudflare/cloudflare/cloudflared
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;to confirm install&lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$&amp;gt; cloudflared -v
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Login (just like on the host setup)
+    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$&amp;gt; cloudflared login
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+    &lt;ul&gt;
+      &lt;li&gt;
+        &lt;p&gt;A browser window should have opened.&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;If the browser failed to open, please visit the output URL directly in your browser.&lt;/p&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Select the site you want to to log in to
+    &lt;ul&gt;
+      &lt;li&gt;after selecting you’ll see in the terminal&lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; You have successfully logged in.
+ If you wish to copy your credentials to a server, they have been saved to:
+ /Users/yourusername/.cloudflared/cert.pem
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;next, update your hosts file
+    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$&amp;gt; code ~/.ssh/config
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;add the following&lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Host *.example.com
+    ProxyCommand /usr/local/bin/cloudflared access ssh --hostname %h
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;now you can ssh into the box directly
+    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; $&amp;gt; ssh me-ssh@wormhole.example.com
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;But let’s take this further for RDP and setup local forwarding&lt;/p&gt;
+
+    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; $&amp;gt; ssh -L 56789:127.0.0.1:3389 me-ssh@wormhole.example.com
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Setup pub key and add to host
+    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; cat ./.ssh/id_rsa.pub | ssh me-ssh@wormhole.example.com &quot;echo | Out-File -FilePath ~/.ssh/authorized_keys -Append&quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;further-thoughts&quot;&gt;Further thoughts&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Connect to the tunnel from the client machine on startup
+https://mpharrigan.com/2016/05/17/background-ssh.html&lt;/li&gt;
+  &lt;li&gt;Remove the password from the newly created user&lt;/li&gt;
+  &lt;li&gt;Change default ports (ssh, RDP)&lt;/li&gt;
+  &lt;li&gt;Restrict RDP access to 127.0.0.1 only&lt;/li&gt;
+  &lt;li&gt;Create a host and client scripts to just take care of all of this&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Thu, 24 Feb 2022 20:27:51 -0800</pubDate>
+        <link>https://clintcparker.com/2022/02/24/rdp-tunnels.html</link>
+        <guid isPermaLink="true">https://clintcparker.com/2022/02/24/rdp-tunnels.html</guid>
+        
+        
+      </item>
     
       <item>
         <title>Belvedere</title>
@@ -312,19 +535,6 @@ Another team just got two half done projects dumped into their branch, because t
         <pubDate>Sun, 11 Sep 2016 13:55:00 -0700</pubDate>
         <link>https://clintcparker.com/2016/09/11/creating-a-vs-extension.html</link>
         <guid isPermaLink="true">https://clintcparker.com/2016/09/11/creating-a-vs-extension.html</guid>
-        
-        
-      </item>
-    
-      <item>
-        <title>C# Testing With Fakes</title>
-        <description>&lt;p&gt;I wrote a nice little tutorial about using fakes in C#. It cover Shims and Stubs. It also covers testing private methods using the InternalsVisibleTo attribute.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://github.com/clintcparker/c_sharp_testing/wiki/Coverage-Tutorial&quot;&gt;https://github.com/clintcparker/c_sharp_testing/wiki/Coverage-Tutorial&lt;/a&gt;&lt;/p&gt;
-</description>
-        <pubDate>Fri, 21 Mar 2014 17:00:00 -0700</pubDate>
-        <link>https://clintcparker.com/2014/03/21/c-testing-with-fakes.html</link>
-        <guid isPermaLink="true">https://clintcparker.com/2014/03/21/c-testing-with-fakes.html</guid>
         
         
       </item>

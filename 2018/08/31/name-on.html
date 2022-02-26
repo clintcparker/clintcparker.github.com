@@ -89,28 +89,52 @@
 
 
     <div class="page-content">
-      <div class="wrapper">
-        <div class="post">
-
-  <header class="post-header">
-    <h2 class="post-title">Name-on</h2>
+      <div class="wrapper"> 
+        <div class="post"><header class="post-header">
+      <h2 class="post-title">
+        
+        
+          Name-on
+        
+        
+      </h2>
+    
     <time class="post-date">August 31, 2018</time>
   </header>
 
   <article class="post-content">
-    <h3 id="but-y-tho">But Y tho?</h3>
+      <h3 id="but-y-tho">
+        
+        
+          But Y tho? <a href="#but-y-tho" class="hanchor">🔗</a>
+        
+        
+      </h3>
+    
 <p>I needed a unique name generator, so I built <a href="https://name-on.site/">one</a>.</p>
 
 <p>I had used the Heroku unique-name generator before, when building <a href="https://badideas.herokuapp.com/">bad ideas</a>. I loved how it removed a mental hurdle from getting something out the door; coming up with a name. Personally, I’m horrible at naming things, so this was a necessity. I don’t want to get hung up on picking a good name, and the defaults are equally as bad (ConsoleApplication23, anybody?).</p>
 
 <p>I’d also been wanting to get back to dot net core. The last time I had played around with it, they were still using the <code class="language-plaintext highlighter-rouge">dnx</code> command line tool and <code class="language-plaintext highlighter-rouge">project.json</code> files. So this project seemed small enough, and valuable enough, to actually keep me on task for the duration of v1.</p>
-
-<h3 id="the-command-line">The command line</h3>
+      <h3 id="the-command-line">
+        
+        
+          The command line <a href="#the-command-line" class="hanchor">🔗</a>
+        
+        
+      </h3>
+    
 <p>I was stoked to be able to layout the project structure from the command line. I’m just so much more optimistic about a tool when there’s a CLI behind it. Even if I’ll never script it, the idea that i <em>could</em> is very appealing.</p>
 
 <p>I scaffolded the whole project via the <code class="language-plaintext highlighter-rouge">dotnet new</code> and <code class="language-plaintext highlighter-rouge">dotnet add</code> commands. I was also able to build and test in the same manner. It was a nice break from VS 2017.</p>
-
-<h3 id="structure">Structure</h3>
+      <h3 id="structure">
+        
+        
+          Structure <a href="#structure" class="hanchor">🔗</a>
+        
+        
+      </h3>
+    
 <p>I found lists of adjectives and nouns online. And thank to some recent practice with regex crosswords, quickly stripped everything but the words themselves.</p>
 
 <p>I added some tests for uniqueness, which is about 99.985%. I also added protection for never getting the same name twice in a row.</p>
@@ -120,8 +144,14 @@
 <p>For the web app the <code class="language-plaintext highlighter-rouge">dotnet help</code> lists a template called <code class="language-plaintext highlighter-rouge">razor</code> with the description “mvc with razor pages.” I’ve used the Razor syntax since it debuted, and thought, “of course I want razor, not <code class="language-plaintext highlighter-rouge">aspx</code>.” Apparently though, Razor Pages is a new thing. I actually really liked it for build the web app component. I still created a controller for the API, but was happy I stumbled onto this new paradigm.</p>
 
 <p>I really went over the top with the completeness. Azure for hosting. Custom domain through NameCheap. SSL through CloudFlare.</p>
-
-<h3 id="next-steps">Next Steps</h3>
+      <h3 id="next-steps">
+        
+        
+          Next Steps <a href="#next-steps" class="hanchor">🔗</a>
+        
+        
+      </h3>
+    
 <p>The <a href="https://github.com/clintcparker/name-on#name-on">README</a> has a roadmap, which includes packaging the CLI and improving the site. PRs are welcomed.</p>
 
   </article>
