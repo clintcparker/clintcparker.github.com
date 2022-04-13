@@ -6,8 +6,8 @@
 </description>
     <link>https://clintcparker.com/</link>
     <atom:link href="https://clintcparker.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 13 Apr 2022 10:35:32 -0700</pubDate>
-    <lastBuildDate>Wed, 13 Apr 2022 10:35:32 -0700</lastBuildDate>
+    <pubDate>Wed, 13 Apr 2022 13:57:32 -0700</pubDate>
+    <lastBuildDate>Wed, 13 Apr 2022 13:57:32 -0700</lastBuildDate>
     <generator>Jekyll v4.0.1</generator>
     
       <item>
@@ -58,7 +58,7 @@
   &lt;li&gt;
     &lt;p&gt;install chocolatey at &lt;a href=&quot;&quot;&gt;https://chocolatey.org/&lt;/a&gt;&lt;/p&gt;
 
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;PS&amp;gt; Set-ExecutionPolicy Bypass -Scope Process -Force [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString(&apos;https://community.chocolatey.org/install.ps1&apos;))
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;PS&amp;gt; Set-ExecutionPolicy Bypass -Scope Process -Force [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
   &lt;/li&gt;
   &lt;li&gt;
@@ -329,22 +329,6 @@ https://mpharrigan.com/2016/05/17/background-ssh.html&lt;/li&gt;
       </item>
     
       <item>
-        <title>Product Development Manifesto</title>
-        <description>&lt;p&gt;Five years ago, I ambitiously applied internally for a job as Director of Product Development. I agree that my qualifications were not appropriate for such a position. To overcome that, however, I wrote this &lt;em&gt;&lt;a href=&quot;https://docs.google.com/document/d/1NV_f1q6_WGI1YmTlbrf4b62Q4KmuvhaHqXGTgu0FJvs&quot;&gt;manifesto&lt;/a&gt;&lt;/em&gt;, to show how I would handle the problems faced by that team.&lt;/p&gt;
-
-&lt;p&gt;When I stumbled across this the other day, I was afforded a chance to see if any of my plans had been adopted. Some have, most haven’t. When I wrote that piece, I was a dev manager. Since then I’ve been a Sr Dev and a Software Architect. I’m now back in the position of manager, and I’m happy to see that my personal views haven’t substantially changed. Of course, my opinions about Scrum, testing, and APIs have evolved, but my management approaches are consistent. Trust, Respect, and Accountability. Those three pillars are the foundation of good leadership.&lt;/p&gt;
-
-&lt;p&gt;If you have a chance, &lt;a href=&quot;https://docs.google.com/document/d/1NV_f1q6_WGI1YmTlbrf4b62Q4KmuvhaHqXGTgu0FJvs&quot;&gt;please read it&lt;/a&gt;. Send any comments to me on Twitter at &lt;em&gt;&lt;a href=&quot;https://twitter.com/clintcparker&quot;&gt;@clintcparker&lt;/a&gt;&lt;/em&gt;.&lt;/p&gt;
-
-</description>
-        <pubDate>Fri, 11 Aug 2017 07:14:59 -0700</pubDate>
-        <link>https://clintcparker.com/2017/08/11/prod-dev-manifesto.html</link>
-        <guid isPermaLink="true">https://clintcparker.com/2017/08/11/prod-dev-manifesto.html</guid>
-        
-        
-      </item>
-    
-      <item>
         <title>C# Obfuscation</title>
         <description>&lt;p&gt;You can use the underscore to write ridiculous code.&lt;/p&gt;
 
@@ -427,7 +411,7 @@ https://mpharrigan.com/2016/05/17/background-ssh.html&lt;/li&gt;
       </item>
     
       <item>
-        <title>Why Git Works Where TFVC Doesn&apos;t</title>
+        <title>Why Git Works Where TFVC Doesn't</title>
         <description>&lt;p&gt;We’re in the process of moving to git right now, and one of the main questions I get is how will this ACTUALLY be any better than TFVC. (The other question is how much longer before we’re fully moved to git? Which warrants its own piece.)&lt;/p&gt;
 
 &lt;p&gt;See, we’ve tried “branching” in TFVC, and it only caused us more pain. So there is some legitimacy to this question.&lt;/p&gt;
@@ -535,6 +519,19 @@ Another team just got two half done projects dumped into their branch, because t
         <pubDate>Sun, 11 Sep 2016 13:55:00 -0700</pubDate>
         <link>https://clintcparker.com/2016/09/11/creating-a-vs-extension.html</link>
         <guid isPermaLink="true">https://clintcparker.com/2016/09/11/creating-a-vs-extension.html</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>C# Testing With Fakes</title>
+        <description>&lt;p&gt;I wrote a nice little tutorial about using fakes in C#. It cover Shims and Stubs. It also covers testing private methods using the InternalsVisibleTo attribute.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/clintcparker/c_sharp_testing/wiki/Coverage-Tutorial&quot;&gt;https://github.com/clintcparker/c_sharp_testing/wiki/Coverage-Tutorial&lt;/a&gt;&lt;/p&gt;
+</description>
+        <pubDate>Fri, 21 Mar 2014 17:00:00 -0700</pubDate>
+        <link>https://clintcparker.com/2014/03/21/c-testing-with-fakes.html</link>
+        <guid isPermaLink="true">https://clintcparker.com/2014/03/21/c-testing-with-fakes.html</guid>
         
         
       </item>
