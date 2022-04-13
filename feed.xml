@@ -6,15 +6,15 @@
 </description>
     <link>https://clintcparker.com/</link>
     <atom:link href="https://clintcparker.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 25 Feb 2022 16:53:02 -0800</pubDate>
-    <lastBuildDate>Fri, 25 Feb 2022 16:53:02 -0800</lastBuildDate>
-    <generator>Jekyll v4.2.1</generator>
+    <pubDate>Wed, 13 Apr 2022 10:35:32 -0700</pubDate>
+    <lastBuildDate>Wed, 13 Apr 2022 10:35:32 -0700</lastBuildDate>
+    <generator>Jekyll v4.0.1</generator>
     
       <item>
         <title>RDP Tunnels</title>
         <description>&lt;h3 id=&quot;rationale&quot;&gt;Rationale&lt;/h3&gt;
 
-&lt;p&gt;I love the persistence of a host machine! I’m too cheap to get a VPS. I really like the windows 11 OS but really love mac laptops. I left &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;3389&lt;/code&gt; open on my router (with DDNS) and found myself getting brute forced. I saw &lt;a href=&quot;https://orth.uk/ssh-over-cloudflare/&quot;&gt;this post&lt;/a&gt; around the same time, and realized tunnelling could be a great alternative.&lt;/p&gt;
+&lt;p&gt;I love the persistence of a host machine! I’m too cheap to get a VPS. I really like the windows 11 OS but really love mac laptops. I left &lt;code class=&quot;highlighter-rouge&quot;&gt;3389&lt;/code&gt; open on my router (with DDNS) and found myself getting brute forced. I saw &lt;a href=&quot;https://orth.uk/ssh-over-cloudflare/&quot;&gt;this post&lt;/a&gt; around the same time, and realized tunnelling could be a great alternative.&lt;/p&gt;
 
 &lt;h3 id=&quot;assumptions&quot;&gt;Assumptions&lt;/h3&gt;
 
@@ -36,10 +36,10 @@
 &lt;h4 id=&quot;assumptions-about-this-guide&quot;&gt;Assumptions About This Guide&lt;/h4&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;I’ve got &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;example.com&lt;/code&gt; on my cloudflare account (I don’t, &lt;em&gt;obvs&lt;/em&gt;)&lt;/li&gt;
-  &lt;li&gt;My tunnel is named &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;wormhole&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;I’ve got &lt;code class=&quot;highlighter-rouge&quot;&gt;example.com&lt;/code&gt; on my cloudflare account (I don’t, &lt;em&gt;obvs&lt;/em&gt;)&lt;/li&gt;
+  &lt;li&gt;My tunnel is named &lt;code class=&quot;highlighter-rouge&quot;&gt;wormhole&lt;/code&gt;&lt;/li&gt;
   &lt;li&gt;My tunnel id is 123455677890asdf&lt;/li&gt;
-  &lt;li&gt;My macOS username is &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;me&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;My macOS username is &lt;code class=&quot;highlighter-rouge&quot;&gt;me&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;host-setup&quot;&gt;Host Setup&lt;/h3&gt;
@@ -47,9 +47,9 @@
 
 &lt;ol&gt;
   &lt;li&gt;
-    &lt;p&gt;get pwsh (i used &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;winget&lt;/code&gt;)&lt;/p&gt;
+    &lt;p&gt;get pwsh (i used &lt;code class=&quot;highlighter-rouge&quot;&gt;winget&lt;/code&gt;)&lt;/p&gt;
 
-    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;PS&amp;gt; winget install Microsoft.PowerShell
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;PS&amp;gt; winget install Microsoft.PowerShell
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
     &lt;ul&gt;
       &lt;li&gt;At the time of writing, should be v7.2&lt;/li&gt;
@@ -58,17 +58,17 @@
   &lt;li&gt;
     &lt;p&gt;install chocolatey at &lt;a href=&quot;&quot;&gt;https://chocolatey.org/&lt;/a&gt;&lt;/p&gt;
 
-    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;PS&amp;gt; Set-ExecutionPolicy Bypass -Scope Process -Force [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString(&apos;https://community.chocolatey.org/install.ps1&apos;))
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;PS&amp;gt; Set-ExecutionPolicy Bypass -Scope Process -Force [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString(&apos;https://community.chocolatey.org/install.ps1&apos;))
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;install cloudflared via chocolatey&lt;/p&gt;
 
-    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;PS&amp;gt; choco install cloudflared
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;PS&amp;gt; choco install cloudflared
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
   &lt;/li&gt;
   &lt;li&gt;login
-    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;PS&amp;gt; cloudflared login
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;PS&amp;gt; cloudflared login
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
     &lt;ul&gt;
       &lt;li&gt;you may need to manually open the link in the
@@ -76,16 +76,16 @@ output and select the site you’d like to add the tunnel to&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
   &lt;li&gt;create a tunnel
-    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;PS&amp;gt; cloudflared tunnel create wormhole
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;PS&amp;gt; cloudflared tunnel create wormhole
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
   &lt;/li&gt;
   &lt;li&gt;setup cloudflared as a service
-    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;PS&amp;gt; cloudflared service install
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;PS&amp;gt; cloudflared service install
 PS&amp;gt; mkdir C:\Windows\System32\config\systemprofile\.cloudflared
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
   &lt;/li&gt;
   &lt;li&gt;create a config
-    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;PS&amp;gt; code C:\Windows\System32\config\systemprofile\.cloudflared\config.yml
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;PS&amp;gt; code C:\Windows\System32\config\systemprofile\.cloudflared\config.yml
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
     &lt;ul&gt;
       &lt;li&gt;example:&lt;/li&gt;
@@ -103,7 +103,7 @@ PS&amp;gt; mkdir C:\Windows\System32\config\systemprofile\.cloudflared
   &lt;li&gt;
     &lt;p&gt;set service as automatic&lt;/p&gt;
 
-    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;PS&amp;gt; Set-Service -Name Cloudflared -StartupType &quot;Automatic&quot;
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;PS&amp;gt; Set-Service -Name Cloudflared -StartupType &quot;Automatic&quot;
 PS&amp;gt; Set-ItemProperty HKLM:\SYSTEM\CurrentControlSet\Services\Cloudflared\ -Name ImagePath -Value &quot;C:\ProgramData\chocolatey\lib\cloudflared\tools\cloudflared.exe --config=C:\Windows\System32\config\systemprofile\.cloudflared\config.yml tunnel run&quot;
 PS&amp;gt; cloudflared tunnel route dns  wormhole.example
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
@@ -111,25 +111,25 @@ PS&amp;gt; cloudflared tunnel route dns  wormhole.example
   &lt;li&gt;
     &lt;p&gt;add a non-admin user (for ssh only). enter a paasword when prompted&lt;/p&gt;
 
-    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;PS&amp;gt; New-LocalUser -Name me-ssh
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;PS&amp;gt; New-LocalUser -Name me-ssh
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;set pwsh as your default shell&lt;/p&gt;
 
-    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;PS&amp;gt; New-ItemProperty -Path &quot;HKLM:\SOFTWARE\OpenSSH&quot; -Name DefaultShell -Value &quot;C:\Program Files\PowerShell\7\pwsh.exe&quot; -PropertyType String -Force
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;PS&amp;gt; New-ItemProperty -Path &quot;HKLM:\SOFTWARE\OpenSSH&quot; -Name DefaultShell -Value &quot;C:\Program Files\PowerShell\7\pwsh.exe&quot; -PropertyType String -Force
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;create external user .ssh directory to house authorized_keys&lt;/p&gt;
 
-    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;PS&amp;gt; mkdir C:\Users\me-ssh\.ssh
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;PS&amp;gt; mkdir C:\Users\me-ssh\.ssh
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;modify sshd_config&lt;/p&gt;
 
-    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;PS&amp;gt; code C:\ProgramData\ssh\sshd_config
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;PS&amp;gt; code C:\ProgramData\ssh\sshd_config
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
 
     &lt;ul&gt;
@@ -142,7 +142,7 @@ PS&amp;gt; cloudflared tunnel route dns  wormhole.example
   &lt;li&gt;
     &lt;p&gt;setup sshd &amp;amp; ssh-agent as automatic services, and start them&lt;/p&gt;
 
-    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;PS&amp;gt; Set-Service -Name sshd -StartupType &quot;Automatic&quot;; Set-Service -Name ssh-agent -StartupType &quot;Automatic&quot;; Start-Service sshd; Start-Service ssh-agent
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;PS&amp;gt; Set-Service -Name sshd -StartupType &quot;Automatic&quot;; Set-Service -Name ssh-agent -StartupType &quot;Automatic&quot;; Start-Service sshd; Start-Service ssh-agent
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
   &lt;/li&gt;
 &lt;/ol&gt;
@@ -155,18 +155,18 @@ PS&amp;gt; cloudflared tunnel route dns  wormhole.example
   &lt;li&gt;
     &lt;p&gt;make sure developer tools are up to date&lt;/p&gt;
 
-    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$&amp;gt; brew install cloudflare/cloudflare/cloudflared
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$&amp;gt; brew install cloudflare/cloudflare/cloudflared
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
 
     &lt;ul&gt;
       &lt;li&gt;to confirm install&lt;/li&gt;
     &lt;/ul&gt;
 
-    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$&amp;gt; cloudflared -v
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$&amp;gt; cloudflared -v
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
   &lt;/li&gt;
   &lt;li&gt;Login (just like on the host setup)
-    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$&amp;gt; cloudflared login
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$&amp;gt; cloudflared login
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
     &lt;ul&gt;
       &lt;li&gt;
@@ -182,35 +182,35 @@ PS&amp;gt; cloudflared tunnel route dns  wormhole.example
       &lt;li&gt;after selecting you’ll see in the terminal&lt;/li&gt;
     &lt;/ul&gt;
 
-    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; You have successfully logged in.
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; You have successfully logged in.
  If you wish to copy your credentials to a server, they have been saved to:
  /Users/yourusername/.cloudflared/cert.pem
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
   &lt;/li&gt;
   &lt;li&gt;next, update your hosts file
-    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$&amp;gt; code ~/.ssh/config
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$&amp;gt; code ~/.ssh/config
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
 
     &lt;ul&gt;
       &lt;li&gt;add the following&lt;/li&gt;
     &lt;/ul&gt;
 
-    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Host *.example.com
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Host *.example.com
     ProxyCommand /usr/local/bin/cloudflared access ssh --hostname %h
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
   &lt;/li&gt;
   &lt;li&gt;now you can ssh into the box directly
-    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; $&amp;gt; ssh me-ssh@wormhole.example.com
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; $&amp;gt; ssh me-ssh@wormhole.example.com
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;But let’s take this further for RDP and setup local forwarding&lt;/p&gt;
 
-    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; $&amp;gt; ssh -L 56789:127.0.0.1:3389 me-ssh@wormhole.example.com
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; $&amp;gt; ssh -L 56789:127.0.0.1:3389 me-ssh@wormhole.example.com
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
   &lt;/li&gt;
   &lt;li&gt;Setup pub key and add to host
-    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; cat ./.ssh/id_rsa.pub | ssh me-ssh@wormhole.example.com &quot;echo | Out-File -FilePath ~/.ssh/authorized_keys -Append&quot;
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; cat ./.ssh/id_rsa.pub | ssh me-ssh@wormhole.example.com &quot;echo | Out-File -FilePath ~/.ssh/authorized_keys -Append&quot;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
   &lt;/li&gt;
 &lt;/ol&gt;
@@ -270,12 +270,12 @@ https://mpharrigan.com/2016/05/17/background-ssh.html&lt;/li&gt;
 
 &lt;p&gt;I had used the Heroku unique-name generator before, when building &lt;a href=&quot;https://badideas.herokuapp.com/&quot;&gt;bad ideas&lt;/a&gt;. I loved how it removed a mental hurdle from getting something out the door; coming up with a name. Personally, I’m horrible at naming things, so this was a necessity. I don’t want to get hung up on picking a good name, and the defaults are equally as bad (ConsoleApplication23, anybody?).&lt;/p&gt;
 
-&lt;p&gt;I’d also been wanting to get back to dot net core. The last time I had played around with it, they were still using the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dnx&lt;/code&gt; command line tool and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;project.json&lt;/code&gt; files. So this project seemed small enough, and valuable enough, to actually keep me on task for the duration of v1.&lt;/p&gt;
+&lt;p&gt;I’d also been wanting to get back to dot net core. The last time I had played around with it, they were still using the &lt;code class=&quot;highlighter-rouge&quot;&gt;dnx&lt;/code&gt; command line tool and &lt;code class=&quot;highlighter-rouge&quot;&gt;project.json&lt;/code&gt; files. So this project seemed small enough, and valuable enough, to actually keep me on task for the duration of v1.&lt;/p&gt;
 
 &lt;h3 id=&quot;the-command-line&quot;&gt;The command line&lt;/h3&gt;
 &lt;p&gt;I was stoked to be able to layout the project structure from the command line. I’m just so much more optimistic about a tool when there’s a CLI behind it. Even if I’ll never script it, the idea that i &lt;em&gt;could&lt;/em&gt; is very appealing.&lt;/p&gt;
 
-&lt;p&gt;I scaffolded the whole project via the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dotnet new&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dotnet add&lt;/code&gt; commands. I was also able to build and test in the same manner. It was a nice break from VS 2017.&lt;/p&gt;
+&lt;p&gt;I scaffolded the whole project via the &lt;code class=&quot;highlighter-rouge&quot;&gt;dotnet new&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;dotnet add&lt;/code&gt; commands. I was also able to build and test in the same manner. It was a nice break from VS 2017.&lt;/p&gt;
 
 &lt;h3 id=&quot;structure&quot;&gt;Structure&lt;/h3&gt;
 &lt;p&gt;I found lists of adjectives and nouns online. And thank to some recent practice with regex crosswords, quickly stripped everything but the words themselves.&lt;/p&gt;
@@ -284,7 +284,7 @@ https://mpharrigan.com/2016/05/17/background-ssh.html&lt;/li&gt;
 
 &lt;p&gt;I was able to create a CLI for OS X, which was came in handy when publishing to Azure, and needing names for everything.&lt;/p&gt;
 
-&lt;p&gt;For the web app the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dotnet help&lt;/code&gt; lists a template called &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;razor&lt;/code&gt; with the description “mvc with razor pages.” I’ve used the Razor syntax since it debuted, and thought, “of course I want razor, not &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;aspx&lt;/code&gt;.” Apparently though, Razor Pages is a new thing. I actually really liked it for build the web app component. I still created a controller for the API, but was happy I stumbled onto this new paradigm.&lt;/p&gt;
+&lt;p&gt;For the web app the &lt;code class=&quot;highlighter-rouge&quot;&gt;dotnet help&lt;/code&gt; lists a template called &lt;code class=&quot;highlighter-rouge&quot;&gt;razor&lt;/code&gt; with the description “mvc with razor pages.” I’ve used the Razor syntax since it debuted, and thought, “of course I want razor, not &lt;code class=&quot;highlighter-rouge&quot;&gt;aspx&lt;/code&gt;.” Apparently though, Razor Pages is a new thing. I actually really liked it for build the web app component. I still created a controller for the API, but was happy I stumbled onto this new paradigm.&lt;/p&gt;
 
 &lt;p&gt;I really went over the top with the completeness. Azure for hosting. Custom domain through NameCheap. SSL through CloudFlare.&lt;/p&gt;
 
@@ -304,7 +304,7 @@ https://mpharrigan.com/2016/05/17/background-ssh.html&lt;/li&gt;
 
 &lt;p&gt;For some reason, my &lt;a href=&quot;https://www.appveyor.com/&quot;&gt;AppVeyor&lt;/a&gt; builds were failing. They were clearly pulling the latest from my repo, but for some reason, the nuget restore stopped working. I probably should’ve googled the issue, and I think I did, but I was asking the wrong questions. I finally gave up and manually configured the build via the GUI, and then exported that config to YAML. When I went to do the next extension, I finally realized what the problem was. I used the exact same exported YAML, and got the exact same initial errors with the nuget restore.&lt;/p&gt;
 
-&lt;p&gt;Googling “appveyor not using yaml” led me to &lt;a href=&quot;https://help.appveyor.com/discussions/questions/4148-why-does-appveyor-seem-not-to-pick-up-my-appveyoryml&quot;&gt;this help article&lt;/a&gt;. I still don’t understand why permissions were an issue to read the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;appveyor.yml&lt;/code&gt;, when it was clearly reading an updated &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;csproj&lt;/code&gt; file. But I do now have extensions that support VS 2017.&lt;/p&gt;
+&lt;p&gt;Googling “appveyor not using yaml” led me to &lt;a href=&quot;https://help.appveyor.com/discussions/questions/4148-why-does-appveyor-seem-not-to-pick-up-my-appveyoryml&quot;&gt;this help article&lt;/a&gt;. I still don’t understand why permissions were an issue to read the &lt;code class=&quot;highlighter-rouge&quot;&gt;appveyor.yml&lt;/code&gt;, when it was clearly reading an updated &lt;code class=&quot;highlighter-rouge&quot;&gt;csproj&lt;/code&gt; file. But I do now have extensions that support VS 2017.&lt;/p&gt;
 </description>
         <pubDate>Tue, 15 May 2018 16:22:49 -0700</pubDate>
         <link>https://clintcparker.com/2018/05/15/adventures-in-vs-extension-updates.html</link>
@@ -348,7 +348,7 @@ https://mpharrigan.com/2016/05/17/background-ssh.html&lt;/li&gt;
         <title>C# Obfuscation</title>
         <description>&lt;p&gt;You can use the underscore to write ridiculous code.&lt;/p&gt;
 
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;__&lt;/code&gt; is a valid class name. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;__&lt;/code&gt; is a valid namespace. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;__()&lt;/code&gt; is a valid method. And, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;__&lt;/code&gt; is a valid property.&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;__&lt;/code&gt; is a valid class name. &lt;code class=&quot;highlighter-rouge&quot;&gt;__&lt;/code&gt; is a valid namespace. &lt;code class=&quot;highlighter-rouge&quot;&gt;__()&lt;/code&gt; is a valid method. And, &lt;code class=&quot;highlighter-rouge&quot;&gt;__&lt;/code&gt; is a valid property.&lt;/p&gt;
 
 &lt;p&gt;I stumbled upon this a few years ago , but hadn’t gotten around to writing it down. It’s really fun to play with. I thinkt the next step is to create an obfuscator extension.&lt;/p&gt;
 
@@ -475,23 +475,23 @@ Another team just got two half done projects dumped into their branch, because t
 
 &lt;p&gt;But it doesn’t.&lt;/p&gt;
 
-&lt;p&gt;I thought it would work. I like using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;yield&lt;/code&gt; to take full advantage of delayed enumeration, rather than creating new lists or arrays all the time.&lt;/p&gt;
+&lt;p&gt;I thought it would work. I like using &lt;code class=&quot;highlighter-rouge&quot;&gt;yield&lt;/code&gt; to take full advantage of delayed enumeration, rather than creating new lists or arrays all the time.&lt;/p&gt;
 
-&lt;p&gt;Everything looks right; the return types are good. Except it won’t compile. You get a nice message about having to use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;yield&lt;/code&gt; inside an iterator when trying to return &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;(IEnumerabl&amp;lt;T&amp;gt;)obj&lt;/code&gt; directly.&lt;/p&gt;
+&lt;p&gt;Everything looks right; the return types are good. Except it won’t compile. You get a nice message about having to use &lt;code class=&quot;highlighter-rouge&quot;&gt;yield&lt;/code&gt; inside an iterator when trying to return &lt;code class=&quot;highlighter-rouge&quot;&gt;(IEnumerabl&amp;lt;T&amp;gt;)obj&lt;/code&gt; directly.&lt;/p&gt;
 
-&lt;p&gt;Don’t try &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;yield return (IEnumerable&amp;lt;T&amp;gt;)obj&lt;/code&gt;. That will do exactly what you’d think. It won’t compile either, because now the return types don’t match, because &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;yield return (IENumerable&amp;lt;T&amp;gt;)obj&lt;/code&gt; needs a method return type of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;IEnumerable&amp;lt;IEnumerable&amp;lt;T&amp;gt;&amp;gt;&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Don’t try &lt;code class=&quot;highlighter-rouge&quot;&gt;yield return (IEnumerable&amp;lt;T&amp;gt;)obj&lt;/code&gt;. That will do exactly what you’d think. It won’t compile either, because now the return types don’t match, because &lt;code class=&quot;highlighter-rouge&quot;&gt;yield return (IENumerable&amp;lt;T&amp;gt;)obj&lt;/code&gt; needs a method return type of &lt;code class=&quot;highlighter-rouge&quot;&gt;IEnumerable&amp;lt;IEnumerable&amp;lt;T&amp;gt;&amp;gt;&lt;/code&gt;.&lt;/p&gt;
 
 &lt;p&gt;So what to do?&lt;/p&gt;
 
-&lt;p&gt;Obviously, try &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;yield break&lt;/code&gt;. Because nothing else is making sense at this point. But of course, that’s not what &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;yield break&lt;/code&gt; is for in the least, so it doesn’t work. Yay, not completely crazy.&lt;/p&gt;
+&lt;p&gt;Obviously, try &lt;code class=&quot;highlighter-rouge&quot;&gt;yield break&lt;/code&gt;. Because nothing else is making sense at this point. But of course, that’s not what &lt;code class=&quot;highlighter-rouge&quot;&gt;yield break&lt;/code&gt; is for in the least, so it doesn’t work. Yay, not completely crazy.&lt;/p&gt;
 
 &lt;p&gt;This issue didn’t come up for me until I was trying to combine recursion &amp;amp; LINQ-expressions. And was stumped. Googling the motivator (LINQ and recursion) yielded (pun intended) no valuable results.&lt;/p&gt;
 
 &lt;p&gt;I grabbed the nearest .NET nerd of my colleagues, and went straight to the whiteboard. In doing so, I realized that recursion has nothing to do with this not compiling (still not crazy!). On the other hand I still had to convince my colleague that the code wouldn’t compile. (He went thru literally the same steps I did. Again, not crazy).&lt;/p&gt;
 
-&lt;p&gt;So we seem to have found a cool nugget in the compiler, that seems to say, “if you want to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;yield return&lt;/code&gt; once in a method, you must &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;yield&lt;/code&gt; all other returns in that method.” OK. That actually kind of makes sense. Delayed enumeration would mean that the compiler is wanting to deal w/ things granularly.&lt;/p&gt;
+&lt;p&gt;So we seem to have found a cool nugget in the compiler, that seems to say, “if you want to &lt;code class=&quot;highlighter-rouge&quot;&gt;yield return&lt;/code&gt; once in a method, you must &lt;code class=&quot;highlighter-rouge&quot;&gt;yield&lt;/code&gt; all other returns in that method.” OK. That actually kind of makes sense. Delayed enumeration would mean that the compiler is wanting to deal w/ things granularly.&lt;/p&gt;
 
-&lt;p&gt;My (sad hack of a) solution: Fake the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;yield&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;My (sad hack of a) solution: Fake the &lt;code class=&quot;highlighter-rouge&quot;&gt;yield&lt;/code&gt;.&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-csharp&quot; data-lang=&quot;csharp&quot;&gt;&lt;span class=&quot;n&quot;&gt;IEnumerable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DoesActuallyWork&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; 

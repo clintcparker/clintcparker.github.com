@@ -79,7 +79,7 @@
                 
             
             <a href="https://github.com/clintcparker" target="_blank" >GitHub</a>
-            <a href="https://www.linkedin.com/in/clintcparker" target="_blank"  >Resumé</a>
+            <a href="https://www.linkedin.com/in/clintcparker" target="_blank"  >Résumé</a>
 	    <a href="https://twitter.com/clintcparker" target="_blank" >Tweets</a>
         </nav>
 
@@ -116,23 +116,23 @@
 
 <p>But it doesn’t.</p>
 
-<p>I thought it would work. I like using <code class="language-plaintext highlighter-rouge">yield</code> to take full advantage of delayed enumeration, rather than creating new lists or arrays all the time.</p>
+<p>I thought it would work. I like using <code class="highlighter-rouge">yield</code> to take full advantage of delayed enumeration, rather than creating new lists or arrays all the time.</p>
 
-<p>Everything looks right; the return types are good. Except it won’t compile. You get a nice message about having to use <code class="language-plaintext highlighter-rouge">yield</code> inside an iterator when trying to return <code class="language-plaintext highlighter-rouge">(IEnumerabl&lt;T&gt;)obj</code> directly.</p>
+<p>Everything looks right; the return types are good. Except it won’t compile. You get a nice message about having to use <code class="highlighter-rouge">yield</code> inside an iterator when trying to return <code class="highlighter-rouge">(IEnumerabl&lt;T&gt;)obj</code> directly.</p>
 
-<p>Don’t try <code class="language-plaintext highlighter-rouge">yield return (IEnumerable&lt;T&gt;)obj</code>. That will do exactly what you’d think. It won’t compile either, because now the return types don’t match, because <code class="language-plaintext highlighter-rouge">yield return (IENumerable&lt;T&gt;)obj</code> needs a method return type of <code class="language-plaintext highlighter-rouge">IEnumerable&lt;IEnumerable&lt;T&gt;&gt;</code>.</p>
+<p>Don’t try <code class="highlighter-rouge">yield return (IEnumerable&lt;T&gt;)obj</code>. That will do exactly what you’d think. It won’t compile either, because now the return types don’t match, because <code class="highlighter-rouge">yield return (IENumerable&lt;T&gt;)obj</code> needs a method return type of <code class="highlighter-rouge">IEnumerable&lt;IEnumerable&lt;T&gt;&gt;</code>.</p>
 
 <p>So what to do?</p>
 
-<p>Obviously, try <code class="language-plaintext highlighter-rouge">yield break</code>. Because nothing else is making sense at this point. But of course, that’s not what <code class="language-plaintext highlighter-rouge">yield break</code> is for in the least, so it doesn’t work. Yay, not completely crazy.</p>
+<p>Obviously, try <code class="highlighter-rouge">yield break</code>. Because nothing else is making sense at this point. But of course, that’s not what <code class="highlighter-rouge">yield break</code> is for in the least, so it doesn’t work. Yay, not completely crazy.</p>
 
 <p>This issue didn’t come up for me until I was trying to combine recursion &amp; LINQ-expressions. And was stumped. Googling the motivator (LINQ and recursion) yielded (pun intended) no valuable results.</p>
 
 <p>I grabbed the nearest .NET nerd of my colleagues, and went straight to the whiteboard. In doing so, I realized that recursion has nothing to do with this not compiling (still not crazy!). On the other hand I still had to convince my colleague that the code wouldn’t compile. (He went thru literally the same steps I did. Again, not crazy).</p>
 
-<p>So we seem to have found a cool nugget in the compiler, that seems to say, “if you want to <code class="language-plaintext highlighter-rouge">yield return</code> once in a method, you must <code class="language-plaintext highlighter-rouge">yield</code> all other returns in that method.” OK. That actually kind of makes sense. Delayed enumeration would mean that the compiler is wanting to deal w/ things granularly.</p>
+<p>So we seem to have found a cool nugget in the compiler, that seems to say, “if you want to <code class="highlighter-rouge">yield return</code> once in a method, you must <code class="highlighter-rouge">yield</code> all other returns in that method.” OK. That actually kind of makes sense. Delayed enumeration would mean that the compiler is wanting to deal w/ things granularly.</p>
 
-<p>My (sad hack of a) solution: Fake the <code class="language-plaintext highlighter-rouge">yield</code>.</p>
+<p>My (sad hack of a) solution: Fake the <code class="highlighter-rouge">yield</code>.</p>
 
 <figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span> <span class="n">DoesActuallyWork</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;(</span><span class="n">T</span>  <span class="n">obj</span><span class="p">)</span>
 <span class="p">{</span> 

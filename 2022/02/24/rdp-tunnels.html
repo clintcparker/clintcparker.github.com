@@ -79,7 +79,7 @@
                 
             
             <a href="https://github.com/clintcparker" target="_blank" >GitHub</a>
-            <a href="https://www.linkedin.com/in/clintcparker" target="_blank"  >Resumé</a>
+            <a href="https://www.linkedin.com/in/clintcparker" target="_blank"  >Résumé</a>
 	    <a href="https://twitter.com/clintcparker" target="_blank" >Tweets</a>
         </nav>
 
@@ -112,7 +112,7 @@
       </h3>
     
 
-<p>I love the persistence of a host machine! I’m too cheap to get a VPS. I really like the windows 11 OS but really love mac laptops. I left <code class="language-plaintext highlighter-rouge">3389</code> open on my router (with DDNS) and found myself getting brute forced. I saw <a href="https://orth.uk/ssh-over-cloudflare/">this post</a> around the same time, and realized tunnelling could be a great alternative.</p>
+<p>I love the persistence of a host machine! I’m too cheap to get a VPS. I really like the windows 11 OS but really love mac laptops. I left <code class="highlighter-rouge">3389</code> open on my router (with DDNS) and found myself getting brute forced. I saw <a href="https://orth.uk/ssh-over-cloudflare/">this post</a> around the same time, and realized tunnelling could be a great alternative.</p>
       <h3 id="assumptions">
         
         
@@ -158,10 +158,10 @@
     
 
 <ul>
-  <li>I’ve got <code class="language-plaintext highlighter-rouge">example.com</code> on my cloudflare account (I don’t, <em>obvs</em>)</li>
-  <li>My tunnel is named <code class="language-plaintext highlighter-rouge">wormhole</code></li>
+  <li>I’ve got <code class="highlighter-rouge">example.com</code> on my cloudflare account (I don’t, <em>obvs</em>)</li>
+  <li>My tunnel is named <code class="highlighter-rouge">wormhole</code></li>
   <li>My tunnel id is 123455677890asdf</li>
-  <li>My macOS username is <code class="language-plaintext highlighter-rouge">me</code></li>
+  <li>My macOS username is <code class="highlighter-rouge">me</code></li>
 </ul>
       <h3 id="host-setup">
         
@@ -182,9 +182,9 @@
 
 <ol>
   <li>
-    <p>get pwsh (i used <code class="language-plaintext highlighter-rouge">winget</code>)</p>
+    <p>get pwsh (i used <code class="highlighter-rouge">winget</code>)</p>
 
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PS&gt; winget install Microsoft.PowerShell
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PS&gt; winget install Microsoft.PowerShell
 </code></pre></div>    </div>
     <ul>
       <li>At the time of writing, should be v7.2</li>
@@ -193,17 +193,17 @@
   <li>
     <p>install chocolatey at <a href="">https://chocolatey.org/</a></p>
 
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PS&gt; Set-ExecutionPolicy Bypass -Scope Process -Force [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PS&gt; Set-ExecutionPolicy Bypass -Scope Process -Force [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
 </code></pre></div>    </div>
   </li>
   <li>
     <p>install cloudflared via chocolatey</p>
 
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PS&gt; choco install cloudflared
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PS&gt; choco install cloudflared
 </code></pre></div>    </div>
   </li>
   <li>login
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PS&gt; cloudflared login
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PS&gt; cloudflared login
 </code></pre></div>    </div>
     <ul>
       <li>you may need to manually open the link in the
@@ -211,16 +211,16 @@ output and select the site you’d like to add the tunnel to</li>
     </ul>
   </li>
   <li>create a tunnel
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PS&gt; cloudflared tunnel create wormhole
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PS&gt; cloudflared tunnel create wormhole
 </code></pre></div>    </div>
   </li>
   <li>setup cloudflared as a service
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PS&gt; cloudflared service install
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PS&gt; cloudflared service install
 PS&gt; mkdir C:\Windows\System32\config\systemprofile\.cloudflared
 </code></pre></div>    </div>
   </li>
   <li>create a config
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PS&gt; code C:\Windows\System32\config\systemprofile\.cloudflared\config.yml
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PS&gt; code C:\Windows\System32\config\systemprofile\.cloudflared\config.yml
 </code></pre></div>    </div>
     <ul>
       <li>example:</li>
@@ -238,7 +238,7 @@ PS&gt; mkdir C:\Windows\System32\config\systemprofile\.cloudflared
   <li>
     <p>set service as automatic</p>
 
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PS&gt; Set-Service -Name Cloudflared -StartupType "Automatic"
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PS&gt; Set-Service -Name Cloudflared -StartupType "Automatic"
 PS&gt; Set-ItemProperty HKLM:\SYSTEM\CurrentControlSet\Services\Cloudflared\ -Name ImagePath -Value "C:\ProgramData\chocolatey\lib\cloudflared\tools\cloudflared.exe --config=C:\Windows\System32\config\systemprofile\.cloudflared\config.yml tunnel run"
 PS&gt; cloudflared tunnel route dns  wormhole.example
 </code></pre></div>    </div>
@@ -246,25 +246,25 @@ PS&gt; cloudflared tunnel route dns  wormhole.example
   <li>
     <p>add a non-admin user (for ssh only). enter a paasword when prompted</p>
 
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PS&gt; New-LocalUser -Name me-ssh
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PS&gt; New-LocalUser -Name me-ssh
 </code></pre></div>    </div>
   </li>
   <li>
     <p>set pwsh as your default shell</p>
 
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PS&gt; New-ItemProperty -Path "HKLM:\SOFTWARE\OpenSSH" -Name DefaultShell -Value "C:\Program Files\PowerShell\7\pwsh.exe" -PropertyType String -Force
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PS&gt; New-ItemProperty -Path "HKLM:\SOFTWARE\OpenSSH" -Name DefaultShell -Value "C:\Program Files\PowerShell\7\pwsh.exe" -PropertyType String -Force
 </code></pre></div>    </div>
   </li>
   <li>
     <p>create external user .ssh directory to house authorized_keys</p>
 
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PS&gt; mkdir C:\Users\me-ssh\.ssh
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PS&gt; mkdir C:\Users\me-ssh\.ssh
 </code></pre></div>    </div>
   </li>
   <li>
     <p>modify sshd_config</p>
 
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PS&gt; code C:\ProgramData\ssh\sshd_config
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PS&gt; code C:\ProgramData\ssh\sshd_config
 </code></pre></div>    </div>
 
     <ul>
@@ -277,7 +277,7 @@ PS&gt; cloudflared tunnel route dns  wormhole.example
   <li>
     <p>setup sshd &amp; ssh-agent as automatic services, and start them</p>
 
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PS&gt; Set-Service -Name sshd -StartupType "Automatic"; Set-Service -Name ssh-agent -StartupType "Automatic"; Start-Service sshd; Start-Service ssh-agent
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PS&gt; Set-Service -Name sshd -StartupType "Automatic"; Set-Service -Name ssh-agent -StartupType "Automatic"; Start-Service sshd; Start-Service ssh-agent
 </code></pre></div>    </div>
   </li>
 </ol>
@@ -302,18 +302,18 @@ PS&gt; cloudflared tunnel route dns  wormhole.example
   <li>
     <p>make sure developer tools are up to date</p>
 
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$&gt; brew install cloudflare/cloudflare/cloudflared
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$&gt; brew install cloudflare/cloudflare/cloudflared
 </code></pre></div>    </div>
 
     <ul>
       <li>to confirm install</li>
     </ul>
 
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$&gt; cloudflared -v
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$&gt; cloudflared -v
 </code></pre></div>    </div>
   </li>
   <li>Login (just like on the host setup)
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$&gt; cloudflared login
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$&gt; cloudflared login
 </code></pre></div>    </div>
     <ul>
       <li>
@@ -329,35 +329,35 @@ PS&gt; cloudflared tunnel route dns  wormhole.example
       <li>after selecting you’ll see in the terminal</li>
     </ul>
 
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> You have successfully logged in.
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> You have successfully logged in.
  If you wish to copy your credentials to a server, they have been saved to:
  /Users/yourusername/.cloudflared/cert.pem
 </code></pre></div>    </div>
   </li>
   <li>next, update your hosts file
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$&gt; code ~/.ssh/config
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$&gt; code ~/.ssh/config
 </code></pre></div>    </div>
 
     <ul>
       <li>add the following</li>
     </ul>
 
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Host *.example.com
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Host *.example.com
     ProxyCommand /usr/local/bin/cloudflared access ssh --hostname %h
 </code></pre></div>    </div>
   </li>
   <li>now you can ssh into the box directly
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> $&gt; ssh me-ssh@wormhole.example.com
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> $&gt; ssh me-ssh@wormhole.example.com
 </code></pre></div>    </div>
   </li>
   <li>
     <p>But let’s take this further for RDP and setup local forwarding</p>
 
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> $&gt; ssh -L 56789:127.0.0.1:3389 me-ssh@wormhole.example.com
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> $&gt; ssh -L 56789:127.0.0.1:3389 me-ssh@wormhole.example.com
 </code></pre></div>    </div>
   </li>
   <li>Setup pub key and add to host
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> cat ./.ssh/id_rsa.pub | ssh me-ssh@wormhole.example.com "echo | Out-File -FilePath ~/.ssh/authorized_keys -Append"
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> cat ./.ssh/id_rsa.pub | ssh me-ssh@wormhole.example.com "echo | Out-File -FilePath ~/.ssh/authorized_keys -Append"
 </code></pre></div>    </div>
   </li>
 </ol>
