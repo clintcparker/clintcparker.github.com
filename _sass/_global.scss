@@ -155,6 +155,13 @@ h1 {
     font-size: .725em;
 }
 
+.post a.header-link {
+    text-decoration: none;
+}
+.post a.header-link:hover {
+    text-decoration: underline;
+}
+
 .post-title {
     margin: 0 auto;
 }

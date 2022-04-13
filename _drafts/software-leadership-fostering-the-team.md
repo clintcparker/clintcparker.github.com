@@ -34,7 +34,7 @@ The concept I think everyone misses with accountability, though, is that it's a 
 
 The feedback loop needs to continue regardless of the feedback. 
 
-We all go to many post-mortems when something our team worked on broke. We rarely go to a meeting to explain why or how something our team worked on was produced so well. As engineering leaders, we need to be asking a lot more questions of the successful teams than the unsuccessful ones. We should maximize our success instead of minimizing our failure. 
+We all go to many postmortems when something our team worked on broke. We rarely go to a meeting to explain why or how something our team worked on was produced so well. As engineering leaders, we need to be asking a lot more questions of the successful teams than the unsuccessful ones. We should maximize our success instead of minimizing our failure. 
 
 ## Conclusion
 It's amusing how little software leadership has to do with the actual software. I will have some more technical leadership topics in the future, but most will be like this. I hope some of this will help you with your teams. As always feel free to send any comments to me on Twitter at *[@clintcparker](https://twitter.com/clintcparker)*.
