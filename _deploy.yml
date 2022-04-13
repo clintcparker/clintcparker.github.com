@@ -7,7 +7,7 @@ git_url: git@github.com:clintcparker/clintcparker.github.com.git  # remote repos
 # If using GitHub project pages, set the branch to 'gh-pages'.
 # For GitHub user/organization pages or Heroku, set the branch to 'master'.
 #
-git_branch: master                        # Git branch where static site files are commited
+git_branch: main                        # Git branch where static site files are commited
 
 
 # remote_path:                            # Destination directory
