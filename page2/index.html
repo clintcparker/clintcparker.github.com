@@ -29,6 +29,50 @@
 </script>
 
     
+    <script>
+    // var anchorForId = function (id) {
+    //   var anchor = document.createElement("a");
+    //   anchor.className = "header-link";
+    //   anchor.href      = "#" + id;
+    //   anchor.innerHTML = "<span class=\"sr-only\">Permalink</span><i class=\"fa fa-link\"></i>";
+    //   anchor.title = "Permalink";
+    //   return anchor;
+    // };
+    anchorForId = function (id,text) {
+      var anchor = document.createElement("a");
+      anchor.className = "header-link";
+      anchor.href      = "#" + id;
+      anchor.text = text;
+      anchor.title = "Permalink";
+      return anchor;
+    };
+  
+    var linkifyAnchors = function (level, containingElement) {
+      var headers = containingElement.getElementsByTagName("h" + level);
+      for (var h = 0; h < headers.length; h++) {
+        var header = headers[h];
+  
+        if (typeof header.id !== "undefined" && header.id !== "") {
+            //debugger;
+          var n = header.childNodes[0];
+          header.insertBefore(anchorForId(header.id,header.textContent),n);
+          header.removeChild(n);
+        }
+      }
+    };
+  
+    document.onreadystatechange = function () {
+      if (this.readyState === "complete") {
+        var contentBlock = document.getElementsByClassName("post")[0];//('body')[0];// . || document.getElementsByClassName("news")[0];
+        if (!contentBlock) {
+          return;
+        }
+        for (var level = 1; level <= 6; level++) {
+          linkifyAnchors(level, contentBlock);
+        }
+      }
+    };
+  </script>
 </head>
 
 
@@ -94,18 +138,11 @@
 
 
     <div class="page-content">
-      <div class="wrapper"> 
+      <div class="wrapper">
         <div class="home">
   
     <article class="post">
-      <h2 class="post-title">
-        
-        
-          <a class="post-link" href="/2016/10/01/c-obfuscation.html">C# Obfuscation</a>
-        
-        
-      </h2>
-    
+      <h2 class="post-title"><a class="post-link" href="/2016/10/01/c-obfuscation/">C# Obfuscation</a></h2>
 
       <time datetime="2016-10-01T12:02:45-07:00" class="post-date">October 01, 2016</time>
 
@@ -180,18 +217,14 @@
 
 <p>Thanks for reading.</p>
 
-<p>P.S. Who want’s to help me write the obfuscator?</p><hr>
+<p>P.S. Who want’s to help me write the obfuscator?</p>
+
+
+      <hr>
     </article>
   
     <article class="post">
-      <h2 class="post-title">
-        
-        
-          <a class="post-link" href="/2016/09/28/why-git-works-where-tfvc-doesnt.html">Why Git Works Where TFVC Doesn't</a>
-        
-        
-      </h2>
-    
+      <h2 class="post-title"><a class="post-link" href="/2016/09/28/why-git-works-where-tfvc-doesnt/">Why Git Works Where TFVC Doesn't</a></h2>
 
       <time datetime="2016-09-28T15:29:00-07:00" class="post-date">September 28, 2016</time>
 
@@ -218,18 +251,14 @@ Another team just got two half done projects dumped into their branch, because t
 
 <p>I’m of the belief that is has made our developers better, knowing the impact of a bad commit. But it isn’t easy.</p>
 
-<p>So we’re switching to git. And we can have as many branches as we want. And they can be local. And they can have good names. And they can be deleted. And we can still commit to mainline if we want to.</p><hr>
+<p>So we’re switching to git. And we can have as many branches as we want. And they can be local. And they can have good names. And they can be deleted. And we can still commit to mainline if we want to.</p>
+
+
+      <hr>
     </article>
   
     <article class="post">
-      <h2 class="post-title">
-        
-        
-          <a class="post-link" href="/2016/09/11/how-yield-works.html">How Yield Works</a>
-        
-        
-      </h2>
-    
+      <h2 class="post-title"><a class="post-link" href="/2016/09/11/how-yield-works/">How Yield Works</a></h2>
 
       <time datetime="2016-09-11T13:55:00-07:00" class="post-date">September 11, 2016</time>
 
@@ -278,18 +307,14 @@ Another team just got two half done projects dumped into their branch, because t
     <span class="k">yield</span> <span class="k">return</span> <span class="n">obj</span><span class="p">.</span>
 <span class="p">}</span></code></pre></figure>
 
-<p>All that to avoid explicitly instantiating lists.</p><hr>
+<p>All that to avoid explicitly instantiating lists.</p>
+
+
+      <hr>
     </article>
   
     <article class="post">
-      <h2 class="post-title">
-        
-        
-          <a class="post-link" href="/2016/09/11/creating-a-vs-extension.html">Creating a vs Extension</a>
-        
-        
-      </h2>
-    
+      <h2 class="post-title"><a class="post-link" href="/2016/09/11/creating-a-vs-extension/">Creating a vs Extension</a></h2>
 
       <time datetime="2016-09-11T13:55:00-07:00" class="post-date">September 11, 2016</time>
 
@@ -305,24 +330,23 @@ Another team just got two half done projects dumped into their branch, because t
 
 <p>I followed Mads’ video, and it was surprisingly easy. The docs are still very confusing for the VS interfaces, but it was still doable.In the end, what took Mads less than an hour on stage, took me about 5 hours of total work at my desk.</p>
 
-<p>All in all, it was still surprisingly easy, and I regret not doing it sooner.</p><hr>
+<p>All in all, it was still surprisingly easy, and I regret not doing it sooner.</p>
+
+
+      <hr>
     </article>
   
     <article class="post">
-      <h2 class="post-title">
-        
-        
-          <a class="post-link" href="/2014/03/21/c-testing-with-fakes.html">C# Testing With Fakes</a>
-        
-        
-      </h2>
-    
+      <h2 class="post-title"><a class="post-link" href="/2014/03/21/c-testing-with-fakes/">C# Testing With Fakes</a></h2>
 
       <time datetime="2014-03-21T17:00:00-07:00" class="post-date">March 21, 2014</time>
 
       <p>I wrote a nice little tutorial about using fakes in C#. It cover Shims and Stubs. It also covers testing private methods using the InternalsVisibleTo attribute.</p>
 
-<p><a href="https://github.com/clintcparker/c_sharp_testing/wiki/Coverage-Tutorial">https://github.com/clintcparker/c_sharp_testing/wiki/Coverage-Tutorial</a></p><hr>
+<p><a href="https://github.com/clintcparker/c_sharp_testing/wiki/Coverage-Tutorial">https://github.com/clintcparker/c_sharp_testing/wiki/Coverage-Tutorial</a></p>
+
+
+      <hr>
     </article>
   
 

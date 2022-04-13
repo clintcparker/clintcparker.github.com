@@ -13,7 +13,7 @@
 
     <!-- <link rel="icon" type="image/x-icon" href="https://clintcparker.com/favicon.ico"> -->
 
-    <link rel="canonical" href="https://clintcparker.com/2014/03/21/vbscript-conditional-includes.html">
+    <link rel="canonical" href="https://clintcparker.com/2014/03/21/vbscript-conditional-includes/">
     <link rel="alternate" type="application/rss+xml" title="@clintcparker" href="https://clintcparker.com/feed.xml" />
     
     <script>
@@ -28,6 +28,50 @@
 </script>
 
     
+    <script>
+    // var anchorForId = function (id) {
+    //   var anchor = document.createElement("a");
+    //   anchor.className = "header-link";
+    //   anchor.href      = "#" + id;
+    //   anchor.innerHTML = "<span class=\"sr-only\">Permalink</span><i class=\"fa fa-link\"></i>";
+    //   anchor.title = "Permalink";
+    //   return anchor;
+    // };
+    anchorForId = function (id,text) {
+      var anchor = document.createElement("a");
+      anchor.className = "header-link";
+      anchor.href      = "#" + id;
+      anchor.text = text;
+      anchor.title = "Permalink";
+      return anchor;
+    };
+  
+    var linkifyAnchors = function (level, containingElement) {
+      var headers = containingElement.getElementsByTagName("h" + level);
+      for (var h = 0; h < headers.length; h++) {
+        var header = headers[h];
+  
+        if (typeof header.id !== "undefined" && header.id !== "") {
+            //debugger;
+          var n = header.childNodes[0];
+          header.insertBefore(anchorForId(header.id,header.textContent),n);
+          header.removeChild(n);
+        }
+      }
+    };
+  
+    document.onreadystatechange = function () {
+      if (this.readyState === "complete") {
+        var contentBlock = document.getElementsByClassName("post")[0];//('body')[0];// . || document.getElementsByClassName("news")[0];
+        if (!contentBlock) {
+          return;
+        }
+        for (var level = 1; level <= 6; level++) {
+          linkifyAnchors(level, contentBlock);
+        }
+      }
+    };
+  </script>
 </head>
 
 
@@ -89,16 +133,11 @@
 
 
     <div class="page-content">
-      <div class="wrapper"> 
-        <div class="post"><header class="post-header">
-      <h2 class="post-title">
-        
-        
-          VBScript Conditional Includes
-        
-        
-      </h2>
-    
+      <div class="wrapper">
+        <div class="post">
+
+  <header class="post-header">
+    <h2 class="post-title">VBScript Conditional Includes</h2>
     <time class="post-date">March 21, 2014</time>
   </header>
 

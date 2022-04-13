@@ -6,14 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>C# Testing With Fakes</title>
-    <meta name="description" content="I wrote a nice little tutorial about using fakes in C#. It cover Shims and Stubs. It also covers testing private methods using the InternalsVisibleTo attribute.">
+    <title>Data Driven</title>
+    <meta name="description" content="This video absolutely changed my life. My friend and mentor showed it to me in the beginning of 2015. The early experiences of Etsy immediately resonated wit...">
 
     <link rel="stylesheet" href="/assets/css/style.css">
 
     <!-- <link rel="icon" type="image/x-icon" href="https://clintcparker.com/favicon.ico"> -->
 
-    <link rel="canonical" href="https://clintcparker.com/2014/03/21/c-testing-with-fakes.html">
+    <link rel="canonical" href="https://clintcparker.com/2017/08/17/data-driven/">
     <link rel="alternate" type="application/rss+xml" title="@clintcparker" href="https://clintcparker.com/feed.xml" />
     
     <script>
@@ -28,6 +28,50 @@
 </script>
 
     
+    <script>
+    // var anchorForId = function (id) {
+    //   var anchor = document.createElement("a");
+    //   anchor.className = "header-link";
+    //   anchor.href      = "#" + id;
+    //   anchor.innerHTML = "<span class=\"sr-only\">Permalink</span><i class=\"fa fa-link\"></i>";
+    //   anchor.title = "Permalink";
+    //   return anchor;
+    // };
+    anchorForId = function (id,text) {
+      var anchor = document.createElement("a");
+      anchor.className = "header-link";
+      anchor.href      = "#" + id;
+      anchor.text = text;
+      anchor.title = "Permalink";
+      return anchor;
+    };
+  
+    var linkifyAnchors = function (level, containingElement) {
+      var headers = containingElement.getElementsByTagName("h" + level);
+      for (var h = 0; h < headers.length; h++) {
+        var header = headers[h];
+  
+        if (typeof header.id !== "undefined" && header.id !== "") {
+            //debugger;
+          var n = header.childNodes[0];
+          header.insertBefore(anchorForId(header.id,header.textContent),n);
+          header.removeChild(n);
+        }
+      }
+    };
+  
+    document.onreadystatechange = function () {
+      if (this.readyState === "complete") {
+        var contentBlock = document.getElementsByClassName("post")[0];//('body')[0];// . || document.getElementsByClassName("news")[0];
+        if (!contentBlock) {
+          return;
+        }
+        for (var level = 1; level <= 6; level++) {
+          linkifyAnchors(level, contentBlock);
+        }
+      }
+    };
+  </script>
 </head>
 
 
@@ -89,23 +133,20 @@
 
 
     <div class="page-content">
-      <div class="wrapper"> 
-        <div class="post"><header class="post-header">
-      <h2 class="post-title">
-        
-        
-          C# Testing With Fakes
-        
-        
-      </h2>
-    
-    <time class="post-date">March 21, 2014</time>
+      <div class="wrapper">
+        <div class="post">
+
+  <header class="post-header">
+    <h2 class="post-title">Data Driven</h2>
+    <time class="post-date">August 17, 2017</time>
   </header>
 
   <article class="post-content">
-    <p>I wrote a nice little tutorial about using fakes in C#. It cover Shims and Stubs. It also covers testing private methods using the InternalsVisibleTo attribute.</p>
+    <p>This video absolutely changed my life. My friend and mentor showed it to me in the beginning of 2015. The early experiences of Etsy immediately resonated with me. And the concept of geometric growth being outside of the control of the business was something that I had never before considered, but absolutely made sense.</p>
 
-<p><a href="https://github.com/clintcparker/c_sharp_testing/wiki/Coverage-Tutorial">https://github.com/clintcparker/c_sharp_testing/wiki/Coverage-Tutorial</a></p>
+<p>Don’t pick projects based on what’s cool, pick projects  that make sense to the company.</p>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/SZOeV-S-2co" frameborder="0" allowfullscreen=""></iframe>
 
   </article>
 

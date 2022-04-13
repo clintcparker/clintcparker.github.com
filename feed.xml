@@ -6,8 +6,8 @@
 </description>
     <link>https://clintcparker.com/</link>
     <atom:link href="https://clintcparker.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 13 Apr 2022 13:57:32 -0700</pubDate>
-    <lastBuildDate>Wed, 13 Apr 2022 13:57:32 -0700</lastBuildDate>
+    <pubDate>Wed, 13 Apr 2022 16:12:22 -0700</pubDate>
+    <lastBuildDate>Wed, 13 Apr 2022 16:12:22 -0700</lastBuildDate>
     <generator>Jekyll v4.0.1</generator>
     
       <item>
@@ -227,8 +227,8 @@ https://mpharrigan.com/2016/05/17/background-ssh.html&lt;/li&gt;
 &lt;/ul&gt;
 </description>
         <pubDate>Thu, 24 Feb 2022 20:27:51 -0800</pubDate>
-        <link>https://clintcparker.com/2022/02/24/rdp-tunnels.html</link>
-        <guid isPermaLink="true">https://clintcparker.com/2022/02/24/rdp-tunnels.html</guid>
+        <link>https://clintcparker.com/2022/02/24/rdp-tunnels/</link>
+        <guid isPermaLink="true">https://clintcparker.com/2022/02/24/rdp-tunnels/</guid>
         
         
       </item>
@@ -257,8 +257,8 @@ https://mpharrigan.com/2016/05/17/background-ssh.html&lt;/li&gt;
 &lt;p&gt;You can find the code here: &lt;a href=&quot;https://github.com/clintcparker/fish_functions/blob/master/belvedere.fish&quot;&gt;https://github.com/clintcparker/fish_functions/blob/master/belvedere.fish&lt;/a&gt;&lt;/p&gt;
 </description>
         <pubDate>Fri, 21 Sep 2018 16:22:49 -0700</pubDate>
-        <link>https://clintcparker.com/2018/09/21/belvedere.html</link>
-        <guid isPermaLink="true">https://clintcparker.com/2018/09/21/belvedere.html</guid>
+        <link>https://clintcparker.com/2018/09/21/belvedere/</link>
+        <guid isPermaLink="true">https://clintcparker.com/2018/09/21/belvedere/</guid>
         
         
       </item>
@@ -292,8 +292,8 @@ https://mpharrigan.com/2016/05/17/background-ssh.html&lt;/li&gt;
 &lt;p&gt;The &lt;a href=&quot;https://github.com/clintcparker/name-on#name-on&quot;&gt;README&lt;/a&gt; has a roadmap, which includes packaging the CLI and improving the site. PRs are welcomed.&lt;/p&gt;
 </description>
         <pubDate>Fri, 31 Aug 2018 16:22:49 -0700</pubDate>
-        <link>https://clintcparker.com/2018/08/31/name-on.html</link>
-        <guid isPermaLink="true">https://clintcparker.com/2018/08/31/name-on.html</guid>
+        <link>https://clintcparker.com/2018/08/31/name-on/</link>
+        <guid isPermaLink="true">https://clintcparker.com/2018/08/31/name-on/</guid>
         
         
       </item>
@@ -307,8 +307,8 @@ https://mpharrigan.com/2016/05/17/background-ssh.html&lt;/li&gt;
 &lt;p&gt;Googling “appveyor not using yaml” led me to &lt;a href=&quot;https://help.appveyor.com/discussions/questions/4148-why-does-appveyor-seem-not-to-pick-up-my-appveyoryml&quot;&gt;this help article&lt;/a&gt;. I still don’t understand why permissions were an issue to read the &lt;code class=&quot;highlighter-rouge&quot;&gt;appveyor.yml&lt;/code&gt;, when it was clearly reading an updated &lt;code class=&quot;highlighter-rouge&quot;&gt;csproj&lt;/code&gt; file. But I do now have extensions that support VS 2017.&lt;/p&gt;
 </description>
         <pubDate>Tue, 15 May 2018 16:22:49 -0700</pubDate>
-        <link>https://clintcparker.com/2018/05/15/adventures-in-vs-extension-updates.html</link>
-        <guid isPermaLink="true">https://clintcparker.com/2018/05/15/adventures-in-vs-extension-updates.html</guid>
+        <link>https://clintcparker.com/2018/05/15/adventures-in-vs-extension-updates/</link>
+        <guid isPermaLink="true">https://clintcparker.com/2018/05/15/adventures-in-vs-extension-updates/</guid>
         
         
       </item>
@@ -322,8 +322,8 @@ https://mpharrigan.com/2016/05/17/background-ssh.html&lt;/li&gt;
 &lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/SZOeV-S-2co&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
 </description>
         <pubDate>Thu, 17 Aug 2017 13:41:08 -0700</pubDate>
-        <link>https://clintcparker.com/2017/08/17/data-driven.html</link>
-        <guid isPermaLink="true">https://clintcparker.com/2017/08/17/data-driven.html</guid>
+        <link>https://clintcparker.com/2017/08/17/data-driven/</link>
+        <guid isPermaLink="true">https://clintcparker.com/2017/08/17/data-driven/</guid>
         
         
       </item>
@@ -404,8 +404,8 @@ https://mpharrigan.com/2016/05/17/background-ssh.html&lt;/li&gt;
 &lt;p&gt;P.S. Who want’s to help me write the obfuscator?&lt;/p&gt;
 </description>
         <pubDate>Sat, 01 Oct 2016 12:02:45 -0700</pubDate>
-        <link>https://clintcparker.com/2016/10/01/c-obfuscation.html</link>
-        <guid isPermaLink="true">https://clintcparker.com/2016/10/01/c-obfuscation.html</guid>
+        <link>https://clintcparker.com/2016/10/01/c-obfuscation/</link>
+        <guid isPermaLink="true">https://clintcparker.com/2016/10/01/c-obfuscation/</guid>
         
         
       </item>
@@ -438,8 +438,8 @@ Another team just got two half done projects dumped into their branch, because t
 &lt;p&gt;So we’re switching to git. And we can have as many branches as we want. And they can be local. And they can have good names. And they can be deleted. And we can still commit to mainline if we want to.&lt;/p&gt;
 </description>
         <pubDate>Wed, 28 Sep 2016 15:29:00 -0700</pubDate>
-        <link>https://clintcparker.com/2016/09/28/why-git-works-where-tfvc-doesnt.html</link>
-        <guid isPermaLink="true">https://clintcparker.com/2016/09/28/why-git-works-where-tfvc-doesnt.html</guid>
+        <link>https://clintcparker.com/2016/09/28/why-git-works-where-tfvc-doesnt/</link>
+        <guid isPermaLink="true">https://clintcparker.com/2016/09/28/why-git-works-where-tfvc-doesnt/</guid>
         
         
       </item>
@@ -494,8 +494,8 @@ Another team just got two half done projects dumped into their branch, because t
 &lt;p&gt;All that to avoid explicitly instantiating lists.&lt;/p&gt;
 </description>
         <pubDate>Sun, 11 Sep 2016 13:55:00 -0700</pubDate>
-        <link>https://clintcparker.com/2016/09/11/how-yield-works.html</link>
-        <guid isPermaLink="true">https://clintcparker.com/2016/09/11/how-yield-works.html</guid>
+        <link>https://clintcparker.com/2016/09/11/how-yield-works/</link>
+        <guid isPermaLink="true">https://clintcparker.com/2016/09/11/how-yield-works/</guid>
         
         
       </item>
@@ -517,8 +517,8 @@ Another team just got two half done projects dumped into their branch, because t
 &lt;p&gt;All in all, it was still surprisingly easy, and I regret not doing it sooner.&lt;/p&gt;
 </description>
         <pubDate>Sun, 11 Sep 2016 13:55:00 -0700</pubDate>
-        <link>https://clintcparker.com/2016/09/11/creating-a-vs-extension.html</link>
-        <guid isPermaLink="true">https://clintcparker.com/2016/09/11/creating-a-vs-extension.html</guid>
+        <link>https://clintcparker.com/2016/09/11/creating-a-vs-extension/</link>
+        <guid isPermaLink="true">https://clintcparker.com/2016/09/11/creating-a-vs-extension/</guid>
         
         
       </item>
@@ -530,8 +530,8 @@ Another team just got two half done projects dumped into their branch, because t
 &lt;p&gt;&lt;a href=&quot;https://github.com/clintcparker/c_sharp_testing/wiki/Coverage-Tutorial&quot;&gt;https://github.com/clintcparker/c_sharp_testing/wiki/Coverage-Tutorial&lt;/a&gt;&lt;/p&gt;
 </description>
         <pubDate>Fri, 21 Mar 2014 17:00:00 -0700</pubDate>
-        <link>https://clintcparker.com/2014/03/21/c-testing-with-fakes.html</link>
-        <guid isPermaLink="true">https://clintcparker.com/2014/03/21/c-testing-with-fakes.html</guid>
+        <link>https://clintcparker.com/2014/03/21/c-testing-with-fakes/</link>
+        <guid isPermaLink="true">https://clintcparker.com/2014/03/21/c-testing-with-fakes/</guid>
         
         
       </item>

@@ -29,6 +29,50 @@
 </script>
 
     
+    <script>
+    // var anchorForId = function (id) {
+    //   var anchor = document.createElement("a");
+    //   anchor.className = "header-link";
+    //   anchor.href      = "#" + id;
+    //   anchor.innerHTML = "<span class=\"sr-only\">Permalink</span><i class=\"fa fa-link\"></i>";
+    //   anchor.title = "Permalink";
+    //   return anchor;
+    // };
+    anchorForId = function (id,text) {
+      var anchor = document.createElement("a");
+      anchor.className = "header-link";
+      anchor.href      = "#" + id;
+      anchor.text = text;
+      anchor.title = "Permalink";
+      return anchor;
+    };
+  
+    var linkifyAnchors = function (level, containingElement) {
+      var headers = containingElement.getElementsByTagName("h" + level);
+      for (var h = 0; h < headers.length; h++) {
+        var header = headers[h];
+  
+        if (typeof header.id !== "undefined" && header.id !== "") {
+            //debugger;
+          var n = header.childNodes[0];
+          header.insertBefore(anchorForId(header.id,header.textContent),n);
+          header.removeChild(n);
+        }
+      }
+    };
+  
+    document.onreadystatechange = function () {
+      if (this.readyState === "complete") {
+        var contentBlock = document.getElementsByClassName("post")[0];//('body')[0];// . || document.getElementsByClassName("news")[0];
+        if (!contentBlock) {
+          return;
+        }
+        for (var level = 1; level <= 6; level++) {
+          linkifyAnchors(level, contentBlock);
+        }
+      }
+    };
+  </script>
 </head>
 
 
@@ -90,56 +134,25 @@
 
 
     <div class="page-content">
-      <div class="wrapper"> 
+      <div class="wrapper">
         <div class="home">
   
     <article class="post">
-      <h2 class="post-title">
-        
-        
-          <a class="post-link" href="/2022/02/24/rdp-tunnels.html">RDP Tunnels</a>
-        
-        
-      </h2>
-    
+      <h2 class="post-title"><a class="post-link" href="/2022/02/24/rdp-tunnels/">RDP Tunnels</a></h2>
 
       <time datetime="2022-02-24T20:27:51-08:00" class="post-date">February 24, 2022</time>
-      <h3 id="rationale">
-        
-        
-          Rationale <a href="#rationale" class="hanchor">🔗</a>
-        
-        
-      </h3>
-    
+
+      <h3 id="rationale">Rationale</h3>
 
 <p>I love the persistence of a host machine! I’m too cheap to get a VPS. I really like the windows 11 OS but really love mac laptops. I left <code class="highlighter-rouge">3389</code> open on my router (with DDNS) and found myself getting brute forced. I saw <a href="https://orth.uk/ssh-over-cloudflare/">this post</a> around the same time, and realized tunnelling could be a great alternative.</p>
-      <h3 id="assumptions">
-        
-        
-          Assumptions <a href="#assumptions" class="hanchor">🔗</a>
-        
-        
-      </h3>
-    
-      <h4 id="general-assumptions">
-        
-        
-          General Assumptions <a href="#general-assumptions" class="hanchor">🔗</a>
-        
-        
-      </h4>
-    
+
+<h3 id="assumptions">Assumptions</h3>
+
+<h4 id="general-assumptions">General Assumptions</h4>
 
 <p>I wrote this for my situation. While setting it up, I found there was not a central guide, so I made one. If it doesn’t perfectly fit your situation, hopefully a part of it will help.</p>
-      <h4 id="assumptions-about-you">
-        
-        
-          Assumptions About You <a href="#assumptions-about-you" class="hanchor">🔗</a>
-        
-        
-      </h4>
-    
+
+<h4 id="assumptions-about-you">Assumptions About You</h4>
 
 <ul>
   <li>You have administrator access to both machines</li>
@@ -149,14 +162,8 @@
   <li>You have a <a href="https://www.cloudflare.com">Cloudflare</a> account and a website there</li>
   <li>You’re using <a href="https://brew.sh">brew</a></li>
 </ul>
-      <h4 id="assumptions-about-this-guide">
-        
-        
-          Assumptions About This Guide <a href="#assumptions-about-this-guide" class="hanchor">🔗</a>
-        
-        
-      </h4>
-    
+
+<h4 id="assumptions-about-this-guide">Assumptions About This Guide</h4>
 
 <ul>
   <li>I’ve got <code class="highlighter-rouge">example.com</code> on my cloudflare account (I don’t, <em>obvs</em>)</li>
@@ -164,22 +171,9 @@
   <li>My tunnel id is 123455677890asdf</li>
   <li>My macOS username is <code class="highlighter-rouge">me</code></li>
 </ul>
-      <h3 id="host-setup">
-        
-        
-          Host Setup <a href="#host-setup" class="hanchor">🔗</a>
-        
-        
-      </h3>
-    
-      <h4 id="windows-setup">
-        
-        
-          Windows Setup <a href="#windows-setup" class="hanchor">🔗</a>
-        
-        
-      </h4>
-    
+
+<h3 id="host-setup">Host Setup</h3>
+<h4 id="windows-setup">Windows Setup</h4>
 
 <ol>
   <li>
@@ -282,22 +276,10 @@ PS&gt; cloudflared tunnel route dns  wormhole.example
 </code></pre></div>    </div>
   </li>
 </ol>
-      <h3 id="client-config">
-        
-        
-          Client Config <a href="#client-config" class="hanchor">🔗</a>
-        
-        
-      </h3>
-    
-      <h4 id="macos">
-        
-        
-          MacOS <a href="#macos" class="hanchor">🔗</a>
-        
-        
-      </h4>
-    
+
+<h3 id="client-config">Client Config</h3>
+
+<h4 id="macos">MacOS</h4>
 
 <ol>
   <li>
@@ -362,14 +344,8 @@ PS&gt; cloudflared tunnel route dns  wormhole.example
 </code></pre></div>    </div>
   </li>
 </ol>
-      <h3 id="further-thoughts">
-        
-        
-          Further thoughts <a href="#further-thoughts" class="hanchor">🔗</a>
-        
-        
-      </h3>
-    
+
+<h3 id="further-thoughts">Further thoughts</h3>
 
 <ul>
   <li>Connect to the tunnel from the client machine on startup
@@ -378,18 +354,14 @@ https://mpharrigan.com/2016/05/17/background-ssh.html</li>
   <li>Change default ports (ssh, RDP)</li>
   <li>Restrict RDP access to 127.0.0.1 only</li>
   <li>Create a host and client scripts to just take care of all of this</li>
-</ul><hr>
+</ul>
+
+
+      <hr>
     </article>
   
     <article class="post">
-      <h2 class="post-title">
-        
-        
-          <a class="post-link" href="/2018/09/21/belvedere.html">Belvedere</a> <a href="#further-thoughts" class="hanchor">🔗</a>
-        
-        
-      </h2>
-    
+      <h2 class="post-title"><a class="post-link" href="/2018/09/21/belvedere/">Belvedere</a></h2>
 
       <time datetime="2018-09-21T16:22:49-07:00" class="post-date">September 21, 2018</time>
 
@@ -412,52 +384,30 @@ https://mpharrigan.com/2016/05/17/background-ssh.html</li>
 
 <p>Belvedere will create all the necessary projects, with the correct intra-project references, a solution, gitignore, and README. It also intializes a git repo and commits the created files.</p>
 
-<p>You can find the code here: <a href="https://github.com/clintcparker/fish_functions/blob/master/belvedere.fish">https://github.com/clintcparker/fish_functions/blob/master/belvedere.fish</a></p><hr>
+<p>You can find the code here: <a href="https://github.com/clintcparker/fish_functions/blob/master/belvedere.fish">https://github.com/clintcparker/fish_functions/blob/master/belvedere.fish</a></p>
+
+
+      <hr>
     </article>
   
     <article class="post">
-      <h2 class="post-title">
-        
-        
-          <a class="post-link" href="/2018/08/31/name-on.html">Name-on</a> <a href="#further-thoughts" class="hanchor">🔗</a>
-        
-        
-      </h2>
-    
+      <h2 class="post-title"><a class="post-link" href="/2018/08/31/name-on/">Name-on</a></h2>
 
       <time datetime="2018-08-31T16:22:49-07:00" class="post-date">August 31, 2018</time>
-      <h3 id="but-y-tho">
-        
-        
-          But Y tho? <a href="#but-y-tho" class="hanchor">🔗</a>
-        
-        
-      </h3>
-    
+
+      <h3 id="but-y-tho">But Y tho?</h3>
 <p>I needed a unique name generator, so I built <a href="https://name-on.site/">one</a>.</p>
 
 <p>I had used the Heroku unique-name generator before, when building <a href="https://badideas.herokuapp.com/">bad ideas</a>. I loved how it removed a mental hurdle from getting something out the door; coming up with a name. Personally, I’m horrible at naming things, so this was a necessity. I don’t want to get hung up on picking a good name, and the defaults are equally as bad (ConsoleApplication23, anybody?).</p>
 
 <p>I’d also been wanting to get back to dot net core. The last time I had played around with it, they were still using the <code class="highlighter-rouge">dnx</code> command line tool and <code class="highlighter-rouge">project.json</code> files. So this project seemed small enough, and valuable enough, to actually keep me on task for the duration of v1.</p>
-      <h3 id="the-command-line">
-        
-        
-          The command line <a href="#the-command-line" class="hanchor">🔗</a>
-        
-        
-      </h3>
-    
+
+<h3 id="the-command-line">The command line</h3>
 <p>I was stoked to be able to layout the project structure from the command line. I’m just so much more optimistic about a tool when there’s a CLI behind it. Even if I’ll never script it, the idea that i <em>could</em> is very appealing.</p>
 
 <p>I scaffolded the whole project via the <code class="highlighter-rouge">dotnet new</code> and <code class="highlighter-rouge">dotnet add</code> commands. I was also able to build and test in the same manner. It was a nice break from VS 2017.</p>
-      <h3 id="structure">
-        
-        
-          Structure <a href="#structure" class="hanchor">🔗</a>
-        
-        
-      </h3>
-    
+
+<h3 id="structure">Structure</h3>
 <p>I found lists of adjectives and nouns online. And thank to some recent practice with regex crosswords, quickly stripped everything but the words themselves.</p>
 
 <p>I added some tests for uniqueness, which is about 99.985%. I also added protection for never getting the same name twice in a row.</p>
@@ -467,26 +417,16 @@ https://mpharrigan.com/2016/05/17/background-ssh.html</li>
 <p>For the web app the <code class="highlighter-rouge">dotnet help</code> lists a template called <code class="highlighter-rouge">razor</code> with the description “mvc with razor pages.” I’ve used the Razor syntax since it debuted, and thought, “of course I want razor, not <code class="highlighter-rouge">aspx</code>.” Apparently though, Razor Pages is a new thing. I actually really liked it for build the web app component. I still created a controller for the API, but was happy I stumbled onto this new paradigm.</p>
 
 <p>I really went over the top with the completeness. Azure for hosting. Custom domain through NameCheap. SSL through CloudFlare.</p>
-      <h3 id="next-steps">
-        
-        
-          Next Steps <a href="#next-steps" class="hanchor">🔗</a>
-        
-        
-      </h3>
-    
-<p>The <a href="https://github.com/clintcparker/name-on#name-on">README</a> has a roadmap, which includes packaging the CLI and improving the site. PRs are welcomed.</p><hr>
+
+<h3 id="next-steps">Next Steps</h3>
+<p>The <a href="https://github.com/clintcparker/name-on#name-on">README</a> has a roadmap, which includes packaging the CLI and improving the site. PRs are welcomed.</p>
+
+
+      <hr>
     </article>
   
     <article class="post">
-      <h2 class="post-title">
-        
-        
-          <a class="post-link" href="/2018/05/15/adventures-in-vs-extension-updates.html">Adventures in vs Extension Updates</a> <a href="#next-steps" class="hanchor">🔗</a>
-        
-        
-      </h2>
-    
+      <h2 class="post-title"><a class="post-link" href="/2018/05/15/adventures-in-vs-extension-updates/">Adventures in vs Extension Updates</a></h2>
 
       <time datetime="2018-05-15T16:22:49-07:00" class="post-date">May 15, 2018</time>
 
@@ -494,18 +434,14 @@ https://mpharrigan.com/2016/05/17/background-ssh.html</li>
 
 <p>For some reason, my <a href="https://www.appveyor.com/">AppVeyor</a> builds were failing. They were clearly pulling the latest from my repo, but for some reason, the nuget restore stopped working. I probably should’ve googled the issue, and I think I did, but I was asking the wrong questions. I finally gave up and manually configured the build via the GUI, and then exported that config to YAML. When I went to do the next extension, I finally realized what the problem was. I used the exact same exported YAML, and got the exact same initial errors with the nuget restore.</p>
 
-<p>Googling “appveyor not using yaml” led me to <a href="https://help.appveyor.com/discussions/questions/4148-why-does-appveyor-seem-not-to-pick-up-my-appveyoryml">this help article</a>. I still don’t understand why permissions were an issue to read the <code class="highlighter-rouge">appveyor.yml</code>, when it was clearly reading an updated <code class="highlighter-rouge">csproj</code> file. But I do now have extensions that support VS 2017.</p><hr>
+<p>Googling “appveyor not using yaml” led me to <a href="https://help.appveyor.com/discussions/questions/4148-why-does-appveyor-seem-not-to-pick-up-my-appveyoryml">this help article</a>. I still don’t understand why permissions were an issue to read the <code class="highlighter-rouge">appveyor.yml</code>, when it was clearly reading an updated <code class="highlighter-rouge">csproj</code> file. But I do now have extensions that support VS 2017.</p>
+
+
+      <hr>
     </article>
   
     <article class="post">
-      <h2 class="post-title">
-        
-        
-          <a class="post-link" href="/2017/08/17/data-driven.html">Data Driven</a> <a href="#next-steps" class="hanchor">🔗</a>
-        
-        
-      </h2>
-    
+      <h2 class="post-title"><a class="post-link" href="/2017/08/17/data-driven/">Data Driven</a></h2>
 
       <time datetime="2017-08-17T13:41:08-07:00" class="post-date">August 17, 2017</time>
 
@@ -513,7 +449,10 @@ https://mpharrigan.com/2016/05/17/background-ssh.html</li>
 
 <p>Don’t pick projects based on what’s cool, pick projects  that make sense to the company.</p>
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/SZOeV-S-2co" frameborder="0" allowfullscreen=""></iframe><hr>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/SZOeV-S-2co" frameborder="0" allowfullscreen=""></iframe>
+
+
+      <hr>
     </article>
   
 

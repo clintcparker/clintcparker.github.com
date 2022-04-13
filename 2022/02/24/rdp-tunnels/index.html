@@ -13,7 +13,7 @@
 
     <!-- <link rel="icon" type="image/x-icon" href="https://clintcparker.com/favicon.ico"> -->
 
-    <link rel="canonical" href="https://clintcparker.com/2022/02/24/rdp-tunnels.html">
+    <link rel="canonical" href="https://clintcparker.com/2022/02/24/rdp-tunnels/">
     <link rel="alternate" type="application/rss+xml" title="@clintcparker" href="https://clintcparker.com/feed.xml" />
     
     <script>
@@ -28,6 +28,50 @@
 </script>
 
     
+    <script>
+    // var anchorForId = function (id) {
+    //   var anchor = document.createElement("a");
+    //   anchor.className = "header-link";
+    //   anchor.href      = "#" + id;
+    //   anchor.innerHTML = "<span class=\"sr-only\">Permalink</span><i class=\"fa fa-link\"></i>";
+    //   anchor.title = "Permalink";
+    //   return anchor;
+    // };
+    anchorForId = function (id,text) {
+      var anchor = document.createElement("a");
+      anchor.className = "header-link";
+      anchor.href      = "#" + id;
+      anchor.text = text;
+      anchor.title = "Permalink";
+      return anchor;
+    };
+  
+    var linkifyAnchors = function (level, containingElement) {
+      var headers = containingElement.getElementsByTagName("h" + level);
+      for (var h = 0; h < headers.length; h++) {
+        var header = headers[h];
+  
+        if (typeof header.id !== "undefined" && header.id !== "") {
+            //debugger;
+          var n = header.childNodes[0];
+          header.insertBefore(anchorForId(header.id,header.textContent),n);
+          header.removeChild(n);
+        }
+      }
+    };
+  
+    document.onreadystatechange = function () {
+      if (this.readyState === "complete") {
+        var contentBlock = document.getElementsByClassName("post")[0];//('body')[0];// . || document.getElementsByClassName("news")[0];
+        if (!contentBlock) {
+          return;
+        }
+        for (var level = 1; level <= 6; level++) {
+          linkifyAnchors(level, contentBlock);
+        }
+      }
+    };
+  </script>
 </head>
 
 
@@ -89,56 +133,26 @@
 
 
     <div class="page-content">
-      <div class="wrapper"> 
-        <div class="post"><header class="post-header">
-      <h2 class="post-title">
-        
-        
-          RDP Tunnels
-        
-        
-      </h2>
-    
+      <div class="wrapper">
+        <div class="post">
+
+  <header class="post-header">
+    <h2 class="post-title">RDP Tunnels</h2>
     <time class="post-date">February 24, 2022</time>
   </header>
 
   <article class="post-content">
-      <h3 id="rationale">
-        
-        
-          Rationale <a href="#rationale" class="hanchor">🔗</a>
-        
-        
-      </h3>
-    
+    <h3 id="rationale">Rationale</h3>
 
 <p>I love the persistence of a host machine! I’m too cheap to get a VPS. I really like the windows 11 OS but really love mac laptops. I left <code class="highlighter-rouge">3389</code> open on my router (with DDNS) and found myself getting brute forced. I saw <a href="https://orth.uk/ssh-over-cloudflare/">this post</a> around the same time, and realized tunnelling could be a great alternative.</p>
-      <h3 id="assumptions">
-        
-        
-          Assumptions <a href="#assumptions" class="hanchor">🔗</a>
-        
-        
-      </h3>
-    
-      <h4 id="general-assumptions">
-        
-        
-          General Assumptions <a href="#general-assumptions" class="hanchor">🔗</a>
-        
-        
-      </h4>
-    
+
+<h3 id="assumptions">Assumptions</h3>
+
+<h4 id="general-assumptions">General Assumptions</h4>
 
 <p>I wrote this for my situation. While setting it up, I found there was not a central guide, so I made one. If it doesn’t perfectly fit your situation, hopefully a part of it will help.</p>
-      <h4 id="assumptions-about-you">
-        
-        
-          Assumptions About You <a href="#assumptions-about-you" class="hanchor">🔗</a>
-        
-        
-      </h4>
-    
+
+<h4 id="assumptions-about-you">Assumptions About You</h4>
 
 <ul>
   <li>You have administrator access to both machines</li>
@@ -148,14 +162,8 @@
   <li>You have a <a href="https://www.cloudflare.com">Cloudflare</a> account and a website there</li>
   <li>You’re using <a href="https://brew.sh">brew</a></li>
 </ul>
-      <h4 id="assumptions-about-this-guide">
-        
-        
-          Assumptions About This Guide <a href="#assumptions-about-this-guide" class="hanchor">🔗</a>
-        
-        
-      </h4>
-    
+
+<h4 id="assumptions-about-this-guide">Assumptions About This Guide</h4>
 
 <ul>
   <li>I’ve got <code class="highlighter-rouge">example.com</code> on my cloudflare account (I don’t, <em>obvs</em>)</li>
@@ -163,22 +171,9 @@
   <li>My tunnel id is 123455677890asdf</li>
   <li>My macOS username is <code class="highlighter-rouge">me</code></li>
 </ul>
-      <h3 id="host-setup">
-        
-        
-          Host Setup <a href="#host-setup" class="hanchor">🔗</a>
-        
-        
-      </h3>
-    
-      <h4 id="windows-setup">
-        
-        
-          Windows Setup <a href="#windows-setup" class="hanchor">🔗</a>
-        
-        
-      </h4>
-    
+
+<h3 id="host-setup">Host Setup</h3>
+<h4 id="windows-setup">Windows Setup</h4>
 
 <ol>
   <li>
@@ -281,22 +276,10 @@ PS&gt; cloudflared tunnel route dns  wormhole.example
 </code></pre></div>    </div>
   </li>
 </ol>
-      <h3 id="client-config">
-        
-        
-          Client Config <a href="#client-config" class="hanchor">🔗</a>
-        
-        
-      </h3>
-    
-      <h4 id="macos">
-        
-        
-          MacOS <a href="#macos" class="hanchor">🔗</a>
-        
-        
-      </h4>
-    
+
+<h3 id="client-config">Client Config</h3>
+
+<h4 id="macos">MacOS</h4>
 
 <ol>
   <li>
@@ -361,14 +344,8 @@ PS&gt; cloudflared tunnel route dns  wormhole.example
 </code></pre></div>    </div>
   </li>
 </ol>
-      <h3 id="further-thoughts">
-        
-        
-          Further thoughts <a href="#further-thoughts" class="hanchor">🔗</a>
-        
-        
-      </h3>
-    
+
+<h3 id="further-thoughts">Further thoughts</h3>
 
 <ul>
   <li>Connect to the tunnel from the client machine on startup
