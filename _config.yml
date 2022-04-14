@@ -36,7 +36,7 @@ draft_template: draft
 markdown: kramdown
 highlighter: rouge
 sass:
-    style: :compressed
+    style: compressed
 
 #plugins
 plugins: [jekyll-paginate]

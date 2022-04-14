@@ -21,7 +21,7 @@ In setting this example, we can expect the same from them. It is as simple as pr
 By increasing this communication and buy-in, we will provide our teams with intrinsic motivation. We will all be purpose-driven, and we will see better results in quality and productivity.
 
 ## Respect
-Respect may be the hardest thing to foster in our product development team. From my perspective, mutual respect between all members of our team is missing in many of the relationships. Sometimes it is simply person to person, but other times it is person to department. A lot of the time it is person to organization. And again, we can fix this by setting an example. We can lean on our teams harder than we have to date. We can expect great things, and we can communicate our expectations. And not just verbally. We really need to trust our teams to solve problems, and not to simply follow instructions.
+Respect may be the hardest thing to foster in our product development team. From my perspective, mutual respect between all members of a team is often missing in many of the relationships. Sometimes it is simply person to person, but other times it is person to department. A lot of the time it is person to organization. And again, we can fix this by setting an example. We can lean on our teams harder than we have to date. We can expect great things, and we can communicate our expectations. And not just verbally. We really need to trust our teams to solve problems, and not to simply follow instructions.
 
 I often see team members hesitating to make suggestions or question the projects goals. This is a bad thing. We should be fostering these conversations, because these conversations lead to innovation and creative solutions. Let's encourage questions, and expect great solutions from our development teams.
 
@@ -30,7 +30,7 @@ With our freshly conveyed respect, we gain accountability.
 
 Most notions of accountability come from negative perspectives. We only need to foster accountability because we need someone to be accountable for something that has gone wrong. It's true, and from time to time we need in our organizations. It's also a key part of coaching. And sometimes, it's a good motivator to know that if a project fails, some person or group can be held accountable. 
 
-The concept I think everyone misses with accountability, though, is that it's a two way street. Early in my career, I worked on a team for 18 months before I knew about my accountability for someone's _positive_ experience with our software. That’s right, for a year and a half, the only post-release feedback I received for my code was the negative type. Obviously the company appreciated my work, but all I really ever saw were the bugs.
+The concept I think everyone misses with accountability, though, is that it's a two way street. Early in my career, I worked on a team for 18 months before I knew about my accountability for someone's _positive_ experience with our software. That’s right, for a year and a half, the only post-release feedback I received for my code was the negative type. Obviously my team appreciated my work, but all I really ever saw beyond that were the bugs.
 
 The feedback loop needs to continue regardless of the feedback. 
 
