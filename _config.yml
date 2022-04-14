@@ -42,3 +42,8 @@ sass:
 plugins: [jekyll-paginate]
 
 permalink: pretty
+
+exclude:
+  - README.md
+  - LICENSE
+  - Gemfile
