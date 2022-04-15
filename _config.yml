@@ -47,3 +47,10 @@ exclude:
   - README.md
   - LICENSE
   - Gemfile
+
+# serve options
+port: 4000
+host: localhost
+open_url: true
+livereload: true
+incremental: false
