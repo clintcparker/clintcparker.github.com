@@ -3,10 +3,12 @@
 source "https://rubygems.org"
 
 # gem "rails"
-gem "octopress", "~> 3.0"
 
-gem "jekyll", "~> 4.0"
+# gem "bundler", "~> 2.3"
+
+gem "jekyll"
 
 gem "jekyll-paginate", "~> 1.1"
-
-gem "bundler", "~> 2.3"
+gem "jekyll-sass-converter"
+gem "kramdown", "~> 2.4.0"
+gem "octopress", "~> 3.0.11"
