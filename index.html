@@ -138,6 +138,35 @@
         <div class="home">
   
     <article class="post">
+      <h2 class="post-title"><a class="post-link" href="/2022/05/25/when-to-micro-service/">When to Microservice</a></h2>
+
+      <time datetime="2022-05-25T14:52:58-07:00" class="post-date">May 25, 2022</time>
+
+      <p>I’m enjoying Microsoft Build 2022. Developer experience (especially in the face of common and complicated IaaS and PaaS scenarios) was my favorite topic of the day 1 keynotes.</p>
+
+<p>Later, watching the keynote after hours, I stumbled on a gem of a conversation between Scott Hanselman and Scott Guthrie.</p>
+
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Great informal discussion/perspective on when to use micro-services &amp; containers from <a href="https://twitter.com/shanselman?ref_src=twsrc%5Etfw">@shanselman</a> and <a href="https://twitter.com/scottgu?ref_src=twsrc%5Etfw">@scottgu</a> at 33:18.<a href="https://t.co/1tNahY1VSk">https://t.co/1tNahY1VSk</a></p>&mdash; Clint Parker (@clintcparker) <a href="https://twitter.com/clintcparker/status/1529577253423566848?ref_src=twsrc%5Etfw">May 25, 2022</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<p>Lot’s of classic “it depends” which is totally true. For me it depends on at least one of three macro factors being present:</p>
+
+<ol>
+  <li>Teams/people need to develop and deploy at different paces.</li>
+  <li>Parts of the system <em>need</em> to scale independently</li>
+  <li>Parts of the system <em>need</em> to be segmented for security purposes. Ex: only engineers from the payments team can make changes to payments systems.</li>
+</ol>
+
+<p>You can have any decomposition you like, but in that video Scott Guthrie alludes to the challenges you can face on either end of the spectrum (1 engineer with 100 micro-services or 100 engineers with one service).</p>
+
+<p>One last note, I may start saying containers instead of micro-services going forward. I usually try say that I prefer macro-services, but then we have to have a whole discussion about the difference. Maybe the term container will become the defacto descriptor of services and their boundaries.</p>
+
+
+
+      <hr>
+    </article>
+  
+    <article class="post">
       <h2 class="post-title"><a class="post-link" href="/2022/04/13/software-leadership-fostering-the-team/">Software Leadership - Fostering the Team</a></h2>
 
       <time datetime="2022-04-13T13:11:39-07:00" class="post-date">April 13, 2022</time>
@@ -464,21 +493,6 @@ https://mpharrigan.com/2016/05/17/background-ssh.html</li>
 
 <h3 id="next-steps">Next Steps</h3>
 <p>The <a href="https://github.com/clintcparker/name-on#name-on">README</a> has a roadmap, which includes packaging the CLI and improving the site. PRs are welcomed.</p>
-
-
-      <hr>
-    </article>
-  
-    <article class="post">
-      <h2 class="post-title"><a class="post-link" href="/2018/05/15/adventures-in-vs-extension-updates/">Adventures in vs Extension Updates</a></h2>
-
-      <time datetime="2018-05-15T16:22:49-07:00" class="post-date">May 15, 2018</time>
-
-      <p>While at <a href="https://developer.microsoft.com/en-us/events/build/content">//build</a> I was inspired to update my extensions to support VS 2017. I meant to do it last year, but got distracted. The process was really simple, and is <a href="https://docs.microsoft.com/en-us/visualstudio/extensibility/how-to-migrate-extensibility-projects-to-visual-studio-2017">outlined</a> on the new hotness that is <a href="https://docs.microsoft.com">MS Docs</a>. It took me about 10 minutes to get it all configured an tested. But then…I was sidelined by my CI config.</p>
-
-<p>For some reason, my <a href="https://www.appveyor.com/">AppVeyor</a> builds were failing. They were clearly pulling the latest from my repo, but for some reason, the nuget restore stopped working. I probably should’ve googled the issue, and I think I did, but I was asking the wrong questions. I finally gave up and manually configured the build via the GUI, and then exported that config to YAML. When I went to do the next extension, I finally realized what the problem was. I used the exact same exported YAML, and got the exact same initial errors with the nuget restore.</p>
-
-<p>Googling “appveyor not using yaml” led me to <a href="https://help.appveyor.com/discussions/questions/4148-why-does-appveyor-seem-not-to-pick-up-my-appveyoryml">this help article</a>. I still don’t understand why permissions were an issue to read the <code class="highlighter-rouge">appveyor.yml</code>, when it was clearly reading an updated <code class="highlighter-rouge">csproj</code> file. But I do now have extensions that support VS 2017.</p>
 
 
       <hr>

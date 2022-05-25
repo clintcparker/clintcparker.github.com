@@ -142,6 +142,21 @@
         <div class="home">
   
     <article class="post">
+      <h2 class="post-title"><a class="post-link" href="/2018/05/15/adventures-in-vs-extension-updates/">Adventures in vs Extension Updates</a></h2>
+
+      <time datetime="2018-05-15T16:22:49-07:00" class="post-date">May 15, 2018</time>
+
+      <p>While at <a href="https://developer.microsoft.com/en-us/events/build/content">//build</a> I was inspired to update my extensions to support VS 2017. I meant to do it last year, but got distracted. The process was really simple, and is <a href="https://docs.microsoft.com/en-us/visualstudio/extensibility/how-to-migrate-extensibility-projects-to-visual-studio-2017">outlined</a> on the new hotness that is <a href="https://docs.microsoft.com">MS Docs</a>. It took me about 10 minutes to get it all configured an tested. But then…I was sidelined by my CI config.</p>
+
+<p>For some reason, my <a href="https://www.appveyor.com/">AppVeyor</a> builds were failing. They were clearly pulling the latest from my repo, but for some reason, the nuget restore stopped working. I probably should’ve googled the issue, and I think I did, but I was asking the wrong questions. I finally gave up and manually configured the build via the GUI, and then exported that config to YAML. When I went to do the next extension, I finally realized what the problem was. I used the exact same exported YAML, and got the exact same initial errors with the nuget restore.</p>
+
+<p>Googling “appveyor not using yaml” led me to <a href="https://help.appveyor.com/discussions/questions/4148-why-does-appveyor-seem-not-to-pick-up-my-appveyoryml">this help article</a>. I still don’t understand why permissions were an issue to read the <code class="highlighter-rouge">appveyor.yml</code>, when it was clearly reading an updated <code class="highlighter-rouge">csproj</code> file. But I do now have extensions that support VS 2017.</p>
+
+
+      <hr>
+    </article>
+  
+    <article class="post">
       <h2 class="post-title"><a class="post-link" href="/2017/08/17/data-driven/">Data Driven</a></h2>
 
       <time datetime="2017-08-17T13:41:08-07:00" class="post-date">August 17, 2017</time>
@@ -323,29 +338,6 @@ Another team just got two half done projects dumped into their branch, because t
 <span class="p">}</span></code></pre></figure>
 
 <p>All that to avoid explicitly instantiating lists.</p>
-
-
-      <hr>
-    </article>
-  
-    <article class="post">
-      <h2 class="post-title"><a class="post-link" href="/2016/09/11/creating-a-vs-extension/">Creating a vs Extension</a></h2>
-
-      <time datetime="2016-09-11T13:55:00-07:00" class="post-date">September 11, 2016</time>
-
-      <p>I’m a moderate user of extensions. As in, I have some favorites, but I’m not trolling the gallery everyday.</p>
-
-<p>I’ve never made one before. No idea has either been both big enough and small enough to warrant me building an extension.</p>
-
-<p>In April 2016, at Build, I saw <a href="https://visualstudiogallery.msdn.microsoft.com/site/search?f%5B0%5D.Type=User&amp;f%5B0%5D.Value=Mads%20Kristensen">Mads Kristensen</a> create &amp; publish (with integrated CI, and pretty images) a brand new extension during a 1 hour session. It was a great talk, and I had promised myself that I would watch it again on Channel9. I also signed up to be a VS Partner while at build.</p>
-
-<p>I received an email about a week ago saying my VS Partner status would be canceled, unless I published a product in the next week.</p>
-
-<p>Two days later, I came across a fitting challenge for an extension. So I set out to build it.</p>
-
-<p>I followed Mads’ video, and it was surprisingly easy. The docs are still very confusing for the VS interfaces, but it was still doable.In the end, what took Mads less than an hour on stage, took me about 5 hours of total work at my desk.</p>
-
-<p>All in all, it was still surprisingly easy, and I regret not doing it sooner.</p>
 
 
       <hr>

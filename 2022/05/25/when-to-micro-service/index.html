@@ -6,15 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Archive</title>
-    <meta name="description" content="Writings on software development, testing, and architecture. .NET C# Tools Testing whiteboarding design
-">
+    <title>When to Microservice</title>
+    <meta name="description" content="I’m enjoying Microsoft Build 2022. Developer experience (especially in the face of common and complicated IaaS and PaaS scenarios) was my favorite topic of t...">
 
     <link rel="stylesheet" href="/assets/css/style.css">
 
     <!-- <link rel="icon" type="image/x-icon" href="https://clintcparker.com/favicon.ico"> -->
 
-    <link rel="canonical" href="https://clintcparker.com/archive/">
+    <link rel="canonical" href="https://clintcparker.com/2022/05/25/when-to-micro-service/">
     <link rel="alternate" type="application/rss+xml" title="@clintcparker" href="https://clintcparker.com/feed.xml" />
     
     <script>
@@ -138,109 +137,30 @@
         <div class="post">
 
   <header class="post-header">
-    <h2 class="post-title">Archive</h2>
+    <h2 class="post-title">When to Microservice</h2>
+    <time class="post-date">May 25, 2022</time>
   </header>
 
   <article class="post-content">
-    <p>This page lists all posts (not pages) organized by date.</p>
+    <p>I’m enjoying Microsoft Build 2022. Developer experience (especially in the face of common and complicated IaaS and PaaS scenarios) was my favorite topic of the day 1 keynotes.</p>
 
-<div class="post-list">
-    <ul>
-        
-            <li>
-                <a href="/2022/05/25/when-to-micro-service/">
-                    When to Microservice
-                </a>
-                <time>May 25, 2022</time>
-            </li>
-        
-            <li>
-                <a href="/2022/04/13/software-leadership-fostering-the-team/">
-                    Software Leadership - Fostering the Team
-                </a>
-                <time>April 13, 2022</time>
-            </li>
-        
-            <li>
-                <a href="/2022/02/24/rdp-tunnels/">
-                    RDP Tunnels
-                </a>
-                <time>February 24, 2022</time>
-            </li>
-        
-            <li>
-                <a href="/2018/09/21/belvedere/">
-                    Belvedere
-                </a>
-                <time>September 21, 2018</time>
-            </li>
-        
-            <li>
-                <a href="/2018/08/31/name-on/">
-                    Name-on
-                </a>
-                <time>August 31, 2018</time>
-            </li>
-        
-            <li>
-                <a href="/2018/05/15/adventures-in-vs-extension-updates/">
-                    Adventures in vs Extension Updates
-                </a>
-                <time>May 15, 2018</time>
-            </li>
-        
-            <li>
-                <a href="/2017/08/17/data-driven/">
-                    Data Driven
-                </a>
-                <time>August 17, 2017</time>
-            </li>
-        
-            <li>
-                <a href="/2016/10/01/c-obfuscation/">
-                    C# Obfuscation
-                </a>
-                <time>October 01, 2016</time>
-            </li>
-        
-            <li>
-                <a href="/2016/09/28/why-git-works-where-tfvc-doesnt/">
-                    Why Git Works Where TFVC Doesn't
-                </a>
-                <time>September 28, 2016</time>
-            </li>
-        
-            <li>
-                <a href="/2016/09/11/how-yield-works/">
-                    How Yield Works
-                </a>
-                <time>September 11, 2016</time>
-            </li>
-        
-            <li>
-                <a href="/2016/09/11/creating-a-vs-extension/">
-                    Creating a vs Extension
-                </a>
-                <time>September 11, 2016</time>
-            </li>
-        
-            <li>
-                <a href="/2014/03/21/c-testing-with-fakes/">
-                    C# Testing With Fakes
-                </a>
-                <time>March 21, 2014</time>
-            </li>
-        
-            <li>
-                <a href="/2014/03/21/vbscript-conditional-includes/">
-                    VBScript Conditional Includes
-                </a>
-                <time>March 21, 2014</time>
-            </li>
-        
-    </ul>
-</div>
-<p><!-- .post-list --></p>
+<p>Later, watching the keynote after hours, I stumbled on a gem of a conversation between Scott Hanselman and Scott Guthrie.</p>
+
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Great informal discussion/perspective on when to use micro-services &amp; containers from <a href="https://twitter.com/shanselman?ref_src=twsrc%5Etfw">@shanselman</a> and <a href="https://twitter.com/scottgu?ref_src=twsrc%5Etfw">@scottgu</a> at 33:18.<a href="https://t.co/1tNahY1VSk">https://t.co/1tNahY1VSk</a></p>&mdash; Clint Parker (@clintcparker) <a href="https://twitter.com/clintcparker/status/1529577253423566848?ref_src=twsrc%5Etfw">May 25, 2022</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<p>Lot’s of classic “it depends” which is totally true. For me it depends on at least one of three macro factors being present:</p>
+
+<ol>
+  <li>Teams/people need to develop and deploy at different paces.</li>
+  <li>Parts of the system <em>need</em> to scale independently</li>
+  <li>Parts of the system <em>need</em> to be segmented for security purposes. Ex: only engineers from the payments team can make changes to payments systems.</li>
+</ol>
+
+<p>You can have any decomposition you like, but in that video Scott Guthrie alludes to the challenges you can face on either end of the spectrum (1 engineer with 100 micro-services or 100 engineers with one service).</p>
+
+<p>One last note, I may start saying containers instead of micro-services going forward. I usually try say that I prefer macro-services, but then we have to have a whole discussion about the difference. Maybe the term container will become the defacto descriptor of services and their boundaries.</p>
+
 
   </article>
 

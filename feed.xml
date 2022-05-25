@@ -6,9 +6,38 @@
 </description>
     <link>https://clintcparker.com/</link>
     <atom:link href="https://clintcparker.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 14 Apr 2022 15:26:08 -0700</pubDate>
-    <lastBuildDate>Thu, 14 Apr 2022 15:26:08 -0700</lastBuildDate>
+    <pubDate>Wed, 25 May 2022 15:03:25 -0700</pubDate>
+    <lastBuildDate>Wed, 25 May 2022 15:03:25 -0700</lastBuildDate>
     <generator>Jekyll v4.0.1</generator>
+    
+      <item>
+        <title>When to Microservice</title>
+        <description>&lt;p&gt;I’m enjoying Microsoft Build 2022. Developer experience (especially in the face of common and complicated IaaS and PaaS scenarios) was my favorite topic of the day 1 keynotes.&lt;/p&gt;
+
+&lt;p&gt;Later, watching the keynote after hours, I stumbled on a gem of a conversation between Scott Hanselman and Scott Guthrie.&lt;/p&gt;
+
+&lt;blockquote class=&quot;twitter-tweet&quot;&gt;&lt;p lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;Great informal discussion/perspective on when to use micro-services &amp;amp; containers from &lt;a href=&quot;https://twitter.com/shanselman?ref_src=twsrc%5Etfw&quot;&gt;@shanselman&lt;/a&gt; and &lt;a href=&quot;https://twitter.com/scottgu?ref_src=twsrc%5Etfw&quot;&gt;@scottgu&lt;/a&gt; at 33:18.&lt;a href=&quot;https://t.co/1tNahY1VSk&quot;&gt;https://t.co/1tNahY1VSk&lt;/a&gt;&lt;/p&gt;&amp;mdash; Clint Parker (@clintcparker) &lt;a href=&quot;https://twitter.com/clintcparker/status/1529577253423566848?ref_src=twsrc%5Etfw&quot;&gt;May 25, 2022&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async=&quot;&quot; src=&quot;https://platform.twitter.com/widgets.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;Lot’s of classic “it depends” which is totally true. For me it depends on at least one of three macro factors being present:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Teams/people need to develop and deploy at different paces.&lt;/li&gt;
+  &lt;li&gt;Parts of the system &lt;em&gt;need&lt;/em&gt; to scale independently&lt;/li&gt;
+  &lt;li&gt;Parts of the system &lt;em&gt;need&lt;/em&gt; to be segmented for security purposes. Ex: only engineers from the payments team can make changes to payments systems.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;You can have any decomposition you like, but in that video Scott Guthrie alludes to the challenges you can face on either end of the spectrum (1 engineer with 100 micro-services or 100 engineers with one service).&lt;/p&gt;
+
+&lt;p&gt;One last note, I may start saying containers instead of micro-services going forward. I usually try say that I prefer macro-services, but then we have to have a whole discussion about the difference. Maybe the term container will become the defacto descriptor of services and their boundaries.&lt;/p&gt;
+
+</description>
+        <pubDate>Wed, 25 May 2022 14:52:58 -0700</pubDate>
+        <link>https://clintcparker.com/2022/05/25/when-to-micro-service/</link>
+        <guid isPermaLink="true">https://clintcparker.com/2022/05/25/when-to-micro-service/</guid>
+        
+        
+      </item>
     
       <item>
         <title>Software Leadership - Fostering the Team</title>
@@ -540,29 +569,6 @@ Another team just got two half done projects dumped into their branch, because t
         <pubDate>Sun, 11 Sep 2016 13:55:00 -0700</pubDate>
         <link>https://clintcparker.com/2016/09/11/how-yield-works/</link>
         <guid isPermaLink="true">https://clintcparker.com/2016/09/11/how-yield-works/</guid>
-        
-        
-      </item>
-    
-      <item>
-        <title>Creating a vs Extension</title>
-        <description>&lt;p&gt;I’m a moderate user of extensions. As in, I have some favorites, but I’m not trolling the gallery everyday.&lt;/p&gt;
-
-&lt;p&gt;I’ve never made one before. No idea has either been both big enough and small enough to warrant me building an extension.&lt;/p&gt;
-
-&lt;p&gt;In April 2016, at Build, I saw &lt;a href=&quot;https://visualstudiogallery.msdn.microsoft.com/site/search?f%5B0%5D.Type=User&amp;amp;f%5B0%5D.Value=Mads%20Kristensen&quot;&gt;Mads Kristensen&lt;/a&gt; create &amp;amp; publish (with integrated CI, and pretty images) a brand new extension during a 1 hour session. It was a great talk, and I had promised myself that I would watch it again on Channel9. I also signed up to be a VS Partner while at build.&lt;/p&gt;
-
-&lt;p&gt;I received an email about a week ago saying my VS Partner status would be canceled, unless I published a product in the next week.&lt;/p&gt;
-
-&lt;p&gt;Two days later, I came across a fitting challenge for an extension. So I set out to build it.&lt;/p&gt;
-
-&lt;p&gt;I followed Mads’ video, and it was surprisingly easy. The docs are still very confusing for the VS interfaces, but it was still doable.In the end, what took Mads less than an hour on stage, took me about 5 hours of total work at my desk.&lt;/p&gt;
-
-&lt;p&gt;All in all, it was still surprisingly easy, and I regret not doing it sooner.&lt;/p&gt;
-</description>
-        <pubDate>Sun, 11 Sep 2016 13:55:00 -0700</pubDate>
-        <link>https://clintcparker.com/2016/09/11/creating-a-vs-extension/</link>
-        <guid isPermaLink="true">https://clintcparker.com/2016/09/11/creating-a-vs-extension/</guid>
         
         
       </item>
