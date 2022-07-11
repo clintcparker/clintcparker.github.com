@@ -6,8 +6,8 @@
 </description>
     <link>https://clintcparker.com/</link>
     <atom:link href="https://clintcparker.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 25 May 2022 15:03:25 -0700</pubDate>
-    <lastBuildDate>Wed, 25 May 2022 15:03:25 -0700</lastBuildDate>
+    <pubDate>Mon, 11 Jul 2022 11:28:26 -0700</pubDate>
+    <lastBuildDate>Mon, 11 Jul 2022 11:28:26 -0700</lastBuildDate>
     <generator>Jekyll v4.0.1</generator>
     
       <item>
@@ -308,7 +308,7 @@ https://mpharrigan.com/2016/05/17/background-ssh.html&lt;/li&gt;
     
       <item>
         <title>Belvedere</title>
-        <description>&lt;p&gt;&lt;img src=&quot;https://docs.microsoft.com/en-us/dotnet/images/hub/netcore.svg&quot; alt=&quot;dotnetcore&quot; class=&quot;r-img&quot; height=&quot;150px&quot; /&gt;I recently created &lt;a href=&quot;https://name-on.site&quot;&gt;name-on&lt;/a&gt; using the DotNetCore command line tools and VS Code. It was surprisingly easy, and I love scaffolding from the command line.&lt;/p&gt;
+        <description>&lt;p&gt;&lt;img src=&quot;https://docs.microsoft.com/en-us/dotnet/images/hub/netcore.svg&quot; alt=&quot;dotnetcore&quot; class=&quot;r-img&quot; height=&quot;150px&quot; /&gt;I recently created &lt;a href=&quot;https://name-on.clintcparker.com&quot;&gt;name-on&lt;/a&gt; using the DotNetCore command line tools and VS Code. It was surprisingly easy, and I love scaffolding from the command line.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;https://fishshell.com/assets/img/Terminal_Logo_CRT_Small.png&quot; alt=&quot;fish-shell&quot; class=&quot;l-img&quot; height=&quot;200px&quot; /&gt;I also recently got my WSL setup working, which involved setting fish as my default shell, and revisiting some of the functions I have made in the past.&lt;/p&gt;
 
@@ -339,7 +339,7 @@ https://mpharrigan.com/2016/05/17/background-ssh.html&lt;/li&gt;
       <item>
         <title>Name-on</title>
         <description>&lt;h3 id=&quot;but-y-tho&quot;&gt;But Y tho?&lt;/h3&gt;
-&lt;p&gt;I needed a unique name generator, so I built &lt;a href=&quot;https://name-on.site/&quot;&gt;one&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I needed a unique name generator, so I built &lt;a href=&quot;https://name-on.clintcparker.com/&quot;&gt;one&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;I had used the Heroku unique-name generator before, when building &lt;a href=&quot;https://badideas.herokuapp.com/&quot;&gt;bad ideas&lt;/a&gt;. I loved how it removed a mental hurdle from getting something out the door; coming up with a name. Personally, I’m horrible at naming things, so this was a necessity. I don’t want to get hung up on picking a good name, and the defaults are equally as bad (ConsoleApplication23, anybody?).&lt;/p&gt;
 
