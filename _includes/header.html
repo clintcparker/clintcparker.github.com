@@ -10,14 +10,24 @@
             <a href="{{ site.baseurl }}/">Home</a>
             {% for page in site.pages %}
                 {% unless page.exclude %}
-                {% if page.title %}
-                <a class="page-link" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
-                {% endif %}
+                    {% if page.title %}
+                        <a class="page-link" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
+                    {% endif %}
                 {% endunless %}
             {% endfor %}
-            <a href="https://github.com/{{ site.github_username}}" target="_blank" >GitHub</a>
-            <a href="https://www.linkedin.com/in/clintcparker" target="_blank"  >Résumé</a>
-	    <a href="https://twitter.com/{{ site.twitter_username}}" target="_blank" >Tweets</a>
+            <a href="https://github.com/{{ site.github_username}}" target="_blank">GitHub</a>
+            <a href="https://www.linkedin.com/in/clintcparker" target="_blank">Résumé</a>
+            <a href="https://twitter.com/{{ site.twitter_username}}" target="_blank">Tweets</a>
+            <!-- Cal element-click embed code begins -->
+            <script type="text/javascript">
+                (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; typeof namespace === "string" ? (cal.ns[namespace] = api) && p(api, ar) : p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+                Cal("init", { origin: "https://app.cal.com" });
+
+                // Important: Make sure to add `data-cal-link="clint-parker/15min"` attribute to the element you want to open Cal on click
+                Cal("ui", { "styles": { "branding": { "brandColor": "#2e2e2e" } }, "hideEventTypeDetails": false });
+            </script>
+            <a target="_blank" data-cal-link="clint-parker/15min">Chat</a>
+            <!-- Cal element-click embed code ends -->
         </nav>
 
     </div> <!-- .wrapper -->
