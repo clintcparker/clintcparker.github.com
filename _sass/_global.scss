@@ -294,6 +294,12 @@ a.next:hover {
     }
 }
 
+
+
+/*==============================
+=            Dark Mode            =
+==============================*/
+
 @media (prefers-color-scheme: dark) {
 
     .site-footer {
@@ -406,5 +412,51 @@ a.next:hover {
     html {
         color: $gray5;
         background-color: $gray1;
+    }
+}
+
+
+
+/*==============================
+=            Tables            =
+==============================*/
+
+article table {
+    border-collapse: collapse;
+    border: 2px black solid;
+    font: 12px sans-serif;
+
+    /* add a border between the cells */
+    td, th {
+        border: 1px $gray3_5 solid;
+        padding: 5px;
+    }
+    thead th {
+            font-weight: bold;
+        }
+    tbody td {
+        /* add padding */
+        padding: 10px;
+    }
+}
+@media (prefers-color-scheme: light) {
+    article table {
+        border-color: $gray4;
+
+        /* add a border between the cells */
+        td, th {
+            border-color: $gray3_5;
+        }
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    article table {
+        border-color: $dark_gray4;
+
+        /* add a border between the cells */
+        td, th {
+            border-color: $dark_gray3_5;
+        }
     }
 }
