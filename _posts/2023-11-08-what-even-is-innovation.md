@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "What Even Is Innovation?"
+date: 2023-11-08T10:05:08-08:00
 ---
 I was once asked about the most inventive or innovative thing I’d done. Where to start? I’m a middling engineer at best. I fully subscribe to my own pitch as a leader that engineers should prioritize simplicity and obviousness over performance and cleverness.
 
