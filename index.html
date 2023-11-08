@@ -147,6 +147,57 @@
         <div class="home">
   
     <article class="post">
+      <h2 class="post-title"><a class="post-link" href="/2023/11/08/what-even-is-innovation/">What Even Is Innovation?</a></h2>
+
+      <time datetime="2023-11-08T10:05:08-08:00" class="post-date">November 08, 2023</time>
+
+      <p>I was once asked about the most inventive or innovative thing I’d done. Where to start? I’m a middling engineer at best. I fully subscribe to my own pitch as a leader that engineers should prioritize simplicity and obviousness over performance and cleverness.</p>
+
+<p>That said, I have an obvious answer to “What is the most interesting problem you ever solved?” And just to be transparent and fair, I didn’t solve this in a vacuum. I worked with a great team and would not have succeeded without their help.</p>
+
+<p>The innovation I’m proud of is a little embarrassing due to the underlying technology. While I was at Mindbody, we uncovered an impactful limitation of scaling Classic ASP web applications. That’s right, Mindbody was still very much reliant on Classic ASP, which had been deprecated with the arrival of <code class="highlighter-rouge">.NET</code>. The solution to this scaling problem wasn’t particularly complex, but the novelty and impact qualify as innovative. In the end, we were able to proactively identify, remediate, and prevent future consequences of the limitation.</p>
+
+<p>In late 2017, our VP of Engineering asked me to investigate an issue plaguing another team in his org. I was a Senior Manager overseeing other teams in technically a different department, but I and some of my group had historical experience in the code in question. The nominal problem: a deployed bundle of changes resulted in a 10% increase in CPU usage in production. Rolling the deployment back brought the usage back down, and vice versa. Additionally, the CPU increase was not detectable outside of the production environment. ☹️</p>
+
+<p>I started by enlisting one of the senior engineers on my team, and we began reviewing the changes in the associated deployment. Nothing initially jumped out at us, but on the 3rd pass, I began to suspect that the problem could be related to a change of an <code class="highlighter-rouge">#include</code> reference file. Please see my early post about conditional <code class="highlighter-rouge">include</code> references to understand why this is already a potential issue. (And begin to understand my absolute hat of the continued use of VBScript). – Side note: VBScript is awesome circa 1997. But, like everything else in the universe, we evolved, and the evolution of VBScript on the server was <code class="highlighter-rouge">.NET</code>. Now, if you want to complain about people <em>choosing</em> to use VBScript after 2001, I’d be happy to drink my sorrows away beside you. Rant over, for now– This reference file had <em>itself</em> added another reference, which is typical. But in this case, the outer file was almost ubiquitously referenced in every top-level file. Specifically, the heavy usage of the modified file meant that this small change was probably causing a wider-than-obvious impact.</p>
+
+<p>To test the hypothesis that this one-line change was the culprit, we removed that commit from the bundle and redeployed it without issue. The CPU usage increase disappeared! While the immediate problem was solved, I still wanted to know the root cause and prevention methods.</p>
+
+<p>I then endeavored to prove this issue was detectable via static code analysis. My second hypothesis was that this was related to the server doing more work interpreting more lines per request. The structure of Classic ASP requires that every single line be interpreted when served. Therefore, I suspected that more lines interpreted meant more work being done per request and, in turn, higher CPU usage.</p>
+
+<p>We created a NodeJS command line tool to analyze the codebase to represent this. We used NodeJS because it truly is the best way to share multi-platform CLIs. And thank you, <a href="https://github.com/tj">TJ</a>, for <code class="highlighter-rouge">commander.js</code>! The references in the <code class="highlighter-rouge">include</code> files created an easily traversed tree. The tree was then flattened and converted to a total number of interpreted lines for any given top-level file.</p>
+
+<p>We enhanced the tool to provide additional insights, such as the theoretical minimum total lines (fully optimized but impractical to maintain) and the specific references to any included file, as well as a bloat factor, which represented how far the structure of a file was from the optimal. The results were output as one CSV file and a collection of JSON files.</p>
+
+<p>The results were astounding! The original (problematic) one-line change increased the total number of interpreted lines from 26 million to 52 million. On the other side of the spectrum, the theoretical optimal number of lines was just over 12 million.</p>
+
+<p>From the insights gleaned from the analysis, we could then restructure the file references to a more optimal state. Finally, we submitted pull requests to the owning team and reduced the total interpreted lines to 19 million.</p>
+
+<p>Lastly, I saw that this specific issue could be prevented with these new insights. So, we created a step in the build process to run the analysis and limit the total interpreted lines not to exceed a variable maximum value.</p>
+
+<p>Over the years, other engineers extended the tool to support visualizations of the reference tree and various library upgrades and bug fixes. It was still a critical build step at the time of my departure.</p>
+
+<p>While none of the technology is particularly glamorous, I am proud of this innovation. Over a few weeks, existing concepts and platforms were reorganized to create something novel and beneficial. We didn’t patent anything. We didn’t write a new language. Heck, we couldn’t even really talk about it for two main reasons: 1. The org didn’t want to admit to using outdated technology, 2. Who else was using that tech and would be interested in listening?</p>
+
+<p>So, as I said at the beginning, I subscribe to my own pitch of simplicity. We used basic tools and concepts and put them together in a new way.</p>
+
+<p>P.S. I’m not sure how much we saved the company, but it has to be substantial. At least 10 teams were blocked for 3 weeks from deploying to production. I think they would’ve continued to run into this issue, even if they found it in this instance, and probably would’ve resorted to massively overscaling production infrastructure. Yikes!</p>
+
+<p>P.P.S. Let’s take a minute to discuss what was probably happening here. I say probably because I don’t know for sure the absolute underlying issue, and even if I did, there really isn’t any fixing it for this ecosystem.</p>
+
+<p>VBScript works by retrieving the requested page/resource (<code class="highlighter-rouge">something.asp</code>) and then processing the contents based on the context/request and rendering the output. Again, top-notch for 1997.</p>
+
+<p>VBScript is a v1 product. It isn’t optimized beyond what the engineers fathomed at the time of writing. So, VBScript pulls the initial ASP file from disk and processes it line-by-line. If there is an <code class="highlighter-rouge">#include</code>, it retrieves that and also processes it line-by-line. Why does it process every line? Because it’s a scripting language at heart, and those lines can modify global state outside of a method body( again, see my post on VBScript conditional includes). So, it is doing a lot of work for each page request. The engineers knew about this, so they created a cache of page contents to not have to go to disk every time.</p>
+
+<p>In our case, though, these two concept collide and clobber each other. The need to process each request creates a ton of work, and the page sizes themselves become massive due to the (substantial but not infinite) recursive nature of the pages. Doing more work, and the cache can’t keep up, so it’s doing more work in vain. Brutal.</p>
+
+<p>In the end, they did improve Classic ASP/VBScript … they created <code class="highlighter-rouge">.NET</code>.</p>
+
+
+      <hr>
+    </article>
+  
+    <article class="post">
       <h2 class="post-title"><a class="post-link" href="/2022/05/25/when-to-micro-service/">When to Microservice</a></h2>
 
       <time datetime="2022-05-25T14:52:58-07:00" class="post-date">May 25, 2022</time>
@@ -467,41 +518,6 @@ https://mpharrigan.com/2016/05/17/background-ssh.html</li>
 <p>Belvedere will create all the necessary projects, with the correct intra-project references, a solution, gitignore, and README. It also intializes a git repo and commits the created files.</p>
 
 <p>You can find the code here: <a href="https://github.com/clintcparker/fish_functions/blob/master/belvedere.fish">https://github.com/clintcparker/fish_functions/blob/master/belvedere.fish</a></p>
-
-
-      <hr>
-    </article>
-  
-    <article class="post">
-      <h2 class="post-title"><a class="post-link" href="/2018/08/31/name-on/">Name-on</a></h2>
-
-      <time datetime="2018-08-31T16:22:49-07:00" class="post-date">August 31, 2018</time>
-
-      <h3 id="but-y-tho">But Y tho?</h3>
-<p>I needed a unique name generator, so I built <a href="https://name-on.clintcparker.com/">one</a>.</p>
-
-<p>I had used the Heroku unique-name generator before, when building <a href="https://badideas.herokuapp.com/">bad ideas</a>. I loved how it removed a mental hurdle from getting something out the door; coming up with a name. Personally, I’m horrible at naming things, so this was a necessity. I don’t want to get hung up on picking a good name, and the defaults are equally as bad (ConsoleApplication23, anybody?).</p>
-
-<p>I’d also been wanting to get back to dot net core. The last time I had played around with it, they were still using the <code class="highlighter-rouge">dnx</code> command line tool and <code class="highlighter-rouge">project.json</code> files. So this project seemed small enough, and valuable enough, to actually keep me on task for the duration of v1.</p>
-
-<h3 id="the-command-line">The command line</h3>
-<p>I was stoked to be able to layout the project structure from the command line. I’m just so much more optimistic about a tool when there’s a CLI behind it. Even if I’ll never script it, the idea that i <em>could</em> is very appealing.</p>
-
-<p>I scaffolded the whole project via the <code class="highlighter-rouge">dotnet new</code> and <code class="highlighter-rouge">dotnet add</code> commands. I was also able to build and test in the same manner. It was a nice break from VS 2017.</p>
-
-<h3 id="structure">Structure</h3>
-<p>I found lists of adjectives and nouns online. And thank to some recent practice with regex crosswords, quickly stripped everything but the words themselves.</p>
-
-<p>I added some tests for uniqueness, which is about 99.985%. I also added protection for never getting the same name twice in a row.</p>
-
-<p>I was able to create a CLI for OS X, which was came in handy when publishing to Azure, and needing names for everything.</p>
-
-<p>For the web app the <code class="highlighter-rouge">dotnet help</code> lists a template called <code class="highlighter-rouge">razor</code> with the description “mvc with razor pages.” I’ve used the Razor syntax since it debuted, and thought, “of course I want razor, not <code class="highlighter-rouge">aspx</code>.” Apparently though, Razor Pages is a new thing. I actually really liked it for build the web app component. I still created a controller for the API, but was happy I stumbled onto this new paradigm.</p>
-
-<p>I really went over the top with the completeness. Azure for hosting. Custom domain through NameCheap. SSL through CloudFlare.</p>
-
-<h3 id="next-steps">Next Steps</h3>
-<p>The <a href="https://github.com/clintcparker/name-on#name-on">README</a> has a roadmap, which includes packaging the CLI and improving the site. PRs are welcomed.</p>
 
 
       <hr>

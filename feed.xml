@@ -6,9 +6,60 @@
 </description>
     <link>https://clintcparker.com/</link>
     <atom:link href="https://clintcparker.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 24 Jan 2023 12:41:45 -0800</pubDate>
-    <lastBuildDate>Tue, 24 Jan 2023 12:41:45 -0800</lastBuildDate>
+    <pubDate>Wed, 08 Nov 2023 10:05:36 -0800</pubDate>
+    <lastBuildDate>Wed, 08 Nov 2023 10:05:36 -0800</lastBuildDate>
     <generator>Jekyll v4.0.1</generator>
+    
+      <item>
+        <title>What Even Is Innovation?</title>
+        <description>&lt;p&gt;I was once asked about the most inventive or innovative thing I’d done. Where to start? I’m a middling engineer at best. I fully subscribe to my own pitch as a leader that engineers should prioritize simplicity and obviousness over performance and cleverness.&lt;/p&gt;
+
+&lt;p&gt;That said, I have an obvious answer to “What is the most interesting problem you ever solved?” And just to be transparent and fair, I didn’t solve this in a vacuum. I worked with a great team and would not have succeeded without their help.&lt;/p&gt;
+
+&lt;p&gt;The innovation I’m proud of is a little embarrassing due to the underlying technology. While I was at Mindbody, we uncovered an impactful limitation of scaling Classic ASP web applications. That’s right, Mindbody was still very much reliant on Classic ASP, which had been deprecated with the arrival of &lt;code class=&quot;highlighter-rouge&quot;&gt;.NET&lt;/code&gt;. The solution to this scaling problem wasn’t particularly complex, but the novelty and impact qualify as innovative. In the end, we were able to proactively identify, remediate, and prevent future consequences of the limitation.&lt;/p&gt;
+
+&lt;p&gt;In late 2017, our VP of Engineering asked me to investigate an issue plaguing another team in his org. I was a Senior Manager overseeing other teams in technically a different department, but I and some of my group had historical experience in the code in question. The nominal problem: a deployed bundle of changes resulted in a 10% increase in CPU usage in production. Rolling the deployment back brought the usage back down, and vice versa. Additionally, the CPU increase was not detectable outside of the production environment. ☹️&lt;/p&gt;
+
+&lt;p&gt;I started by enlisting one of the senior engineers on my team, and we began reviewing the changes in the associated deployment. Nothing initially jumped out at us, but on the 3rd pass, I began to suspect that the problem could be related to a change of an &lt;code class=&quot;highlighter-rouge&quot;&gt;#include&lt;/code&gt; reference file. Please see my early post about conditional &lt;code class=&quot;highlighter-rouge&quot;&gt;include&lt;/code&gt; references to understand why this is already a potential issue. (And begin to understand my absolute hat of the continued use of VBScript). – Side note: VBScript is awesome circa 1997. But, like everything else in the universe, we evolved, and the evolution of VBScript on the server was &lt;code class=&quot;highlighter-rouge&quot;&gt;.NET&lt;/code&gt;. Now, if you want to complain about people &lt;em&gt;choosing&lt;/em&gt; to use VBScript after 2001, I’d be happy to drink my sorrows away beside you. Rant over, for now– This reference file had &lt;em&gt;itself&lt;/em&gt; added another reference, which is typical. But in this case, the outer file was almost ubiquitously referenced in every top-level file. Specifically, the heavy usage of the modified file meant that this small change was probably causing a wider-than-obvious impact.&lt;/p&gt;
+
+&lt;p&gt;To test the hypothesis that this one-line change was the culprit, we removed that commit from the bundle and redeployed it without issue. The CPU usage increase disappeared! While the immediate problem was solved, I still wanted to know the root cause and prevention methods.&lt;/p&gt;
+
+&lt;p&gt;I then endeavored to prove this issue was detectable via static code analysis. My second hypothesis was that this was related to the server doing more work interpreting more lines per request. The structure of Classic ASP requires that every single line be interpreted when served. Therefore, I suspected that more lines interpreted meant more work being done per request and, in turn, higher CPU usage.&lt;/p&gt;
+
+&lt;p&gt;We created a NodeJS command line tool to analyze the codebase to represent this. We used NodeJS because it truly is the best way to share multi-platform CLIs. And thank you, &lt;a href=&quot;https://github.com/tj&quot;&gt;TJ&lt;/a&gt;, for &lt;code class=&quot;highlighter-rouge&quot;&gt;commander.js&lt;/code&gt;! The references in the &lt;code class=&quot;highlighter-rouge&quot;&gt;include&lt;/code&gt; files created an easily traversed tree. The tree was then flattened and converted to a total number of interpreted lines for any given top-level file.&lt;/p&gt;
+
+&lt;p&gt;We enhanced the tool to provide additional insights, such as the theoretical minimum total lines (fully optimized but impractical to maintain) and the specific references to any included file, as well as a bloat factor, which represented how far the structure of a file was from the optimal. The results were output as one CSV file and a collection of JSON files.&lt;/p&gt;
+
+&lt;p&gt;The results were astounding! The original (problematic) one-line change increased the total number of interpreted lines from 26 million to 52 million. On the other side of the spectrum, the theoretical optimal number of lines was just over 12 million.&lt;/p&gt;
+
+&lt;p&gt;From the insights gleaned from the analysis, we could then restructure the file references to a more optimal state. Finally, we submitted pull requests to the owning team and reduced the total interpreted lines to 19 million.&lt;/p&gt;
+
+&lt;p&gt;Lastly, I saw that this specific issue could be prevented with these new insights. So, we created a step in the build process to run the analysis and limit the total interpreted lines not to exceed a variable maximum value.&lt;/p&gt;
+
+&lt;p&gt;Over the years, other engineers extended the tool to support visualizations of the reference tree and various library upgrades and bug fixes. It was still a critical build step at the time of my departure.&lt;/p&gt;
+
+&lt;p&gt;While none of the technology is particularly glamorous, I am proud of this innovation. Over a few weeks, existing concepts and platforms were reorganized to create something novel and beneficial. We didn’t patent anything. We didn’t write a new language. Heck, we couldn’t even really talk about it for two main reasons: 1. The org didn’t want to admit to using outdated technology, 2. Who else was using that tech and would be interested in listening?&lt;/p&gt;
+
+&lt;p&gt;So, as I said at the beginning, I subscribe to my own pitch of simplicity. We used basic tools and concepts and put them together in a new way.&lt;/p&gt;
+
+&lt;p&gt;P.S. I’m not sure how much we saved the company, but it has to be substantial. At least 10 teams were blocked for 3 weeks from deploying to production. I think they would’ve continued to run into this issue, even if they found it in this instance, and probably would’ve resorted to massively overscaling production infrastructure. Yikes!&lt;/p&gt;
+
+&lt;p&gt;P.P.S. Let’s take a minute to discuss what was probably happening here. I say probably because I don’t know for sure the absolute underlying issue, and even if I did, there really isn’t any fixing it for this ecosystem.&lt;/p&gt;
+
+&lt;p&gt;VBScript works by retrieving the requested page/resource (&lt;code class=&quot;highlighter-rouge&quot;&gt;something.asp&lt;/code&gt;) and then processing the contents based on the context/request and rendering the output. Again, top-notch for 1997.&lt;/p&gt;
+
+&lt;p&gt;VBScript is a v1 product. It isn’t optimized beyond what the engineers fathomed at the time of writing. So, VBScript pulls the initial ASP file from disk and processes it line-by-line. If there is an &lt;code class=&quot;highlighter-rouge&quot;&gt;#include&lt;/code&gt;, it retrieves that and also processes it line-by-line. Why does it process every line? Because it’s a scripting language at heart, and those lines can modify global state outside of a method body( again, see my post on VBScript conditional includes). So, it is doing a lot of work for each page request. The engineers knew about this, so they created a cache of page contents to not have to go to disk every time.&lt;/p&gt;
+
+&lt;p&gt;In our case, though, these two concept collide and clobber each other. The need to process each request creates a ton of work, and the page sizes themselves become massive due to the (substantial but not infinite) recursive nature of the pages. Doing more work, and the cache can’t keep up, so it’s doing more work in vain. Brutal.&lt;/p&gt;
+
+&lt;p&gt;In the end, they did improve Classic ASP/VBScript … they created &lt;code class=&quot;highlighter-rouge&quot;&gt;.NET&lt;/code&gt;.&lt;/p&gt;
+</description>
+        <pubDate>Wed, 08 Nov 2023 10:05:08 -0800</pubDate>
+        <link>https://clintcparker.com/2023/11/08/what-even-is-innovation/</link>
+        <guid isPermaLink="true">https://clintcparker.com/2023/11/08/what-even-is-innovation/</guid>
+        
+        
+      </item>
     
       <item>
         <title>When to Microservice</title>
@@ -513,62 +564,6 @@ Another team just got two half done projects dumped into their branch, because t
         <pubDate>Wed, 28 Sep 2016 15:29:00 -0700</pubDate>
         <link>https://clintcparker.com/2016/09/28/why-git-works-where-tfvc-doesnt/</link>
         <guid isPermaLink="true">https://clintcparker.com/2016/09/28/why-git-works-where-tfvc-doesnt/</guid>
-        
-        
-      </item>
-    
-      <item>
-        <title>How Yield Works</title>
-        <description>&lt;p&gt;This code should work:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-csharp&quot; data-lang=&quot;csharp&quot;&gt;&lt;span class=&quot;n&quot;&gt;IEnumerable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ShouldWork&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;    
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(!&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;obj&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;is&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;IEnumerable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;)&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;yield&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;IEnumerable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; 
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;But it doesn’t.&lt;/p&gt;
-
-&lt;p&gt;I thought it would work. I like using &lt;code class=&quot;highlighter-rouge&quot;&gt;yield&lt;/code&gt; to take full advantage of delayed enumeration, rather than creating new lists or arrays all the time.&lt;/p&gt;
-
-&lt;p&gt;Everything looks right; the return types are good. Except it won’t compile. You get a nice message about having to use &lt;code class=&quot;highlighter-rouge&quot;&gt;yield&lt;/code&gt; inside an iterator when trying to return &lt;code class=&quot;highlighter-rouge&quot;&gt;(IEnumerabl&amp;lt;T&amp;gt;)obj&lt;/code&gt; directly.&lt;/p&gt;
-
-&lt;p&gt;Don’t try &lt;code class=&quot;highlighter-rouge&quot;&gt;yield return (IEnumerable&amp;lt;T&amp;gt;)obj&lt;/code&gt;. That will do exactly what you’d think. It won’t compile either, because now the return types don’t match, because &lt;code class=&quot;highlighter-rouge&quot;&gt;yield return (IENumerable&amp;lt;T&amp;gt;)obj&lt;/code&gt; needs a method return type of &lt;code class=&quot;highlighter-rouge&quot;&gt;IEnumerable&amp;lt;IEnumerable&amp;lt;T&amp;gt;&amp;gt;&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;So what to do?&lt;/p&gt;
-
-&lt;p&gt;Obviously, try &lt;code class=&quot;highlighter-rouge&quot;&gt;yield break&lt;/code&gt;. Because nothing else is making sense at this point. But of course, that’s not what &lt;code class=&quot;highlighter-rouge&quot;&gt;yield break&lt;/code&gt; is for in the least, so it doesn’t work. Yay, not completely crazy.&lt;/p&gt;
-
-&lt;p&gt;This issue didn’t come up for me until I was trying to combine recursion &amp;amp; LINQ-expressions. And was stumped. Googling the motivator (LINQ and recursion) yielded (pun intended) no valuable results.&lt;/p&gt;
-
-&lt;p&gt;I grabbed the nearest .NET nerd of my colleagues, and went straight to the whiteboard. In doing so, I realized that recursion has nothing to do with this not compiling (still not crazy!). On the other hand I still had to convince my colleague that the code wouldn’t compile. (He went thru literally the same steps I did. Again, not crazy).&lt;/p&gt;
-
-&lt;p&gt;So we seem to have found a cool nugget in the compiler, that seems to say, “if you want to &lt;code class=&quot;highlighter-rouge&quot;&gt;yield return&lt;/code&gt; once in a method, you must &lt;code class=&quot;highlighter-rouge&quot;&gt;yield&lt;/code&gt; all other returns in that method.” OK. That actually kind of makes sense. Delayed enumeration would mean that the compiler is wanting to deal w/ things granularly.&lt;/p&gt;
-
-&lt;p&gt;My (sad hack of a) solution: Fake the &lt;code class=&quot;highlighter-rouge&quot;&gt;yield&lt;/code&gt;.&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-csharp&quot; data-lang=&quot;csharp&quot;&gt;&lt;span class=&quot;n&quot;&gt;IEnumerable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DoesActuallyWork&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; 
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(!&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;obj&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;is&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;IEnumerable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;)&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;FakeYield&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;IEnumerable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; 
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;IEnumerable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;FakeYield&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;yield&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;All that to avoid explicitly instantiating lists.&lt;/p&gt;
-</description>
-        <pubDate>Sun, 11 Sep 2016 13:55:00 -0700</pubDate>
-        <link>https://clintcparker.com/2016/09/11/how-yield-works/</link>
-        <guid isPermaLink="true">https://clintcparker.com/2016/09/11/how-yield-works/</guid>
         
         
       </item>

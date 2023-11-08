@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html class="dark">
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>What Even Is Innovation?</title>
+    <meta name="description" content="I was once asked about the most inventive or innovative thing I’d done. Where to start? I’m a middling engineer at best. I fully subscribe to my own pitch as...">
+
+    <link rel="stylesheet" href="/assets/css/style.css">
+
+    <!-- <link rel="icon" type="image/x-icon" href="https://clintcparker.com/favicon.ico"> -->
+
+    <link rel="canonical" href="https://clintcparker.com/2023/11/08/what-even-is-innovation/">
+    <link rel="alternate" type="application/rss+xml" title="@clintcparker" href="https://clintcparker.com/feed.xml" />
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-84920844-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+    
+    <script>
+    // var anchorForId = function (id) {
+    //   var anchor = document.createElement("a");
+    //   anchor.className = "header-link";
+    //   anchor.href      = "#" + id;
+    //   anchor.innerHTML = "<span class=\"sr-only\">Permalink</span><i class=\"fa fa-link\"></i>";
+    //   anchor.title = "Permalink";
+    //   return anchor;
+    // };
+    anchorForId = function (id,text) {
+      var anchor = document.createElement("a");
+      anchor.className = "header-link";
+      anchor.href      = "#" + id;
+      anchor.text = text;
+      anchor.title = "Permalink";
+      return anchor;
+    };
+  
+    var linkifyAnchors = function (level, containingElement) {
+      var headers = containingElement.getElementsByTagName("h" + level);
+      for (var h = 0; h < headers.length; h++) {
+        var header = headers[h];
+  
+        if (typeof header.id !== "undefined" && header.id !== "") {
+            //debugger;
+          var n = header.childNodes[0];
+          header.insertBefore(anchorForId(header.id,header.textContent),n);
+          header.removeChild(n);
+        }
+      }
+    };
+  
+    document.onreadystatechange = function () {
+      if (this.readyState === "complete") {
+        var contentBlock = document.getElementsByClassName("post")[0];//('body')[0];// . || document.getElementsByClassName("news")[0];
+        if (!contentBlock) {
+          return;
+        }
+        for (var level = 1; level <= 6; level++) {
+          linkifyAnchors(level, contentBlock);
+        }
+      }
+    };
+  </script>
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+    <div class="wrapper">
+
+        <h1><a class="site-title" href="/">@clintcparker</a></h1>
+        <h2 class="site-tagline">Code and such from a whiteboard enthusiast</h2>
+
+
+        <nav class="site-nav">
+            <a href="/">Home</a>
+            
+                
+            
+                
+                    
+                        <a class="page-link" href="/about/">About</a>
+                    
+                
+            
+                
+                    
+                        <a class="page-link" href="/archive/">Archive</a>
+                    
+                
+            
+                
+                    
+                
+            
+                
+                    
+                
+            
+                
+                    
+                
+            
+                
+                    
+                
+            
+                
+                    
+                
+            
+            <a href="https://github.com/clintcparker" target="_blank">GitHub</a>
+            <a href="https://www.linkedin.com/in/clintcparker" target="_blank">Résumé</a>
+            <a href="https://twitter.com/clintcparker" target="_blank">Tweets</a>
+            <!-- Cal element-click embed code begins -->
+            <script type="text/javascript">
+                (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; typeof namespace === "string" ? (cal.ns[namespace] = api) && p(api, ar) : p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+                Cal("init", { origin: "https://app.cal.com" });
+
+                // Important: Make sure to add `data-cal-link="clint-parker/15min"` attribute to the element you want to open Cal on click
+                Cal("ui", { "styles": { "branding": { "brandColor": "#2e2e2e" } }, "hideEventTypeDetails": false });
+            </script>
+            <a target="_blank" data-cal-link="clint-parker/15min">Chat</a>
+            <!-- Cal element-click embed code ends -->
+        </nav>
+
+    </div> <!-- .wrapper -->
+
+</header>
+
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="post">
+
+  <header class="post-header">
+    <h2 class="post-title">What Even Is Innovation?</h2>
+    <time class="post-date">November 08, 2023</time>
+  </header>
+
+  <article class="post-content">
+    <p>I was once asked about the most inventive or innovative thing I’d done. Where to start? I’m a middling engineer at best. I fully subscribe to my own pitch as a leader that engineers should prioritize simplicity and obviousness over performance and cleverness.</p>
+
+<p>That said, I have an obvious answer to “What is the most interesting problem you ever solved?” And just to be transparent and fair, I didn’t solve this in a vacuum. I worked with a great team and would not have succeeded without their help.</p>
+
+<p>The innovation I’m proud of is a little embarrassing due to the underlying technology. While I was at Mindbody, we uncovered an impactful limitation of scaling Classic ASP web applications. That’s right, Mindbody was still very much reliant on Classic ASP, which had been deprecated with the arrival of <code class="highlighter-rouge">.NET</code>. The solution to this scaling problem wasn’t particularly complex, but the novelty and impact qualify as innovative. In the end, we were able to proactively identify, remediate, and prevent future consequences of the limitation.</p>
+
+<p>In late 2017, our VP of Engineering asked me to investigate an issue plaguing another team in his org. I was a Senior Manager overseeing other teams in technically a different department, but I and some of my group had historical experience in the code in question. The nominal problem: a deployed bundle of changes resulted in a 10% increase in CPU usage in production. Rolling the deployment back brought the usage back down, and vice versa. Additionally, the CPU increase was not detectable outside of the production environment. ☹️</p>
+
+<p>I started by enlisting one of the senior engineers on my team, and we began reviewing the changes in the associated deployment. Nothing initially jumped out at us, but on the 3rd pass, I began to suspect that the problem could be related to a change of an <code class="highlighter-rouge">#include</code> reference file. Please see my early post about conditional <code class="highlighter-rouge">include</code> references to understand why this is already a potential issue. (And begin to understand my absolute hat of the continued use of VBScript). – Side note: VBScript is awesome circa 1997. But, like everything else in the universe, we evolved, and the evolution of VBScript on the server was <code class="highlighter-rouge">.NET</code>. Now, if you want to complain about people <em>choosing</em> to use VBScript after 2001, I’d be happy to drink my sorrows away beside you. Rant over, for now– This reference file had <em>itself</em> added another reference, which is typical. But in this case, the outer file was almost ubiquitously referenced in every top-level file. Specifically, the heavy usage of the modified file meant that this small change was probably causing a wider-than-obvious impact.</p>
+
+<p>To test the hypothesis that this one-line change was the culprit, we removed that commit from the bundle and redeployed it without issue. The CPU usage increase disappeared! While the immediate problem was solved, I still wanted to know the root cause and prevention methods.</p>
+
+<p>I then endeavored to prove this issue was detectable via static code analysis. My second hypothesis was that this was related to the server doing more work interpreting more lines per request. The structure of Classic ASP requires that every single line be interpreted when served. Therefore, I suspected that more lines interpreted meant more work being done per request and, in turn, higher CPU usage.</p>
+
+<p>We created a NodeJS command line tool to analyze the codebase to represent this. We used NodeJS because it truly is the best way to share multi-platform CLIs. And thank you, <a href="https://github.com/tj">TJ</a>, for <code class="highlighter-rouge">commander.js</code>! The references in the <code class="highlighter-rouge">include</code> files created an easily traversed tree. The tree was then flattened and converted to a total number of interpreted lines for any given top-level file.</p>
+
+<p>We enhanced the tool to provide additional insights, such as the theoretical minimum total lines (fully optimized but impractical to maintain) and the specific references to any included file, as well as a bloat factor, which represented how far the structure of a file was from the optimal. The results were output as one CSV file and a collection of JSON files.</p>
+
+<p>The results were astounding! The original (problematic) one-line change increased the total number of interpreted lines from 26 million to 52 million. On the other side of the spectrum, the theoretical optimal number of lines was just over 12 million.</p>
+
+<p>From the insights gleaned from the analysis, we could then restructure the file references to a more optimal state. Finally, we submitted pull requests to the owning team and reduced the total interpreted lines to 19 million.</p>
+
+<p>Lastly, I saw that this specific issue could be prevented with these new insights. So, we created a step in the build process to run the analysis and limit the total interpreted lines not to exceed a variable maximum value.</p>
+
+<p>Over the years, other engineers extended the tool to support visualizations of the reference tree and various library upgrades and bug fixes. It was still a critical build step at the time of my departure.</p>
+
+<p>While none of the technology is particularly glamorous, I am proud of this innovation. Over a few weeks, existing concepts and platforms were reorganized to create something novel and beneficial. We didn’t patent anything. We didn’t write a new language. Heck, we couldn’t even really talk about it for two main reasons: 1. The org didn’t want to admit to using outdated technology, 2. Who else was using that tech and would be interested in listening?</p>
+
+<p>So, as I said at the beginning, I subscribe to my own pitch of simplicity. We used basic tools and concepts and put them together in a new way.</p>
+
+<p>P.S. I’m not sure how much we saved the company, but it has to be substantial. At least 10 teams were blocked for 3 weeks from deploying to production. I think they would’ve continued to run into this issue, even if they found it in this instance, and probably would’ve resorted to massively overscaling production infrastructure. Yikes!</p>
+
+<p>P.P.S. Let’s take a minute to discuss what was probably happening here. I say probably because I don’t know for sure the absolute underlying issue, and even if I did, there really isn’t any fixing it for this ecosystem.</p>
+
+<p>VBScript works by retrieving the requested page/resource (<code class="highlighter-rouge">something.asp</code>) and then processing the contents based on the context/request and rendering the output. Again, top-notch for 1997.</p>
+
+<p>VBScript is a v1 product. It isn’t optimized beyond what the engineers fathomed at the time of writing. So, VBScript pulls the initial ASP file from disk and processes it line-by-line. If there is an <code class="highlighter-rouge">#include</code>, it retrieves that and also processes it line-by-line. Why does it process every line? Because it’s a scripting language at heart, and those lines can modify global state outside of a method body( again, see my post on VBScript conditional includes). So, it is doing a lot of work for each page request. The engineers knew about this, so they created a cache of page contents to not have to go to disk every time.</p>
+
+<p>In our case, though, these two concept collide and clobber each other. The need to process each request creates a ton of work, and the page sizes themselves become massive due to the (substantial but not infinite) recursive nature of the pages. Doing more work, and the cache can’t keep up, so it’s doing more work in vain. Brutal.</p>
+
+<p>In the end, they did improve Classic ASP/VBScript … they created <code class="highlighter-rouge">.NET</code>.</p>
+
+  </article>
+
+</div>
+
+      </div> <!-- .wrapper -->
+    </div> <!-- .page-content -->
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+    <p class="rss-subscribe">Subscribe <a href="/feed.xml" target="_blank">via RSS</a></p>
+    <p>This site uses the <a href="https://github.com/lewisc/daryl" target="_blank">Daryl</a> theme for <a href="http://jekyllrb.com" target="_blank">Jekyll</a>.</p>
+    <p>&copy; 2023 by Clint Parker. All rights reserved.</p>
+
+  </div> <!-- .wrapper -->
+
+</footer>
+
+
+  </body>
+
+</html>
