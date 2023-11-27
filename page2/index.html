@@ -151,6 +151,36 @@
         <div class="home">
   
     <article class="post">
+      <h2 class="post-title"><a class="post-link" href="/2018/09/21/belvedere/">Belvedere</a></h2>
+
+      <time datetime="2018-09-21T16:22:49-07:00" class="post-date">September 21, 2018</time>
+
+      <p><img src="https://docs.microsoft.com/en-us/dotnet/images/hub/netcore.svg" alt="dotnetcore" class="r-img" height="150px" />I recently created <a href="https://name-on.clintcparker.com">name-on</a> using the DotNetCore command line tools and VS Code. It was surprisingly easy, and I love scaffolding from the command line.</p>
+
+<p><img src="https://fishshell.com/assets/img/Terminal_Logo_CRT_Small.png" alt="fish-shell" class="l-img" height="200px" />I also recently got my WSL setup working, which involved setting fish as my default shell, and revisiting some of the functions I have made in the past.</p>
+
+<p>My quick experience with the DNC CLI seemed like the perfect thing to functionalize. I like having a standard structure to my apps:</p>
+
+<ul>
+  <li>class library</li>
+  <li>command line</li>
+  <li>web app / API</li>
+  <li>test project</li>
+</ul>
+
+<p>DNC has the concept of tmeplates and extensions, but what can I say, I wanted to write this with fish. So I did.</p>
+
+<p>I picked the name belvedere by looking up scaffolding in a thesaurus. Apparently its a “raised turret atop a house,” and comes from 1590’s italian.</p>
+
+<p>Belvedere will create all the necessary projects, with the correct intra-project references, a solution, gitignore, and README. It also intializes a git repo and commits the created files.</p>
+
+<p>You can find the code here: <a href="https://github.com/clintcparker/fish_functions/blob/master/belvedere.fish">https://github.com/clintcparker/fish_functions/blob/master/belvedere.fish</a></p>
+
+
+      <hr>
+    </article>
+  
+    <article class="post">
       <h2 class="post-title"><a class="post-link" href="/2018/08/31/name-on/">Name-on</a></h2>
 
       <time datetime="2018-08-31T16:22:49-07:00" class="post-date">August 31, 2018</time>
@@ -292,40 +322,6 @@
 <p>Thanks for reading.</p>
 
 <p>P.S. Who want’s to help me write the obfuscator?</p>
-
-
-      <hr>
-    </article>
-  
-    <article class="post">
-      <h2 class="post-title"><a class="post-link" href="/2016/09/28/why-git-works-where-tfvc-doesnt/">Why Git Works Where TFVC Doesn't</a></h2>
-
-      <time datetime="2016-09-28T15:29:00-07:00" class="post-date">September 28, 2016</time>
-
-      <p>We’re in the process of moving to git right now, and one of the main questions I get is how will this ACTUALLY be any better than TFVC. (The other question is how much longer before we’re fully moved to git? Which warrants its own piece.)</p>
-
-<p>See, we’ve tried “branching” in TFVC, and it only caused us more pain. So there is some legitimacy to this question.</p>
-
-<p>We were doing some hard core bastardized scrum, and had successfully split our department into scrum teams. Who would work on all kinds of stuff each sprint. Maybe half the team was working on a global refactoring of a pattern, maybe the other was working on migrating some  key workflows from our old static classes to new workflows leveraging dependency injection. Either way, different work with different timeframes.</p>
-
-<p>Because we’re agile, we need to be able to work on lots of different things at any given time. But branching in TFVC is different than it is in git. A branch in TFVC is immediately available to everybody to see. And it never really goes away, but you can hide it (cool!). But you can’t use that name again (bummer).</p>
-
-<p>Since it never goes away, and we didn’t want to be constantly reminded of our bad branch naming, we picked a very generic naming scheme. Git branching would say be specific with you’re development branch names. But ours were Work-1, Work-2, .etc. We had about 10 teams at that point, and we ended up with 32 “work” branches.</p>
-
-<p>Ok, 32, not too bad. But it was. 32 is not enough for the number of features &amp; bug fixes being developed by 10 (and growing) teams. We probably needed 100-500 to have actually been successful. But with generic names like work-2, it’s hard to keep track of ownership. So we stopped at 32.</p>
-
-<p>And this is where it got messy.</p>
-
-<p>Scenario: The team is working on three different things in Work-14. One is done, while two are in progress. That whole branch has to be brought in now. Because that one completed feature is made up of 100 different changesets over six weeks. So we can’t just cherry pick that one feature. And now we’ve brought in two half-done features into mainline. We’re constantly testing mainline, so we feel OK about this, but the reality is that it’s not mainline that causes the problem. 
-Another team just got two half done projects dumped into their branch, because they rebased from mainline. And not just one other team, but nine. And then they’re all propagating that back out to everybody else.</p>
-
-<p>In the end, the chaos comes from the unfinished work being forced into everybody’s “clean” branches. But we’re actually paying extra for that chaos, because we now have to constantly rebase and merge branches, which takes time and understanding of a myriad of incongruent changes.</p>
-
-<p>Earlier I said we’ve “tried” branching. We did. And then we abandoned it. We still have the chaos, but not the extra cost. Everybody commits to mainline, it is constantly under test, and we ship often. Builds break, and it affects everybody, but it gets resolved quickly.</p>
-
-<p>I’m of the belief that is has made our developers better, knowing the impact of a bad commit. But it isn’t easy.</p>
-
-<p>So we’re switching to git. And we can have as many branches as we want. And they can be local. And they can have good names. And they can be deleted. And we can still commit to mainline if we want to.</p>
 
 
       <hr>

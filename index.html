@@ -147,6 +147,322 @@
         <div class="home">
   
     <article class="post">
+      <h2 class="post-title"><a class="post-link" href="/2023/11/27/improving-software-team-metrics/">Improving Software Team Metrics</a></h2>
+
+      <time datetime="2023-11-27T11:30:46-08:00" class="post-date">November 27, 2023</time>
+
+      <p>A healthy engineering organization (or any healthy team, for that matter) should be tracking itself across a variety of metrics. This is not covered by the standard CS curriculum but is readily encountered in the real world. Once someone is paying for software, there will invariably be questions about how that money is being spent. The most common metrics are bug count and velocity. Followed by automated code coverage. These are common because they’re the cheapest to produce. Bugs are, unfortunately, the most visible part of engineering output. Counting them is the start of reducing them. Code coverage is freely available in every modern build pipeline, although not always enabled. And velocity is the treasured metric of any young engineering leader, the end-all answer to the question “How much work are we getting done!?”</p>
+
+<p>However, once you start looking, there is so much more insight you can gain and so many more things to track and compare. And, eventually, when you’re answering to very clever investors, you’ll need to provide the metrics that they care about. One of those, which I have come to appreciate, is the sprint completion percentage. This expounds on velocity and compares that <em>actual</em> value to the estimated or planned value. A high velocity is excellent, but accurate forecasting is even better for the overall business. This metric is easy enough to retrieve. Azure DevOps (ADO) has this baked into its velocity dashboards. The granularity is obviously at the sprint level.</p>
+
+<p>With a little API magic, we can easily get:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Team</th>
+      <th style="text-align: center">Iteration Path</th>
+      <th style="text-align: center">StartDate</th>
+      <th style="text-align: center">EndDate</th>
+      <th style="text-align: right">Planned</th>
+      <th style="text-align: right">Completed</th>
+      <th style="text-align: right">Completed Late</th>
+      <th style="text-align: right">Incomplete</th>
+      <th style="text-align: right">Total</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">Avengers</td>
+      <td style="text-align: center">21</td>
+      <td style="text-align: center">2023-10-10</td>
+      <td style="text-align: center">2023-10-23</td>
+      <td style="text-align: right">87</td>
+      <td style="text-align: right">58</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">58</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Avengers</td>
+      <td style="text-align: center">20</td>
+      <td style="text-align: center">2023-09-26</td>
+      <td style="text-align: center">2023-10-09</td>
+      <td style="text-align: right">46</td>
+      <td style="text-align: right">38</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">38</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Avengers</td>
+      <td style="text-align: center">19</td>
+      <td style="text-align: center">2023-09-12</td>
+      <td style="text-align: center">2023-09-25</td>
+      <td style="text-align: right">51</td>
+      <td style="text-align: right">50</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">50</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">X-Men</td>
+      <td style="text-align: center">21</td>
+      <td style="text-align: center">2023-10-10</td>
+      <td style="text-align: center">2023-10-23</td>
+      <td style="text-align: right">51</td>
+      <td style="text-align: right">41</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">41</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">X-Men</td>
+      <td style="text-align: center">20</td>
+      <td style="text-align: center">2023-09-26</td>
+      <td style="text-align: center">2023-10-09</td>
+      <td style="text-align: right">66</td>
+      <td style="text-align: right">79</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">3</td>
+      <td style="text-align: right">79</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">X-Men</td>
+      <td style="text-align: center">19</td>
+      <td style="text-align: center">2023-09-12</td>
+      <td style="text-align: center">2023-09-25</td>
+      <td style="text-align: right">18</td>
+      <td style="text-align: right">30</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">30</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Justice League</td>
+      <td style="text-align: center">21</td>
+      <td style="text-align: center">2023-10-10</td>
+      <td style="text-align: center">2023-10-23</td>
+      <td style="text-align: right">90</td>
+      <td style="text-align: right">75</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">75</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Justice League</td>
+      <td style="text-align: center">20</td>
+      <td style="text-align: center">2023-09-26</td>
+      <td style="text-align: center">2023-10-09</td>
+      <td style="text-align: right">120</td>
+      <td style="text-align: right">121</td>
+      <td style="text-align: right">8</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">129</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Justice League</td>
+      <td style="text-align: center">19</td>
+      <td style="text-align: center">2023-09-12</td>
+      <td style="text-align: center">2023-09-25</td>
+      <td style="text-align: right">108</td>
+      <td style="text-align: right">77</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">77</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The definitions for these states can be found <a href="https://learn.microsoft.com/en-us/azure/devops/report/dashboards/team-velocity?view=azure-devops&amp;tabs=in-context#state-descriptions-table">here</a>.</p>
+
+<p>We need to do a little more math, though, for this to become a valuable reporting metric. Unfortunately, the rest of the business and the investors don’t care about your sprints; they care about monthly and quarterly aggregates.</p>
+
+<p>So, let’s start there with the math that rolls up sprints to a monthly value. It’s pretty fun. We need to determine what month a sprint falls into. My calculation chooses the month that contains more days of the sprint, and if it is equal, the sprint starts.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Team</th>
+      <th style="text-align: center">Iteration Path</th>
+      <th style="text-align: center">StartDate</th>
+      <th style="text-align: center">EndDate</th>
+      <th style="text-align: right">Planned</th>
+      <th style="text-align: right">Completed</th>
+      <th style="text-align: right">Completed Late</th>
+      <th style="text-align: right">Incomplete</th>
+      <th style="text-align: right">Total</th>
+      <th style="text-align: right">Completion %</th>
+      <th style="text-align: right">Month</th>
+      <th style="text-align: right">Year</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">Avengers</td>
+      <td style="text-align: center">21</td>
+      <td style="text-align: center">2023-10-10</td>
+      <td style="text-align: center">2023-10-23</td>
+      <td style="text-align: right">87</td>
+      <td style="text-align: right">58</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">58</td>
+      <td style="text-align: right">67%</td>
+      <td style="text-align: right">10</td>
+      <td style="text-align: right">2023</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Avengers</td>
+      <td style="text-align: center">20</td>
+      <td style="text-align: center">2023-09-26</td>
+      <td style="text-align: center">2023-10-09</td>
+      <td style="text-align: right">46</td>
+      <td style="text-align: right">38</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">38</td>
+      <td style="text-align: right">83%</td>
+      <td style="text-align: right">10</td>
+      <td style="text-align: right">2023</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Avengers</td>
+      <td style="text-align: center">19</td>
+      <td style="text-align: center">2023-09-12</td>
+      <td style="text-align: center">2023-09-25</td>
+      <td style="text-align: right">51</td>
+      <td style="text-align: right">50</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">50</td>
+      <td style="text-align: right">98%</td>
+      <td style="text-align: right">9</td>
+      <td style="text-align: right">2023</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">X-Men</td>
+      <td style="text-align: center">21</td>
+      <td style="text-align: center">2023-10-10</td>
+      <td style="text-align: center">2023-10-23</td>
+      <td style="text-align: right">51</td>
+      <td style="text-align: right">41</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">41</td>
+      <td style="text-align: right">80%</td>
+      <td style="text-align: right">10</td>
+      <td style="text-align: right">2023</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">X-Men</td>
+      <td style="text-align: center">20</td>
+      <td style="text-align: center">2023-09-26</td>
+      <td style="text-align: center">2023-10-09</td>
+      <td style="text-align: right">66</td>
+      <td style="text-align: right">79</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">3</td>
+      <td style="text-align: right">79</td>
+      <td style="text-align: right">120%</td>
+      <td style="text-align: right">10</td>
+      <td style="text-align: right">2023</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">X-Men</td>
+      <td style="text-align: center">19</td>
+      <td style="text-align: center">2023-09-12</td>
+      <td style="text-align: center">2023-09-25</td>
+      <td style="text-align: right">18</td>
+      <td style="text-align: right">30</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">30</td>
+      <td style="text-align: right">167%</td>
+      <td style="text-align: right">9</td>
+      <td style="text-align: right">2023</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Justice League</td>
+      <td style="text-align: center">21</td>
+      <td style="text-align: center">2023-10-10</td>
+      <td style="text-align: center">2023-10-23</td>
+      <td style="text-align: right">90</td>
+      <td style="text-align: right">75</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">75</td>
+      <td style="text-align: right">83%</td>
+      <td style="text-align: right">10</td>
+      <td style="text-align: right">2023</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Justice League</td>
+      <td style="text-align: center">20</td>
+      <td style="text-align: center">2023-09-26</td>
+      <td style="text-align: center">2023-10-09</td>
+      <td style="text-align: right">120</td>
+      <td style="text-align: right">121</td>
+      <td style="text-align: right">8</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">129</td>
+      <td style="text-align: right">108%</td>
+      <td style="text-align: right">10</td>
+      <td style="text-align: right">2023</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Justice League</td>
+      <td style="text-align: center">19</td>
+      <td style="text-align: center">2023-09-12</td>
+      <td style="text-align: center">2023-09-25</td>
+      <td style="text-align: right">108</td>
+      <td style="text-align: right">77</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">77</td>
+      <td style="text-align: right">71%</td>
+      <td style="text-align: right">9</td>
+      <td style="text-align: right">2023</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Aggregating these values can be done in a few different ways. We’re combining teams and sprints to get a monthly representation for the group as a whole. I’ve found four reasonable ways to calculate this value across teams and sprints:</p>
+<ul>
+  <li>Basic Average</li>
+  <li>Unweighted Average</li>
+  <li>Weighted Average</li>
+  <li>“Inverted”</li>
+</ul>
+
+<h4 id="basic-average">Basic Average</h4>
+<p>The most basic average. This would be the average of all the values for the <code class="highlighter-rouge">Completion %</code> column for a given month and year. While this is a straightforward value to calculate, I’ve found it gives too much weight to the individual sprints. For example, one lousy sprint, even with a minimal planned value, can drastically change this calculation.</p>
+
+<h4 id="unweighted">Unweighted</h4>
+<p>This is the sum of the <code class="highlighter-rouge">Total</code> column divided by the sum of the <code class="highlighter-rouge">Planned</code> column for a given month and year. This assigns too little weight to individual sprints and doesn’t address the discrepancies in point values across teams.</p>
+
+<h4 id="weighted">Weighted</h4>
+<p>This has been my go-to calculation for years. This is a two-phased calculation. First, we roll up the value for the individual teams. We do this with the unweighted model but filter by <code class="highlighter-rouge">Team</code> in addition to month and year. Then, we average those values. This handles a team having a lousy sprint but recovering in the next, as well as the differences in point values.</p>
+
+<p>But what about team B? They didn’t get all that work done. It doesn’t feel like the numbers represent the reality if the work not getting done was high value / high vis. The 1st phase of the weighted model allows for a disappointing sprint. And if the team is working ahead or catching up, we’re sweeping that bad sprint under the rug. While this hadn’t always directly worried me, my colleagues who had been expecting certain things and not seeing them delivered despite the 100%+ completion rates were getting a little frustrated.</p>
+
+<p>So I’ve come up with a new number to properly represent just that: how much work <em>we aren’t</em> getting done every month.</p>
+
+<h4 id="inverted">“Inverted”</h4>
+<p>“Inverted” may be more representative of the commitment to the business. It shows if we did what we committed to but discounts the value of above and beyond work. This calculation has a maximum of 100%. The calculation is multi-phased. The first phase is the same as weighted. Then, we “invert” the monthly team values. If the number is less than 100%, we report the difference; otherwise, we report 0. Next, we average those shortfall percentages. And finally, we subtract that value from 100%.</p>
+
+<p>The inverted value is more representative of our accountability to the business. It should be noted that this value doesn’t entirely neglect above and beyond work but severely discounts it. Namely, when the X-Men go above and beyond, it won’t outweigh the shortcomings of the Avengers that month.</p>
+
+<h4 id="conclusion">Conclusion</h4>
+<p>Tracking software team metrics is an essential aspect of maintaining a healthy engineering organization. While common metrics such as bug count and velocity provide a basic understanding of team performance, they often fall short in providing a comprehensive view of the team’s efficiency and productivity. This article has explored the concept of sprint completion percentage as a more insightful metric, offering a comparison of actual work done against planned work.</p>
+
+<p>In essence, the choice of metric and calculation method should align with the team’s objectives and the expectations of stakeholders. By adopting a more nuanced approach to tracking software team metrics, organizations can gain deeper insights into team performance, improve forecasting accuracy, and ultimately drive better business outcomes.</p>
+
+
+      <hr>
+    </article>
+  
+    <article class="post">
       <h2 class="post-title"><a class="post-link" href="/2023/11/08/what-even-is-innovation/">What Even Is Innovation?</a></h2>
 
       <time datetime="2023-11-08T10:05:08-08:00" class="post-date">November 08, 2023</time>
@@ -488,36 +804,6 @@ https://mpharrigan.com/2016/05/17/background-ssh.html</li>
   <li>Restrict RDP access to 127.0.0.1 only</li>
   <li>Create a host and client scripts to just take care of all of this</li>
 </ul>
-
-
-      <hr>
-    </article>
-  
-    <article class="post">
-      <h2 class="post-title"><a class="post-link" href="/2018/09/21/belvedere/">Belvedere</a></h2>
-
-      <time datetime="2018-09-21T16:22:49-07:00" class="post-date">September 21, 2018</time>
-
-      <p><img src="https://docs.microsoft.com/en-us/dotnet/images/hub/netcore.svg" alt="dotnetcore" class="r-img" height="150px" />I recently created <a href="https://name-on.clintcparker.com">name-on</a> using the DotNetCore command line tools and VS Code. It was surprisingly easy, and I love scaffolding from the command line.</p>
-
-<p><img src="https://fishshell.com/assets/img/Terminal_Logo_CRT_Small.png" alt="fish-shell" class="l-img" height="200px" />I also recently got my WSL setup working, which involved setting fish as my default shell, and revisiting some of the functions I have made in the past.</p>
-
-<p>My quick experience with the DNC CLI seemed like the perfect thing to functionalize. I like having a standard structure to my apps:</p>
-
-<ul>
-  <li>class library</li>
-  <li>command line</li>
-  <li>web app / API</li>
-  <li>test project</li>
-</ul>
-
-<p>DNC has the concept of tmeplates and extensions, but what can I say, I wanted to write this with fish. So I did.</p>
-
-<p>I picked the name belvedere by looking up scaffolding in a thesaurus. Apparently its a “raised turret atop a house,” and comes from 1590’s italian.</p>
-
-<p>Belvedere will create all the necessary projects, with the correct intra-project references, a solution, gitignore, and README. It also intializes a git repo and commits the created files.</p>
-
-<p>You can find the code here: <a href="https://github.com/clintcparker/fish_functions/blob/master/belvedere.fish">https://github.com/clintcparker/fish_functions/blob/master/belvedere.fish</a></p>
 
 
       <hr>
