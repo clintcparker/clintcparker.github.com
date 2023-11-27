@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Improving Software Team Metrics"
+date: 2023-11-27T11:30:46-08:00
 ---
 
 A healthy engineering organization (or any healthy team, for that matter) should be tracking itself across a variety of metrics. This is not covered by the standard CS curriculum but is readily encountered in the real world. Once someone is paying for software, there will invariably be questions about how that money is being spent. The most common metrics are bug count and velocity. Followed by automated code coverage. These are common because they're the cheapest to produce. Bugs are, unfortunately, the most visible part of engineering output. Counting them is the start of reducing them. Code coverage is freely available in every modern build pipeline, although not always enabled. And velocity is the treasured metric of any young engineering leader, the end-all answer to the question “How much work are we getting done!?"
