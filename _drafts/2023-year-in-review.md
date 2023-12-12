@@ -2,65 +2,43 @@
 layout: post
 title: "2023 Year in Review"
 ---
-ClockShark has seen a lot of changes in the last year. On the engineering side, I'd like to focus on the changes that we've introduced or adopted.
 
-Structured Teams.
+ClockShark has seen a lot of changes in the last year. On the engineering side, I'd like to focus on the changes that we've introduced or adopted. These are things that we didn't really have in 2022 but are now a part of our day-to-day in 2023.
 
-Initially we had one team of 12 one team of 5 and one team of 2 with QA floating across teams
-Now we have 3 evenly sized and staffed teams.
+### Feature flags
+We started to introduce the concept of flags in late 2022 but didn't adopt them until 2023. We've rewritten the framework a few times. The team has created guidelines for flag creation, management, and removal. We've introduced over 200 flags in 2023. The adoption of our feature flag process has led to...
 
-Job Descriptions
-I kn ow the engineering team had been working on some ,job description/ job matrices, but they never quite made it to fruition. Engineering leadership created measureable job expectations for softweare negineering levels 1-4.
-this gives clarity to both our team members and managers.
+### Deploying multiple times per day
+In May of 2023, we moved to hourly deploys. We had previously been on a structured 2-week deployment cadence. There are some specific challenges with a 2-week cadence: maintaining the "release branch," being beholden to the release schedule and work done or not done in time, the fact that we were deploying a bundle of 2 weeks of work, and hotfixes bypassing all the process. We've since moved to hourly deploys. We currently deploy on the hour and will be moving to full continuous deployment in January. Production incident remediation times are now tracked in minutes and not hours.
 
-Feature Flags
-We started to introduce the concept of flags in late 2022 but didn't adopt them until 2023. We've rewritten the framework a few time. We've introduced XXXX falgs in 2023. all of which has led to...
+### DDOS protection
+In 2023, we moved our WAF to Cloudflare. This has given us DDOS protection and a CDN. The DDOS mitigation has proved extremely valuable, as our system has been able to withstand attacks over 10M requests per minute.
 
-Deploying multiple times / day
-In may of 2023 we moved to hourly deploys. We had previously been on a structured 2 week deployment cadence. chalenges w/ 2 wekk cadence: maintianing the "release branch", being beholden to release schedule and work done or not done in time, and the fact that we were deploying 2 weeks of work at a time, hotfixes bypassing all the process. We've since moved to daily deploys. We've also moved to a more automated testing process.
+### WASM
+We've introduced Blazor to our stack to add frontend code quickly and reliably. We're using Blazor WASM, which is C# and HTML compiled to WebAssemly. This allows us to use our C# knowledge and best practices (including automated testing) for browser code. 
 
-increased automated testing
-In August we increased our expectatins around automated testing. We're now over 30% total line coverage for all of our codebases. We've also introduced a new testing framework that allows us to test our frontend code in a more automated fashion.
+### Running on Linux in prod
+In the first half of 2023, we migrated our production servers to Linux. In the second half of the year, we migrated our remaining dev and staging servers to Linux. We've also migrated our build servers to Linux. These migrations saved costs on the computing side, allowing us to scale up our data side without any overall cost increase.
 
-latest .net
-In 2022, Clockshark migrated to dotnet 6. In 2023 we've migrated to dotnet 7. 
+### Latest .NET
+Staying on the latest version of the framework is uncommon in most .NET shops. In 2022, ClockShark migrated to dotnet 6. In 2023, we've done it again and migrated to dotnet 7. In early 2024, we'll move to the newly released dotnet 8.
 
-Running on linux in prod
-In 2023 we migrated our production servers to linux. In 2023 we've migrated our dev and staging servers to linux. We've also migrated our build servers to linux.
+### Increased automated testing
+In August, we increased our expectations around automated testing. We're now over 38% for total line coverage for all codebases. We've adopted behavioral testing across all of the backend code. We've introduced Playwright, which allows us to test our frontend code in a more automated fashion.
 
-hosting savings
-In 2023 we've saved over $100k in hosting costs by migrating to linux and moving our WAF to cloudflare.
+### Codified SDLC
+In 2022, our SDLC was very loose and ad-hoc. In 2023, we've codified our SDLC. Our SDLC is meant to be flexible while maintaining consistency across the department. Our SDLC guidelines represent sensible defaults, and we hope they will continue to evolve to best serve the teams leveraging them.
 
-DDOS protection
-In 2023 we've moved our WAF to cloudflare. This has given us DDOS protection and a CDN.
+### Structured teams
+At the end of 2023, we had one team of 12, one team of 5, and one team of 2 with QA floating across teams. We've since restructured into 3 teams of even size and even staffing. 
 
-codified SDLC
-in 2022, our SDLC was very loose and ad-hoc. In 2023 we've codified our SDLC.
+### Job descriptions
+I know the engineering team had been working on some job descriptions/matrices, but they never quite made it to fruition. This year, Engineering leadership created measurable job expectations for software engineering levels 1-4. We've published these to our team and are using them in our 1:1s and reviews. This gives clarity to both our team members and managers. We'll be creating similar documents for our managers and QA and DevOps teams in 2024.
 
-consistent meeting schedule
-In 2022, we had a very loose meeting schedule. In 2023 we've codified our meeting schedule.
+### Consistent meeting schedule
+In addition to the meeting guidelines of our SDLC, we've also established a monthly department-wide meeting. This meeting is an opportunity to showcase the great work done each month, share department-level information, and keep each other accountable for our organizational goals.
 
-opened up bug reporting to everyone
-In May of 2023, we opened up our bug reporting process to the whole clockshark internal team. We previously had two processes, and an issue had to be verified an dtriaged before it was added to the bug backlog. This limited visibility into the bug backlog and also skewed reporting.
+### Company-wide bug reporting
+Open bug reporting is a sign of engineering team maturity, and in May of 2023, we opened up our bug reporting process to the whole ClockShark internal team. We previously had two competing processes. Not only did this reduce transparency and create confusion, but issues reported in the support team's system had to be verified and triaged before being added to the engineering backlog. This dual process limited visibility into the bug backlog and also skewed reporting.
 
-WasM / frontend testing
-In 2023 we've introduced a new testing framework that allows us to test our frontend code in a more automated fashion. We've also introduced a new frontend framework that allows us to write our frontend code in a more maintainable fashion.
-
-consistent metric reporting
-
-
-Stuff we didn’t have:
-- Structured teams
-- Job descriptions
-- Feature flags
-- Deploying multiple times / day
-- increased automated testing
-- latest .net
-- running on linux in prod
-- hosting savings
-- DDOS protection
-- codified SDLC
-- consistent meeting schedule
-- opened up bug reporting to everyone
-- WASM / frontend testing
-- consistent metric reporting
+This has been one of the most remarkable years of my career. Teams rarely see this much evolution in such a short time. I can't wait to see what interesting enhancements 2024 delivers.
