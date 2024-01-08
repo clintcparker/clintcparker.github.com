@@ -123,6 +123,10 @@
                     
                 
             
+                
+                    
+                
+            
             <a href="https://github.com/clintcparker" target="_blank">GitHub</a>
             <a href="https://www.linkedin.com/in/clintcparker" target="_blank">Résumé</a>
             <a href="https://twitter.com/clintcparker" target="_blank">Tweets</a>
@@ -145,6 +149,55 @@
     <div class="page-content">
       <div class="wrapper">
         <div class="home">
+  
+    <article class="post">
+      <h2 class="post-title"><a class="post-link" href="/2024/01/08/2023-year-in-review/">2023 Year in Review</a></h2>
+
+      <time datetime="2024-01-08T10:44:36-08:00" class="post-date">January 08, 2024</time>
+
+      <p>My team has seen a lot of changes in the last year. These are things that we didn’t really have in 2022 but are became a part of our day-to-day in 2023.</p>
+
+<h3 id="feature-flags">Feature flags</h3>
+<p>We started to introduce the concept of flags in late 2022 but didn’t adopt them until 2023. We’ve rewritten the framework a few times. The team has created guidelines for flag creation, management, and removal. We’ve introduced over 200 flags in 2023. The adoption of our feature flag process has led to…</p>
+
+<h3 id="deploying-multiple-times-per-day">Deploying multiple times per day</h3>
+<p>In May of 2023, we moved to hourly deploys. We had previously been on a structured 2-week deployment cadence. There are some specific challenges with a 2-week cadence: maintaining the “release branch,” being beholden to the release schedule and work done or not done in time, the fact that we were deploying a bundle of 2 weeks of work, and hotfixes bypassing all the process. We’ve since moved to hourly deploys. We currently deploy on the hour and will be moving to full continuous deployment in January. Production incident remediation times are now tracked in minutes and not hours.</p>
+
+<h3 id="ddos-protection">DDOS protection</h3>
+<p>In 2023, we moved our WAF to Cloudflare. This has given us DDOS protection and a CDN. The DDOS mitigation has proved extremely valuable, as our system has been able to withstand attacks over 10M requests per minute.</p>
+
+<h3 id="wasm">WASM</h3>
+<p>We’ve introduced Blazor to our stack to add frontend code quickly and reliably. We’re using Blazor WASM, which is C# and HTML compiled to WebAssemly. This allows us to use our C# knowledge and best practices (including automated testing) for browser code.</p>
+
+<h3 id="running-on-linux-in-prod">Running on Linux in prod</h3>
+<p>In the first half of 2023, we migrated our production servers to Linux. In the second half of the year, we migrated our remaining dev and staging servers to Linux. We’ve also migrated our build servers to Linux. These migrations saved costs on the computing side, allowing us to scale up our data side without any overall cost increase.</p>
+
+<h3 id="latest-net">Latest .NET</h3>
+<p>Staying on the latest version of the framework is uncommon in most .NET shops. In 2022, we migrated to dotnet 6. In 2023, we’ve done it again and migrated to dotnet 7. In early 2024, we’ll move to the newly released dotnet 8.</p>
+
+<h3 id="increased-automated-testing">Increased automated testing</h3>
+<p>In August, we increased our expectations around automated testing. We’re now near 40% for total line coverage for all codebases. We’ve adopted behavioral testing across all of the backend code. We’ve introduced Playwright, which allows us to test our frontend code in a more automated fashion.</p>
+
+<h3 id="codified-sdlc">Codified SDLC</h3>
+<p>In 2022, our SDLC was very loose and ad-hoc. In 2023, we’ve codified our SDLC. Our SDLC is meant to be flexible while maintaining consistency across the department. Our SDLC guidelines represent sensible defaults, and we hope they will continue to evolve to best serve the teams leveraging them.</p>
+
+<h3 id="structured-teams">Structured teams</h3>
+<p>At the end of 2023, we had one team of 12, one team of 5, and one team of 2 with QA floating across teams. We’ve since restructured into 3 teams of even size and even staffing.</p>
+
+<h3 id="job-descriptions">Job descriptions</h3>
+<p>I know the engineering team had been working on some job descriptions/matrices, but they never quite made it to fruition. This year, Engineering leadership created measurable job expectations for software engineering levels 1-4. We’ve published these to our team and are using them in our 1:1s and reviews. This gives clarity to both our team members and managers. We’ll be creating similar documents for our managers and QA and DevOps teams in 2024.</p>
+
+<h3 id="consistent-meeting-schedule">Consistent meeting schedule</h3>
+<p>In addition to the meeting guidelines of our SDLC, we’ve also established a monthly department-wide meeting. This meeting is an opportunity to showcase the great work done each month, share department-level information, and keep each other accountable for our organizational goals.</p>
+
+<h3 id="company-wide-bug-reporting">Company-wide bug reporting</h3>
+<p>Open bug reporting is a sign of engineering team maturity, and in May of 2023, we opened up our bug reporting process to the whole company. We previously had two competing processes. Not only did this reduce transparency and create confusion, but issues reported in the support team’s system had to be verified and triaged before being added to the engineering backlog. This dual process limited visibility into the bug backlog and also skewed reporting.</p>
+
+<p>This has been one of the most remarkable years of my career. Teams rarely see this much evolution in such a short time. I can’t wait to see what interesting enhancements 2024 delivers.</p>
+
+
+      <hr>
+    </article>
   
     <article class="post">
       <h2 class="post-title"><a class="post-link" href="/2023/11/27/improving-software-team-metrics/">Improving Software Team Metrics</a></h2>
@@ -586,229 +639,6 @@
       <hr>
     </article>
   
-    <article class="post">
-      <h2 class="post-title"><a class="post-link" href="/2022/02/24/rdp-tunnels/">RDP Tunnels</a></h2>
-
-      <time datetime="2022-02-24T20:27:51-08:00" class="post-date">February 24, 2022</time>
-
-      <h3 id="rationale">Rationale</h3>
-
-<p>I love the persistence of a host machine! I’m too cheap to get a VPS. I really like the windows 11 OS but really love mac laptops. I left <code class="highlighter-rouge">3389</code> open on my router (with DDNS) and found myself getting brute forced. I saw <a href="https://orth.uk/ssh-over-cloudflare/">this post</a> around the same time, and realized tunnelling could be a great alternative.</p>
-
-<h3 id="assumptions">Assumptions</h3>
-
-<h4 id="general-assumptions">General Assumptions</h4>
-
-<p>I wrote this for my situation. While setting it up, I found there was not a central guide, so I made one. If it doesn’t perfectly fit your situation, hopefully a part of it will help.</p>
-
-<h4 id="assumptions-about-you">Assumptions About You</h4>
-
-<ul>
-  <li>You have administrator access to both machines</li>
-  <li>You are comfortable with the command line on both systems</li>
-  <li>You have <a href="https://code.visualstudio.com">VSCode</a> installed on both machines</li>
-  <li>You’re aware of the concept of <a href="https://en.wikipedia.org/wiki/Secure_Shell">SSH</a></li>
-  <li>You have a <a href="https://www.cloudflare.com">Cloudflare</a> account and a website there</li>
-  <li>You’re using <a href="https://brew.sh">brew</a></li>
-</ul>
-
-<h4 id="assumptions-about-this-guide">Assumptions About This Guide</h4>
-
-<ul>
-  <li>I’ve got <code class="highlighter-rouge">example.com</code> on my cloudflare account (I don’t, <em>obvs</em>)</li>
-  <li>My tunnel is named <code class="highlighter-rouge">wormhole</code></li>
-  <li>My tunnel id is 123455677890asdf</li>
-  <li>My macOS username is <code class="highlighter-rouge">me</code></li>
-</ul>
-
-<h3 id="host-setup">Host Setup</h3>
-<h4 id="windows-setup">Windows Setup</h4>
-
-<ol>
-  <li>
-    <p>get pwsh (i used <code class="highlighter-rouge">winget</code>)</p>
-
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PS&gt; winget install Microsoft.PowerShell
-</code></pre></div>    </div>
-    <ul>
-      <li>At the time of writing, should be v7.2</li>
-    </ul>
-  </li>
-  <li>
-    <p>install chocolatey at <a href="">https://chocolatey.org/</a></p>
-
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PS&gt; Set-ExecutionPolicy Bypass -Scope Process -Force [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
-</code></pre></div>    </div>
-  </li>
-  <li>
-    <p>install cloudflared via chocolatey</p>
-
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PS&gt; choco install cloudflared
-</code></pre></div>    </div>
-  </li>
-  <li>login
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PS&gt; cloudflared login
-</code></pre></div>    </div>
-    <ul>
-      <li>you may need to manually open the link in the
-output and select the site you’d like to add the tunnel to</li>
-    </ul>
-  </li>
-  <li>create a tunnel
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PS&gt; cloudflared tunnel create wormhole
-</code></pre></div>    </div>
-  </li>
-  <li>setup cloudflared as a service
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PS&gt; cloudflared service install
-PS&gt; mkdir C:\Windows\System32\config\systemprofile\.cloudflared
-</code></pre></div>    </div>
-  </li>
-  <li>create a config
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PS&gt; code C:\Windows\System32\config\systemprofile\.cloudflared\config.yml
-</code></pre></div>    </div>
-    <ul>
-      <li>example:</li>
-    </ul>
-
-    <div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">tunnel</span><span class="pi">:</span> <span class="s">123455677890asdf</span>
-<span class="na">credentials-file</span><span class="pi">:</span> <span class="s">C:\Windows\System32\config\systemprofile\.cloudflared\123455677890asdf.json</span>
-    
-<span class="na">ingress</span><span class="pi">:</span>
-    <span class="pi">-</span> <span class="na">hostname</span><span class="pi">:</span> <span class="s">wormhole.example.com</span>
-    <span class="na">service</span><span class="pi">:</span> <span class="s">ssh://localhost:22</span>
-    <span class="pi">-</span> <span class="na">service</span><span class="pi">:</span> <span class="s">http_status:404</span>
-</code></pre></div>    </div>
-  </li>
-  <li>
-    <p>set service as automatic</p>
-
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PS&gt; Set-Service -Name Cloudflared -StartupType "Automatic"
-PS&gt; Set-ItemProperty HKLM:\SYSTEM\CurrentControlSet\Services\Cloudflared\ -Name ImagePath -Value "C:\ProgramData\chocolatey\lib\cloudflared\tools\cloudflared.exe --config=C:\Windows\System32\config\systemprofile\.cloudflared\config.yml tunnel run"
-PS&gt; cloudflared tunnel route dns  wormhole.example
-</code></pre></div>    </div>
-  </li>
-  <li>
-    <p>add a non-admin user (for ssh only). enter a paasword when prompted</p>
-
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PS&gt; New-LocalUser -Name me-ssh
-</code></pre></div>    </div>
-  </li>
-  <li>
-    <p>set pwsh as your default shell</p>
-
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PS&gt; New-ItemProperty -Path "HKLM:\SOFTWARE\OpenSSH" -Name DefaultShell -Value "C:\Program Files\PowerShell\7\pwsh.exe" -PropertyType String -Force
-</code></pre></div>    </div>
-  </li>
-  <li>
-    <p>create external user .ssh directory to house authorized_keys</p>
-
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PS&gt; mkdir C:\Users\me-ssh\.ssh
-</code></pre></div>    </div>
-  </li>
-  <li>
-    <p>modify sshd_config</p>
-
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PS&gt; code C:\ProgramData\ssh\sshd_config
-</code></pre></div>    </div>
-
-    <ul>
-      <li>enable publickey authentication, uncomment this line</li>
-    </ul>
-
-    <div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s">PubkeyAuthentication yes</span>
-</code></pre></div>    </div>
-  </li>
-  <li>
-    <p>setup sshd &amp; ssh-agent as automatic services, and start them</p>
-
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PS&gt; Set-Service -Name sshd -StartupType "Automatic"; Set-Service -Name ssh-agent -StartupType "Automatic"; Start-Service sshd; Start-Service ssh-agent
-</code></pre></div>    </div>
-  </li>
-</ol>
-
-<h3 id="client-config">Client Config</h3>
-
-<h4 id="macos">MacOS</h4>
-
-<ol>
-  <li>
-    <p>make sure developer tools are up to date</p>
-
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$&gt; brew install cloudflare/cloudflare/cloudflared
-</code></pre></div>    </div>
-
-    <ul>
-      <li>to confirm install</li>
-    </ul>
-
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$&gt; cloudflared -v
-</code></pre></div>    </div>
-  </li>
-  <li>Login (just like on the host setup)
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$&gt; cloudflared login
-</code></pre></div>    </div>
-    <ul>
-      <li>
-        <p>A browser window should have opened.</p>
-      </li>
-      <li>
-        <p>If the browser failed to open, please visit the output URL directly in your browser.</p>
-      </li>
-    </ul>
-  </li>
-  <li>Select the site you want to to log in to
-    <ul>
-      <li>after selecting you’ll see in the terminal</li>
-    </ul>
-
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> You have successfully logged in.
- If you wish to copy your credentials to a server, they have been saved to:
- /Users/yourusername/.cloudflared/cert.pem
-</code></pre></div>    </div>
-  </li>
-  <li>next, update your hosts file
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$&gt; code ~/.ssh/config
-</code></pre></div>    </div>
-
-    <ul>
-      <li>add the following</li>
-    </ul>
-
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Host *.example.com
-    ProxyCommand /usr/local/bin/cloudflared access ssh --hostname %h
-</code></pre></div>    </div>
-  </li>
-  <li>now you can ssh into the box directly
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> $&gt; ssh me-ssh@wormhole.example.com
-</code></pre></div>    </div>
-  </li>
-  <li>
-    <p>But let’s take this further for RDP and setup local forwarding</p>
-
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> $&gt; ssh -L 56789:127.0.0.1:3389 me-ssh@wormhole.example.com
-</code></pre></div>    </div>
-  </li>
-  <li>Setup pub key and add to host
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> cat ./.ssh/id_rsa.pub | ssh me-ssh@wormhole.example.com "echo | Out-File -FilePath ~/.ssh/authorized_keys -Append"
-</code></pre></div>    </div>
-  </li>
-</ol>
-
-<h3 id="further-thoughts">Further thoughts</h3>
-
-<ul>
-  <li>Connect to the tunnel from the client machine on startup
-https://mpharrigan.com/2016/05/17/background-ssh.html</li>
-  <li>Remove the password from the newly created user</li>
-  <li>Change default ports (ssh, RDP)</li>
-  <li>Restrict RDP access to 127.0.0.1 only</li>
-  <li>Create a host and client scripts to just take care of all of this</li>
-</ul>
-
-
-      <hr>
-    </article>
-  
 
     <!-- Pagination links -->
     <div class="pagination">
@@ -829,7 +659,7 @@ https://mpharrigan.com/2016/05/17/background-ssh.html</li>
   <div class="wrapper">
     <p class="rss-subscribe">Subscribe <a href="/feed.xml" target="_blank">via RSS</a></p>
     <p>This site uses the <a href="https://github.com/lewisc/daryl" target="_blank">Daryl</a> theme for <a href="http://jekyllrb.com" target="_blank">Jekyll</a>.</p>
-    <p>&copy; 2023 by Clint Parker. All rights reserved.</p>
+    <p>&copy; 2024 by Clint Parker. All rights reserved.</p>
 
   </div> <!-- .wrapper -->
 

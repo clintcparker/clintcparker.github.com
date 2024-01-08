@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Archive</title>
+    <title>@clintcparker</title>
     <meta name="description" content="Writings on software development, testing, and architecture. .NET C# Tools Testing whiteboarding design
 ">
 
@@ -14,7 +14,7 @@
 
     <!-- <link rel="icon" type="image/x-icon" href="https://clintcparker.com/favicon.ico"> -->
 
-    <link rel="canonical" href="https://clintcparker.com/archive/">
+    <link rel="canonical" href="https://clintcparker.com/page4/">
     <link rel="alternate" type="application/rss+xml" title="@clintcparker" href="https://clintcparker.com/feed.xml" />
     
     <script>
@@ -127,6 +127,10 @@
                     
                 
             
+                
+                    
+                
+            
             <a href="https://github.com/clintcparker" target="_blank">GitHub</a>
             <a href="https://www.linkedin.com/in/clintcparker" target="_blank">Résumé</a>
             <a href="https://twitter.com/clintcparker" target="_blank">Tweets</a>
@@ -148,136 +152,89 @@
 
     <div class="page-content">
       <div class="wrapper">
-        <div class="post">
+        <div class="home">
+  
+    <article class="post">
+      <h2 class="post-title"><a class="post-link" href="/2014/03/21/vbscript-conditional-includes/">VBScript Conditional Includes</a></h2>
 
-  <header class="post-header">
-    <h2 class="post-title">Archive</h2>
-  </header>
+      <time datetime="2014-03-21T11:16:00-07:00" class="post-date">March 21, 2014</time>
 
-  <article class="post-content">
-    <p>This page lists all posts (not pages) organized by date.</p>
+      <p>This is a nasty one to track down in production, so I’m going to show you here.</p>
 
-<div class="post-list">
-    <ul>
-        
-            <li>
-                <a href="/2024/01/08/2023-year-in-review/">
-                    2023 Year in Review
-                </a>
-                <time>January 08, 2024</time>
-            </li>
-        
-            <li>
-                <a href="/2023/11/27/improving-software-team-metrics/">
-                    Improving Software Team Metrics
-                </a>
-                <time>November 27, 2023</time>
-            </li>
-        
-            <li>
-                <a href="/2023/11/08/what-even-is-innovation/">
-                    What Even Is Innovation?
-                </a>
-                <time>November 08, 2023</time>
-            </li>
-        
-            <li>
-                <a href="/2022/05/25/when-to-micro-service/">
-                    When to Microservice
-                </a>
-                <time>May 25, 2022</time>
-            </li>
-        
-            <li>
-                <a href="/2022/04/13/software-leadership-fostering-the-team/">
-                    Software Leadership - Fostering the Team
-                </a>
-                <time>April 13, 2022</time>
-            </li>
-        
-            <li>
-                <a href="/2022/02/24/rdp-tunnels/">
-                    RDP Tunnels
-                </a>
-                <time>February 24, 2022</time>
-            </li>
-        
-            <li>
-                <a href="/2018/09/21/belvedere/">
-                    Belvedere
-                </a>
-                <time>September 21, 2018</time>
-            </li>
-        
-            <li>
-                <a href="/2018/08/31/name-on/">
-                    Name-on
-                </a>
-                <time>August 31, 2018</time>
-            </li>
-        
-            <li>
-                <a href="/2018/05/15/adventures-in-vs-extension-updates/">
-                    Adventures in vs Extension Updates
-                </a>
-                <time>May 15, 2018</time>
-            </li>
-        
-            <li>
-                <a href="/2017/08/17/data-driven/">
-                    Data Driven
-                </a>
-                <time>August 17, 2017</time>
-            </li>
-        
-            <li>
-                <a href="/2016/10/01/c-obfuscation/">
-                    C# Obfuscation
-                </a>
-                <time>October 01, 2016</time>
-            </li>
-        
-            <li>
-                <a href="/2016/09/28/why-git-works-where-tfvc-doesnt/">
-                    Why Git Works Where TFVC Doesn't
-                </a>
-                <time>September 28, 2016</time>
-            </li>
-        
-            <li>
-                <a href="/2016/09/11/how-yield-works/">
-                    How Yield Works
-                </a>
-                <time>September 11, 2016</time>
-            </li>
-        
-            <li>
-                <a href="/2016/09/11/creating-a-vs-extension/">
-                    Creating a vs Extension
-                </a>
-                <time>September 11, 2016</time>
-            </li>
-        
-            <li>
-                <a href="/2014/03/21/c-testing-with-fakes/">
-                    C# Testing With Fakes
-                </a>
-                <time>March 21, 2014</time>
-            </li>
-        
-            <li>
-                <a href="/2014/03/21/vbscript-conditional-includes/">
-                    VBScript Conditional Includes
-                </a>
-                <time>March 21, 2014</time>
-            </li>
-        
-    </ul>
-</div>
-<p><!-- .post-list --></p>
+<p>VBScript has a fun way of interpreting include references that are nested inside an if statement. It will load all include references. If you have different functions, with the same name, it will use the second one.</p>
 
-  </article>
+<p>Example</p>
 
+<p>myTest_inc1.asp:</p>
+
+<figure class="highlight"><pre><code class="language-vbscript" data-lang="vbscript">&lt;%
+Response.Write "&lt;br/&gt;Function 1 loaded...&lt;br/&gt;"
+
+function myFunc(int1, int2)
+    Response.Write "&lt;br/&gt;Function 1 executing...&lt;br/&gt;"
+    myFunc = int1 * int2
+end function 
+%&gt;</code></pre></figure>
+
+<p>myTest_inc2.asp:</p>
+
+<figure class="highlight"><pre><code class="language-vbscript" data-lang="vbscript">&lt;%
+Response.Write "&lt;br/&gt;Function 2 loaded...&lt;br/&gt;"
+
+function myFunc(int1, int2)
+    Response.Write "&lt;br/&gt;Function 2 executing...&lt;br/&gt;"
+    myFunc = int1 + int2
+end function
+%&gt;</code></pre></figure>
+
+<p>myTest.asp:</p>
+
+<figure class="highlight"><pre><code class="language-vbscript" data-lang="vbscript">&lt;%
+    if (true) then
+        Response.Write "&lt;br/&gt;Case 1 executing...&lt;br/&gt;"
+%&gt;
+
+&lt;!-- #include file="myTest_inc1.asp" --&gt;
+
+&lt;% 
+    else
+        Response.Write "&lt;br/&gt;Case 2 executing...&lt;br/&gt;"
+%&gt;
+
+&lt;!-- #include file="myTest_inc2.asp" --&gt;
+
+&lt;%
+    end if
+    
+    Response.Write myFunc(3,3)
+%&gt;</code></pre></figure>
+
+<p>The output of myTest.asp is:</p>
+
+<p>Case 1 executing…</p>
+
+<p>Function 1 loaded…</p>
+
+<p>Function 2 executing…</p>
+
+<p>6</p>
+
+<p>Thanks for reading.</p>
+
+
+      <hr>
+    </article>
+  
+
+    <!-- Pagination links -->
+    <div class="pagination">
+        
+            <a href="/page3" class="previous">Previous</a>
+        
+        
+            <span class="inactive next">Next</span>
+        
+    </div>
 </div>
 
       </div> <!-- .wrapper -->

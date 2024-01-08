@@ -127,6 +127,10 @@
                     
                 
             
+                
+                    
+                
+            
             <a href="https://github.com/clintcparker" target="_blank">GitHub</a>
             <a href="https://www.linkedin.com/in/clintcparker" target="_blank">Résumé</a>
             <a href="https://twitter.com/clintcparker" target="_blank">Tweets</a>
@@ -149,6 +153,88 @@
     <div class="page-content">
       <div class="wrapper">
         <div class="home">
+  
+    <article class="post">
+      <h2 class="post-title"><a class="post-link" href="/2016/10/01/c-obfuscation/">C# Obfuscation</a></h2>
+
+      <time datetime="2016-10-01T12:02:45-07:00" class="post-date">October 01, 2016</time>
+
+      <p>You can use the underscore to write ridiculous code.</p>
+
+<p><code class="highlighter-rouge">__</code> is a valid class name. <code class="highlighter-rouge">__</code> is a valid namespace. <code class="highlighter-rouge">__()</code> is a valid method. And, <code class="highlighter-rouge">__</code> is a valid property.</p>
+
+<p>I stumbled upon this a few years ago , but hadn’t gotten around to writing it down. It’s really fun to play with. I thinkt the next step is to create an obfuscator extension.</p>
+
+<p>Here’s a simple class from when I was teaching intro to C# and demonstrating async and await.</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">using</span> <span class="nn">System.IO</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Threading.Tasks</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">A_A.Library</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">class</span> <span class="nc">FileAccess</span>
+    <span class="p">{</span>
+        <span class="k">public</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="nf">GetLength</span><span class="p">(</span><span class="kt">string</span> <span class="n">filePath</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="kt">var</span> <span class="n">sr</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">StreamReader</span><span class="p">(</span><span class="n">filePath</span><span class="p">);</span>
+            <span class="kt">var</span> <span class="n">chars</span> <span class="p">=</span> <span class="n">sr</span><span class="p">.</span><span class="nf">ReadToEnd</span><span class="p">();</span>
+            <span class="k">return</span> <span class="n">chars</span><span class="p">.</span><span class="n">Length</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="k">public</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="nf">GetLines</span><span class="p">(</span><span class="kt">string</span> <span class="n">bigTxt</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="kt">int</span> <span class="n">lines</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
+            <span class="kt">var</span> <span class="n">sr</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">StreamReader</span><span class="p">(</span><span class="n">bigTxt</span><span class="p">);</span>
+            <span class="k">while</span> <span class="p">(!</span><span class="n">sr</span><span class="p">.</span><span class="n">EndOfStream</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="k">await</span> <span class="n">sr</span><span class="p">.</span><span class="nf">ReadLineAsync</span><span class="p">();</span>
+                <span class="n">lines</span><span class="p">++;</span>
+            <span class="p">}</span>
+            <span class="k">return</span> <span class="n">lines</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Here’s it is again, obfuscated. Still compiles, still valid C#.</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="k">using</span> <span class="nn">System.IO</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Threading.Tasks</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">__</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">class</span> <span class="nc">___</span>
+    <span class="p">{</span>
+        <span class="k">public</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="nf">____</span><span class="p">(</span><span class="kt">string</span> <span class="n">___</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="kt">var</span> <span class="n">_</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">StreamReader</span><span class="p">(</span><span class="n">___</span><span class="p">);</span>
+            <span class="kt">var</span> <span class="n">__</span> <span class="p">=</span> <span class="n">_</span><span class="p">.</span><span class="nf">ReadToEnd</span><span class="p">();</span>
+            <span class="k">return</span> <span class="n">__</span><span class="p">.</span><span class="n">Length</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="k">public</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="nf">_____</span><span class="p">(</span><span class="kt">string</span> <span class="n">___</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="kt">int</span> <span class="n">_</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
+            <span class="kt">var</span> <span class="n">__</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">StreamReader</span><span class="p">(</span><span class="n">___</span><span class="p">);</span>
+            <span class="k">while</span> <span class="p">(!</span><span class="n">__</span><span class="p">.</span><span class="n">EndOfStream</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="k">await</span> <span class="n">__</span><span class="p">.</span><span class="nf">ReadLineAsync</span><span class="p">();</span>
+                <span class="n">_</span><span class="p">++;</span>
+            <span class="p">}</span>
+            <span class="k">return</span> <span class="n">_</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Thanks for reading.</p>
+
+<p>P.S. Who want’s to help me write the obfuscator?</p>
+
+
+      <hr>
+    </article>
   
     <article class="post">
       <h2 class="post-title"><a class="post-link" href="/2016/09/28/why-git-works-where-tfvc-doesnt/">Why Git Works Where TFVC Doesn't</a></h2>
@@ -276,77 +362,6 @@ Another team just got two half done projects dumped into their branch, because t
       <hr>
     </article>
   
-    <article class="post">
-      <h2 class="post-title"><a class="post-link" href="/2014/03/21/vbscript-conditional-includes/">VBScript Conditional Includes</a></h2>
-
-      <time datetime="2014-03-21T11:16:00-07:00" class="post-date">March 21, 2014</time>
-
-      <p>This is a nasty one to track down in production, so I’m going to show you here.</p>
-
-<p>VBScript has a fun way of interpreting include references that are nested inside an if statement. It will load all include references. If you have different functions, with the same name, it will use the second one.</p>
-
-<p>Example</p>
-
-<p>myTest_inc1.asp:</p>
-
-<figure class="highlight"><pre><code class="language-vbscript" data-lang="vbscript">&lt;%
-Response.Write "&lt;br/&gt;Function 1 loaded...&lt;br/&gt;"
-
-function myFunc(int1, int2)
-    Response.Write "&lt;br/&gt;Function 1 executing...&lt;br/&gt;"
-    myFunc = int1 * int2
-end function 
-%&gt;</code></pre></figure>
-
-<p>myTest_inc2.asp:</p>
-
-<figure class="highlight"><pre><code class="language-vbscript" data-lang="vbscript">&lt;%
-Response.Write "&lt;br/&gt;Function 2 loaded...&lt;br/&gt;"
-
-function myFunc(int1, int2)
-    Response.Write "&lt;br/&gt;Function 2 executing...&lt;br/&gt;"
-    myFunc = int1 + int2
-end function
-%&gt;</code></pre></figure>
-
-<p>myTest.asp:</p>
-
-<figure class="highlight"><pre><code class="language-vbscript" data-lang="vbscript">&lt;%
-    if (true) then
-        Response.Write "&lt;br/&gt;Case 1 executing...&lt;br/&gt;"
-%&gt;
-
-&lt;!-- #include file="myTest_inc1.asp" --&gt;
-
-&lt;% 
-    else
-        Response.Write "&lt;br/&gt;Case 2 executing...&lt;br/&gt;"
-%&gt;
-
-&lt;!-- #include file="myTest_inc2.asp" --&gt;
-
-&lt;%
-    end if
-    
-    Response.Write myFunc(3,3)
-%&gt;</code></pre></figure>
-
-<p>The output of myTest.asp is:</p>
-
-<p>Case 1 executing…</p>
-
-<p>Function 1 loaded…</p>
-
-<p>Function 2 executing…</p>
-
-<p>6</p>
-
-<p>Thanks for reading.</p>
-
-
-      <hr>
-    </article>
-  
 
     <!-- Pagination links -->
     <div class="pagination">
@@ -354,7 +369,7 @@ end function
             <a href="/page2" class="previous">Previous</a>
         
         
-            <span class="inactive next">Next</span>
+            <a href="/page4" class="next">Next</a>
         
     </div>
 </div>
@@ -367,7 +382,7 @@ end function
   <div class="wrapper">
     <p class="rss-subscribe">Subscribe <a href="/feed.xml" target="_blank">via RSS</a></p>
     <p>This site uses the <a href="https://github.com/lewisc/daryl" target="_blank">Daryl</a> theme for <a href="http://jekyllrb.com" target="_blank">Jekyll</a>.</p>
-    <p>&copy; 2023 by Clint Parker. All rights reserved.</p>
+    <p>&copy; 2024 by Clint Parker. All rights reserved.</p>
 
   </div> <!-- .wrapper -->
 

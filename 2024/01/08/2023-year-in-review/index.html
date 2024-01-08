@@ -6,15 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Archive</title>
-    <meta name="description" content="Writings on software development, testing, and architecture. .NET C# Tools Testing whiteboarding design
-">
+    <title>2023 Year in Review</title>
+    <meta name="description" content="My team has seen a lot of changes in the last year. These are things that we didn’t really have in 2022 but are became a part of our day-to-day in 2023.">
 
     <link rel="stylesheet" href="/assets/css/style.css">
 
     <!-- <link rel="icon" type="image/x-icon" href="https://clintcparker.com/favicon.ico"> -->
 
-    <link rel="canonical" href="https://clintcparker.com/archive/">
+    <link rel="canonical" href="https://clintcparker.com/2024/01/08/2023-year-in-review/">
     <link rel="alternate" type="application/rss+xml" title="@clintcparker" href="https://clintcparker.com/feed.xml" />
     
     <script>
@@ -151,130 +150,50 @@
         <div class="post">
 
   <header class="post-header">
-    <h2 class="post-title">Archive</h2>
+    <h2 class="post-title">2023 Year in Review</h2>
+    <time class="post-date">January 08, 2024</time>
   </header>
 
   <article class="post-content">
-    <p>This page lists all posts (not pages) organized by date.</p>
+    <p>My team has seen a lot of changes in the last year. These are things that we didn’t really have in 2022 but are became a part of our day-to-day in 2023.</p>
 
-<div class="post-list">
-    <ul>
-        
-            <li>
-                <a href="/2024/01/08/2023-year-in-review/">
-                    2023 Year in Review
-                </a>
-                <time>January 08, 2024</time>
-            </li>
-        
-            <li>
-                <a href="/2023/11/27/improving-software-team-metrics/">
-                    Improving Software Team Metrics
-                </a>
-                <time>November 27, 2023</time>
-            </li>
-        
-            <li>
-                <a href="/2023/11/08/what-even-is-innovation/">
-                    What Even Is Innovation?
-                </a>
-                <time>November 08, 2023</time>
-            </li>
-        
-            <li>
-                <a href="/2022/05/25/when-to-micro-service/">
-                    When to Microservice
-                </a>
-                <time>May 25, 2022</time>
-            </li>
-        
-            <li>
-                <a href="/2022/04/13/software-leadership-fostering-the-team/">
-                    Software Leadership - Fostering the Team
-                </a>
-                <time>April 13, 2022</time>
-            </li>
-        
-            <li>
-                <a href="/2022/02/24/rdp-tunnels/">
-                    RDP Tunnels
-                </a>
-                <time>February 24, 2022</time>
-            </li>
-        
-            <li>
-                <a href="/2018/09/21/belvedere/">
-                    Belvedere
-                </a>
-                <time>September 21, 2018</time>
-            </li>
-        
-            <li>
-                <a href="/2018/08/31/name-on/">
-                    Name-on
-                </a>
-                <time>August 31, 2018</time>
-            </li>
-        
-            <li>
-                <a href="/2018/05/15/adventures-in-vs-extension-updates/">
-                    Adventures in vs Extension Updates
-                </a>
-                <time>May 15, 2018</time>
-            </li>
-        
-            <li>
-                <a href="/2017/08/17/data-driven/">
-                    Data Driven
-                </a>
-                <time>August 17, 2017</time>
-            </li>
-        
-            <li>
-                <a href="/2016/10/01/c-obfuscation/">
-                    C# Obfuscation
-                </a>
-                <time>October 01, 2016</time>
-            </li>
-        
-            <li>
-                <a href="/2016/09/28/why-git-works-where-tfvc-doesnt/">
-                    Why Git Works Where TFVC Doesn't
-                </a>
-                <time>September 28, 2016</time>
-            </li>
-        
-            <li>
-                <a href="/2016/09/11/how-yield-works/">
-                    How Yield Works
-                </a>
-                <time>September 11, 2016</time>
-            </li>
-        
-            <li>
-                <a href="/2016/09/11/creating-a-vs-extension/">
-                    Creating a vs Extension
-                </a>
-                <time>September 11, 2016</time>
-            </li>
-        
-            <li>
-                <a href="/2014/03/21/c-testing-with-fakes/">
-                    C# Testing With Fakes
-                </a>
-                <time>March 21, 2014</time>
-            </li>
-        
-            <li>
-                <a href="/2014/03/21/vbscript-conditional-includes/">
-                    VBScript Conditional Includes
-                </a>
-                <time>March 21, 2014</time>
-            </li>
-        
-    </ul>
-</div>
-<p><!-- .post-list --></p>
+<h3 id="feature-flags">Feature flags</h3>
+<p>We started to introduce the concept of flags in late 2022 but didn’t adopt them until 2023. We’ve rewritten the framework a few times. The team has created guidelines for flag creation, management, and removal. We’ve introduced over 200 flags in 2023. The adoption of our feature flag process has led to…</p>
+
+<h3 id="deploying-multiple-times-per-day">Deploying multiple times per day</h3>
+<p>In May of 2023, we moved to hourly deploys. We had previously been on a structured 2-week deployment cadence. There are some specific challenges with a 2-week cadence: maintaining the “release branch,” being beholden to the release schedule and work done or not done in time, the fact that we were deploying a bundle of 2 weeks of work, and hotfixes bypassing all the process. We’ve since moved to hourly deploys. We currently deploy on the hour and will be moving to full continuous deployment in January. Production incident remediation times are now tracked in minutes and not hours.</p>
+
+<h3 id="ddos-protection">DDOS protection</h3>
+<p>In 2023, we moved our WAF to Cloudflare. This has given us DDOS protection and a CDN. The DDOS mitigation has proved extremely valuable, as our system has been able to withstand attacks over 10M requests per minute.</p>
+
+<h3 id="wasm">WASM</h3>
+<p>We’ve introduced Blazor to our stack to add frontend code quickly and reliably. We’re using Blazor WASM, which is C# and HTML compiled to WebAssemly. This allows us to use our C# knowledge and best practices (including automated testing) for browser code.</p>
+
+<h3 id="running-on-linux-in-prod">Running on Linux in prod</h3>
+<p>In the first half of 2023, we migrated our production servers to Linux. In the second half of the year, we migrated our remaining dev and staging servers to Linux. We’ve also migrated our build servers to Linux. These migrations saved costs on the computing side, allowing us to scale up our data side without any overall cost increase.</p>
+
+<h3 id="latest-net">Latest .NET</h3>
+<p>Staying on the latest version of the framework is uncommon in most .NET shops. In 2022, we migrated to dotnet 6. In 2023, we’ve done it again and migrated to dotnet 7. In early 2024, we’ll move to the newly released dotnet 8.</p>
+
+<h3 id="increased-automated-testing">Increased automated testing</h3>
+<p>In August, we increased our expectations around automated testing. We’re now near 40% for total line coverage for all codebases. We’ve adopted behavioral testing across all of the backend code. We’ve introduced Playwright, which allows us to test our frontend code in a more automated fashion.</p>
+
+<h3 id="codified-sdlc">Codified SDLC</h3>
+<p>In 2022, our SDLC was very loose and ad-hoc. In 2023, we’ve codified our SDLC. Our SDLC is meant to be flexible while maintaining consistency across the department. Our SDLC guidelines represent sensible defaults, and we hope they will continue to evolve to best serve the teams leveraging them.</p>
+
+<h3 id="structured-teams">Structured teams</h3>
+<p>At the end of 2023, we had one team of 12, one team of 5, and one team of 2 with QA floating across teams. We’ve since restructured into 3 teams of even size and even staffing.</p>
+
+<h3 id="job-descriptions">Job descriptions</h3>
+<p>I know the engineering team had been working on some job descriptions/matrices, but they never quite made it to fruition. This year, Engineering leadership created measurable job expectations for software engineering levels 1-4. We’ve published these to our team and are using them in our 1:1s and reviews. This gives clarity to both our team members and managers. We’ll be creating similar documents for our managers and QA and DevOps teams in 2024.</p>
+
+<h3 id="consistent-meeting-schedule">Consistent meeting schedule</h3>
+<p>In addition to the meeting guidelines of our SDLC, we’ve also established a monthly department-wide meeting. This meeting is an opportunity to showcase the great work done each month, share department-level information, and keep each other accountable for our organizational goals.</p>
+
+<h3 id="company-wide-bug-reporting">Company-wide bug reporting</h3>
+<p>Open bug reporting is a sign of engineering team maturity, and in May of 2023, we opened up our bug reporting process to the whole company. We previously had two competing processes. Not only did this reduce transparency and create confusion, but issues reported in the support team’s system had to be verified and triaged before being added to the engineering backlog. This dual process limited visibility into the bug backlog and also skewed reporting.</p>
+
+<p>This has been one of the most remarkable years of my career. Teams rarely see this much evolution in such a short time. I can’t wait to see what interesting enhancements 2024 delivers.</p>
 
   </article>
 
