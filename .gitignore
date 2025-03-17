@@ -19,3 +19,4 @@ deploy.sh
 _deploy.yml
 .deploy/
 .jekyll-cache/
+gemstuff/

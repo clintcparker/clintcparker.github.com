@@ -1,37 +1,51 @@
+// See https://containers.dev/implementors/json_reference/ for configuration reference
 {
-	"image": "mcr.microsoft.com/devcontainers/ruby:3",
-
-	"features": {
-		"ghcr.io/devcontainers/features/git:1": {},
-		"ghcr.io/devcontainers/features/github-cli:1": {},
-		"ghcr.io/devcontainers-contrib/features/fish-apt-get:1": {}
+	"name": "clintcparker.github.com",
+	"build": {
+		"dockerfile": "Dockerfile"
 	},
-	"hostRequirements": {
-	  "cpus": 4
-	},
-	"waitFor": "onCreateCommand",
-	"updateContentCommand": "bundle install",
-	"postCreateCommand": "  ",
-	// "postAttachCommand": {
-	//   "server": "rails server"
-	// },
+	"remoteUser": "devcontainer",
+	"postCreateCommand": "./.devcontainer/postCreateCommand.sh",
 	"customizations": {
-
-        "vscode": {
-            "extensions": [
+		"vscode": {
+			"extensions": [
+				//   "Shopify.ruby-lsp",
+				"KoichiSasada.vscode-rdbg",
 				"GitHub.copilot",
 				"ms-vsliveshare.vsliveshare",
 				"ryanolsonx.solarized",
 				"ms-vscode-remote.remote-containers",
 				"Shopify.ruby-extensions-pack"
-			]
-        }
+			],
+			"settings": {
+				"terminal.integrated.defaultProfile.linux": "fish",
+				"terminal.integrated.profiles.linux": {
+					"fish": {
+						"path": "/usr/bin/fish"
+					}
+				},
+				"rubyLsp.rubyVersionManager": {
+					"identifier": "none" // Force native container Ruby
+				},
+				"[ruby]": {
+					"editor.defaultFormatter": "Shopify.ruby-lsp",
+					"editor.formatOnSave": true
+				}
+			}
+		}
+	},
+	"features": {
+		"ghcr.io/devcontainers/features/git:1": {},
+		"ghcr.io/devcontainers/features/github-cli:1": {},
+		"ghcr.io/devcontainers-contrib/features/fish-apt-get:1": {}
 	},
 	"portsAttributes": {
-	  "4000": {
-		"label": "Application",
-		"onAutoForward": "openPreview"
-	  }
+		"4000": {
+			"label": "Application",
+			"onAutoForward": "openPreview"
+		}
 	},
-	"forwardPorts": [4000]
-  }
+	"forwardPorts": [
+		4000
+	]
+}

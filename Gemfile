@@ -1,15 +1,15 @@
 # frozen_string_literal: true
 
-source "https://rubygems.org"
+source 'https://rubygems.org'
 
-# gem "rails"
-
-# gem "bundler", "~> 2.3"
-
-gem "jekyll"
-
-gem "jekyll-paginate", "~> 1.1"
-gem "jekyll-sass-converter"
-gem "kramdown", "~> 2.4.0"
-gem "octopress", "~> 3.0.11"
-gem "mercenary", "0.3.6"
+group :development, :test do
+  gem 'octopress', "3.0.11"
+  gem 'minitest'
+  gem 'rubocop'
+  # gem 'jekyll', "1.0.2"
+  gem 'jekyll-paginate'
+  gem 'jekyll-sass-converter'
+  # gem 'kramdown', "1.0.2"
+  # gem 'json', "1.7.7"
+  gem 'mercenary',"0.3.6"
+end
