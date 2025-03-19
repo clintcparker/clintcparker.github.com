@@ -9,6 +9,7 @@ baseurl: "" # the subpath of your site, e.g. /blog/
 url: "https://clintcparker.com" # the base hostname & protocol for your site
 twitter_username: clintcparker
 github_username:  clintcparker
+social_username: clintcparker
 paginate: 5
 
 #Analytics
