@@ -126,9 +126,14 @@
                     
                 
             
+                
+                    
+                
+            
             <a href="https://github.com/clintcparker" target="_blank">GitHub</a>
             <a href="https://www.linkedin.com/in/clintcparker" target="_blank">Résumé</a>
-            <a href="https://twitter.com/clintcparker" target="_blank">Tweets</a>
+            <!-- <a href="https://twitter.com/clintcparker" target="_blank">Tweets</a> -->
+            <a href="https://bsky.app/profile/clintcparker.bsky.social" target="_blank">Social</a>
             <!-- Cal element-click embed code begins -->
             <script type="text/javascript">
                 (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; typeof namespace === "string" ? (cal.ns[namespace] = api) && p(api, ar) : p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
@@ -160,12 +165,12 @@
 
 <p>I had used the Heroku unique-name generator before, when building <a href="https://badideas.herokuapp.com/">bad ideas</a>. I loved how it removed a mental hurdle from getting something out the door; coming up with a name. Personally, I’m horrible at naming things, so this was a necessity. I don’t want to get hung up on picking a good name, and the defaults are equally as bad (ConsoleApplication23, anybody?).</p>
 
-<p>I’d also been wanting to get back to dot net core. The last time I had played around with it, they were still using the <code class="highlighter-rouge">dnx</code> command line tool and <code class="highlighter-rouge">project.json</code> files. So this project seemed small enough, and valuable enough, to actually keep me on task for the duration of v1.</p>
+<p>I’d also been wanting to get back to dot net core. The last time I had played around with it, they were still using the <code class="language-plaintext highlighter-rouge">dnx</code> command line tool and <code class="language-plaintext highlighter-rouge">project.json</code> files. So this project seemed small enough, and valuable enough, to actually keep me on task for the duration of v1.</p>
 
 <h3 id="the-command-line">The command line</h3>
 <p>I was stoked to be able to layout the project structure from the command line. I’m just so much more optimistic about a tool when there’s a CLI behind it. Even if I’ll never script it, the idea that i <em>could</em> is very appealing.</p>
 
-<p>I scaffolded the whole project via the <code class="highlighter-rouge">dotnet new</code> and <code class="highlighter-rouge">dotnet add</code> commands. I was also able to build and test in the same manner. It was a nice break from VS 2017.</p>
+<p>I scaffolded the whole project via the <code class="language-plaintext highlighter-rouge">dotnet new</code> and <code class="language-plaintext highlighter-rouge">dotnet add</code> commands. I was also able to build and test in the same manner. It was a nice break from VS 2017.</p>
 
 <h3 id="structure">Structure</h3>
 <p>I found lists of adjectives and nouns online. And thank to some recent practice with regex crosswords, quickly stripped everything but the words themselves.</p>
@@ -174,7 +179,7 @@
 
 <p>I was able to create a CLI for OS X, which was came in handy when publishing to Azure, and needing names for everything.</p>
 
-<p>For the web app the <code class="highlighter-rouge">dotnet help</code> lists a template called <code class="highlighter-rouge">razor</code> with the description “mvc with razor pages.” I’ve used the Razor syntax since it debuted, and thought, “of course I want razor, not <code class="highlighter-rouge">aspx</code>.” Apparently though, Razor Pages is a new thing. I actually really liked it for build the web app component. I still created a controller for the API, but was happy I stumbled onto this new paradigm.</p>
+<p>For the web app the <code class="language-plaintext highlighter-rouge">dotnet help</code> lists a template called <code class="language-plaintext highlighter-rouge">razor</code> with the description “mvc with razor pages.” I’ve used the Razor syntax since it debuted, and thought, “of course I want razor, not <code class="language-plaintext highlighter-rouge">aspx</code>.” Apparently though, Razor Pages is a new thing. I actually really liked it for build the web app component. I still created a controller for the API, but was happy I stumbled onto this new paradigm.</p>
 
 <p>I really went over the top with the completeness. Azure for hosting. Custom domain through NameCheap. SSL through CloudFlare.</p>
 
@@ -193,7 +198,7 @@
   <div class="wrapper">
     <p class="rss-subscribe">Subscribe <a href="/feed.xml" target="_blank">via RSS</a></p>
     <p>This site uses the <a href="https://github.com/lewisc/daryl" target="_blank">Daryl</a> theme for <a href="http://jekyllrb.com" target="_blank">Jekyll</a>.</p>
-    <p>&copy; 2024 by Clint Parker. All rights reserved.</p>
+    <p>&copy; 2025 by Clint Parker. All rights reserved.</p>
 
   </div> <!-- .wrapper -->
 

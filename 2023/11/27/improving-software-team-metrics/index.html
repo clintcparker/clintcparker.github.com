@@ -126,9 +126,14 @@
                     
                 
             
+                
+                    
+                
+            
             <a href="https://github.com/clintcparker" target="_blank">GitHub</a>
             <a href="https://www.linkedin.com/in/clintcparker" target="_blank">Résumé</a>
-            <a href="https://twitter.com/clintcparker" target="_blank">Tweets</a>
+            <!-- <a href="https://twitter.com/clintcparker" target="_blank">Tweets</a> -->
+            <a href="https://bsky.app/profile/clintcparker.bsky.social" target="_blank">Social</a>
             <!-- Cal element-click embed code begins -->
             <script type="text/javascript">
                 (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; typeof namespace === "string" ? (cal.ns[namespace] = api) && p(api, ar) : p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
@@ -440,13 +445,13 @@
 </ul>
 
 <h4 id="basic-average">Basic Average</h4>
-<p>The most basic average. This would be the average of all the values for the <code class="highlighter-rouge">Completion %</code> column for a given month and year. While this is a straightforward value to calculate, I’ve found it gives too much weight to the individual sprints. For example, one lousy sprint, even with a minimal planned value, can drastically change this calculation.</p>
+<p>The most basic average. This would be the average of all the values for the <code class="language-plaintext highlighter-rouge">Completion %</code> column for a given month and year. While this is a straightforward value to calculate, I’ve found it gives too much weight to the individual sprints. For example, one lousy sprint, even with a minimal planned value, can drastically change this calculation.</p>
 
 <h4 id="unweighted">Unweighted</h4>
-<p>This is the sum of the <code class="highlighter-rouge">Total</code> column divided by the sum of the <code class="highlighter-rouge">Planned</code> column for a given month and year. This assigns too little weight to individual sprints and doesn’t address the discrepancies in point values across teams.</p>
+<p>This is the sum of the <code class="language-plaintext highlighter-rouge">Total</code> column divided by the sum of the <code class="language-plaintext highlighter-rouge">Planned</code> column for a given month and year. This assigns too little weight to individual sprints and doesn’t address the discrepancies in point values across teams.</p>
 
 <h4 id="weighted">Weighted</h4>
-<p>This has been my go-to calculation for years. This is a two-phased calculation. First, we roll up the value for the individual teams. We do this with the unweighted model but filter by <code class="highlighter-rouge">Team</code> in addition to month and year. Then, we average those values. This handles a team having a lousy sprint but recovering in the next, as well as the differences in point values.</p>
+<p>This has been my go-to calculation for years. This is a two-phased calculation. First, we roll up the value for the individual teams. We do this with the unweighted model but filter by <code class="language-plaintext highlighter-rouge">Team</code> in addition to month and year. Then, we average those values. This handles a team having a lousy sprint but recovering in the next, as well as the differences in point values.</p>
 
 <p>But what about team B? They didn’t get all that work done. It doesn’t feel like the numbers represent the reality if the work not getting done was high value / high vis. The 1st phase of the weighted model allows for a disappointing sprint. And if the team is working ahead or catching up, we’re sweeping that bad sprint under the rug. While this hadn’t always directly worried me, my colleagues who had been expecting certain things and not seeing them delivered despite the 100%+ completion rates were getting a little frustrated.</p>
 
@@ -474,7 +479,7 @@
   <div class="wrapper">
     <p class="rss-subscribe">Subscribe <a href="/feed.xml" target="_blank">via RSS</a></p>
     <p>This site uses the <a href="https://github.com/lewisc/daryl" target="_blank">Daryl</a> theme for <a href="http://jekyllrb.com" target="_blank">Jekyll</a>.</p>
-    <p>&copy; 2024 by Clint Parker. All rights reserved.</p>
+    <p>&copy; 2025 by Clint Parker. All rights reserved.</p>
 
   </div> <!-- .wrapper -->
 

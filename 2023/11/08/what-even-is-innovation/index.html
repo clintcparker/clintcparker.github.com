@@ -126,9 +126,14 @@
                     
                 
             
+                
+                    
+                
+            
             <a href="https://github.com/clintcparker" target="_blank">GitHub</a>
             <a href="https://www.linkedin.com/in/clintcparker" target="_blank">Résumé</a>
-            <a href="https://twitter.com/clintcparker" target="_blank">Tweets</a>
+            <!-- <a href="https://twitter.com/clintcparker" target="_blank">Tweets</a> -->
+            <a href="https://bsky.app/profile/clintcparker.bsky.social" target="_blank">Social</a>
             <!-- Cal element-click embed code begins -->
             <script type="text/javascript">
                 (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; typeof namespace === "string" ? (cal.ns[namespace] = api) && p(api, ar) : p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
@@ -159,17 +164,17 @@
 
 <p>That said, I have an obvious answer to “What is the most interesting problem you ever solved?” And just to be transparent and fair, I didn’t solve this in a vacuum. I worked with a great team and would not have succeeded without their help.</p>
 
-<p>The innovation I’m proud of is a little embarrassing due to the underlying technology. While I was at Mindbody, we uncovered an impactful limitation of scaling Classic ASP web applications. That’s right, Mindbody was still very much reliant on Classic ASP, which had been deprecated with the arrival of <code class="highlighter-rouge">.NET</code>. The solution to this scaling problem wasn’t particularly complex, but the novelty and impact qualify as innovative. In the end, we were able to proactively identify, remediate, and prevent future consequences of the limitation.</p>
+<p>The innovation I’m proud of is a little embarrassing due to the underlying technology. While I was at Mindbody, we uncovered an impactful limitation of scaling Classic ASP web applications. That’s right, Mindbody was still very much reliant on Classic ASP, which had been deprecated with the arrival of <code class="language-plaintext highlighter-rouge">.NET</code>. The solution to this scaling problem wasn’t particularly complex, but the novelty and impact qualify as innovative. In the end, we were able to proactively identify, remediate, and prevent future consequences of the limitation.</p>
 
 <p>In late 2017, our VP of Engineering asked me to investigate an issue plaguing another team in his org. I was a Senior Manager overseeing other teams in technically a different department, but I and some of my group had historical experience in the code in question. The nominal problem: a deployed bundle of changes resulted in a 10% increase in CPU usage in production. Rolling the deployment back brought the usage back down, and vice versa. Additionally, the CPU increase was not detectable outside of the production environment. ☹️</p>
 
-<p>I started by enlisting one of the senior engineers on my team, and we began reviewing the changes in the associated deployment. Nothing initially jumped out at us, but on the 3rd pass, I began to suspect that the problem could be related to a change of an <code class="highlighter-rouge">#include</code> reference file. Please see my early post about conditional <code class="highlighter-rouge">include</code> references to understand why this is already a potential issue. (And begin to understand my absolute hat of the continued use of VBScript). – Side note: VBScript is awesome circa 1997. But, like everything else in the universe, we evolved, and the evolution of VBScript on the server was <code class="highlighter-rouge">.NET</code>. Now, if you want to complain about people <em>choosing</em> to use VBScript after 2001, I’d be happy to drink my sorrows away beside you. Rant over, for now– This reference file had <em>itself</em> added another reference, which is typical. But in this case, the outer file was almost ubiquitously referenced in every top-level file. Specifically, the heavy usage of the modified file meant that this small change was probably causing a wider-than-obvious impact.</p>
+<p>I started by enlisting one of the senior engineers on my team, and we began reviewing the changes in the associated deployment. Nothing initially jumped out at us, but on the 3rd pass, I began to suspect that the problem could be related to a change of an <code class="language-plaintext highlighter-rouge">#include</code> reference file. Please see my early post about conditional <code class="language-plaintext highlighter-rouge">include</code> references to understand why this is already a potential issue. (And begin to understand my absolute hat of the continued use of VBScript). – Side note: VBScript is awesome circa 1997. But, like everything else in the universe, we evolved, and the evolution of VBScript on the server was <code class="language-plaintext highlighter-rouge">.NET</code>. Now, if you want to complain about people <em>choosing</em> to use VBScript after 2001, I’d be happy to drink my sorrows away beside you. Rant over, for now– This reference file had <em>itself</em> added another reference, which is typical. But in this case, the outer file was almost ubiquitously referenced in every top-level file. Specifically, the heavy usage of the modified file meant that this small change was probably causing a wider-than-obvious impact.</p>
 
 <p>To test the hypothesis that this one-line change was the culprit, we removed that commit from the bundle and redeployed it without issue. The CPU usage increase disappeared! While the immediate problem was solved, I still wanted to know the root cause and prevention methods.</p>
 
 <p>I then endeavored to prove this issue was detectable via static code analysis. My second hypothesis was that this was related to the server doing more work interpreting more lines per request. The structure of Classic ASP requires that every single line be interpreted when served. Therefore, I suspected that more lines interpreted meant more work being done per request and, in turn, higher CPU usage.</p>
 
-<p>We created a NodeJS command line tool to analyze the codebase to represent this. We used NodeJS because it truly is the best way to share multi-platform CLIs. And thank you, <a href="https://github.com/tj">TJ</a>, for <code class="highlighter-rouge">commander.js</code>! The references in the <code class="highlighter-rouge">include</code> files created an easily traversed tree. The tree was then flattened and converted to a total number of interpreted lines for any given top-level file.</p>
+<p>We created a NodeJS command line tool to analyze the codebase to represent this. We used NodeJS because it truly is the best way to share multi-platform CLIs. And thank you, <a href="https://github.com/tj">TJ</a>, for <code class="language-plaintext highlighter-rouge">commander.js</code>! The references in the <code class="language-plaintext highlighter-rouge">include</code> files created an easily traversed tree. The tree was then flattened and converted to a total number of interpreted lines for any given top-level file.</p>
 
 <p>We enhanced the tool to provide additional insights, such as the theoretical minimum total lines (fully optimized but impractical to maintain) and the specific references to any included file, as well as a bloat factor, which represented how far the structure of a file was from the optimal. The results were output as one CSV file and a collection of JSON files.</p>
 
@@ -189,13 +194,13 @@
 
 <p>P.P.S. Let’s take a minute to discuss what was probably happening here. I say probably because I don’t know for sure the absolute underlying issue, and even if I did, there really isn’t any fixing it for this ecosystem.</p>
 
-<p>VBScript works by retrieving the requested page/resource (<code class="highlighter-rouge">something.asp</code>) and then processing the contents based on the context/request and rendering the output. Again, top-notch for 1997.</p>
+<p>VBScript works by retrieving the requested page/resource (<code class="language-plaintext highlighter-rouge">something.asp</code>) and then processing the contents based on the context/request and rendering the output. Again, top-notch for 1997.</p>
 
-<p>VBScript is a v1 product. It isn’t optimized beyond what the engineers fathomed at the time of writing. So, VBScript pulls the initial ASP file from disk and processes it line-by-line. If there is an <code class="highlighter-rouge">#include</code>, it retrieves that and also processes it line-by-line. Why does it process every line? Because it’s a scripting language at heart, and those lines can modify global state outside of a method body( again, see my post on VBScript conditional includes). So, it is doing a lot of work for each page request. The engineers knew about this, so they created a cache of page contents to not have to go to disk every time.</p>
+<p>VBScript is a v1 product. It isn’t optimized beyond what the engineers fathomed at the time of writing. So, VBScript pulls the initial ASP file from disk and processes it line-by-line. If there is an <code class="language-plaintext highlighter-rouge">#include</code>, it retrieves that and also processes it line-by-line. Why does it process every line? Because it’s a scripting language at heart, and those lines can modify global state outside of a method body( again, see my post on VBScript conditional includes). So, it is doing a lot of work for each page request. The engineers knew about this, so they created a cache of page contents to not have to go to disk every time.</p>
 
 <p>In our case, though, these two concept collide and clobber each other. The need to process each request creates a ton of work, and the page sizes themselves become massive due to the (substantial but not infinite) recursive nature of the pages. Doing more work, and the cache can’t keep up, so it’s doing more work in vain. Brutal.</p>
 
-<p>In the end, they did improve Classic ASP/VBScript … they created <code class="highlighter-rouge">.NET</code>.</p>
+<p>In the end, they did improve Classic ASP/VBScript … they created <code class="language-plaintext highlighter-rouge">.NET</code>.</p>
 
   </article>
 
@@ -209,7 +214,7 @@
   <div class="wrapper">
     <p class="rss-subscribe">Subscribe <a href="/feed.xml" target="_blank">via RSS</a></p>
     <p>This site uses the <a href="https://github.com/lewisc/daryl" target="_blank">Daryl</a> theme for <a href="http://jekyllrb.com" target="_blank">Jekyll</a>.</p>
-    <p>&copy; 2024 by Clint Parker. All rights reserved.</p>
+    <p>&copy; 2025 by Clint Parker. All rights reserved.</p>
 
   </div> <!-- .wrapper -->
 

@@ -127,9 +127,14 @@
                     
                 
             
+                
+                    
+                
+            
             <a href="https://github.com/clintcparker" target="_blank">GitHub</a>
             <a href="https://www.linkedin.com/in/clintcparker" target="_blank">Résumé</a>
-            <a href="https://twitter.com/clintcparker" target="_blank">Tweets</a>
+            <!-- <a href="https://twitter.com/clintcparker" target="_blank">Tweets</a> -->
+            <a href="https://bsky.app/profile/clintcparker.bsky.social" target="_blank">Social</a>
             <!-- Cal element-click embed code begins -->
             <script type="text/javascript">
                 (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; typeof namespace === "string" ? (cal.ns[namespace] = api) && p(api, ar) : p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
@@ -153,7 +158,7 @@
     <article class="post">
       <h2 class="post-title"><a class="post-link" href="/2024/01/08/2023-year-in-review/">2023 Year in Review</a></h2>
 
-      <time datetime="2024-01-08T10:44:36-08:00" class="post-date">January 08, 2024</time>
+      <time datetime="2024-01-08T18:44:36+00:00" class="post-date">January 08, 2024</time>
 
       <p>My team has seen a lot of changes in the last year. These are things that we didn’t really have in 2022 but are became a part of our day-to-day in 2023.</p>
 
@@ -202,7 +207,7 @@
     <article class="post">
       <h2 class="post-title"><a class="post-link" href="/2023/11/27/improving-software-team-metrics/">Improving Software Team Metrics</a></h2>
 
-      <time datetime="2023-11-27T11:30:46-08:00" class="post-date">November 27, 2023</time>
+      <time datetime="2023-11-27T19:30:46+00:00" class="post-date">November 27, 2023</time>
 
       <p>A healthy engineering organization (or any healthy team, for that matter) should be tracking itself across a variety of metrics. This is not covered by the standard CS curriculum but is readily encountered in the real world. Once someone is paying for software, there will invariably be questions about how that money is being spent. The most common metrics are bug count and velocity. Followed by automated code coverage. These are common because they’re the cheapest to produce. Bugs are, unfortunately, the most visible part of engineering output. Counting them is the start of reducing them. Code coverage is freely available in every modern build pipeline, although not always enabled. And velocity is the treasured metric of any young engineering leader, the end-all answer to the question “How much work are we getting done!?”</p>
 
@@ -489,13 +494,13 @@
 </ul>
 
 <h4 id="basic-average">Basic Average</h4>
-<p>The most basic average. This would be the average of all the values for the <code class="highlighter-rouge">Completion %</code> column for a given month and year. While this is a straightforward value to calculate, I’ve found it gives too much weight to the individual sprints. For example, one lousy sprint, even with a minimal planned value, can drastically change this calculation.</p>
+<p>The most basic average. This would be the average of all the values for the <code class="language-plaintext highlighter-rouge">Completion %</code> column for a given month and year. While this is a straightforward value to calculate, I’ve found it gives too much weight to the individual sprints. For example, one lousy sprint, even with a minimal planned value, can drastically change this calculation.</p>
 
 <h4 id="unweighted">Unweighted</h4>
-<p>This is the sum of the <code class="highlighter-rouge">Total</code> column divided by the sum of the <code class="highlighter-rouge">Planned</code> column for a given month and year. This assigns too little weight to individual sprints and doesn’t address the discrepancies in point values across teams.</p>
+<p>This is the sum of the <code class="language-plaintext highlighter-rouge">Total</code> column divided by the sum of the <code class="language-plaintext highlighter-rouge">Planned</code> column for a given month and year. This assigns too little weight to individual sprints and doesn’t address the discrepancies in point values across teams.</p>
 
 <h4 id="weighted">Weighted</h4>
-<p>This has been my go-to calculation for years. This is a two-phased calculation. First, we roll up the value for the individual teams. We do this with the unweighted model but filter by <code class="highlighter-rouge">Team</code> in addition to month and year. Then, we average those values. This handles a team having a lousy sprint but recovering in the next, as well as the differences in point values.</p>
+<p>This has been my go-to calculation for years. This is a two-phased calculation. First, we roll up the value for the individual teams. We do this with the unweighted model but filter by <code class="language-plaintext highlighter-rouge">Team</code> in addition to month and year. Then, we average those values. This handles a team having a lousy sprint but recovering in the next, as well as the differences in point values.</p>
 
 <p>But what about team B? They didn’t get all that work done. It doesn’t feel like the numbers represent the reality if the work not getting done was high value / high vis. The 1st phase of the weighted model allows for a disappointing sprint. And if the team is working ahead or catching up, we’re sweeping that bad sprint under the rug. While this hadn’t always directly worried me, my colleagues who had been expecting certain things and not seeing them delivered despite the 100%+ completion rates were getting a little frustrated.</p>
 
@@ -518,23 +523,23 @@
     <article class="post">
       <h2 class="post-title"><a class="post-link" href="/2023/11/08/what-even-is-innovation/">What Even Is Innovation?</a></h2>
 
-      <time datetime="2023-11-08T10:05:08-08:00" class="post-date">November 08, 2023</time>
+      <time datetime="2023-11-08T18:05:08+00:00" class="post-date">November 08, 2023</time>
 
       <p>I was once asked about the most inventive or innovative thing I’d done. Where to start? I’m a middling engineer at best. I fully subscribe to my own pitch as a leader that engineers should prioritize simplicity and obviousness over performance and cleverness.</p>
 
 <p>That said, I have an obvious answer to “What is the most interesting problem you ever solved?” And just to be transparent and fair, I didn’t solve this in a vacuum. I worked with a great team and would not have succeeded without their help.</p>
 
-<p>The innovation I’m proud of is a little embarrassing due to the underlying technology. While I was at Mindbody, we uncovered an impactful limitation of scaling Classic ASP web applications. That’s right, Mindbody was still very much reliant on Classic ASP, which had been deprecated with the arrival of <code class="highlighter-rouge">.NET</code>. The solution to this scaling problem wasn’t particularly complex, but the novelty and impact qualify as innovative. In the end, we were able to proactively identify, remediate, and prevent future consequences of the limitation.</p>
+<p>The innovation I’m proud of is a little embarrassing due to the underlying technology. While I was at Mindbody, we uncovered an impactful limitation of scaling Classic ASP web applications. That’s right, Mindbody was still very much reliant on Classic ASP, which had been deprecated with the arrival of <code class="language-plaintext highlighter-rouge">.NET</code>. The solution to this scaling problem wasn’t particularly complex, but the novelty and impact qualify as innovative. In the end, we were able to proactively identify, remediate, and prevent future consequences of the limitation.</p>
 
 <p>In late 2017, our VP of Engineering asked me to investigate an issue plaguing another team in his org. I was a Senior Manager overseeing other teams in technically a different department, but I and some of my group had historical experience in the code in question. The nominal problem: a deployed bundle of changes resulted in a 10% increase in CPU usage in production. Rolling the deployment back brought the usage back down, and vice versa. Additionally, the CPU increase was not detectable outside of the production environment. ☹️</p>
 
-<p>I started by enlisting one of the senior engineers on my team, and we began reviewing the changes in the associated deployment. Nothing initially jumped out at us, but on the 3rd pass, I began to suspect that the problem could be related to a change of an <code class="highlighter-rouge">#include</code> reference file. Please see my early post about conditional <code class="highlighter-rouge">include</code> references to understand why this is already a potential issue. (And begin to understand my absolute hat of the continued use of VBScript). – Side note: VBScript is awesome circa 1997. But, like everything else in the universe, we evolved, and the evolution of VBScript on the server was <code class="highlighter-rouge">.NET</code>. Now, if you want to complain about people <em>choosing</em> to use VBScript after 2001, I’d be happy to drink my sorrows away beside you. Rant over, for now– This reference file had <em>itself</em> added another reference, which is typical. But in this case, the outer file was almost ubiquitously referenced in every top-level file. Specifically, the heavy usage of the modified file meant that this small change was probably causing a wider-than-obvious impact.</p>
+<p>I started by enlisting one of the senior engineers on my team, and we began reviewing the changes in the associated deployment. Nothing initially jumped out at us, but on the 3rd pass, I began to suspect that the problem could be related to a change of an <code class="language-plaintext highlighter-rouge">#include</code> reference file. Please see my early post about conditional <code class="language-plaintext highlighter-rouge">include</code> references to understand why this is already a potential issue. (And begin to understand my absolute hat of the continued use of VBScript). – Side note: VBScript is awesome circa 1997. But, like everything else in the universe, we evolved, and the evolution of VBScript on the server was <code class="language-plaintext highlighter-rouge">.NET</code>. Now, if you want to complain about people <em>choosing</em> to use VBScript after 2001, I’d be happy to drink my sorrows away beside you. Rant over, for now– This reference file had <em>itself</em> added another reference, which is typical. But in this case, the outer file was almost ubiquitously referenced in every top-level file. Specifically, the heavy usage of the modified file meant that this small change was probably causing a wider-than-obvious impact.</p>
 
 <p>To test the hypothesis that this one-line change was the culprit, we removed that commit from the bundle and redeployed it without issue. The CPU usage increase disappeared! While the immediate problem was solved, I still wanted to know the root cause and prevention methods.</p>
 
 <p>I then endeavored to prove this issue was detectable via static code analysis. My second hypothesis was that this was related to the server doing more work interpreting more lines per request. The structure of Classic ASP requires that every single line be interpreted when served. Therefore, I suspected that more lines interpreted meant more work being done per request and, in turn, higher CPU usage.</p>
 
-<p>We created a NodeJS command line tool to analyze the codebase to represent this. We used NodeJS because it truly is the best way to share multi-platform CLIs. And thank you, <a href="https://github.com/tj">TJ</a>, for <code class="highlighter-rouge">commander.js</code>! The references in the <code class="highlighter-rouge">include</code> files created an easily traversed tree. The tree was then flattened and converted to a total number of interpreted lines for any given top-level file.</p>
+<p>We created a NodeJS command line tool to analyze the codebase to represent this. We used NodeJS because it truly is the best way to share multi-platform CLIs. And thank you, <a href="https://github.com/tj">TJ</a>, for <code class="language-plaintext highlighter-rouge">commander.js</code>! The references in the <code class="language-plaintext highlighter-rouge">include</code> files created an easily traversed tree. The tree was then flattened and converted to a total number of interpreted lines for any given top-level file.</p>
 
 <p>We enhanced the tool to provide additional insights, such as the theoretical minimum total lines (fully optimized but impractical to maintain) and the specific references to any included file, as well as a bloat factor, which represented how far the structure of a file was from the optimal. The results were output as one CSV file and a collection of JSON files.</p>
 
@@ -554,13 +559,13 @@
 
 <p>P.P.S. Let’s take a minute to discuss what was probably happening here. I say probably because I don’t know for sure the absolute underlying issue, and even if I did, there really isn’t any fixing it for this ecosystem.</p>
 
-<p>VBScript works by retrieving the requested page/resource (<code class="highlighter-rouge">something.asp</code>) and then processing the contents based on the context/request and rendering the output. Again, top-notch for 1997.</p>
+<p>VBScript works by retrieving the requested page/resource (<code class="language-plaintext highlighter-rouge">something.asp</code>) and then processing the contents based on the context/request and rendering the output. Again, top-notch for 1997.</p>
 
-<p>VBScript is a v1 product. It isn’t optimized beyond what the engineers fathomed at the time of writing. So, VBScript pulls the initial ASP file from disk and processes it line-by-line. If there is an <code class="highlighter-rouge">#include</code>, it retrieves that and also processes it line-by-line. Why does it process every line? Because it’s a scripting language at heart, and those lines can modify global state outside of a method body( again, see my post on VBScript conditional includes). So, it is doing a lot of work for each page request. The engineers knew about this, so they created a cache of page contents to not have to go to disk every time.</p>
+<p>VBScript is a v1 product. It isn’t optimized beyond what the engineers fathomed at the time of writing. So, VBScript pulls the initial ASP file from disk and processes it line-by-line. If there is an <code class="language-plaintext highlighter-rouge">#include</code>, it retrieves that and also processes it line-by-line. Why does it process every line? Because it’s a scripting language at heart, and those lines can modify global state outside of a method body( again, see my post on VBScript conditional includes). So, it is doing a lot of work for each page request. The engineers knew about this, so they created a cache of page contents to not have to go to disk every time.</p>
 
 <p>In our case, though, these two concept collide and clobber each other. The need to process each request creates a ton of work, and the page sizes themselves become massive due to the (substantial but not infinite) recursive nature of the pages. Doing more work, and the cache can’t keep up, so it’s doing more work in vain. Brutal.</p>
 
-<p>In the end, they did improve Classic ASP/VBScript … they created <code class="highlighter-rouge">.NET</code>.</p>
+<p>In the end, they did improve Classic ASP/VBScript … they created <code class="language-plaintext highlighter-rouge">.NET</code>.</p>
 
 
       <hr>
@@ -569,7 +574,7 @@
     <article class="post">
       <h2 class="post-title"><a class="post-link" href="/2022/05/25/when-to-micro-service/">When to Microservice</a></h2>
 
-      <time datetime="2022-05-25T14:52:58-07:00" class="post-date">May 25, 2022</time>
+      <time datetime="2022-05-25T21:52:58+00:00" class="post-date">May 25, 2022</time>
 
       <p>I’m enjoying Microsoft Build 2022. Developer experience (especially in the face of common and complicated IaaS and PaaS scenarios) was my favorite topic of the day 1 keynotes.</p>
 
@@ -598,7 +603,7 @@
     <article class="post">
       <h2 class="post-title"><a class="post-link" href="/2022/04/13/software-leadership-fostering-the-team/">Software Leadership - Fostering the Team</a></h2>
 
-      <time datetime="2022-04-13T13:11:39-07:00" class="post-date">April 13, 2022</time>
+      <time datetime="2022-04-13T20:11:39+00:00" class="post-date">April 13, 2022</time>
 
       <h2 id="introduction">Introduction</h2>
 <p>I’ve been meaning to write my thoughts on software leadership for a while. I’ll try to do tht here with a series of posts on the topic. Let’s start with <strong>fostering a strong team</strong>.</p>
@@ -659,7 +664,7 @@
   <div class="wrapper">
     <p class="rss-subscribe">Subscribe <a href="/feed.xml" target="_blank">via RSS</a></p>
     <p>This site uses the <a href="https://github.com/lewisc/daryl" target="_blank">Daryl</a> theme for <a href="http://jekyllrb.com" target="_blank">Jekyll</a>.</p>
-    <p>&copy; 2024 by Clint Parker. All rights reserved.</p>
+    <p>&copy; 2025 by Clint Parker. All rights reserved.</p>
 
   </div> <!-- .wrapper -->
 
