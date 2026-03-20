@@ -55,3 +55,6 @@ host: localhost
 open_url: true
 livereload: true
 incremental: false
+
+disqus:
+    shortname: clintcparker

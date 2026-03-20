@@ -9,3 +9,17 @@ function od --description 'Deploy an octopress site in production configuration'
     octopress deploy
     set -gx JEKYLL_ENV 'development'
 end
+
+function gs
+    git status
+end
+
+
+function ga
+    git add .
+end
+
+
+function gcm
+    git commit -m "$argv"
+end

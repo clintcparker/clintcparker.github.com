@@ -20,4 +20,6 @@ _deploy.yml
 .deploy/
 .jekyll-cache/
 gemstuff/
+.gemstuff/quality-at-speed-series.md
 .gemstuff/
+.gemstuff/rubygems-3.3.22
