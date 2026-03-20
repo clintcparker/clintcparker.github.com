@@ -2,7 +2,7 @@
 
 ---
 
-## Post 1: Testing Is a Team Sport
+<!-- ## Post 1: Testing Is a Team Sport
 
 **LinkedIn:**
 
@@ -32,7 +32,7 @@ What I've seen work is building that expectation into the culture from the top. 
 
 The corollary to this is that no single person in an org should carry "quality" as their sole responsibility. One QA lead against a team of fifteen engineers is not a quality strategy. It's a bottleneck with a job title. The engineering leaders — the people accountable for delivery — also have to be accountable for what they deliver working correctly. That's not a radical idea. It's just engineering maturity.
 
-Quality isn't a department. It's an expectation.
+Quality isn't a department. It's an expectation. -->
 
 ---
 ---
