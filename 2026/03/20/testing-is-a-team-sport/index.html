@@ -6,14 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Name-on</title>
-    <meta name="description" content="But Y tho?I needed a unique name generator, so I built one.">
+    <title>Testing Is a Team Sport</title>
+    <meta name="description" content="I’ve had some version of this conversation with multiple engineering leaders lately, and I keep landing in the same place: quality is a team sport, and most ...">
 
     <link rel="stylesheet" href="/assets/css/style.css">
 
     <!-- <link rel="icon" type="image/x-icon" href="https://clintcparker.com/favicon.ico"> -->
 
-    <link rel="canonical" href="https://clintcparker.com/2018/08/31/name-on/">
+    <link rel="canonical" href="https://clintcparker.com/2026/03/20/testing-is-a-team-sport/">
     <link rel="alternate" type="application/rss+xml" title="@clintcparker" href="https://clintcparker.com/feed.xml" />
     
     <script>
@@ -151,36 +151,26 @@
         <div class="post">
 
   <header class="post-header">
-    <h2 class="post-title">Name-on</h2>
-    <time class="post-date">August 31, 2018</time>
+    <h2 class="post-title">Testing Is a Team Sport</h2>
+    <time class="post-date">March 20, 2026</time>
   </header>
 
   <article class="post-content">
-    <h3 id="but-y-tho">But Y tho?</h3>
-<p>I needed a unique name generator, so I built <a href="https://name-on.clintcparker.com/">one</a>.</p>
+    <p>I’ve had some version of this conversation with multiple engineering leaders lately, and I keep landing in the same place: <strong>quality is a team sport, and most teams haven’t figured that out yet.</strong></p>
 
-<p>I had used the Heroku unique-name generator before, when building <a href="https://badideas.herokuapp.com/">bad ideas</a>. I loved how it removed a mental hurdle from getting something out the door; coming up with a name. Personally, I’m horrible at naming things, so this was a necessity. I don’t want to get hung up on picking a good name, and the defaults are equally as bad (ConsoleApplication23, anybody?).</p>
+<p>Here’s the dynamic I see a lot. You’ve got developers who write their code, write their tests (maybe), and hand the whole thing off. Somewhere downstream, a tester or QA person picks it up and starts poking holes. When they find something, it goes back. When they don’t, it ships. Everyone’s doing their job. And yet somehow, bugs still make it to production, morale is still low, and the whole thing feels slower than it should.</p>
 
-<p>I’d also been wanting to get back to dot net core. The last time I had played around with it, they were still using the <code class="language-plaintext highlighter-rouge">dnx</code> command line tool and <code class="language-plaintext highlighter-rouge">project.json</code> files. So this project seemed small enough, and valuable enough, to actually keep me on task for the duration of v1.</p>
+<p>The problem isn’t the people. The problem is the model.</p>
 
-<h3 id="the-command-line">The command line</h3>
-<p>I was stoked to be able to layout the project structure from the command line. I’m just so much more optimistic about a tool when there’s a CLI behind it. Even if I’ll never script it, the idea that i <em>could</em> is very appealing.</p>
+<p>Separating “building” from “quality” creates distance — between the person who knows the most about how something was constructed and the process of verifying that it works correctly. That distance is where bugs hide.</p>
 
-<p>I scaffolded the whole project via the <code class="language-plaintext highlighter-rouge">dotnet new</code> and <code class="language-plaintext highlighter-rouge">dotnet add</code> commands. I was also able to build and test in the same manner. It was a nice break from VS 2017.</p>
+<p>The fix isn’t to hire more testers. It’s to collapse that distance. Make the people accountable for delivery also accountable for correctness. Pair them up. If two engineers worked on a feature together, they’re both on the hook if it breaks. Not “well, they were supposed to test it.” No. Both of them own it.</p>
 
-<h3 id="structure">Structure</h3>
-<p>I found lists of adjectives and nouns online. And thank to some recent practice with regex crosswords, quickly stripped everything but the words themselves.</p>
+<p>What I’ve seen work is building that expectation into the culture from the top. Not as a punitive thing, but as a shared ownership thing. <em>*We*</em> built it. <em>*We*</em> stand behind it. If it’s wrong, we fix it, we learn from it, and we make sure it doesn’t happen that way again.</p>
 
-<p>I added some tests for uniqueness, which is about 99.985%. I also added protection for never getting the same name twice in a row.</p>
+<p>The corollary to this is that no single person (or department) in an org should carry “quality” as their sole responsibility. One QA lead against a team of fifteen engineers is not a quality strategy. It’s a bottleneck with a job title. The engineerings and their leadership (the people accountable for delivery) also have to be accountable for what they deliver working correctly. That’s not a radical idea. It’s just engineering maturity.</p>
 
-<p>I was able to create a CLI for OS X, which was came in handy when publishing to Azure, and needing names for everything.</p>
-
-<p>For the web app the <code class="language-plaintext highlighter-rouge">dotnet help</code> lists a template called <code class="language-plaintext highlighter-rouge">razor</code> with the description “mvc with razor pages.” I’ve used the Razor syntax since it debuted, and thought, “of course I want razor, not <code class="language-plaintext highlighter-rouge">aspx</code>.” Apparently though, Razor Pages is a new thing. I actually really liked it for build the web app component. I still created a controller for the API, but was happy I stumbled onto this new paradigm.</p>
-
-<p>I really went over the top with the completeness. Azure for hosting. Custom domain through NameCheap. SSL through CloudFlare.</p>
-
-<h3 id="next-steps">Next Steps</h3>
-<p>The <a href="https://github.com/clintcparker/name-on#name-on">README</a> has a roadmap, which includes packaging the CLI and improving the site. PRs are welcomed.</p>
+<p>Quality isn’t a department. It’s an expectation.</p>
 
   </article>
 
