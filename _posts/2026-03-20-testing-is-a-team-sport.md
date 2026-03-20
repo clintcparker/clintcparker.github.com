@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Testing Is a Team Sport"
+date: 2026-03-20T17:29:54+00:00
 ---
 
 I've had some version of this conversation with multiple engineering leaders lately, and I keep landing in the same place: **quality is a team sport, and most teams haven't figured that out yet.**
