@@ -152,6 +152,31 @@
         <div class="home">
   
     <article class="post">
+      <h2 class="post-title"><a class="post-link" href="/2026/03/22/more-code-more-risk-more-automation/">More Code, More Risk ... More Automation</a></h2>
+
+      <time datetime="2026-03-22T19:11:34+00:00" class="post-date">March 22, 2026</time>
+
+      <p>One of the things I keep saying to engineering teams right now is: this tool should improve the process on <em>all</em> fronts. Not just the building. All of it.</p>
+
+<p>AI-assisted development is genuinely remarkable. Engineers are shipping features faster, clearing backlogs that felt immovable, and getting real leverage from tooling that would’ve taken months to build before. I’m a fan. I’m actively encouraging it.</p>
+
+<p>But faster output without better validation is just faster bugs. I’ve seen it — and heard it from peers managing teams at scale. Engineers trust the output, skip the second look, and something breaks in production. The specific failure mode varies. The root cause almost never does: the code moved faster than the confidence in it.</p>
+
+<p>The issue isn’t that AI makes mistakes. It does, and so do humans. The issue is that when the <em>volume</em> of work goes up, the <em>surface area for mistakes</em> goes up with it. If your validation process doesn’t scale at the same rate, you end up cleaning up behind yourself constantly.</p>
+
+<p>The answer isn’t to slow down. It’s to automate your safety net.</p>
+
+<p>Fast builds. Fast test runs. Automated coverage thresholds that fail a PR before it ever hits a human reviewer. If the test coverage isn’t there, the PR doesn’t get reviewed. Period. That sounds harsh, but it’s actually generous — it tells the engineer clearly and immediately what they need to do before asking anyone else to spend time on their work.</p>
+
+<p>I also think there’s something important here about how we use AI in the validation loop, not just the construction loop. Use it to generate test cases. Use it to review test coverage for gaps. Have it challenge your assumptions about how a feature might fail. A lot of what a good QA person does — thinking adversarially about software — can be augmented with the same tools you’re using to write the code.</p>
+
+<p>The teams that win with AI aren’t the ones moving fastest. They’re the ones who figured out how to move fast <em>and</em> land cleanly.</p>
+
+
+      <hr>
+    </article>
+  
+    <article class="post">
       <h2 class="post-title"><a class="post-link" href="/2026/03/20/testing-is-a-team-sport/">Testing Is a Team Sport</a></h2>
 
       <time datetime="2026-03-20T17:29:54+00:00" class="post-date">March 20, 2026</time>
@@ -587,35 +612,6 @@
 <p>In our case, though, these two concept collide and clobber each other. The need to process each request creates a ton of work, and the page sizes themselves become massive due to the (substantial but not infinite) recursive nature of the pages. Doing more work, and the cache can’t keep up, so it’s doing more work in vain. Brutal.</p>
 
 <p>In the end, they did improve Classic ASP/VBScript … they created <code class="language-plaintext highlighter-rouge">.NET</code>.</p>
-
-
-      <hr>
-    </article>
-  
-    <article class="post">
-      <h2 class="post-title"><a class="post-link" href="/2022/05/25/when-to-micro-service/">When to Microservice</a></h2>
-
-      <time datetime="2022-05-25T21:52:58+00:00" class="post-date">May 25, 2022</time>
-
-      <p>I’m enjoying Microsoft Build 2022. Developer experience (especially in the face of common and complicated IaaS and PaaS scenarios) was my favorite topic of the day 1 keynotes.</p>
-
-<p>Later, watching the keynote after hours, I stumbled on a gem of a conversation between Scott Hanselman and Scott Guthrie.</p>
-
-<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Great informal discussion/perspective on when to use micro-services &amp; containers from <a href="https://twitter.com/shanselman?ref_src=twsrc%5Etfw">@shanselman</a> and <a href="https://twitter.com/scottgu?ref_src=twsrc%5Etfw">@scottgu</a> at 33:18.<a href="https://t.co/1tNahY1VSk">https://t.co/1tNahY1VSk</a></p>&mdash; Clint Parker (@clintcparker) <a href="https://twitter.com/clintcparker/status/1529577253423566848?ref_src=twsrc%5Etfw">May 25, 2022</a></blockquote>
-<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-
-<p>Lot’s of classic “it depends” which is totally true. For me it depends on at least one of three macro factors being present:</p>
-
-<ol>
-  <li>Teams/people need to develop and deploy at different paces.</li>
-  <li>Parts of the system <em>need</em> to scale independently</li>
-  <li>Parts of the system <em>need</em> to be segmented for security purposes. Ex: only engineers from the payments team can make changes to payments systems.</li>
-</ol>
-
-<p>You can have any decomposition you like, but in that video Scott Guthrie alludes to the challenges you can face on either end of the spectrum (1 engineer with 100 micro-services or 100 engineers with one service).</p>
-
-<p>One last note, I may start saying containers instead of micro-services going forward. I usually try say that I prefer macro-services, but then we have to have a whole discussion about the difference. Maybe the term container will become the defacto descriptor of services and their boundaries.</p>
-
 
 
       <hr>
