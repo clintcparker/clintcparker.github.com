@@ -6,9 +6,40 @@
 </description>
     <link>https://clintcparker.com/</link>
     <atom:link href="https://clintcparker.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 22 Mar 2026 19:12:17 +0000</pubDate>
-    <lastBuildDate>Sun, 22 Mar 2026 19:12:17 +0000</lastBuildDate>
+    <pubDate>Sun, 29 Mar 2026 18:27:11 +0000</pubDate>
+    <lastBuildDate>Sun, 29 Mar 2026 18:27:11 +0000</lastBuildDate>
     <generator>Jekyll v4.3.4</generator>
+    
+      <item>
+        <title>Strangers on the Internet, or Why PRs Are Conversations, Not Notifications</title>
+        <description>&lt;p&gt;Here’s something I say a lot that usually gets a reaction: &lt;em&gt;we are not strangers on the internet.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;The open-source PR model — push your work, notify the team, hope someone picks it up, iterate based on comments — makes total sense when contributors don’t know each other and are working across time zones and organizations with no shared context. It was built for that. It works great for that.&lt;/p&gt;
+
+&lt;p&gt;It does not work great for a team of people who sit (or video call) together every week, have shared context on the codebase, and are accountable to each other for delivery outcomes.&lt;/p&gt;
+
+&lt;p&gt;When I watch internal teams use the open-source model, I see a few things consistently:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;PRs get big before anyone looks at them.&lt;/strong&gt; The engineer works in isolation until they think the thing is done, then opens a PR with thirty changes. The reviewer now has to reconstruct the entire intent of the work from the diff. This is expensive for the reviewer, and the engineer has already invested too much to pivot meaningfully on structural feedback.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Reviews become rubber stamps or rabbit holes.&lt;/strong&gt; Either the reviewer approves because the thing looks roughly right and they don’t want to slow it down, or they find a fundamental problem and now you have a PR comment thread that should have been a twenty-minute conversation three days ago.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Coverage and quality go sideways late.&lt;/strong&gt; By the time someone notices a testing gap or an architectural issue, the engineer is context-switched out and getting back up to speed costs time neither of you wanted to spend.&lt;/p&gt;
+
+&lt;p&gt;The model I’ve had the most success with is straightforward: have the conversation early, stage the review, and use the PR to confirm shared understanding rather than initiate it.&lt;/p&gt;
+
+&lt;p&gt;Specifically — if you’re working on something that someone else will need to sign off on, loop them in before you start. “I’m going to do this thing. Here’s my plan. Any concerns?” Then, at the midpoint, show them the architecture — not the implementation details, just the structure. Names, boundaries, where things live. Get that directional feedback when it’s cheap to act on. Then finish the implementation and let the PR be the final confirmation: here’s what we talked about, here’s what I built, here’s the test coverage that says it works.&lt;/p&gt;
+
+&lt;p&gt;If the PR fails automated checks (coverage below threshold, build broken, linting issues) it doesn’t even need to get to a human. It goes back to the engineer with a clear signal. Fix the basics first. Don’t ask me to spend time on work that doesn’t meet the baseline.&lt;/p&gt;
+
+&lt;p&gt;PRs as the ends of conversations. It’s a small mental shift with a surprisingly large impact on how smoothly a team moves.&lt;/p&gt;
+</description>
+        <pubDate>Sun, 29 Mar 2026 18:26:19 +0000</pubDate>
+        <link>https://clintcparker.com/2026/03/29/prs-are-conversations-not-notifications/</link>
+        <guid isPermaLink="true">https://clintcparker.com/2026/03/29/prs-are-conversations-not-notifications/</guid>
+        
+        
+      </item>
     
       <item>
         <title>More Code, More Risk ... More Automation</title>
@@ -798,41 +829,6 @@ https://mpharrigan.com/2016/05/17/background-ssh.html&lt;/li&gt;
         <pubDate>Fri, 21 Sep 2018 23:22:49 +0000</pubDate>
         <link>https://clintcparker.com/2018/09/21/belvedere/</link>
         <guid isPermaLink="true">https://clintcparker.com/2018/09/21/belvedere/</guid>
-        
-        
-      </item>
-    
-      <item>
-        <title>Name-on</title>
-        <description>&lt;h3 id=&quot;but-y-tho&quot;&gt;But Y tho?&lt;/h3&gt;
-&lt;p&gt;I needed a unique name generator, so I built &lt;a href=&quot;https://name-on.clintcparker.com/&quot;&gt;one&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;I had used the Heroku unique-name generator before, when building &lt;a href=&quot;https://badideas.herokuapp.com/&quot;&gt;bad ideas&lt;/a&gt;. I loved how it removed a mental hurdle from getting something out the door; coming up with a name. Personally, I’m horrible at naming things, so this was a necessity. I don’t want to get hung up on picking a good name, and the defaults are equally as bad (ConsoleApplication23, anybody?).&lt;/p&gt;
-
-&lt;p&gt;I’d also been wanting to get back to dot net core. The last time I had played around with it, they were still using the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dnx&lt;/code&gt; command line tool and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;project.json&lt;/code&gt; files. So this project seemed small enough, and valuable enough, to actually keep me on task for the duration of v1.&lt;/p&gt;
-
-&lt;h3 id=&quot;the-command-line&quot;&gt;The command line&lt;/h3&gt;
-&lt;p&gt;I was stoked to be able to layout the project structure from the command line. I’m just so much more optimistic about a tool when there’s a CLI behind it. Even if I’ll never script it, the idea that i &lt;em&gt;could&lt;/em&gt; is very appealing.&lt;/p&gt;
-
-&lt;p&gt;I scaffolded the whole project via the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dotnet new&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dotnet add&lt;/code&gt; commands. I was also able to build and test in the same manner. It was a nice break from VS 2017.&lt;/p&gt;
-
-&lt;h3 id=&quot;structure&quot;&gt;Structure&lt;/h3&gt;
-&lt;p&gt;I found lists of adjectives and nouns online. And thank to some recent practice with regex crosswords, quickly stripped everything but the words themselves.&lt;/p&gt;
-
-&lt;p&gt;I added some tests for uniqueness, which is about 99.985%. I also added protection for never getting the same name twice in a row.&lt;/p&gt;
-
-&lt;p&gt;I was able to create a CLI for OS X, which was came in handy when publishing to Azure, and needing names for everything.&lt;/p&gt;
-
-&lt;p&gt;For the web app the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dotnet help&lt;/code&gt; lists a template called &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;razor&lt;/code&gt; with the description “mvc with razor pages.” I’ve used the Razor syntax since it debuted, and thought, “of course I want razor, not &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;aspx&lt;/code&gt;.” Apparently though, Razor Pages is a new thing. I actually really liked it for build the web app component. I still created a controller for the API, but was happy I stumbled onto this new paradigm.&lt;/p&gt;
-
-&lt;p&gt;I really went over the top with the completeness. Azure for hosting. Custom domain through NameCheap. SSL through CloudFlare.&lt;/p&gt;
-
-&lt;h3 id=&quot;next-steps&quot;&gt;Next Steps&lt;/h3&gt;
-&lt;p&gt;The &lt;a href=&quot;https://github.com/clintcparker/name-on#name-on&quot;&gt;README&lt;/a&gt; has a roadmap, which includes packaging the CLI and improving the site. PRs are welcomed.&lt;/p&gt;
-</description>
-        <pubDate>Fri, 31 Aug 2018 23:22:49 +0000</pubDate>
-        <link>https://clintcparker.com/2018/08/31/name-on/</link>
-        <guid isPermaLink="true">https://clintcparker.com/2018/08/31/name-on/</guid>
         
         
       </item>

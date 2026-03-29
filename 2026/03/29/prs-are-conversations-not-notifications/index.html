@@ -6,15 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Archive</title>
-    <meta name="description" content="Writings on software development, testing, and architecture. .NET C# Tools Testing whiteboarding design
-">
+    <title>Strangers on the Internet, or Why PRs Are Conversations, Not Notifications</title>
+    <meta name="description" content="Here’s something I say a lot that usually gets a reaction: we are not strangers on the internet.">
 
     <link rel="stylesheet" href="/assets/css/style.css">
 
     <!-- <link rel="icon" type="image/x-icon" href="https://clintcparker.com/favicon.ico"> -->
 
-    <link rel="canonical" href="https://clintcparker.com/archive/">
+    <link rel="canonical" href="https://clintcparker.com/2026/03/29/prs-are-conversations-not-notifications/">
     <link rel="alternate" type="application/rss+xml" title="@clintcparker" href="https://clintcparker.com/feed.xml" />
     
     <script>
@@ -152,151 +151,32 @@
         <div class="post">
 
   <header class="post-header">
-    <h2 class="post-title">Archive</h2>
+    <h2 class="post-title">Strangers on the Internet, or Why PRs Are Conversations, Not Notifications</h2>
+    <time class="post-date">March 29, 2026</time>
   </header>
 
   <article class="post-content">
-    <p>This page lists all posts (not pages) organized by date.</p>
+    <p>Here’s something I say a lot that usually gets a reaction: <em>we are not strangers on the internet.</em></p>
 
-<div class="post-list">
-    <ul>
-        
-            <li>
-                <a href="/2026/03/29/prs-are-conversations-not-notifications/">
-                    Strangers on the Internet, or Why PRs Are Conversations, Not Notifications
-                </a>
-                <time>March 29, 2026</time>
-            </li>
-        
-            <li>
-                <a href="/2026/03/22/more-code-more-risk-more-automation/">
-                    More Code, More Risk ... More Automation
-                </a>
-                <time>March 22, 2026</time>
-            </li>
-        
-            <li>
-                <a href="/2026/03/20/testing-is-a-team-sport/">
-                    Testing Is a Team Sport
-                </a>
-                <time>March 20, 2026</time>
-            </li>
-        
-            <li>
-                <a href="/2024/01/08/2023-year-in-review/">
-                    2023 Year in Review
-                </a>
-                <time>January 08, 2024</time>
-            </li>
-        
-            <li>
-                <a href="/2023/11/27/improving-software-team-metrics/">
-                    Improving Software Team Metrics
-                </a>
-                <time>November 27, 2023</time>
-            </li>
-        
-            <li>
-                <a href="/2023/11/08/what-even-is-innovation/">
-                    What Even Is Innovation?
-                </a>
-                <time>November 08, 2023</time>
-            </li>
-        
-            <li>
-                <a href="/2022/05/25/when-to-micro-service/">
-                    When to Microservice
-                </a>
-                <time>May 25, 2022</time>
-            </li>
-        
-            <li>
-                <a href="/2022/04/13/software-leadership-fostering-the-team/">
-                    Software Leadership - Fostering the Team
-                </a>
-                <time>April 13, 2022</time>
-            </li>
-        
-            <li>
-                <a href="/2022/02/25/rdp-tunnels/">
-                    RDP Tunnels
-                </a>
-                <time>February 25, 2022</time>
-            </li>
-        
-            <li>
-                <a href="/2018/09/21/belvedere/">
-                    Belvedere
-                </a>
-                <time>September 21, 2018</time>
-            </li>
-        
-            <li>
-                <a href="/2018/08/31/name-on/">
-                    Name-on
-                </a>
-                <time>August 31, 2018</time>
-            </li>
-        
-            <li>
-                <a href="/2018/05/15/adventures-in-vs-extension-updates/">
-                    Adventures in vs Extension Updates
-                </a>
-                <time>May 15, 2018</time>
-            </li>
-        
-            <li>
-                <a href="/2017/08/17/data-driven/">
-                    Data Driven
-                </a>
-                <time>August 17, 2017</time>
-            </li>
-        
-            <li>
-                <a href="/2016/10/01/c-obfuscation/">
-                    C# Obfuscation
-                </a>
-                <time>October 01, 2016</time>
-            </li>
-        
-            <li>
-                <a href="/2016/09/28/why-git-works-where-tfvc-doesnt/">
-                    Why Git Works Where TFVC Doesn't
-                </a>
-                <time>September 28, 2016</time>
-            </li>
-        
-            <li>
-                <a href="/2016/09/11/how-yield-works/">
-                    How Yield Works
-                </a>
-                <time>September 11, 2016</time>
-            </li>
-        
-            <li>
-                <a href="/2016/09/11/creating-a-vs-extension/">
-                    Creating a vs Extension
-                </a>
-                <time>September 11, 2016</time>
-            </li>
-        
-            <li>
-                <a href="/2014/03/22/c-testing-with-fakes/">
-                    C# Testing With Fakes
-                </a>
-                <time>March 22, 2014</time>
-            </li>
-        
-            <li>
-                <a href="/2014/03/21/vbscript-conditional-includes/">
-                    VBScript Conditional Includes
-                </a>
-                <time>March 21, 2014</time>
-            </li>
-        
-    </ul>
-</div>
-<p><!-- .post-list --></p>
+<p>The open-source PR model — push your work, notify the team, hope someone picks it up, iterate based on comments — makes total sense when contributors don’t know each other and are working across time zones and organizations with no shared context. It was built for that. It works great for that.</p>
+
+<p>It does not work great for a team of people who sit (or video call) together every week, have shared context on the codebase, and are accountable to each other for delivery outcomes.</p>
+
+<p>When I watch internal teams use the open-source model, I see a few things consistently:</p>
+
+<p><strong>PRs get big before anyone looks at them.</strong> The engineer works in isolation until they think the thing is done, then opens a PR with thirty changes. The reviewer now has to reconstruct the entire intent of the work from the diff. This is expensive for the reviewer, and the engineer has already invested too much to pivot meaningfully on structural feedback.</p>
+
+<p><strong>Reviews become rubber stamps or rabbit holes.</strong> Either the reviewer approves because the thing looks roughly right and they don’t want to slow it down, or they find a fundamental problem and now you have a PR comment thread that should have been a twenty-minute conversation three days ago.</p>
+
+<p><strong>Coverage and quality go sideways late.</strong> By the time someone notices a testing gap or an architectural issue, the engineer is context-switched out and getting back up to speed costs time neither of you wanted to spend.</p>
+
+<p>The model I’ve had the most success with is straightforward: have the conversation early, stage the review, and use the PR to confirm shared understanding rather than initiate it.</p>
+
+<p>Specifically — if you’re working on something that someone else will need to sign off on, loop them in before you start. “I’m going to do this thing. Here’s my plan. Any concerns?” Then, at the midpoint, show them the architecture — not the implementation details, just the structure. Names, boundaries, where things live. Get that directional feedback when it’s cheap to act on. Then finish the implementation and let the PR be the final confirmation: here’s what we talked about, here’s what I built, here’s the test coverage that says it works.</p>
+
+<p>If the PR fails automated checks (coverage below threshold, build broken, linting issues) it doesn’t even need to get to a human. It goes back to the engineer with a clear signal. Fix the basics first. Don’t ask me to spend time on work that doesn’t meet the baseline.</p>
+
+<p>PRs as the ends of conversations. It’s a small mental shift with a surprisingly large impact on how smoothly a team moves.</p>
 
   </article>
 

@@ -152,6 +152,37 @@
         <div class="home">
   
     <article class="post">
+      <h2 class="post-title"><a class="post-link" href="/2026/03/29/prs-are-conversations-not-notifications/">Strangers on the Internet, or Why PRs Are Conversations, Not Notifications</a></h2>
+
+      <time datetime="2026-03-29T18:26:19+00:00" class="post-date">March 29, 2026</time>
+
+      <p>Here’s something I say a lot that usually gets a reaction: <em>we are not strangers on the internet.</em></p>
+
+<p>The open-source PR model — push your work, notify the team, hope someone picks it up, iterate based on comments — makes total sense when contributors don’t know each other and are working across time zones and organizations with no shared context. It was built for that. It works great for that.</p>
+
+<p>It does not work great for a team of people who sit (or video call) together every week, have shared context on the codebase, and are accountable to each other for delivery outcomes.</p>
+
+<p>When I watch internal teams use the open-source model, I see a few things consistently:</p>
+
+<p><strong>PRs get big before anyone looks at them.</strong> The engineer works in isolation until they think the thing is done, then opens a PR with thirty changes. The reviewer now has to reconstruct the entire intent of the work from the diff. This is expensive for the reviewer, and the engineer has already invested too much to pivot meaningfully on structural feedback.</p>
+
+<p><strong>Reviews become rubber stamps or rabbit holes.</strong> Either the reviewer approves because the thing looks roughly right and they don’t want to slow it down, or they find a fundamental problem and now you have a PR comment thread that should have been a twenty-minute conversation three days ago.</p>
+
+<p><strong>Coverage and quality go sideways late.</strong> By the time someone notices a testing gap or an architectural issue, the engineer is context-switched out and getting back up to speed costs time neither of you wanted to spend.</p>
+
+<p>The model I’ve had the most success with is straightforward: have the conversation early, stage the review, and use the PR to confirm shared understanding rather than initiate it.</p>
+
+<p>Specifically — if you’re working on something that someone else will need to sign off on, loop them in before you start. “I’m going to do this thing. Here’s my plan. Any concerns?” Then, at the midpoint, show them the architecture — not the implementation details, just the structure. Names, boundaries, where things live. Get that directional feedback when it’s cheap to act on. Then finish the implementation and let the PR be the final confirmation: here’s what we talked about, here’s what I built, here’s the test coverage that says it works.</p>
+
+<p>If the PR fails automated checks (coverage below threshold, build broken, linting issues) it doesn’t even need to get to a human. It goes back to the engineer with a clear signal. Fix the basics first. Don’t ask me to spend time on work that doesn’t meet the baseline.</p>
+
+<p>PRs as the ends of conversations. It’s a small mental shift with a surprisingly large impact on how smoothly a team moves.</p>
+
+
+      <hr>
+    </article>
+  
+    <article class="post">
       <h2 class="post-title"><a class="post-link" href="/2026/03/22/more-code-more-risk-more-automation/">More Code, More Risk ... More Automation</a></h2>
 
       <time datetime="2026-03-22T19:11:34+00:00" class="post-date">March 22, 2026</time>
@@ -561,57 +592,6 @@
 <p>Tracking software team metrics is an essential aspect of maintaining a healthy engineering organization. While common metrics such as bug count and velocity provide a basic understanding of team performance, they often fall short in providing a comprehensive view of the team’s efficiency and productivity. This article has explored the concept of sprint completion percentage as a more insightful metric, offering a comparison of actual work done against planned work.</p>
 
 <p>In essence, the choice of metric and calculation method should align with the team’s objectives and the expectations of stakeholders. By adopting a more nuanced approach to tracking software team metrics, organizations can gain deeper insights into team performance, improve forecasting accuracy, and ultimately drive better business outcomes.</p>
-
-
-      <hr>
-    </article>
-  
-    <article class="post">
-      <h2 class="post-title"><a class="post-link" href="/2023/11/08/what-even-is-innovation/">What Even Is Innovation?</a></h2>
-
-      <time datetime="2023-11-08T18:05:08+00:00" class="post-date">November 08, 2023</time>
-
-      <p>I was once asked about the most inventive or innovative thing I’d done. Where to start? I’m a middling engineer at best. I fully subscribe to my own pitch as a leader that engineers should prioritize simplicity and obviousness over performance and cleverness.</p>
-
-<p>That said, I have an obvious answer to “What is the most interesting problem you ever solved?” And just to be transparent and fair, I didn’t solve this in a vacuum. I worked with a great team and would not have succeeded without their help.</p>
-
-<p>The innovation I’m proud of is a little embarrassing due to the underlying technology. While I was at Mindbody, we uncovered an impactful limitation of scaling Classic ASP web applications. That’s right, Mindbody was still very much reliant on Classic ASP, which had been deprecated with the arrival of <code class="language-plaintext highlighter-rouge">.NET</code>. The solution to this scaling problem wasn’t particularly complex, but the novelty and impact qualify as innovative. In the end, we were able to proactively identify, remediate, and prevent future consequences of the limitation.</p>
-
-<p>In late 2017, our VP of Engineering asked me to investigate an issue plaguing another team in his org. I was a Senior Manager overseeing other teams in technically a different department, but I and some of my group had historical experience in the code in question. The nominal problem: a deployed bundle of changes resulted in a 10% increase in CPU usage in production. Rolling the deployment back brought the usage back down, and vice versa. Additionally, the CPU increase was not detectable outside of the production environment. ☹️</p>
-
-<p>I started by enlisting one of the senior engineers on my team, and we began reviewing the changes in the associated deployment. Nothing initially jumped out at us, but on the 3rd pass, I began to suspect that the problem could be related to a change of an <code class="language-plaintext highlighter-rouge">#include</code> reference file. Please see my early post about conditional <code class="language-plaintext highlighter-rouge">include</code> references to understand why this is already a potential issue. (And begin to understand my absolute hat of the continued use of VBScript). – Side note: VBScript is awesome circa 1997. But, like everything else in the universe, we evolved, and the evolution of VBScript on the server was <code class="language-plaintext highlighter-rouge">.NET</code>. Now, if you want to complain about people <em>choosing</em> to use VBScript after 2001, I’d be happy to drink my sorrows away beside you. Rant over, for now– This reference file had <em>itself</em> added another reference, which is typical. But in this case, the outer file was almost ubiquitously referenced in every top-level file. Specifically, the heavy usage of the modified file meant that this small change was probably causing a wider-than-obvious impact.</p>
-
-<p>To test the hypothesis that this one-line change was the culprit, we removed that commit from the bundle and redeployed it without issue. The CPU usage increase disappeared! While the immediate problem was solved, I still wanted to know the root cause and prevention methods.</p>
-
-<p>I then endeavored to prove this issue was detectable via static code analysis. My second hypothesis was that this was related to the server doing more work interpreting more lines per request. The structure of Classic ASP requires that every single line be interpreted when served. Therefore, I suspected that more lines interpreted meant more work being done per request and, in turn, higher CPU usage.</p>
-
-<p>We created a NodeJS command line tool to analyze the codebase to represent this. We used NodeJS because it truly is the best way to share multi-platform CLIs. And thank you, <a href="https://github.com/tj">TJ</a>, for <code class="language-plaintext highlighter-rouge">commander.js</code>! The references in the <code class="language-plaintext highlighter-rouge">include</code> files created an easily traversed tree. The tree was then flattened and converted to a total number of interpreted lines for any given top-level file.</p>
-
-<p>We enhanced the tool to provide additional insights, such as the theoretical minimum total lines (fully optimized but impractical to maintain) and the specific references to any included file, as well as a bloat factor, which represented how far the structure of a file was from the optimal. The results were output as one CSV file and a collection of JSON files.</p>
-
-<p>The results were astounding! The original (problematic) one-line change increased the total number of interpreted lines from 26 million to 52 million. On the other side of the spectrum, the theoretical optimal number of lines was just over 12 million.</p>
-
-<p>From the insights gleaned from the analysis, we could then restructure the file references to a more optimal state. Finally, we submitted pull requests to the owning team and reduced the total interpreted lines to 19 million.</p>
-
-<p>Lastly, I saw that this specific issue could be prevented with these new insights. So, we created a step in the build process to run the analysis and limit the total interpreted lines not to exceed a variable maximum value.</p>
-
-<p>Over the years, other engineers extended the tool to support visualizations of the reference tree and various library upgrades and bug fixes. It was still a critical build step at the time of my departure.</p>
-
-<p>While none of the technology is particularly glamorous, I am proud of this innovation. Over a few weeks, existing concepts and platforms were reorganized to create something novel and beneficial. We didn’t patent anything. We didn’t write a new language. Heck, we couldn’t even really talk about it for two main reasons: 1. The org didn’t want to admit to using outdated technology, 2. Who else was using that tech and would be interested in listening?</p>
-
-<p>So, as I said at the beginning, I subscribe to my own pitch of simplicity. We used basic tools and concepts and put them together in a new way.</p>
-
-<p>P.S. I’m not sure how much we saved the company, but it has to be substantial. At least 10 teams were blocked for 3 weeks from deploying to production. I think they would’ve continued to run into this issue, even if they found it in this instance, and probably would’ve resorted to massively overscaling production infrastructure. Yikes!</p>
-
-<p>P.P.S. Let’s take a minute to discuss what was probably happening here. I say probably because I don’t know for sure the absolute underlying issue, and even if I did, there really isn’t any fixing it for this ecosystem.</p>
-
-<p>VBScript works by retrieving the requested page/resource (<code class="language-plaintext highlighter-rouge">something.asp</code>) and then processing the contents based on the context/request and rendering the output. Again, top-notch for 1997.</p>
-
-<p>VBScript is a v1 product. It isn’t optimized beyond what the engineers fathomed at the time of writing. So, VBScript pulls the initial ASP file from disk and processes it line-by-line. If there is an <code class="language-plaintext highlighter-rouge">#include</code>, it retrieves that and also processes it line-by-line. Why does it process every line? Because it’s a scripting language at heart, and those lines can modify global state outside of a method body( again, see my post on VBScript conditional includes). So, it is doing a lot of work for each page request. The engineers knew about this, so they created a cache of page contents to not have to go to disk every time.</p>
-
-<p>In our case, though, these two concept collide and clobber each other. The need to process each request creates a ton of work, and the page sizes themselves become massive due to the (substantial but not infinite) recursive nature of the pages. Doing more work, and the cache can’t keep up, so it’s doing more work in vain. Brutal.</p>
-
-<p>In the end, they did improve Classic ASP/VBScript … they created <code class="language-plaintext highlighter-rouge">.NET</code>.</p>
 
 
       <hr>
