@@ -37,7 +37,7 @@ Quality isn't a department. It's an expectation. -->
 ---
 ---
 
-## Post 2: AI Moves Fast. Your Quality Bar Needs to Keep Up.
+<!-- ## Post 2: AI Moves Fast. Your Quality Bar Needs to Keep Up.
 
 **LinkedIn:**
 
@@ -70,7 +70,7 @@ I also think there's something important here about how we use AI in the validat
 The teams that win with AI aren't the ones moving fastest. They're the ones who figured out how to move fast *and* land cleanly.
 
 ---
----
+--- -->
 
 ## Post 3: Invest in the Toolkit
 
