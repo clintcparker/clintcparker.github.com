@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "PRs Are Conversations, Not Notifications"
+title: "Strangers on the Internet, or Why PRs Are Conversations, Not Notifications"
 ---
 
 Here's something I say a lot that usually gets a reaction: *we are not strangers on the internet.*
@@ -13,7 +13,7 @@ When I watch internal teams use the open-source model, I see a few things consis
 
 **PRs get big before anyone looks at them.** The engineer works in isolation until they think the thing is done, then opens a PR with thirty changes. The reviewer now has to reconstruct the entire intent of the work from the diff. This is expensive for the reviewer, and the engineer has already invested too much to pivot meaningfully on structural feedback.
 
-**Reviews become rubber stamps or rabbit holes.** Either the reviewer approves because the thing looks roughly right and they don't want to slow it down — or they find a fundamental problem and now you have a PR comment thread that should have been a twenty-minute conversation three days ago.
+**Reviews become rubber stamps or rabbit holes.** Either the reviewer approves because the thing looks roughly right and they don't want to slow it down, or they find a fundamental problem and now you have a PR comment thread that should have been a twenty-minute conversation three days ago.
 
 **Coverage and quality go sideways late.** By the time someone notices a testing gap or an architectural issue, the engineer is context-switched out and getting back up to speed costs time neither of you wanted to spend.
 
@@ -21,8 +21,6 @@ The model I've had the most success with is straightforward: have the conversati
 
 Specifically — if you're working on something that someone else will need to sign off on, loop them in before you start. "I'm going to do this thing. Here's my plan. Any concerns?" Then, at the midpoint, show them the architecture — not the implementation details, just the structure. Names, boundaries, where things live. Get that directional feedback when it's cheap to act on. Then finish the implementation and let the PR be the final confirmation: here's what we talked about, here's what I built, here's the test coverage that says it works.
 
-That process costs the same amount of effort as the open-source model. But it front-loads the hard conversations to the moments when changing course is cheap, and back-loads the formality to the moment when you're actually done.
+If the PR fails automated checks (coverage below threshold, build broken, linting issues) it doesn't even need to get to a human. It goes back to the engineer with a clear signal. Fix the basics first. Don't ask me to spend time on work that doesn't meet the baseline.
 
-If the PR fails automated checks — coverage below threshold, build broken, lint issues — it doesn't even need to get to a human. It goes back to the engineer with a clear signal. Fix the basics first. Don't ask me to spend time on work that doesn't meet the baseline.
-
-PRs as conversations, not notifications. It's a small mental shift with a surprisingly large impact on how smoothly a team moves.
+PRs as the ends of conversations. It's a small mental shift with a surprisingly large impact on how smoothly a team moves.
