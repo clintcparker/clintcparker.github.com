@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Strangers on the Internet, or Why PRs Are Conversations, Not Notifications"
+date: 2026-03-29T18:26:19+00:00
 ---
 
 Here's something I say a lot that usually gets a reaction: *we are not strangers on the internet.*
