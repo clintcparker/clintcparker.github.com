@@ -4,3 +4,4 @@
  sudo ruby setup.rb
  cd /workspaces/clintcparker.github.com/
  bundle update
+ source functions.fish
