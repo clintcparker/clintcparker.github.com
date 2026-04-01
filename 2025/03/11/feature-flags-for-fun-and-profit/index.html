@@ -6,15 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>@clintcparker</title>
-    <meta name="description" content="Writings on software development, testing, and architecture. .NET C# Tools Testing whiteboarding design
-">
+    <title>Feature Flags for Fun & Profit</title>
+    <meta name="description" content="By Gerald Singleton &amp; Clint Parker">
 
     <link rel="stylesheet" href="/assets/css/style.css">
 
     <!-- <link rel="icon" type="image/x-icon" href="https://clintcparker.com/favicon.ico"> -->
 
-    <link rel="canonical" href="https://clintcparker.com/">
+    <link rel="canonical" href="https://clintcparker.com/2025/03/11/feature-flags-for-fun-and-profit/">
     <link rel="alternate" type="application/rss+xml" title="@clintcparker" href="https://clintcparker.com/feed.xml" />
     
     <script>
@@ -149,95 +148,15 @@
 
     <div class="page-content">
       <div class="wrapper">
-        <div class="home">
-  
-    <article class="post">
-      <h2 class="post-title"><a class="post-link" href="/2026/03/29/prs-are-conversations-not-notifications/">Strangers on the Internet, or Why PRs Are Conversations, Not Notifications</a></h2>
+        <div class="post">
 
-      <time datetime="2026-03-29T18:26:19+00:00" class="post-date">March 29, 2026</time>
+  <header class="post-header">
+    <h2 class="post-title">Feature Flags for Fun & Profit</h2>
+    <time class="post-date">March 11, 2025</time>
+  </header>
 
-      <p>Here’s something I say a lot that usually gets a reaction: <em>we are not strangers on the internet.</em></p>
-
-<p>The open-source PR model — push your work, notify the team, hope someone picks it up, iterate based on comments — makes total sense when contributors don’t know each other and are working across time zones and organizations with no shared context. It was built for that. It works great for that.</p>
-
-<p>It does not work great for a team of people who sit (or video call) together every week, have shared context on the codebase, and are accountable to each other for delivery outcomes.</p>
-
-<p>When I watch internal teams use the open-source model, I see a few things consistently:</p>
-
-<p><strong>PRs get big before anyone looks at them.</strong> The engineer works in isolation until they think the thing is done, then opens a PR with thirty changes. The reviewer now has to reconstruct the entire intent of the work from the diff. This is expensive for the reviewer, and the engineer has already invested too much to pivot meaningfully on structural feedback.</p>
-
-<p><strong>Reviews become rubber stamps or rabbit holes.</strong> Either the reviewer approves because the thing looks roughly right and they don’t want to slow it down, or they find a fundamental problem and now you have a PR comment thread that should have been a twenty-minute conversation three days ago.</p>
-
-<p><strong>Coverage and quality go sideways late.</strong> By the time someone notices a testing gap or an architectural issue, the engineer is context-switched out and getting back up to speed costs time neither of you wanted to spend.</p>
-
-<p>The model I’ve had the most success with is straightforward: have the conversation early, stage the review, and use the PR to confirm shared understanding rather than initiate it.</p>
-
-<p>Specifically — if you’re working on something that someone else will need to sign off on, loop them in before you start. “I’m going to do this thing. Here’s my plan. Any concerns?” Then, at the midpoint, show them the architecture — not the implementation details, just the structure. Names, boundaries, where things live. Get that directional feedback when it’s cheap to act on. Then finish the implementation and let the PR be the final confirmation: here’s what we talked about, here’s what I built, here’s the test coverage that says it works.</p>
-
-<p>If the PR fails automated checks (coverage below threshold, build broken, linting issues) it doesn’t even need to get to a human. It goes back to the engineer with a clear signal. Fix the basics first. Don’t ask me to spend time on work that doesn’t meet the baseline.</p>
-
-<p>PRs as the ends of conversations. It’s a small mental shift with a surprisingly large impact on how smoothly a team moves.</p>
-
-
-      <hr>
-    </article>
-  
-    <article class="post">
-      <h2 class="post-title"><a class="post-link" href="/2026/03/22/more-code-more-risk-more-automation/">More Code, More Risk ... More Automation</a></h2>
-
-      <time datetime="2026-03-22T19:11:34+00:00" class="post-date">March 22, 2026</time>
-
-      <p>One of the things I keep saying to engineering teams right now is: this tool should improve the process on <em>all</em> fronts. Not just the building. All of it.</p>
-
-<p>AI-assisted development is genuinely remarkable. Engineers are shipping features faster, clearing backlogs that felt immovable, and getting real leverage from tooling that would’ve taken months to build before. I’m a fan. I’m actively encouraging it.</p>
-
-<p>But faster output without better validation is just faster bugs. I’ve seen it — and heard it from peers managing teams at scale. Engineers trust the output, skip the second look, and something breaks in production. The specific failure mode varies. The root cause almost never does: the code moved faster than the confidence in it.</p>
-
-<p>The issue isn’t that AI makes mistakes. It does, and so do humans. The issue is that when the <em>volume</em> of work goes up, the <em>surface area for mistakes</em> goes up with it. If your validation process doesn’t scale at the same rate, you end up cleaning up behind yourself constantly.</p>
-
-<p>The answer isn’t to slow down. It’s to automate your safety net.</p>
-
-<p>Fast builds. Fast test runs. Automated coverage thresholds that fail a PR before it ever hits a human reviewer. If the test coverage isn’t there, the PR doesn’t get reviewed. Period. That sounds harsh, but it’s actually generous — it tells the engineer clearly and immediately what they need to do before asking anyone else to spend time on their work.</p>
-
-<p>I also think there’s something important here about how we use AI in the validation loop, not just the construction loop. Use it to generate test cases. Use it to review test coverage for gaps. Have it challenge your assumptions about how a feature might fail. A lot of what a good QA person does — thinking adversarially about software — can be augmented with the same tools you’re using to write the code.</p>
-
-<p>The teams that win with AI aren’t the ones moving fastest. They’re the ones who figured out how to move fast <em>and</em> land cleanly.</p>
-
-
-      <hr>
-    </article>
-  
-    <article class="post">
-      <h2 class="post-title"><a class="post-link" href="/2026/03/20/testing-is-a-team-sport/">Testing Is a Team Sport</a></h2>
-
-      <time datetime="2026-03-20T17:29:54+00:00" class="post-date">March 20, 2026</time>
-
-      <p>I’ve had some version of this conversation with multiple engineering leaders lately, and I keep landing in the same place: <strong>quality is a team sport, and most teams haven’t figured that out yet.</strong></p>
-
-<p>Here’s the dynamic I see a lot. You’ve got developers who write their code, write their tests (maybe), and hand the whole thing off. Somewhere downstream, a tester or QA person picks it up and starts poking holes. When they find something, it goes back. When they don’t, it ships. Everyone’s doing their job. And yet somehow, bugs still make it to production, morale is still low, and the whole thing feels slower than it should.</p>
-
-<p>The problem isn’t the people. The problem is the model.</p>
-
-<p>Separating “building” from “quality” creates distance — between the person who knows the most about how something was constructed and the process of verifying that it works correctly. That distance is where bugs hide.</p>
-
-<p>The fix isn’t to hire more testers. It’s to collapse that distance. Make the people accountable for delivery also accountable for correctness. Pair them up. If two engineers worked on a feature together, they’re both on the hook if it breaks. Not “well, they were supposed to test it.” No. Both of them own it.</p>
-
-<p>What I’ve seen work is building that expectation into the culture from the top. Not as a punitive thing, but as a shared ownership thing. <em>*We*</em> built it. <em>*We*</em> stand behind it. If it’s wrong, we fix it, we learn from it, and we make sure it doesn’t happen that way again.</p>
-
-<p>The corollary to this is that no single person (or department) in an org should carry “quality” as their sole responsibility. One QA lead against a team of fifteen engineers is not a quality strategy. It’s a bottleneck with a job title. The engineerings and their leadership (the people accountable for delivery) also have to be accountable for what they deliver working correctly. That’s not a radical idea. It’s just engineering maturity.</p>
-
-<p>Quality isn’t a department. It’s an expectation.</p>
-
-
-      <hr>
-    </article>
-  
-    <article class="post">
-      <h2 class="post-title"><a class="post-link" href="/2025/03/11/feature-flags-for-fun-and-profit/">Feature Flags for Fun & Profit</a></h2>
-
-      <time datetime="2025-03-11T18:16:00+00:00" class="post-date">March 11, 2025</time>
-
-      <p><em>By Gerald Singleton &amp; Clint Parker</em></p>
+  <article class="post-content">
+    <p><em>By Gerald Singleton &amp; Clint Parker</em></p>
 
 <h2 id="intro">Intro</h2>
 <p>Continuous integration &amp; deployment. Automated testing. Refactoring &amp; taking control of the monolith. Reducing cycle time. Increased uptime. Optimizing the data layer. Putting stakeholders in control. Making customers happy.</p>
@@ -560,69 +479,8 @@ Real World Scenarios</p>
 <p>Using feature flags we were able to start chipping away at a major refactor while still maintaining the legacy code.  By using a context, we could control how many users were executing our new source code.  We could deploy several changes with little to no user impact.</p>
 
 
+  </article>
 
-      <hr>
-    </article>
-  
-    <article class="post">
-      <h2 class="post-title"><a class="post-link" href="/2024/01/08/2023-year-in-review/">2023 Year in Review</a></h2>
-
-      <time datetime="2024-01-08T18:44:36+00:00" class="post-date">January 08, 2024</time>
-
-      <p>My team has seen a lot of changes in the last year. These are things that we didn’t really have in 2022 but are became a part of our day-to-day in 2023.</p>
-
-<h3 id="feature-flags">Feature flags</h3>
-<p>We started to introduce the concept of flags in late 2022 but didn’t adopt them until 2023. We’ve rewritten the framework a few times. The team has created guidelines for flag creation, management, and removal. We’ve introduced over 200 flags in 2023. The adoption of our feature flag process has led to…</p>
-
-<h3 id="deploying-multiple-times-per-day">Deploying multiple times per day</h3>
-<p>In May of 2023, we moved to hourly deploys. We had previously been on a structured 2-week deployment cadence. There are some specific challenges with a 2-week cadence: maintaining the “release branch,” being beholden to the release schedule and work done or not done in time, the fact that we were deploying a bundle of 2 weeks of work, and hotfixes bypassing all the process. We’ve since moved to hourly deploys. We currently deploy on the hour and will be moving to full continuous deployment in January. Production incident remediation times are now tracked in minutes and not hours.</p>
-
-<h3 id="ddos-protection">DDOS protection</h3>
-<p>In 2023, we moved our WAF to Cloudflare. This has given us DDOS protection and a CDN. The DDOS mitigation has proved extremely valuable, as our system has been able to withstand attacks over 10M requests per minute.</p>
-
-<h3 id="wasm">WASM</h3>
-<p>We’ve introduced Blazor to our stack to add frontend code quickly and reliably. We’re using Blazor WASM, which is C# and HTML compiled to WebAssemly. This allows us to use our C# knowledge and best practices (including automated testing) for browser code.</p>
-
-<h3 id="running-on-linux-in-prod">Running on Linux in prod</h3>
-<p>In the first half of 2023, we migrated our production servers to Linux. In the second half of the year, we migrated our remaining dev and staging servers to Linux. We’ve also migrated our build servers to Linux. These migrations saved costs on the computing side, allowing us to scale up our data side without any overall cost increase.</p>
-
-<h3 id="latest-net">Latest .NET</h3>
-<p>Staying on the latest version of the framework is uncommon in most .NET shops. In 2022, we migrated to dotnet 6. In 2023, we’ve done it again and migrated to dotnet 7. In early 2024, we’ll move to the newly released dotnet 8.</p>
-
-<h3 id="increased-automated-testing">Increased automated testing</h3>
-<p>In August, we increased our expectations around automated testing. We’re now near 40% for total line coverage for all codebases. We’ve adopted behavioral testing across all of the backend code. We’ve introduced Playwright, which allows us to test our frontend code in a more automated fashion.</p>
-
-<h3 id="codified-sdlc">Codified SDLC</h3>
-<p>In 2022, our SDLC was very loose and ad-hoc. In 2023, we’ve codified our SDLC. Our SDLC is meant to be flexible while maintaining consistency across the department. Our SDLC guidelines represent sensible defaults, and we hope they will continue to evolve to best serve the teams leveraging them.</p>
-
-<h3 id="structured-teams">Structured teams</h3>
-<p>At the end of 2023, we had one team of 12, one team of 5, and one team of 2 with QA floating across teams. We’ve since restructured into 3 teams of even size and even staffing.</p>
-
-<h3 id="job-descriptions">Job descriptions</h3>
-<p>I know the engineering team had been working on some job descriptions/matrices, but they never quite made it to fruition. This year, Engineering leadership created measurable job expectations for software engineering levels 1-4. We’ve published these to our team and are using them in our 1:1s and reviews. This gives clarity to both our team members and managers. We’ll be creating similar documents for our managers and QA and DevOps teams in 2024.</p>
-
-<h3 id="consistent-meeting-schedule">Consistent meeting schedule</h3>
-<p>In addition to the meeting guidelines of our SDLC, we’ve also established a monthly department-wide meeting. This meeting is an opportunity to showcase the great work done each month, share department-level information, and keep each other accountable for our organizational goals.</p>
-
-<h3 id="company-wide-bug-reporting">Company-wide bug reporting</h3>
-<p>Open bug reporting is a sign of engineering team maturity, and in May of 2023, we opened up our bug reporting process to the whole company. We previously had two competing processes. Not only did this reduce transparency and create confusion, but issues reported in the support team’s system had to be verified and triaged before being added to the engineering backlog. This dual process limited visibility into the bug backlog and also skewed reporting.</p>
-
-<p>This has been one of the most remarkable years of my career. Teams rarely see this much evolution in such a short time. I can’t wait to see what interesting enhancements 2024 delivers.</p>
-
-
-      <hr>
-    </article>
-  
-
-    <!-- Pagination links -->
-    <div class="pagination">
-        
-            <span class="inactive previous">Previous</span>
-        
-        
-            <a href="/page2" class="next">Next</a>
-        
-    </div>
 </div>
 
       </div> <!-- .wrapper -->
