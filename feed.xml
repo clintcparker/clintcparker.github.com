@@ -4,10 +4,10 @@
     <title>@clintcparker</title>
     <description>Writings on software development, testing, and architecture. .NET C# Tools Testing whiteboarding design
 </description>
-    <link>https://clintcparker.com/</link>
-    <atom:link href="https://clintcparker.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 01 Apr 2026 18:22:33 +0000</pubDate>
-    <lastBuildDate>Wed, 01 Apr 2026 18:22:33 +0000</lastBuildDate>
+    <link>https://blog.clintcparker.com/</link>
+    <atom:link href="https://blog.clintcparker.com/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Fri, 03 Apr 2026 16:55:01 +0000</pubDate>
+    <lastBuildDate>Fri, 03 Apr 2026 16:55:01 +0000</lastBuildDate>
     <generator>Jekyll v4.3.4</generator>
     
       <item>
@@ -35,8 +35,8 @@
 &lt;p&gt;PRs as the ends of conversations. It’s a small mental shift with a surprisingly large impact on how smoothly a team moves.&lt;/p&gt;
 </description>
         <pubDate>Sun, 29 Mar 2026 18:26:19 +0000</pubDate>
-        <link>https://clintcparker.com/2026/03/29/prs-are-conversations-not-notifications/</link>
-        <guid isPermaLink="true">https://clintcparker.com/2026/03/29/prs-are-conversations-not-notifications/</guid>
+        <link>https://blog.clintcparker.com/2026/03/29/prs-are-conversations-not-notifications/</link>
+        <guid isPermaLink="true">https://blog.clintcparker.com/2026/03/29/prs-are-conversations-not-notifications/</guid>
         
         
       </item>
@@ -60,8 +60,8 @@
 &lt;p&gt;The teams that win with AI aren’t the ones moving fastest. They’re the ones who figured out how to move fast &lt;em&gt;and&lt;/em&gt; land cleanly.&lt;/p&gt;
 </description>
         <pubDate>Sun, 22 Mar 2026 19:11:34 +0000</pubDate>
-        <link>https://clintcparker.com/2026/03/22/more-code-more-risk-more-automation/</link>
-        <guid isPermaLink="true">https://clintcparker.com/2026/03/22/more-code-more-risk-more-automation/</guid>
+        <link>https://blog.clintcparker.com/2026/03/22/more-code-more-risk-more-automation/</link>
+        <guid isPermaLink="true">https://blog.clintcparker.com/2026/03/22/more-code-more-risk-more-automation/</guid>
         
         
       </item>
@@ -85,8 +85,8 @@
 &lt;p&gt;Quality isn’t a department. It’s an expectation.&lt;/p&gt;
 </description>
         <pubDate>Fri, 20 Mar 2026 17:29:54 +0000</pubDate>
-        <link>https://clintcparker.com/2026/03/20/testing-is-a-team-sport/</link>
-        <guid isPermaLink="true">https://clintcparker.com/2026/03/20/testing-is-a-team-sport/</guid>
+        <link>https://blog.clintcparker.com/2026/03/20/testing-is-a-team-sport/</link>
+        <guid isPermaLink="true">https://blog.clintcparker.com/2026/03/20/testing-is-a-team-sport/</guid>
         
         
       </item>
@@ -417,8 +417,8 @@ Real World Scenarios&lt;/p&gt;
 
 </description>
         <pubDate>Tue, 11 Mar 2025 18:16:00 +0000</pubDate>
-        <link>https://clintcparker.com/2025/03/11/feature-flags-for-fun-and-profit/</link>
-        <guid isPermaLink="true">https://clintcparker.com/2025/03/11/feature-flags-for-fun-and-profit/</guid>
+        <link>https://blog.clintcparker.com/2025/03/11/feature-flags-for-fun-and-profit/</link>
+        <guid isPermaLink="true">https://blog.clintcparker.com/2025/03/11/feature-flags-for-fun-and-profit/</guid>
         
         
       </item>
@@ -466,8 +466,8 @@ Real World Scenarios&lt;/p&gt;
 &lt;p&gt;This has been one of the most remarkable years of my career. Teams rarely see this much evolution in such a short time. I can’t wait to see what interesting enhancements 2024 delivers.&lt;/p&gt;
 </description>
         <pubDate>Mon, 08 Jan 2024 18:44:36 +0000</pubDate>
-        <link>https://clintcparker.com/2024/01/08/2023-year-in-review/</link>
-        <guid isPermaLink="true">https://clintcparker.com/2024/01/08/2023-year-in-review/</guid>
+        <link>https://blog.clintcparker.com/2024/01/08/2023-year-in-review/</link>
+        <guid isPermaLink="true">https://blog.clintcparker.com/2024/01/08/2023-year-in-review/</guid>
         
         
       </item>
@@ -782,8 +782,8 @@ Real World Scenarios&lt;/p&gt;
 &lt;p&gt;In essence, the choice of metric and calculation method should align with the team’s objectives and the expectations of stakeholders. By adopting a more nuanced approach to tracking software team metrics, organizations can gain deeper insights into team performance, improve forecasting accuracy, and ultimately drive better business outcomes.&lt;/p&gt;
 </description>
         <pubDate>Mon, 27 Nov 2023 19:30:46 +0000</pubDate>
-        <link>https://clintcparker.com/2023/11/27/improving-software-team-metrics/</link>
-        <guid isPermaLink="true">https://clintcparker.com/2023/11/27/improving-software-team-metrics/</guid>
+        <link>https://blog.clintcparker.com/2023/11/27/improving-software-team-metrics/</link>
+        <guid isPermaLink="true">https://blog.clintcparker.com/2023/11/27/improving-software-team-metrics/</guid>
         
         
       </item>
@@ -833,8 +833,8 @@ Real World Scenarios&lt;/p&gt;
 &lt;p&gt;In the end, they did improve Classic ASP/VBScript … they created &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.NET&lt;/code&gt;.&lt;/p&gt;
 </description>
         <pubDate>Wed, 08 Nov 2023 18:05:08 +0000</pubDate>
-        <link>https://clintcparker.com/2023/11/08/what-even-is-innovation/</link>
-        <guid isPermaLink="true">https://clintcparker.com/2023/11/08/what-even-is-innovation/</guid>
+        <link>https://blog.clintcparker.com/2023/11/08/what-even-is-innovation/</link>
+        <guid isPermaLink="true">https://blog.clintcparker.com/2023/11/08/what-even-is-innovation/</guid>
         
         
       </item>
@@ -862,8 +862,8 @@ Real World Scenarios&lt;/p&gt;
 
 </description>
         <pubDate>Wed, 25 May 2022 21:52:58 +0000</pubDate>
-        <link>https://clintcparker.com/2022/05/25/when-to-micro-service/</link>
-        <guid isPermaLink="true">https://clintcparker.com/2022/05/25/when-to-micro-service/</guid>
+        <link>https://blog.clintcparker.com/2022/05/25/when-to-micro-service/</link>
+        <guid isPermaLink="true">https://blog.clintcparker.com/2022/05/25/when-to-micro-service/</guid>
         
         
       </item>
@@ -906,8 +906,8 @@ Real World Scenarios&lt;/p&gt;
 &lt;p&gt;It’s amusing how little software leadership has to do with the actual software sometimes. I promise I will have some more technical leadership topics in the future, but many will be like this. I hope some of this will help you with your teams. As always feel free to send any comments to me on Twitter at &lt;em&gt;&lt;a href=&quot;https://twitter.com/clintcparker&quot;&gt;@clintcparker&lt;/a&gt;&lt;/em&gt;.&lt;/p&gt;
 </description>
         <pubDate>Wed, 13 Apr 2022 20:11:39 +0000</pubDate>
-        <link>https://clintcparker.com/2022/04/13/software-leadership-fostering-the-team/</link>
-        <guid isPermaLink="true">https://clintcparker.com/2022/04/13/software-leadership-fostering-the-team/</guid>
+        <link>https://blog.clintcparker.com/2022/04/13/software-leadership-fostering-the-team/</link>
+        <guid isPermaLink="true">https://blog.clintcparker.com/2022/04/13/software-leadership-fostering-the-team/</guid>
         
         
       </item>
@@ -1129,8 +1129,8 @@ https://mpharrigan.com/2016/05/17/background-ssh.html&lt;/li&gt;
 &lt;/ul&gt;
 </description>
         <pubDate>Fri, 25 Feb 2022 04:27:51 +0000</pubDate>
-        <link>https://clintcparker.com/2022/02/25/rdp-tunnels/</link>
-        <guid isPermaLink="true">https://clintcparker.com/2022/02/25/rdp-tunnels/</guid>
+        <link>https://blog.clintcparker.com/2022/02/25/rdp-tunnels/</link>
+        <guid isPermaLink="true">https://blog.clintcparker.com/2022/02/25/rdp-tunnels/</guid>
         
         
       </item>
