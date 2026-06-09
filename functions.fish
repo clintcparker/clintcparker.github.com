@@ -3,7 +3,7 @@ function draft
 end
 
 function od --description 'Deploy an octopress site in production configuration'
-    rm -rf /workspaces/blog-source/.deploy
+    rm -rf /workspaces/clintcparker.github.com/.deploy
     set -gx JEKYLL_ENV 'production'
     jekyll build
     if set -q GITHUB_TOKEN
