@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html class="dark">
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Software Teams Are the Worst Managed Teams on the Planet</title>
+    <meta name="description" content="I keep having this conversation. Different companies, different people, different contexts. And I keep landing in the same place.">
+
+    <link rel="stylesheet" href="/assets/css/style.css">
+
+    <!-- <link rel="icon" type="image/x-icon" href="https://blog.clintcparker.com/favicon.ico"> -->
+
+    <link rel="canonical" href="https://blog.clintcparker.com/2026/06/17/software-teams-are-the-worst-managed-teams-on-the-planet/">
+    <link rel="alternate" type="application/rss+xml" title="@clintcparker" href="https://blog.clintcparker.com/feed.xml" />
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-84920844-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+    
+    <script>
+    // var anchorForId = function (id) {
+    //   var anchor = document.createElement("a");
+    //   anchor.className = "header-link";
+    //   anchor.href      = "#" + id;
+    //   anchor.innerHTML = "<span class=\"sr-only\">Permalink</span><i class=\"fa fa-link\"></i>";
+    //   anchor.title = "Permalink";
+    //   return anchor;
+    // };
+    anchorForId = function (id,text) {
+      var anchor = document.createElement("a");
+      anchor.className = "header-link";
+      anchor.href      = "#" + id;
+      anchor.text = text;
+      anchor.title = "Permalink";
+      return anchor;
+    };
+  
+    var linkifyAnchors = function (level, containingElement) {
+      var headers = containingElement.getElementsByTagName("h" + level);
+      for (var h = 0; h < headers.length; h++) {
+        var header = headers[h];
+  
+        if (typeof header.id !== "undefined" && header.id !== "") {
+            //debugger;
+          var n = header.childNodes[0];
+          header.insertBefore(anchorForId(header.id,header.textContent),n);
+          header.removeChild(n);
+        }
+      }
+    };
+  
+    document.onreadystatechange = function () {
+      if (this.readyState === "complete") {
+        var contentBlock = document.getElementsByClassName("post")[0];//('body')[0];// . || document.getElementsByClassName("news")[0];
+        if (!contentBlock) {
+          return;
+        }
+        for (var level = 1; level <= 6; level++) {
+          linkifyAnchors(level, contentBlock);
+        }
+      }
+    };
+  </script>
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+    <div class="wrapper">
+
+        <h1><a class="site-title" href="/">@clintcparker</a></h1>
+        <h2 class="site-tagline">Code and such from a whiteboard enthusiast</h2>
+
+
+        <nav class="site-nav">
+            <a href="/">Home</a>
+            
+                
+            
+                
+                    
+                        <a class="page-link" href="/about/">About</a>
+                    
+                
+            
+                
+                    
+                        <a class="page-link" href="/archive/">Archive</a>
+                    
+                
+            
+                
+                    
+                
+            
+                
+                    
+                
+            
+                
+                    
+                
+            
+                
+                    
+                
+            
+                
+                    
+                
+            
+                
+                    
+                
+            
+                
+                    
+                
+            
+            <a href="https://github.com/clintcparker" target="_blank">GitHub</a>
+            <a href="https://www.linkedin.com/in/clintcparker" target="_blank">Résumé</a>
+            <!-- <a href="https://twitter.com/clintcparker" target="_blank">Tweets</a> -->
+            <a href="https://bsky.app/profile/clintcparker.bsky.social" target="_blank">Social</a>
+            <!-- Cal element-click embed code begins -->
+            <script type="text/javascript">
+                (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; typeof namespace === "string" ? (cal.ns[namespace] = api) && p(api, ar) : p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+                Cal("init", { origin: "https://app.cal.com" });
+
+                // Important: Make sure to add `data-cal-link="clint-parker/15min"` attribute to the element you want to open Cal on click
+                Cal("ui", { "styles": { "branding": { "brandColor": "#2e2e2e" } }, "hideEventTypeDetails": false });
+            </script>
+            <a target="_blank" data-cal-link="clint-parker/15min">Chat</a>
+            <!-- Cal element-click embed code ends -->
+        </nav>
+
+    </div> <!-- .wrapper -->
+
+</header>
+
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="post">
+
+  <header class="post-header">
+    <h2 class="post-title">Software Teams Are the Worst Managed Teams on the Planet</h2>
+    <time class="post-date">June 17, 2026</time>
+  </header>
+
+  <article class="post-content">
+    <p>I keep having this conversation. Different companies, different people, different contexts. And I keep landing in the same place.</p>
+
+<p>Software engineering teams are some of the worst managed teams in any industry. Maybe the worst. I’ve seen it across every company I’ve worked at, every company I’ve talked to, and every leadership team I’ve consulted with. It’s pervasive.</p>
+
+<p>And the wild part? It’s not because we don’t know better. The knowledge exists. The frameworks exist. The books have been written. The concepts are not new. I’ve been hearing them for over 20 years. What’s new, somehow, is that experienced managers are still encountering these ideas for the first time.</p>
+
+<h3 id="the-promotion-trap">The Promotion Trap</h3>
+
+<p>I think part of this comes down to the youth of software as an industry. We’re still relatively new at this compared to other industries. Software has been able to attract the funding that and reach scales that would’ve taken much more real-world success historically. Therefore, those other industries have had decades (or centuries) to codify what leadership looks like at every level. Software hasn’t. We’re still making it up.</p>
+
+<p>But the bigger issue is the promotion trap.</p>
+
+<p>You were good at writing code, so now you’re managing people who write code. That’s the logic. And it’s terrible logic. These are fundamentally different jobs. Being a great engineer does not make you a great engineering manager any more than being a great pilot makes you a great airline executive. The skills overlap in some places, and an awareness of the work is critical, but the responsibilities are completely different.</p>
+
+<p>I’ve seen this play out so many times. Someone gets promoted because they’re technically strong, maybe they’ve been around a while, maybe they’re just the most senior person on the team. And now they’ve got six or eight direct reports, and they have no idea what to do with them. They’ve never been properly managed before, so why should they? They don’t know how to set expectations. They don’t know how to give feedback. They don’t know how to run a one-on-one that’s actually useful. They definitely don’t know how to have a hard conversation about performance.</p>
+
+<p>So they don’t. They just keep writing code and hope the people stuff works itself out.</p>
+
+<p>It doesn’t. It won’t. Hope is not a strategy.</p>
+
+<h3 id="how-did-you-get-this-job">How Did You Get This Job?</h3>
+
+<p>I go to mandatory manager training from time to time. I appreciate it. I’m always grateful for it. Worst case we’ll establish a common vocabulary. But I’ll be honest: most of the content isn’t new to me. That’s fine. What shocks me is watching other managers in the room react to the material like they’ve never heard it before.</p>
+
+<p>How did these people get into a managerial position and not understand the expectations of the role? How did the person who hired them not inspect their skill set in this space? It blows me away. And these aren’t junior people. These are directors, senior managers, people who’ve been in leadership for years.</p>
+
+<p>The concepts aren’t exotic. Have regular one-on-ones. Set clear expectations. Give timely feedback. Create career development plans. Hold people accountable. These are basics. But the bar is apparently so low that “basics” still qualifies as a revelation.</p>
+
+<p>I tend to avoid hiring managers externally who haven’t managed before. I had a situation where a guy was hired as a manager weeks before I started at a company. I met him, went through his background, and asked the obvious question. “Wait, so this is your first time being a manager?” He said yeah. I told him, straight up, I wouldn’t have hired you. Not because you’re not capable, but because you don’t have any of the foundational skills for this particular job.</p>
+
+<p>I gave him two choices. Take the manager role, and I will give you a firehose of mentorship and a massive amount of unsolicited feedback. Or transition back to being a senior IC at the same comp, because you’re clearly excellent at writing code. He chose the management path. And it worked out really well. But it worked because I set those expectations on day one and followed through relentlessly. Most organizations don’t do that. They just hand someone a team and walk away.</p>
+
+<h3 id="the-people-paying-the-price">The People Paying the Price</h3>
+
+<p>Here’s the part that actually bothers me. It’s not the bad managers themselves. People can learn. People can grow. What bothers me is the engineers underneath them who are being underserved and don’t even know it.</p>
+
+<p>Think about how many engineers have never had a manager who gave them real, timely feedback. Never had a manager who built a career plan with them. Never had a manager who set clear, measurable expectations and then actually followed up. These engineers think that’s normal. They think management is supposed to be absent, or reactive, or purely administrative. And they perpetuate that vision when they eventually get promoted into management themselves.</p>
+
+<p>It’s a cycle. Bad management produces people whose only reference for management is bad management. And the engineers at the bottom of that chain just accept that this is how it works.</p>
+
+<p>When I see a group where somebody’s got 18 direct reports, I don’t think “wow, that person is important.” I think that’s 18 people who are not getting served. Nobody can meaningfully manage 18 people. Seven is the sweet spot. Above seven, you start losing the ability to really know what each person is working on, where they’re struggling, and what they need to grow. I managed 14 directs once earlier in my career, and even that was exhausting.</p>
+
+<h3 id="no-consequences-no-change">No Consequences, No Change</h3>
+
+<p>The other pattern I keep seeing is an almost allergic reaction to accountability in engineering organizations.</p>
+
+<p>I’ve been in conversations where senior leaders have told me, with a straight face, “I don’t think we’ll ever fire an engineer.” Not because every engineer was performing well. Just because the culture was so averse to holding anyone to a standard that letting someone go was unthinkable.</p>
+
+<p>And it’s not just firing. It’s any form of real accountability. I’ve talked with engineering leaders who know that certain people on their teams aren’t embracing new practices, aren’t meeting expectations, aren’t growing. And when I ask what the consequences are for that, the answer is: there aren’t any.</p>
+
+<p>The fear is always the same. They’ve been here for years. They know where the bodies are buried. If we lose them, who’s going to maintain this system? And that fear is real, but it’s also a trap. It means you’re holding onto underperformers because you failed to document the system, failed to cross-train, failed to build any resilience into the team. The institutional knowledge problem is a symptom of the management problem, not a justification for ignoring it.</p>
+
+<h3 id="what-i-actually-do">What I Actually Do</h3>
+
+<p>I don’t have some revolutionary framework. What I have is consistency and follow-through. Here’s what I’ve landed on after doing this for a long time.</p>
+
+<h4 id="managers-dont-write-application-code">Managers don’t write application code.</h4>
+
+<p>This is probably my most controversial position. I tell every people leader in my organization: you do not contribute to the application code. But you also have to be responsible for and aware of all of the application code being written.</p>
+
+<p>That forces a mindset shift. Your job is not to be the best programmer on the team. Your job is to make the team successful. You participate in code reviews. You understand the architecture. You know what’s being built and why. But your time goes to career development, expectation-setting, coaching, and removing blockers. If you’re heads-down writing features, you’re not doing your actual job.</p>
+
+<p>AI has made me soften slightly on this, because there are cases where a manager prototyping something with an AI tool is genuinely the fastest path. But the principle holds: your primary responsibility is the people, not the code.</p>
+
+<h4 id="feedback-is-immediate">Feedback is immediate.</h4>
+
+<p>I hate annual performance reviews. Hate them. If I’m doing my job, my team members know exactly where they stand at all times. I have conversations about performance multiple times a week. Not formal sit-downs, just real talk. That went well. This didn’t. Here’s what I noticed in that meeting. Here’s an opportunity you missed.</p>
+
+<p>Feedback should never be delayed. The only exception is if giving it right now would disrupt something that’s actively happening. But immediately after? Definitely. I’m pulling you aside. A lot of the people who still enjoy working with me will tell you that’s one of the things they appreciate most. They always know where they stand.</p>
+
+<p>And here’s the thing: when you do this consistently, the hard conversations become easy. If someone’s performance is slipping and you’ve been talking about it for weeks, the eventual “this needs to change or we’re going to have a bigger problem” conversation isn’t a surprise. It’s a continuation. You talked about this. They knew. The expectations were there. That conversation almost writes itself.</p>
+
+<p>But if you saved it all up for a quarterly review? Now it’s a bomb. Now they’re blindsided. Now it’s adversarial. You did that to them by waiting.</p>
+
+<h4 id="be-proactive-about-org-structure">Be proactive about org structure.</h4>
+
+<p>I try to evaluate the org chart as a whole at a minimum every six months. Not because I want to restructure constantly, but because companies change. The team that made sense six months ago might not make sense today. Someone might have left. A new product priority might have shifted the workload. You have to keep asking: does this still work?</p>
+
+<p>I encourage all my leaders to think the same way. What if we lose someone? What criteria would we use for a reduction? Who’s underperforming? What’s our succession plan? These aren’t paranoid exercises. They’re responsible leadership. If you can’t answer those questions about your team, you’re not paying close enough attention.</p>
+
+<h4 id="hire-managers-who-have-managed">Hire managers who have managed.</h4>
+
+<p>I mentioned this earlier, but I want to be clear about why. It’s not that first-time managers can’t succeed. The guy I told the story about earlier is proof of that. It’s that the failure rate is high, and most organizations don’t provide the level of support needed to make it work.</p>
+
+<p>If you’re going to promote someone into their first management role internally, great. You have context. You know their strengths and gaps. You can build a development plan. But hiring an external candidate who has never managed before into a management role? You’re gambling. And the people who lose that gamble are the engineers on their team.</p>
+
+<h3 id="the-industry-has-to-grow-up">The Industry Has to Grow Up</h3>
+
+<p>I genuinely think this is the biggest unlock most engineering organizations are ignoring. Everyone’s talking about AI adoption, faster delivery, agentic development, new tooling. And those things matter. But none of them work if the management layer is incompetent.</p>
+
+<p>You can’t build a high-performing engineering team on a foundation of absent leadership. You can’t adopt new practices if managers aren’t holding people accountable to old ones. You can’t move fast if half the team is disengaged because nobody’s ever told them what “good” looks like.</p>
+
+<p>The industry has to grow up. Software management has to stop being an afterthought. It has to stop being the thing that happens by accident when someone good at coding gets promoted. It has to be intentional, and it has to be held to the same standard we hold everything else.</p>
+
+<p>Because right now, the people paying the price are the engineers. And they deserve better than what most of them are getting.</p>
+
+  </article>
+
+</div>
+
+      </div> <!-- .wrapper -->
+    </div> <!-- .page-content -->
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+    <p class="rss-subscribe">Subscribe <a href="/feed.xml" target="_blank">via RSS</a></p>
+    <p>This site uses the <a href="https://github.com/lewisc/daryl" target="_blank">Daryl</a> theme for <a href="http://jekyllrb.com" target="_blank">Jekyll</a>.</p>
+    <p>&copy; 2026 by Clint Parker. All rights reserved.</p>
+
+  </div> <!-- .wrapper -->
+
+</footer>
+
+
+  </body>
+
+</html>

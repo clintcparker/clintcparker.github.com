@@ -6,9 +6,114 @@
 </description>
     <link>https://blog.clintcparker.com/</link>
     <atom:link href="https://blog.clintcparker.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 17 Jun 2026 22:43:16 +0000</pubDate>
-    <lastBuildDate>Wed, 17 Jun 2026 22:43:16 +0000</lastBuildDate>
+    <pubDate>Wed, 17 Jun 2026 22:46:34 +0000</pubDate>
+    <lastBuildDate>Wed, 17 Jun 2026 22:46:34 +0000</lastBuildDate>
     <generator>Jekyll v4.3.4</generator>
+    
+      <item>
+        <title>Software Teams Are the Worst Managed Teams on the Planet</title>
+        <description>&lt;p&gt;I keep having this conversation. Different companies, different people, different contexts. And I keep landing in the same place.&lt;/p&gt;
+
+&lt;p&gt;Software engineering teams are some of the worst managed teams in any industry. Maybe the worst. I’ve seen it across every company I’ve worked at, every company I’ve talked to, and every leadership team I’ve consulted with. It’s pervasive.&lt;/p&gt;
+
+&lt;p&gt;And the wild part? It’s not because we don’t know better. The knowledge exists. The frameworks exist. The books have been written. The concepts are not new. I’ve been hearing them for over 20 years. What’s new, somehow, is that experienced managers are still encountering these ideas for the first time.&lt;/p&gt;
+
+&lt;h3 id=&quot;the-promotion-trap&quot;&gt;The Promotion Trap&lt;/h3&gt;
+
+&lt;p&gt;I think part of this comes down to the youth of software as an industry. We’re still relatively new at this compared to other industries. Software has been able to attract the funding that and reach scales that would’ve taken much more real-world success historically. Therefore, those other industries have had decades (or centuries) to codify what leadership looks like at every level. Software hasn’t. We’re still making it up.&lt;/p&gt;
+
+&lt;p&gt;But the bigger issue is the promotion trap.&lt;/p&gt;
+
+&lt;p&gt;You were good at writing code, so now you’re managing people who write code. That’s the logic. And it’s terrible logic. These are fundamentally different jobs. Being a great engineer does not make you a great engineering manager any more than being a great pilot makes you a great airline executive. The skills overlap in some places, and an awareness of the work is critical, but the responsibilities are completely different.&lt;/p&gt;
+
+&lt;p&gt;I’ve seen this play out so many times. Someone gets promoted because they’re technically strong, maybe they’ve been around a while, maybe they’re just the most senior person on the team. And now they’ve got six or eight direct reports, and they have no idea what to do with them. They’ve never been properly managed before, so why should they? They don’t know how to set expectations. They don’t know how to give feedback. They don’t know how to run a one-on-one that’s actually useful. They definitely don’t know how to have a hard conversation about performance.&lt;/p&gt;
+
+&lt;p&gt;So they don’t. They just keep writing code and hope the people stuff works itself out.&lt;/p&gt;
+
+&lt;p&gt;It doesn’t. It won’t. Hope is not a strategy.&lt;/p&gt;
+
+&lt;h3 id=&quot;how-did-you-get-this-job&quot;&gt;How Did You Get This Job?&lt;/h3&gt;
+
+&lt;p&gt;I go to mandatory manager training from time to time. I appreciate it. I’m always grateful for it. Worst case we’ll establish a common vocabulary. But I’ll be honest: most of the content isn’t new to me. That’s fine. What shocks me is watching other managers in the room react to the material like they’ve never heard it before.&lt;/p&gt;
+
+&lt;p&gt;How did these people get into a managerial position and not understand the expectations of the role? How did the person who hired them not inspect their skill set in this space? It blows me away. And these aren’t junior people. These are directors, senior managers, people who’ve been in leadership for years.&lt;/p&gt;
+
+&lt;p&gt;The concepts aren’t exotic. Have regular one-on-ones. Set clear expectations. Give timely feedback. Create career development plans. Hold people accountable. These are basics. But the bar is apparently so low that “basics” still qualifies as a revelation.&lt;/p&gt;
+
+&lt;p&gt;I tend to avoid hiring managers externally who haven’t managed before. I had a situation where a guy was hired as a manager weeks before I started at a company. I met him, went through his background, and asked the obvious question. “Wait, so this is your first time being a manager?” He said yeah. I told him, straight up, I wouldn’t have hired you. Not because you’re not capable, but because you don’t have any of the foundational skills for this particular job.&lt;/p&gt;
+
+&lt;p&gt;I gave him two choices. Take the manager role, and I will give you a firehose of mentorship and a massive amount of unsolicited feedback. Or transition back to being a senior IC at the same comp, because you’re clearly excellent at writing code. He chose the management path. And it worked out really well. But it worked because I set those expectations on day one and followed through relentlessly. Most organizations don’t do that. They just hand someone a team and walk away.&lt;/p&gt;
+
+&lt;h3 id=&quot;the-people-paying-the-price&quot;&gt;The People Paying the Price&lt;/h3&gt;
+
+&lt;p&gt;Here’s the part that actually bothers me. It’s not the bad managers themselves. People can learn. People can grow. What bothers me is the engineers underneath them who are being underserved and don’t even know it.&lt;/p&gt;
+
+&lt;p&gt;Think about how many engineers have never had a manager who gave them real, timely feedback. Never had a manager who built a career plan with them. Never had a manager who set clear, measurable expectations and then actually followed up. These engineers think that’s normal. They think management is supposed to be absent, or reactive, or purely administrative. And they perpetuate that vision when they eventually get promoted into management themselves.&lt;/p&gt;
+
+&lt;p&gt;It’s a cycle. Bad management produces people whose only reference for management is bad management. And the engineers at the bottom of that chain just accept that this is how it works.&lt;/p&gt;
+
+&lt;p&gt;When I see a group where somebody’s got 18 direct reports, I don’t think “wow, that person is important.” I think that’s 18 people who are not getting served. Nobody can meaningfully manage 18 people. Seven is the sweet spot. Above seven, you start losing the ability to really know what each person is working on, where they’re struggling, and what they need to grow. I managed 14 directs once earlier in my career, and even that was exhausting.&lt;/p&gt;
+
+&lt;h3 id=&quot;no-consequences-no-change&quot;&gt;No Consequences, No Change&lt;/h3&gt;
+
+&lt;p&gt;The other pattern I keep seeing is an almost allergic reaction to accountability in engineering organizations.&lt;/p&gt;
+
+&lt;p&gt;I’ve been in conversations where senior leaders have told me, with a straight face, “I don’t think we’ll ever fire an engineer.” Not because every engineer was performing well. Just because the culture was so averse to holding anyone to a standard that letting someone go was unthinkable.&lt;/p&gt;
+
+&lt;p&gt;And it’s not just firing. It’s any form of real accountability. I’ve talked with engineering leaders who know that certain people on their teams aren’t embracing new practices, aren’t meeting expectations, aren’t growing. And when I ask what the consequences are for that, the answer is: there aren’t any.&lt;/p&gt;
+
+&lt;p&gt;The fear is always the same. They’ve been here for years. They know where the bodies are buried. If we lose them, who’s going to maintain this system? And that fear is real, but it’s also a trap. It means you’re holding onto underperformers because you failed to document the system, failed to cross-train, failed to build any resilience into the team. The institutional knowledge problem is a symptom of the management problem, not a justification for ignoring it.&lt;/p&gt;
+
+&lt;h3 id=&quot;what-i-actually-do&quot;&gt;What I Actually Do&lt;/h3&gt;
+
+&lt;p&gt;I don’t have some revolutionary framework. What I have is consistency and follow-through. Here’s what I’ve landed on after doing this for a long time.&lt;/p&gt;
+
+&lt;h4 id=&quot;managers-dont-write-application-code&quot;&gt;Managers don’t write application code.&lt;/h4&gt;
+
+&lt;p&gt;This is probably my most controversial position. I tell every people leader in my organization: you do not contribute to the application code. But you also have to be responsible for and aware of all of the application code being written.&lt;/p&gt;
+
+&lt;p&gt;That forces a mindset shift. Your job is not to be the best programmer on the team. Your job is to make the team successful. You participate in code reviews. You understand the architecture. You know what’s being built and why. But your time goes to career development, expectation-setting, coaching, and removing blockers. If you’re heads-down writing features, you’re not doing your actual job.&lt;/p&gt;
+
+&lt;p&gt;AI has made me soften slightly on this, because there are cases where a manager prototyping something with an AI tool is genuinely the fastest path. But the principle holds: your primary responsibility is the people, not the code.&lt;/p&gt;
+
+&lt;h4 id=&quot;feedback-is-immediate&quot;&gt;Feedback is immediate.&lt;/h4&gt;
+
+&lt;p&gt;I hate annual performance reviews. Hate them. If I’m doing my job, my team members know exactly where they stand at all times. I have conversations about performance multiple times a week. Not formal sit-downs, just real talk. That went well. This didn’t. Here’s what I noticed in that meeting. Here’s an opportunity you missed.&lt;/p&gt;
+
+&lt;p&gt;Feedback should never be delayed. The only exception is if giving it right now would disrupt something that’s actively happening. But immediately after? Definitely. I’m pulling you aside. A lot of the people who still enjoy working with me will tell you that’s one of the things they appreciate most. They always know where they stand.&lt;/p&gt;
+
+&lt;p&gt;And here’s the thing: when you do this consistently, the hard conversations become easy. If someone’s performance is slipping and you’ve been talking about it for weeks, the eventual “this needs to change or we’re going to have a bigger problem” conversation isn’t a surprise. It’s a continuation. You talked about this. They knew. The expectations were there. That conversation almost writes itself.&lt;/p&gt;
+
+&lt;p&gt;But if you saved it all up for a quarterly review? Now it’s a bomb. Now they’re blindsided. Now it’s adversarial. You did that to them by waiting.&lt;/p&gt;
+
+&lt;h4 id=&quot;be-proactive-about-org-structure&quot;&gt;Be proactive about org structure.&lt;/h4&gt;
+
+&lt;p&gt;I try to evaluate the org chart as a whole at a minimum every six months. Not because I want to restructure constantly, but because companies change. The team that made sense six months ago might not make sense today. Someone might have left. A new product priority might have shifted the workload. You have to keep asking: does this still work?&lt;/p&gt;
+
+&lt;p&gt;I encourage all my leaders to think the same way. What if we lose someone? What criteria would we use for a reduction? Who’s underperforming? What’s our succession plan? These aren’t paranoid exercises. They’re responsible leadership. If you can’t answer those questions about your team, you’re not paying close enough attention.&lt;/p&gt;
+
+&lt;h4 id=&quot;hire-managers-who-have-managed&quot;&gt;Hire managers who have managed.&lt;/h4&gt;
+
+&lt;p&gt;I mentioned this earlier, but I want to be clear about why. It’s not that first-time managers can’t succeed. The guy I told the story about earlier is proof of that. It’s that the failure rate is high, and most organizations don’t provide the level of support needed to make it work.&lt;/p&gt;
+
+&lt;p&gt;If you’re going to promote someone into their first management role internally, great. You have context. You know their strengths and gaps. You can build a development plan. But hiring an external candidate who has never managed before into a management role? You’re gambling. And the people who lose that gamble are the engineers on their team.&lt;/p&gt;
+
+&lt;h3 id=&quot;the-industry-has-to-grow-up&quot;&gt;The Industry Has to Grow Up&lt;/h3&gt;
+
+&lt;p&gt;I genuinely think this is the biggest unlock most engineering organizations are ignoring. Everyone’s talking about AI adoption, faster delivery, agentic development, new tooling. And those things matter. But none of them work if the management layer is incompetent.&lt;/p&gt;
+
+&lt;p&gt;You can’t build a high-performing engineering team on a foundation of absent leadership. You can’t adopt new practices if managers aren’t holding people accountable to old ones. You can’t move fast if half the team is disengaged because nobody’s ever told them what “good” looks like.&lt;/p&gt;
+
+&lt;p&gt;The industry has to grow up. Software management has to stop being an afterthought. It has to stop being the thing that happens by accident when someone good at coding gets promoted. It has to be intentional, and it has to be held to the same standard we hold everything else.&lt;/p&gt;
+
+&lt;p&gt;Because right now, the people paying the price are the engineers. And they deserve better than what most of them are getting.&lt;/p&gt;
+</description>
+        <pubDate>Wed, 17 Jun 2026 22:46:02 +0000</pubDate>
+        <link>https://blog.clintcparker.com/2026/06/17/software-teams-are-the-worst-managed-teams-on-the-planet/</link>
+        <guid isPermaLink="true">https://blog.clintcparker.com/2026/06/17/software-teams-are-the-worst-managed-teams-on-the-planet/</guid>
+        
+        
+      </item>
     
       <item>
         <title>Strangers on the Internet, or Why PRs Are Conversations, Not Notifications</title>
@@ -908,229 +1013,6 @@ Real World Scenarios&lt;/p&gt;
         <pubDate>Wed, 13 Apr 2022 20:11:39 +0000</pubDate>
         <link>https://blog.clintcparker.com/2022/04/13/software-leadership-fostering-the-team/</link>
         <guid isPermaLink="true">https://blog.clintcparker.com/2022/04/13/software-leadership-fostering-the-team/</guid>
-        
-        
-      </item>
-    
-      <item>
-        <title>RDP Tunnels</title>
-        <description>&lt;h3 id=&quot;rationale&quot;&gt;Rationale&lt;/h3&gt;
-
-&lt;p&gt;I love the persistence of a host machine! I’m too cheap to get a VPS. I really like the windows 11 OS but really love mac laptops. I left &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;3389&lt;/code&gt; open on my router (with DDNS) and found myself getting brute forced. I saw &lt;a href=&quot;https://orth.uk/ssh-over-cloudflare/&quot;&gt;this post&lt;/a&gt; around the same time, and realized tunnelling could be a great alternative.&lt;/p&gt;
-
-&lt;h3 id=&quot;assumptions&quot;&gt;Assumptions&lt;/h3&gt;
-
-&lt;h4 id=&quot;general-assumptions&quot;&gt;General Assumptions&lt;/h4&gt;
-
-&lt;p&gt;I wrote this for my situation. While setting it up, I found there was not a central guide, so I made one. If it doesn’t perfectly fit your situation, hopefully a part of it will help.&lt;/p&gt;
-
-&lt;h4 id=&quot;assumptions-about-you&quot;&gt;Assumptions About You&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;You have administrator access to both machines&lt;/li&gt;
-  &lt;li&gt;You are comfortable with the command line on both systems&lt;/li&gt;
-  &lt;li&gt;You have &lt;a href=&quot;https://code.visualstudio.com&quot;&gt;VSCode&lt;/a&gt; installed on both machines&lt;/li&gt;
-  &lt;li&gt;You’re aware of the concept of &lt;a href=&quot;https://en.wikipedia.org/wiki/Secure_Shell&quot;&gt;SSH&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;You have a &lt;a href=&quot;https://www.cloudflare.com&quot;&gt;Cloudflare&lt;/a&gt; account and a website there&lt;/li&gt;
-  &lt;li&gt;You’re using &lt;a href=&quot;https://brew.sh&quot;&gt;brew&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;assumptions-about-this-guide&quot;&gt;Assumptions About This Guide&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;I’ve got &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;example.com&lt;/code&gt; on my cloudflare account (I don’t, &lt;em&gt;obvs&lt;/em&gt;)&lt;/li&gt;
-  &lt;li&gt;My tunnel is named &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;wormhole&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;My tunnel id is 123455677890asdf&lt;/li&gt;
-  &lt;li&gt;My macOS username is &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;me&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;host-setup&quot;&gt;Host Setup&lt;/h3&gt;
-&lt;h4 id=&quot;windows-setup&quot;&gt;Windows Setup&lt;/h4&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;get pwsh (i used &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;winget&lt;/code&gt;)&lt;/p&gt;
-
-    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;PS&amp;gt; winget install Microsoft.PowerShell
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-    &lt;ul&gt;
-      &lt;li&gt;At the time of writing, should be v7.2&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;install chocolatey at &lt;a href=&quot;&quot;&gt;https://chocolatey.org/&lt;/a&gt;&lt;/p&gt;
-
-    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;PS&amp;gt; Set-ExecutionPolicy Bypass -Scope Process -Force [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;install cloudflared via chocolatey&lt;/p&gt;
-
-    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;PS&amp;gt; choco install cloudflared
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-  &lt;/li&gt;
-  &lt;li&gt;login
-    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;PS&amp;gt; cloudflared login
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-    &lt;ul&gt;
-      &lt;li&gt;you may need to manually open the link in the
-output and select the site you’d like to add the tunnel to&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;create a tunnel
-    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;PS&amp;gt; cloudflared tunnel create wormhole
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-  &lt;/li&gt;
-  &lt;li&gt;setup cloudflared as a service
-    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;PS&amp;gt; cloudflared service install
-PS&amp;gt; mkdir C:\Windows\System32\config\systemprofile\.cloudflared
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-  &lt;/li&gt;
-  &lt;li&gt;create a config
-    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;PS&amp;gt; code C:\Windows\System32\config\systemprofile\.cloudflared\config.yml
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-    &lt;ul&gt;
-      &lt;li&gt;example:&lt;/li&gt;
-    &lt;/ul&gt;
-
-    &lt;div class=&quot;language-yml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;tunnel&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;123455677890asdf&lt;/span&gt;
-&lt;span class=&quot;na&quot;&gt;credentials-file&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;C:\Windows\System32\config\systemprofile\.cloudflared\123455677890asdf.json&lt;/span&gt;
-    
-&lt;span class=&quot;na&quot;&gt;ingress&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;hostname&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;wormhole.example.com&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;service&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;ssh://localhost:22&lt;/span&gt;
-    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;service&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;http_status:404&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;set service as automatic&lt;/p&gt;
-
-    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;PS&amp;gt; Set-Service -Name Cloudflared -StartupType &quot;Automatic&quot;
-PS&amp;gt; Set-ItemProperty HKLM:\SYSTEM\CurrentControlSet\Services\Cloudflared\ -Name ImagePath -Value &quot;C:\ProgramData\chocolatey\lib\cloudflared\tools\cloudflared.exe --config=C:\Windows\System32\config\systemprofile\.cloudflared\config.yml tunnel run&quot;
-PS&amp;gt; cloudflared tunnel route dns  wormhole.example
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;add a non-admin user (for ssh only). enter a paasword when prompted&lt;/p&gt;
-
-    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;PS&amp;gt; New-LocalUser -Name me-ssh
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;set pwsh as your default shell&lt;/p&gt;
-
-    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;PS&amp;gt; New-ItemProperty -Path &quot;HKLM:\SOFTWARE\OpenSSH&quot; -Name DefaultShell -Value &quot;C:\Program Files\PowerShell\7\pwsh.exe&quot; -PropertyType String -Force
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;create external user .ssh directory to house authorized_keys&lt;/p&gt;
-
-    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;PS&amp;gt; mkdir C:\Users\me-ssh\.ssh
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;modify sshd_config&lt;/p&gt;
-
-    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;PS&amp;gt; code C:\ProgramData\ssh\sshd_config
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-
-    &lt;ul&gt;
-      &lt;li&gt;enable publickey authentication, uncomment this line&lt;/li&gt;
-    &lt;/ul&gt;
-
-    &lt;div class=&quot;language-yml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s&quot;&gt;PubkeyAuthentication yes&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;setup sshd &amp;amp; ssh-agent as automatic services, and start them&lt;/p&gt;
-
-    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;PS&amp;gt; Set-Service -Name sshd -StartupType &quot;Automatic&quot;; Set-Service -Name ssh-agent -StartupType &quot;Automatic&quot;; Start-Service sshd; Start-Service ssh-agent
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&quot;client-config&quot;&gt;Client Config&lt;/h3&gt;
-
-&lt;h4 id=&quot;macos&quot;&gt;MacOS&lt;/h4&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;make sure developer tools are up to date&lt;/p&gt;
-
-    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$&amp;gt; brew install cloudflare/cloudflare/cloudflared
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-
-    &lt;ul&gt;
-      &lt;li&gt;to confirm install&lt;/li&gt;
-    &lt;/ul&gt;
-
-    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$&amp;gt; cloudflared -v
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Login (just like on the host setup)
-    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$&amp;gt; cloudflared login
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-    &lt;ul&gt;
-      &lt;li&gt;
-        &lt;p&gt;A browser window should have opened.&lt;/p&gt;
-      &lt;/li&gt;
-      &lt;li&gt;
-        &lt;p&gt;If the browser failed to open, please visit the output URL directly in your browser.&lt;/p&gt;
-      &lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Select the site you want to to log in to
-    &lt;ul&gt;
-      &lt;li&gt;after selecting you’ll see in the terminal&lt;/li&gt;
-    &lt;/ul&gt;
-
-    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; You have successfully logged in.
- If you wish to copy your credentials to a server, they have been saved to:
- /Users/yourusername/.cloudflared/cert.pem
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-  &lt;/li&gt;
-  &lt;li&gt;next, update your hosts file
-    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$&amp;gt; code ~/.ssh/config
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-
-    &lt;ul&gt;
-      &lt;li&gt;add the following&lt;/li&gt;
-    &lt;/ul&gt;
-
-    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Host *.example.com
-    ProxyCommand /usr/local/bin/cloudflared access ssh --hostname %h
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-  &lt;/li&gt;
-  &lt;li&gt;now you can ssh into the box directly
-    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; $&amp;gt; ssh me-ssh@wormhole.example.com
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;But let’s take this further for RDP and setup local forwarding&lt;/p&gt;
-
-    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; $&amp;gt; ssh -L 56789:127.0.0.1:3389 me-ssh@wormhole.example.com
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Setup pub key and add to host
-    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; cat ./.ssh/id_rsa.pub | ssh me-ssh@wormhole.example.com &quot;echo | Out-File -FilePath ~/.ssh/authorized_keys -Append&quot;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&quot;further-thoughts&quot;&gt;Further thoughts&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Connect to the tunnel from the client machine on startup
-https://mpharrigan.com/2016/05/17/background-ssh.html&lt;/li&gt;
-  &lt;li&gt;Remove the password from the newly created user&lt;/li&gt;
-  &lt;li&gt;Change default ports (ssh, RDP)&lt;/li&gt;
-  &lt;li&gt;Restrict RDP access to 127.0.0.1 only&lt;/li&gt;
-  &lt;li&gt;Create a host and client scripts to just take care of all of this&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-        <pubDate>Fri, 25 Feb 2022 04:27:51 +0000</pubDate>
-        <link>https://blog.clintcparker.com/2022/02/25/rdp-tunnels/</link>
-        <guid isPermaLink="true">https://blog.clintcparker.com/2022/02/25/rdp-tunnels/</guid>
         
         
       </item>
