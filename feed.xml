@@ -6,9 +6,45 @@
 </description>
     <link>https://blog.clintcparker.com/</link>
     <atom:link href="https://blog.clintcparker.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 17 Jun 2026 22:46:34 +0000</pubDate>
-    <lastBuildDate>Wed, 17 Jun 2026 22:46:34 +0000</lastBuildDate>
+    <pubDate>Thu, 25 Jun 2026 18:54:28 +0000</pubDate>
+    <lastBuildDate>Thu, 25 Jun 2026 18:54:28 +0000</lastBuildDate>
     <generator>Jekyll v4.3.4</generator>
+    
+      <item>
+        <title>Git Ignore ... and Untrack!</title>
+        <description>&lt;p&gt;We’ve all done it. You commit a file you shouldn’t have. A &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.env&lt;/code&gt;, a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;node_modules/&lt;/code&gt; you forgot to ignore, some local config, a stray build folder. So you add it to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.gitignore&lt;/code&gt;… and git keeps tracking it anyway.&lt;/p&gt;
+
+&lt;p&gt;That’s because &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.gitignore&lt;/code&gt; only governs &lt;em&gt;untracked&lt;/em&gt; files. Once git is already tracking something, ignoring it does nothing. 🤦‍♂️ The actual fix is two steps:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git &lt;span class=&quot;nb&quot;&gt;rm&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--cached&lt;/span&gt; path/to/file
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;/path/to/file&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; .gitignore
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;I do this often enough (and yet I &lt;em&gt;always&lt;/em&gt; have to look it up) that I finally built a VS Code extension to do it for me. (Claude helped)&lt;/p&gt;
+
+&lt;h2 id=&quot;ignore--untrack&quot;&gt;Ignore &amp;amp; Untrack&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/clintcparker/git-ignore-and-untrack&quot;&gt;&lt;strong&gt;git-ignore-and-untrack&lt;/strong&gt;&lt;/a&gt; adds a single &lt;strong&gt;Ignore &amp;amp; Untrack&lt;/strong&gt; action to the Source Control context menu. Right-click a file under &lt;strong&gt;Changes&lt;/strong&gt;, pick it, and in one step it:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Removes the file from the git index (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git rm --cached&lt;/code&gt;), keeping your copy on disk, and&lt;/li&gt;
+  &lt;li&gt;Adds an anchored entry (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/path/to/file&lt;/code&gt;) to your &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.gitignore&lt;/code&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Commit to finalize, and the file is gone from version control while your local copy stays exactly where it is.&lt;/p&gt;
+
+&lt;p&gt;It’s &lt;a href=&quot;https://marketplace.visualstudio.com/items?itemName=clintcparker-ext.git-ignore-and-untrack&quot;&gt;on the VS Code Marketplace&lt;/a&gt;, the source is &lt;a href=&quot;https://github.com/clintcparker/git-ignore-and-untrack&quot;&gt;on GitHub&lt;/a&gt;, and it’s licensed &lt;a href=&quot;https://github.com/clintcparker/git-ignore-and-untrack/blob/main/LICENSE&quot;&gt;0BSD&lt;/a&gt; — do whatever you want with it.&lt;/p&gt;
+
+&lt;p&gt;If you’ve ever committed a secret and scrambled to un-commit it, this one’s for you.&lt;/p&gt;
+
+&lt;p&gt;**TBF, this won’t fix your history. Rotate those keys!&lt;/p&gt;
+</description>
+        <pubDate>Thu, 25 Jun 2026 18:53:47 +0000</pubDate>
+        <link>https://blog.clintcparker.com/2026/06/25/git-ignore-and-untrack/</link>
+        <guid isPermaLink="true">https://blog.clintcparker.com/2026/06/25/git-ignore-and-untrack/</guid>
+        
+        
+      </item>
     
       <item>
         <title>Software Teams Are the Worst Managed Teams on the Planet</title>
@@ -969,50 +1005,6 @@ Real World Scenarios&lt;/p&gt;
         <pubDate>Wed, 25 May 2022 21:52:58 +0000</pubDate>
         <link>https://blog.clintcparker.com/2022/05/25/when-to-micro-service/</link>
         <guid isPermaLink="true">https://blog.clintcparker.com/2022/05/25/when-to-micro-service/</guid>
-        
-        
-      </item>
-    
-      <item>
-        <title>Software Leadership - Fostering the Team</title>
-        <description>&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
-&lt;p&gt;I’ve been meaning to write my thoughts on software leadership for a while. I’ll try to do tht here with a series of posts on the topic. Let’s start with &lt;strong&gt;fostering a strong team&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;First of all, most teams are already great, they may just not know or show it. The talent is usually already in the building. I’m confident in the abilities and potential of most engineering team members to succeed with any project we throw at them.&lt;/p&gt;
-
-&lt;p&gt;But all teams can do better. We can do better as organizations leaders by setting a good example. And we can start by setting an example in 3 key ways: &lt;strong&gt;Transparency&lt;/strong&gt;, &lt;strong&gt;Respect&lt;/strong&gt;, and &lt;strong&gt;Accountability&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;transparency&quot;&gt;Transparency&lt;/h2&gt;
-&lt;p&gt;One thing I am not confident in most teams to do, is communicate the company vision. I think very few of developers could tell you how what they’re &lt;em&gt;currently&lt;/em&gt; working on lines up with company goals, or what priority it is.&lt;/p&gt;
-
-&lt;p&gt;We can start to change this with transparency, which happens to also be a core tenet of Scrum. By being transparent, as leaders, as an organization, we can empower our product development teams to make good, informed decisions about their projects. And we can show them the visible importance of their work on our backlog.&lt;/p&gt;
-
-&lt;p&gt;In setting this example, we can expect the same from them. It is as simple as professional courtesy. We can show our steps in decision making, and they can show theirs. The same goes for progress. This expected transparency will increase mutual understanding between product development and all other departments and department heads.&lt;/p&gt;
-
-&lt;p&gt;By increasing this communication and buy-in, we will provide our teams with intrinsic motivation. We will all be purpose-driven, and we will see better results in quality and productivity.&lt;/p&gt;
-
-&lt;h2 id=&quot;respect&quot;&gt;Respect&lt;/h2&gt;
-&lt;p&gt;Respect may be the hardest thing to foster in our product development team. From my perspective, mutual respect between all members of a team is often missing in many of the relationships. Sometimes it is simply person to person, but other times it is person to department. A lot of the time it is person to organization. And again, we can fix this by setting an example. We can lean on our teams harder than we have to date. We can expect great things, and we can communicate our expectations. And not just verbally. We really need to trust our teams to solve problems, and not to simply follow instructions.&lt;/p&gt;
-
-&lt;p&gt;I often see team members hesitating to make suggestions or question the projects goals. This is a bad thing. We should be fostering these conversations, because these conversations lead to innovation and creative solutions. Let’s encourage questions, and expect great solutions from our development teams.&lt;/p&gt;
-
-&lt;h2 id=&quot;accountability&quot;&gt;Accountability&lt;/h2&gt;
-&lt;p&gt;With our freshly conveyed respect, we gain accountability.&lt;/p&gt;
-
-&lt;p&gt;Most notions of accountability come from negative perspectives. We only need to foster accountability because we need someone to be accountable for something that has gone wrong. It’s true, and from time to time we need in our organizations. It’s also a key part of coaching. And sometimes, it’s a good motivator to know that if a project fails, some person or group can be held accountable.&lt;/p&gt;
-
-&lt;p&gt;The concept I think everyone misses with accountability, though, is that it’s a two way street. Early in my career, I worked on a team for 18 months before I knew about my accountability for someone’s &lt;em&gt;positive&lt;/em&gt; experience with our software. That’s right, for a year and a half, the only post-release feedback I received for my code was the negative type. Obviously my team appreciated my work, but all I really ever saw beyond that were the bugs.&lt;/p&gt;
-
-&lt;p&gt;The feedback loop needs to continue regardless of the feedback.&lt;/p&gt;
-
-&lt;p&gt;We all go to many postmortems when something our team worked on broke. We rarely go to a meeting to explain why or how something our team worked on was produced so well. As engineering leaders, we need to be asking a lot more questions of the successful teams than the unsuccessful ones. We should maximize our success instead of minimizing our failure.&lt;/p&gt;
-
-&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
-&lt;p&gt;It’s amusing how little software leadership has to do with the actual software sometimes. I promise I will have some more technical leadership topics in the future, but many will be like this. I hope some of this will help you with your teams. As always feel free to send any comments to me on Twitter at &lt;em&gt;&lt;a href=&quot;https://twitter.com/clintcparker&quot;&gt;@clintcparker&lt;/a&gt;&lt;/em&gt;.&lt;/p&gt;
-</description>
-        <pubDate>Wed, 13 Apr 2022 20:11:39 +0000</pubDate>
-        <link>https://blog.clintcparker.com/2022/04/13/software-leadership-fostering-the-team/</link>
-        <guid isPermaLink="true">https://blog.clintcparker.com/2022/04/13/software-leadership-fostering-the-team/</guid>
         
         
       </item>
