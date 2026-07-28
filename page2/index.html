@@ -160,6 +160,31 @@
         <div class="home">
   
     <article class="post">
+      <h2 class="post-title"><a class="post-link" href="/2026/03/20/testing-is-a-team-sport/">Testing Is a Team Sport</a></h2>
+
+      <time datetime="2026-03-20T17:29:54+00:00" class="post-date">March 20, 2026</time>
+
+      <p>I’ve had some version of this conversation with multiple engineering leaders lately, and I keep landing in the same place: <strong>quality is a team sport, and most teams haven’t figured that out yet.</strong></p>
+
+<p>Here’s the dynamic I see a lot. You’ve got developers who write their code, write their tests (maybe), and hand the whole thing off. Somewhere downstream, a tester or QA person picks it up and starts poking holes. When they find something, it goes back. When they don’t, it ships. Everyone’s doing their job. And yet somehow, bugs still make it to production, morale is still low, and the whole thing feels slower than it should.</p>
+
+<p>The problem isn’t the people. The problem is the model.</p>
+
+<p>Separating “building” from “quality” creates distance — between the person who knows the most about how something was constructed and the process of verifying that it works correctly. That distance is where bugs hide.</p>
+
+<p>The fix isn’t to hire more testers. It’s to collapse that distance. Make the people accountable for delivery also accountable for correctness. Pair them up. If two engineers worked on a feature together, they’re both on the hook if it breaks. Not “well, they were supposed to test it.” No. Both of them own it.</p>
+
+<p>What I’ve seen work is building that expectation into the culture from the top. Not as a punitive thing, but as a shared ownership thing. <em>*We*</em> built it. <em>*We*</em> stand behind it. If it’s wrong, we fix it, we learn from it, and we make sure it doesn’t happen that way again.</p>
+
+<p>The corollary to this is that no single person (or department) in an org should carry “quality” as their sole responsibility. One QA lead against a team of fifteen engineers is not a quality strategy. It’s a bottleneck with a job title. The engineerings and their leadership (the people accountable for delivery) also have to be accountable for what they deliver working correctly. That’s not a radical idea. It’s just engineering maturity.</p>
+
+<p>Quality isn’t a department. It’s an expectation.</p>
+
+
+      <hr>
+    </article>
+  
+    <article class="post">
       <h2 class="post-title"><a class="post-link" href="/2025/03/11/feature-flags-for-fun-and-profit/">Feature Flags for Fun & Profit</a></h2>
 
       <time datetime="2025-03-11T18:16:00+00:00" class="post-date">March 11, 2025</time>
@@ -902,35 +927,6 @@ Real World Scenarios</p>
 <p>In our case, though, these two concept collide and clobber each other. The need to process each request creates a ton of work, and the page sizes themselves become massive due to the (substantial but not infinite) recursive nature of the pages. Doing more work, and the cache can’t keep up, so it’s doing more work in vain. Brutal.</p>
 
 <p>In the end, they did improve Classic ASP/VBScript … they created <code class="language-plaintext highlighter-rouge">.NET</code>.</p>
-
-
-      <hr>
-    </article>
-  
-    <article class="post">
-      <h2 class="post-title"><a class="post-link" href="/2022/05/25/when-to-micro-service/">When to Microservice</a></h2>
-
-      <time datetime="2022-05-25T21:52:58+00:00" class="post-date">May 25, 2022</time>
-
-      <p>I’m enjoying Microsoft Build 2022. Developer experience (especially in the face of common and complicated IaaS and PaaS scenarios) was my favorite topic of the day 1 keynotes.</p>
-
-<p>Later, watching the keynote after hours, I stumbled on a gem of a conversation between Scott Hanselman and Scott Guthrie.</p>
-
-<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Great informal discussion/perspective on when to use micro-services &amp; containers from <a href="https://twitter.com/shanselman?ref_src=twsrc%5Etfw">@shanselman</a> and <a href="https://twitter.com/scottgu?ref_src=twsrc%5Etfw">@scottgu</a> at 33:18.<a href="https://t.co/1tNahY1VSk">https://t.co/1tNahY1VSk</a></p>&mdash; Clint Parker (@clintcparker) <a href="https://twitter.com/clintcparker/status/1529577253423566848?ref_src=twsrc%5Etfw">May 25, 2022</a></blockquote>
-<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-
-<p>Lot’s of classic “it depends” which is totally true. For me it depends on at least one of three macro factors being present:</p>
-
-<ol>
-  <li>Teams/people need to develop and deploy at different paces.</li>
-  <li>Parts of the system <em>need</em> to scale independently</li>
-  <li>Parts of the system <em>need</em> to be segmented for security purposes. Ex: only engineers from the payments team can make changes to payments systems.</li>
-</ol>
-
-<p>You can have any decomposition you like, but in that video Scott Guthrie alludes to the challenges you can face on either end of the spectrum (1 engineer with 100 micro-services or 100 engineers with one service).</p>
-
-<p>One last note, I may start saying containers instead of micro-services going forward. I usually try say that I prefer macro-services, but then we have to have a whole discussion about the difference. Maybe the term container will become the defacto descriptor of services and their boundaries.</p>
-
 
 
       <hr>

@@ -156,6 +156,117 @@
         <div class="home">
   
     <article class="post">
+      <h2 class="post-title"><a class="post-link" href="/2026/07/28/speckit-workflows/">Speckit Workflows</a></h2>
+
+      <time datetime="2026-07-28T23:23:13+00:00" class="post-date">July 28, 2026</time>
+
+      <p>Is your team using <a href="https://github.github.io/spec-kit/">Spec Kit</a>, but you hate having to remember the sequence <code class="language-plaintext highlighter-rouge">/speckit-specify =&gt; /speckit-plan =&gt; /speckit-tasks =&gt; /speckit-implement</code> ? you know it’s going to get it right, and let’s be honest, you’re not going to review all of that intermediate output anyway (you should, though).</p>
+
+<p>Well, you should check out <a href="https://github.github.io/spec-kit/reference/workflows.html">Spec Kit workflows</a>. I don’t see much discussion of this feature in the Spec Kit community. I stumbled across it while going through a new project the other day, and it took me a while to figure out how to even invoke it (which is a little embarrassing). But once you find it, it’s a pretty straightforward command you run from the terminal, and it starts up Claude itself and drives the whole thing.</p>
+
+<p>I ran the workflow that ships with the standard Spec Kit install, and it had the same basic gates as running the commands by hand. On one hand, that’s nice — you don’t have to remember the sequence anymore. On the other hand, sometimes I just want it to go all the way to the end. This is why we have source control. This is why we have branches. If it goes sideways, I throw away the branch and try again.</p>
+
+<h3 id="yolo-mode">YOLO mode</h3>
+
+<p>So I wrote my own version of the shipped workflow, called YOLO. It removes the gates and runs through to completion. Invoking it is as simple as:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>specify workflow run yolo <span class="nt">-i</span> <span class="nv">spec</span><span class="o">=</span><span class="s2">"make the app do the thing"</span>
+</code></pre></div></div>
+
+<p>Here’s the workflow definition (.specify/workflows/yolo/workflow.yml):</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">schema_version</span><span class="pi">:</span> <span class="s2">"</span><span class="s">1.0"</span>
+<span class="na">workflow</span><span class="pi">:</span>
+  <span class="na">id</span><span class="pi">:</span> <span class="s2">"</span><span class="s">yolo"</span>
+  <span class="na">name</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Full</span><span class="nv"> </span><span class="s">SDD</span><span class="nv"> </span><span class="s">Cycle</span><span class="nv"> </span><span class="s">-</span><span class="nv"> </span><span class="s">no</span><span class="nv"> </span><span class="s">gates"</span>
+  <span class="na">version</span><span class="pi">:</span> <span class="s2">"</span><span class="s">0.0.1"</span>
+  <span class="na">author</span><span class="pi">:</span> <span class="s2">"</span><span class="s">clintcparker"</span>
+  <span class="na">description</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Runs</span><span class="nv"> </span><span class="s">specify</span><span class="nv"> </span><span class="s">→</span><span class="nv"> </span><span class="s">plan</span><span class="nv"> </span><span class="s">→</span><span class="nv"> </span><span class="s">tasks</span><span class="nv"> </span><span class="s">→</span><span class="nv"> </span><span class="s">implement</span><span class="nv"> </span><span class="s">without</span><span class="nv"> </span><span class="s">review</span><span class="nv"> </span><span class="s">gates"</span>
+
+<span class="na">requires</span><span class="pi">:</span>
+  <span class="c1"># 0.8.5 is the first release with engine-side resolution of the</span>
+  <span class="c1"># ``integration: "auto"`` default. Older versions would treat "auto"</span>
+  <span class="c1"># as a literal integration key and fail at dispatch.</span>
+  <span class="na">speckit_version</span><span class="pi">:</span> <span class="s2">"</span><span class="s">&gt;=0.8.5"</span>
+  <span class="na">integrations</span><span class="pi">:</span>
+    <span class="c1"># The four commands below (specify, plan, tasks, implement) are core</span>
+    <span class="c1"># spec-kit commands provided by every integration. The list here is an</span>
+    <span class="c1"># advisory, non-exhaustive compatibility hint following the documented</span>
+    <span class="c1"># ``any: [...]`` schema -- it is NOT a closed set. The workflow runs</span>
+    <span class="c1"># against any integration the project was initialized with, including</span>
+    <span class="c1"># ones not listed below, as long as that integration provides the four</span>
+    <span class="c1"># core commands referenced in ``steps``.</span>
+    <span class="na">any</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">claude"</span>
+
+<span class="na">inputs</span><span class="pi">:</span>
+  <span class="na">spec</span><span class="pi">:</span>
+    <span class="na">type</span><span class="pi">:</span> <span class="s">string</span>
+    <span class="na">required</span><span class="pi">:</span> <span class="no">true</span>
+    <span class="na">prompt</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Describe</span><span class="nv"> </span><span class="s">what</span><span class="nv"> </span><span class="s">you</span><span class="nv"> </span><span class="s">want</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">build"</span>
+  <span class="na">integration</span><span class="pi">:</span>
+    <span class="na">type</span><span class="pi">:</span> <span class="s">string</span>
+    <span class="na">default</span><span class="pi">:</span> <span class="s2">"</span><span class="s">auto"</span>
+    <span class="na">prompt</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Integration</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">use</span><span class="nv"> </span><span class="s">(e.g.</span><span class="nv"> </span><span class="s">claude,</span><span class="nv"> </span><span class="s">copilot,</span><span class="nv"> </span><span class="s">gemini;</span><span class="nv"> </span><span class="s">'auto'</span><span class="nv"> </span><span class="s">uses</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">project's</span><span class="nv"> </span><span class="s">initialized</span><span class="nv"> </span><span class="s">integration)"</span>
+  <span class="na">scope</span><span class="pi">:</span>
+    <span class="na">type</span><span class="pi">:</span> <span class="s">string</span>
+    <span class="na">default</span><span class="pi">:</span> <span class="s2">"</span><span class="s">full"</span>
+    <span class="na">enum</span><span class="pi">:</span> <span class="pi">[</span><span class="s2">"</span><span class="s">full"</span><span class="pi">,</span> <span class="s2">"</span><span class="s">backend-only"</span><span class="pi">,</span> <span class="s2">"</span><span class="s">frontend-only"</span><span class="pi">]</span>
+
+<span class="na">steps</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">id</span><span class="pi">:</span> <span class="s">specify</span>
+    <span class="na">command</span><span class="pi">:</span> <span class="s">speckit.specify</span>
+    <span class="na">integration</span><span class="pi">:</span> <span class="s2">"</span><span class="s">"</span>
+    <span class="na">input</span><span class="pi">:</span>
+      <span class="na">args</span><span class="pi">:</span> <span class="s2">"</span><span class="s">"</span>
+
+  <span class="pi">-</span> <span class="na">id</span><span class="pi">:</span> <span class="s">plan</span>
+    <span class="na">command</span><span class="pi">:</span> <span class="s">speckit.plan</span>
+    <span class="na">integration</span><span class="pi">:</span> <span class="s2">"</span><span class="s">"</span>
+    <span class="na">input</span><span class="pi">:</span>
+      <span class="na">args</span><span class="pi">:</span> <span class="s2">"</span><span class="s">"</span>
+
+  <span class="pi">-</span> <span class="na">id</span><span class="pi">:</span> <span class="s">tasks</span>
+    <span class="na">command</span><span class="pi">:</span> <span class="s">speckit.tasks</span>
+    <span class="na">integration</span><span class="pi">:</span> <span class="s2">"</span><span class="s">"</span>
+    <span class="na">input</span><span class="pi">:</span>
+      <span class="na">args</span><span class="pi">:</span> <span class="s2">"</span><span class="s">"</span>
+
+  <span class="pi">-</span> <span class="na">id</span><span class="pi">:</span> <span class="s">implement</span>
+    <span class="na">command</span><span class="pi">:</span> <span class="s">speckit.implement</span>
+    <span class="na">integration</span><span class="pi">:</span> <span class="s2">"</span><span class="s">"</span>
+    <span class="na">input</span><span class="pi">:</span>
+      <span class="na">args</span><span class="pi">:</span> <span class="s2">"</span><span class="s">"</span>
+
+</code></pre></div></div>
+
+<p>Just drop this file into the <code class="language-plaintext highlighter-rouge">workflows</code> directory inside your <code class="language-plaintext highlighter-rouge">.specify</code> directory. Then make sure you register it in the Spec Kit workflow registry (.specify/workflows/workflow-registry.json):</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">    </span><span class="nl">"yolo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Full SDD Cycle - no gates"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0.1"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Runs specify </span><span class="se">\u</span><span class="s2">2192 plan </span><span class="se">\u</span><span class="s2">2192 tasks </span><span class="se">\u</span><span class="s2">2192 implement without review gates"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"local"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"installed_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2026-07-28T21:16:32.525333+00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2026-07-28T21:16:32.525333+00:00"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>That’s it. No gates, no babysitting 😊 kick it off and come back to a finished branch.</p>
+
+<h3 id="its-better-than-i-expected">It’s better than I expected</h3>
+
+<p>Here’s the part that made me stop what I was doing. I kicked off a run on a project that has pretty rigid behavioral tests and behavioral testing guidelines set up, and this particular change touched a UI component. During the implementation phase, during the “implement” phase, Claude spawned Playwright on its own. I was doing other stuff on the machine, and I saw the browser come up and start clicking through the app, doing exactly the kind of manual validation I would have wanted to see anyway.</p>
+
+<p>I’m running this with Claude Opus 5, and I’m extremely impressed. It comes back to the same thing it always comes back to: having a better idea of what you want to build at the end of the day. But this one knocked it out of the park. It was exactly like telling a competent engineer on my team, “hey, make this change” … and they did everything right. They followed every step, they documented it, they tested it.</p>
+
+<p>Anyway, happy coding.</p>
+
+
+      <hr>
+    </article>
+  
+    <article class="post">
       <h2 class="post-title"><a class="post-link" href="/2026/06/25/git-ignore-and-untrack/">Git Ignore ... and Untrack!</a></h2>
 
       <time datetime="2026-06-25T18:53:47+00:00" class="post-date">June 25, 2026</time>
@@ -347,31 +458,6 @@
 <p>I also think there’s something important here about how we use AI in the validation loop, not just the construction loop. Use it to generate test cases. Use it to review test coverage for gaps. Have it challenge your assumptions about how a feature might fail. A lot of what a good QA person does — thinking adversarially about software — can be augmented with the same tools you’re using to write the code.</p>
 
 <p>The teams that win with AI aren’t the ones moving fastest. They’re the ones who figured out how to move fast <em>and</em> land cleanly.</p>
-
-
-      <hr>
-    </article>
-  
-    <article class="post">
-      <h2 class="post-title"><a class="post-link" href="/2026/03/20/testing-is-a-team-sport/">Testing Is a Team Sport</a></h2>
-
-      <time datetime="2026-03-20T17:29:54+00:00" class="post-date">March 20, 2026</time>
-
-      <p>I’ve had some version of this conversation with multiple engineering leaders lately, and I keep landing in the same place: <strong>quality is a team sport, and most teams haven’t figured that out yet.</strong></p>
-
-<p>Here’s the dynamic I see a lot. You’ve got developers who write their code, write their tests (maybe), and hand the whole thing off. Somewhere downstream, a tester or QA person picks it up and starts poking holes. When they find something, it goes back. When they don’t, it ships. Everyone’s doing their job. And yet somehow, bugs still make it to production, morale is still low, and the whole thing feels slower than it should.</p>
-
-<p>The problem isn’t the people. The problem is the model.</p>
-
-<p>Separating “building” from “quality” creates distance — between the person who knows the most about how something was constructed and the process of verifying that it works correctly. That distance is where bugs hide.</p>
-
-<p>The fix isn’t to hire more testers. It’s to collapse that distance. Make the people accountable for delivery also accountable for correctness. Pair them up. If two engineers worked on a feature together, they’re both on the hook if it breaks. Not “well, they were supposed to test it.” No. Both of them own it.</p>
-
-<p>What I’ve seen work is building that expectation into the culture from the top. Not as a punitive thing, but as a shared ownership thing. <em>*We*</em> built it. <em>*We*</em> stand behind it. If it’s wrong, we fix it, we learn from it, and we make sure it doesn’t happen that way again.</p>
-
-<p>The corollary to this is that no single person (or department) in an org should carry “quality” as their sole responsibility. One QA lead against a team of fifteen engineers is not a quality strategy. It’s a bottleneck with a job title. The engineerings and their leadership (the people accountable for delivery) also have to be accountable for what they deliver working correctly. That’s not a radical idea. It’s just engineering maturity.</p>
-
-<p>Quality isn’t a department. It’s an expectation.</p>
 
 
       <hr>
