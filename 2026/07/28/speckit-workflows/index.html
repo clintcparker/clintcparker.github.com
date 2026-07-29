@@ -216,28 +216,27 @@
 <span class="na">steps</span><span class="pi">:</span>
   <span class="pi">-</span> <span class="na">id</span><span class="pi">:</span> <span class="s">specify</span>
     <span class="na">command</span><span class="pi">:</span> <span class="s">speckit.specify</span>
-    <span class="na">integration</span><span class="pi">:</span> <span class="s2">"</span><span class="s">"</span>
+    <span class="na">integration</span><span class="pi">:</span> <span class="s2">"</span><span class="s">{{</span><span class="nv"> </span><span class="s">inputs.integration</span><span class="nv"> </span><span class="s">}}"</span>
     <span class="na">input</span><span class="pi">:</span>
-      <span class="na">args</span><span class="pi">:</span> <span class="s2">"</span><span class="s">"</span>
+      <span class="na">args</span><span class="pi">:</span> <span class="s2">"</span><span class="s">{{</span><span class="nv"> </span><span class="s">inputs.spec</span><span class="nv"> </span><span class="s">}}"</span>
 
   <span class="pi">-</span> <span class="na">id</span><span class="pi">:</span> <span class="s">plan</span>
     <span class="na">command</span><span class="pi">:</span> <span class="s">speckit.plan</span>
-    <span class="na">integration</span><span class="pi">:</span> <span class="s2">"</span><span class="s">"</span>
+    <span class="na">integration</span><span class="pi">:</span> <span class="s2">"</span><span class="s">{{</span><span class="nv"> </span><span class="s">inputs.integration</span><span class="nv"> </span><span class="s">}}"</span>
     <span class="na">input</span><span class="pi">:</span>
-      <span class="na">args</span><span class="pi">:</span> <span class="s2">"</span><span class="s">"</span>
+      <span class="na">args</span><span class="pi">:</span> <span class="s2">"</span><span class="s">{{</span><span class="nv"> </span><span class="s">inputs.spec</span><span class="nv"> </span><span class="s">}}"</span>
 
   <span class="pi">-</span> <span class="na">id</span><span class="pi">:</span> <span class="s">tasks</span>
     <span class="na">command</span><span class="pi">:</span> <span class="s">speckit.tasks</span>
-    <span class="na">integration</span><span class="pi">:</span> <span class="s2">"</span><span class="s">"</span>
+    <span class="na">integration</span><span class="pi">:</span> <span class="s2">"</span><span class="s">{{</span><span class="nv"> </span><span class="s">inputs.integration</span><span class="nv"> </span><span class="s">}}"</span>
     <span class="na">input</span><span class="pi">:</span>
-      <span class="na">args</span><span class="pi">:</span> <span class="s2">"</span><span class="s">"</span>
+      <span class="na">args</span><span class="pi">:</span> <span class="s2">"</span><span class="s">{{</span><span class="nv"> </span><span class="s">inputs.spec</span><span class="nv"> </span><span class="s">}}"</span>
 
   <span class="pi">-</span> <span class="na">id</span><span class="pi">:</span> <span class="s">implement</span>
     <span class="na">command</span><span class="pi">:</span> <span class="s">speckit.implement</span>
-    <span class="na">integration</span><span class="pi">:</span> <span class="s2">"</span><span class="s">"</span>
+    <span class="na">integration</span><span class="pi">:</span> <span class="s2">"</span><span class="s">{{</span><span class="nv"> </span><span class="s">inputs.integration</span><span class="nv"> </span><span class="s">}}"</span>
     <span class="na">input</span><span class="pi">:</span>
-      <span class="na">args</span><span class="pi">:</span> <span class="s2">"</span><span class="s">"</span>
-
+      <span class="na">args</span><span class="pi">:</span> <span class="s2">"</span><span class="s">{{</span><span class="nv"> </span><span class="s">inputs.spec</span><span class="nv"> </span><span class="s">}}"</span>
 </code></pre></div></div>
 
 <p>Just drop this file into the <code class="language-plaintext highlighter-rouge">workflows</code> directory inside your <code class="language-plaintext highlighter-rouge">.specify</code> directory. Then make sure you register it in the Spec Kit workflow registry (.specify/workflows/workflow-registry.json):</p>
