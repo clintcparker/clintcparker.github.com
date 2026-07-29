@@ -6,8 +6,8 @@
 </description>
     <link>https://blog.clintcparker.com/</link>
     <atom:link href="https://blog.clintcparker.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 29 Jul 2026 18:04:18 +0000</pubDate>
-    <lastBuildDate>Wed, 29 Jul 2026 18:04:18 +0000</lastBuildDate>
+    <pubDate>Wed, 29 Jul 2026 18:43:54 +0000</pubDate>
+    <lastBuildDate>Wed, 29 Jul 2026 18:43:54 +0000</lastBuildDate>
     <generator>Jekyll v4.3.4</generator>
     
       <item>
@@ -112,6 +112,23 @@
 &lt;p&gt;I’m running this with Claude Opus 5, and I’m extremely impressed. It comes back to the same thing it always comes back to: having a better idea of what you want to build at the end of the day. But this one knocked it out of the park. It was exactly like telling a competent engineer on my team, “hey, make this change” … and they did everything right. They followed every step, they documented it, they tested it.&lt;/p&gt;
 
 &lt;p&gt;Anyway, happy coding.&lt;/p&gt;
+
+&lt;h3 id=&quot;update-2026-07-29-you-dont-have-to-copy-paste-this-anymore&quot;&gt;Update (2026-07-29): you don’t have to copy-paste this anymore&lt;/h3&gt;
+
+&lt;p&gt;I’ve published YOLO as a proper Spec Kit add-on: &lt;a href=&quot;https://github.com/clintcparker/speckit-addons&quot;&gt;clintcparker/speckit-addons&lt;/a&gt;. Skip the “drop this file in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.specify/workflows/&lt;/code&gt; and hand-edit the registry JSON” dance above — Spec Kit has a catalog mechanism, and now there’s a catalog to point it at.&lt;/p&gt;
+
+&lt;p&gt;Register the catalog once, then install:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;specify workflow catalog add https://raw.githubusercontent.com/clintcparker/speckit-addons/main/workflows/catalog.json
+specify workflow add yolo
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Or grab just this one workflow without registering anything:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;specify workflow add yolo &lt;span class=&quot;nt&quot;&gt;--from&lt;/span&gt; https://raw.githubusercontent.com/clintcparker/speckit-addons/yolo-v0.1.0/workflows/yolo/workflow.yml
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Either way, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;specify workflow run yolo -i spec=&quot;make the app do the thing&quot;&lt;/code&gt; still works exactly the same.&lt;/p&gt;
 </description>
         <pubDate>Tue, 28 Jul 2026 23:23:13 +0000</pubDate>
         <link>https://blog.clintcparker.com/2026/07/28/speckit-workflows/</link>

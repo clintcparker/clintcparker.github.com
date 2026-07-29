@@ -261,6 +261,23 @@
 
 <p>Anyway, happy coding.</p>
 
+<h3 id="update-2026-07-29-you-dont-have-to-copy-paste-this-anymore">Update (2026-07-29): you don’t have to copy-paste this anymore</h3>
+
+<p>I’ve published YOLO as a proper Spec Kit add-on: <a href="https://github.com/clintcparker/speckit-addons">clintcparker/speckit-addons</a>. Skip the “drop this file in <code class="language-plaintext highlighter-rouge">.specify/workflows/</code> and hand-edit the registry JSON” dance above — Spec Kit has a catalog mechanism, and now there’s a catalog to point it at.</p>
+
+<p>Register the catalog once, then install:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>specify workflow catalog add https://raw.githubusercontent.com/clintcparker/speckit-addons/main/workflows/catalog.json
+specify workflow add yolo
+</code></pre></div></div>
+
+<p>Or grab just this one workflow without registering anything:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>specify workflow add yolo <span class="nt">--from</span> https://raw.githubusercontent.com/clintcparker/speckit-addons/yolo-v0.1.0/workflows/yolo/workflow.yml
+</code></pre></div></div>
+
+<p>Either way, <code class="language-plaintext highlighter-rouge">specify workflow run yolo -i spec="make the app do the thing"</code> still works exactly the same.</p>
+
 
       <hr>
     </article>
